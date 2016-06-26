@@ -13,6 +13,7 @@
 		B56511191D207980002CD3AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56511171D207980002CD3AF /* Main.storyboard */; };
 		B565111B1D207980002CD3AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B565111A1D207980002CD3AF /* Assets.xcassets */; };
 		B565111E1D207980002CD3AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B565111C1D207980002CD3AF /* LaunchScreen.storyboard */; };
+		B597B7F01D20828A00E62371 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B597B7EF1D20828A00E62371 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		B565111A1D207980002CD3AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B565111D1D207980002CD3AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B565111F1D207980002CD3AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B597B7EF1D20828A00E62371 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CFFA4674F87EF22999DD41B8 /* Pods-CardSelector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardSelector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardSelector/Pods-CardSelector.debug.xcconfig"; sourceTree = "<group>"; };
 		E40E44BB5E796BFC035D9F11 /* Pods_CardSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -64,6 +66,7 @@
 				B56511111D20797F002CD3AF /* Products */,
 				06C3B459FFCCDE33603187EE /* Pods */,
 				A8281DAC7FC6108F33FF6C30 /* Frameworks */,
+				B597B7EF1D20828A00E62371 /* GoogleService-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B565111E1D207980002CD3AF /* LaunchScreen.storyboard in Resources */,
+				B597B7F01D20828A00E62371 /* GoogleService-Info.plist in Resources */,
 				B565111B1D207980002CD3AF /* Assets.xcassets in Resources */,
 				B56511191D207980002CD3AF /* Main.storyboard in Resources */,
 			);

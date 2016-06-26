@@ -8,8 +8,9 @@
 
 import UIKit
 import FBSDKLoginKit
+import GoogleSignIn
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,GIDSignInUIDelegate {
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -17,6 +18,9 @@ class ViewController: UIViewController {
     let loginButton = FBSDKLoginButton()
     loginButton.center = view.center
     view.addSubview(loginButton)
+    
+    
+    GIDSignIn.sharedInstance().uiDelegate = self
   }
 
 }

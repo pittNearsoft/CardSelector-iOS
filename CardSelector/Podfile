@@ -13,4 +13,7 @@ target 'CardSelector' do
   pod 'FBSDKShareKit'
   pod 'FBSDKLoginKit'
 
+  #The Google Sign-In SDK allows users to sign in with their Google account from third-party apps.
+  pod 'Google/SignIn'
+
 end
