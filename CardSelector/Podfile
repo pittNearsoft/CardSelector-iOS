@@ -16,4 +16,17 @@ target 'CardSelector' do
   #The Google Sign-In SDK allows users to sign in with their Google account from third-party apps.
   pod 'Google/SignIn'
 
+  #ObjectMapper is a framework written in Swift that makes it easy
+   #for you to convert your model objects (classes and structs) to and from JSON.
+   pod 'ObjectMapper', '~> 1.2'
+
+   #Alamofire is an HTTP networking library written in Swift.
+   pod 'Alamofire', '~> 3.3'
+
+   #AlamofireImage is an image component library for Alamofire.
+   pod 'AlamofireImage', '~> 2.0'
+
+   #Realm is a mobile database that runs directly inside phones, tablets or wearables.
+   pod 'RealmSwift', '~> 0.98'
+
 end
