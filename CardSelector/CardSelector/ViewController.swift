@@ -15,9 +15,9 @@ class ViewController: UIViewController,GIDSignInUIDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    let loginButton = FBSDKLoginButton()
-    loginButton.center = view.center
-    view.addSubview(loginButton)
+//    let loginButton = FBSDKLoginButton()
+//    loginButton.center = view.center
+//    view.addSubview(loginButton)
     
     
     GIDSignIn.sharedInstance().uiDelegate = self
