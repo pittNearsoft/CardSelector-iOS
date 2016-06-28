@@ -11,7 +11,7 @@ import RealmSwift
 import Google
 import GoogleSignIn
 
-class User: Object {
+class CardUser: Object {
   dynamic var userId = ""
   dynamic var tokenId = ""
   dynamic var name = ""
@@ -28,6 +28,6 @@ class User: Object {
   }
   
   override static func primaryKey() -> String?{
-    return "userId"
+    return "userID"
   }
 }
