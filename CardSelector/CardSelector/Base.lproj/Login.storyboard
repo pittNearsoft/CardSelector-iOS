@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CardSelector" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="CardSelector" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -24,9 +24,12 @@
                                     <constraint firstAttribute="height" constant="44" id="YuU-oj-Rtc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Facebook Login">
+                                <state key="normal" title="Facebook Sign In">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="facebookSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R4o-iC-cqu"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0b-hj-0PN">
                                 <rect key="frame" x="20" y="330" width="560" height="44"/>
@@ -35,20 +38,12 @@
                                     <constraint firstAttribute="height" constant="44" id="2gx-Rw-yHU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Google Login">
+                                <state key="normal" title="Google Sign In">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T58-VF-M9H">
-                                <rect key="frame" x="20" y="225" width="560" height="45"/>
-                                <color key="backgroundColor" red="0.048156191112639128" green="0.70164262820512824" blue="0.13023079494721582" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="Dhs-U2-Kfw"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Email Login">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <connections>
+                                    <action selector="googleSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4aU-w7-b6w"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Selector" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpn-Eg-2HW">
                                 <rect key="frame" x="20" y="96" width="560" height="32"/>
@@ -56,18 +51,47 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T58-VF-M9H">
+                                <rect key="frame" x="20" y="225" width="560" height="45"/>
+                                <color key="backgroundColor" red="0.048156191112639128" green="0.70164262820512824" blue="0.13023079494721582" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Dhs-U2-Kfw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Email Sign In">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="emailSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Dr-Vf-VgU"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gzk-tB-Qtg">
+                                <rect key="frame" x="20" y="382" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pg-h1-jVR">
+                                <rect key="frame" x="20" y="411" width="560" height="30"/>
+                                <state key="normal" title="Create an account"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Gzk-tB-Qtg" firstAttribute="trailing" secondItem="N0b-hj-0PN" secondAttribute="trailing" id="1Tg-PQ-1Ua"/>
+                            <constraint firstItem="Gzk-tB-Qtg" firstAttribute="top" secondItem="N0b-hj-0PN" secondAttribute="bottom" constant="8" id="3GV-N5-v9w"/>
                             <constraint firstAttribute="trailing" secondItem="hpn-Eg-2HW" secondAttribute="trailing" constant="20" id="3ch-VM-PD0"/>
                             <constraint firstItem="hpn-Eg-2HW" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="76" id="51b-Xq-Bbx"/>
+                            <constraint firstItem="2pg-h1-jVR" firstAttribute="top" secondItem="Gzk-tB-Qtg" secondAttribute="bottom" constant="8" id="5I0-EY-dLP"/>
                             <constraint firstItem="T58-VF-M9H" firstAttribute="trailing" secondItem="x0P-ch-KD2" secondAttribute="trailing" id="87f-YV-o9R"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="N0b-hj-0PN" secondAttribute="bottom" constant="20" id="EfO-pa-hhJ"/>
                             <constraint firstAttribute="trailing" secondItem="x0P-ch-KD2" secondAttribute="trailing" constant="20" id="GRS-p2-VvV"/>
                             <constraint firstItem="T58-VF-M9H" firstAttribute="leading" secondItem="x0P-ch-KD2" secondAttribute="leading" id="N4J-29-fwQ"/>
+                            <constraint firstItem="2pg-h1-jVR" firstAttribute="leading" secondItem="Gzk-tB-Qtg" secondAttribute="leading" id="PrS-NG-EG3"/>
                             <constraint firstItem="N0b-hj-0PN" firstAttribute="leading" secondItem="x0P-ch-KD2" secondAttribute="leading" id="V1T-vy-XtZ"/>
+                            <constraint firstItem="2pg-h1-jVR" firstAttribute="trailing" secondItem="Gzk-tB-Qtg" secondAttribute="trailing" id="Y1X-Xm-83o"/>
                             <constraint firstItem="x0P-ch-KD2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="bqo-Dn-Dhn"/>
                             <constraint firstItem="hpn-Eg-2HW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="ckd-VL-JNE"/>
+                            <constraint firstItem="Gzk-tB-Qtg" firstAttribute="leading" secondItem="N0b-hj-0PN" secondAttribute="leading" id="d9j-E2-Nbk"/>
                             <constraint firstItem="x0P-ch-KD2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="fBc-l9-mWI"/>
                             <constraint firstItem="N0b-hj-0PN" firstAttribute="trailing" secondItem="x0P-ch-KD2" secondAttribute="trailing" id="jte-is-pg1"/>
                             <constraint firstItem="N0b-hj-0PN" firstAttribute="top" secondItem="x0P-ch-KD2" secondAttribute="bottom" constant="8" id="mdi-rd-z1s"/>
@@ -76,6 +100,11 @@
                             <constraint firstItem="T58-VF-M9H" firstAttribute="top" relation="greaterThanOrEqual" secondItem="hpn-Eg-2HW" secondAttribute="bottom" constant="8" id="wuv-xi-yrU"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailButton" destination="T58-VF-M9H" id="evg-pn-fJ3"/>
+                        <outlet property="facebookButton" destination="x0P-ch-KD2" id="NIR-qD-VRu"/>
+                        <outlet property="googleButton" destination="N0b-hj-0PN" id="cLV-gL-nJg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
