@@ -18,6 +18,7 @@
 		B597B7F51D2333CC00E62371 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597B7F41D2333CC00E62371 /* NavigationManager.swift */; };
 		B597B7F81D23362B00E62371 /* CardUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597B7F71D23362B00E62371 /* CardUser.swift */; };
 		B597B7FB1D233B1900E62371 /* CardUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597B7FA1D233B1900E62371 /* CardUserViewModel.swift */; };
+		B597B7FE1D233EE100E62371 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B597B7FD1D233EE100E62371 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		B597B7F41D2333CC00E62371 /* NavigationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		B597B7F71D23362B00E62371 /* CardUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardUser.swift; sourceTree = "<group>"; };
 		B597B7FA1D233B1900E62371 /* CardUserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardUserViewModel.swift; sourceTree = "<group>"; };
+		B597B7FD1D233EE100E62371 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CFFA4674F87EF22999DD41B8 /* Pods-CardSelector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardSelector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardSelector/Pods-CardSelector.debug.xcconfig"; sourceTree = "<group>"; };
 		E40E44BB5E796BFC035D9F11 /* Pods_CardSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -89,14 +91,13 @@
 		B56511121D207980002CD3AF /* CardSelector */ = {
 			isa = PBXGroup;
 			children = (
+				B597B7FC1D233EC700E62371 /* Storyboards */,
 				B597B7F91D233AF600E62371 /* Business */,
 				B597B7F61D23358D00E62371 /* Models */,
 				B597B7F11D23325000E62371 /* Managers */,
 				B56511131D207980002CD3AF /* AppDelegate.swift */,
 				B56511151D207980002CD3AF /* LoginViewController.swift */,
-				B56511171D207980002CD3AF /* Login.storyboard */,
 				B565111A1D207980002CD3AF /* Assets.xcassets */,
-				B565111C1D207980002CD3AF /* LaunchScreen.storyboard */,
 				B565111F1D207980002CD3AF /* Info.plist */,
 			);
 			path = CardSelector;
@@ -125,6 +126,16 @@
 				B597B7FA1D233B1900E62371 /* CardUserViewModel.swift */,
 			);
 			name = Business;
+			sourceTree = "<group>";
+		};
+		B597B7FC1D233EC700E62371 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				B56511171D207980002CD3AF /* Login.storyboard */,
+				B565111C1D207980002CD3AF /* LaunchScreen.storyboard */,
+				B597B7FD1D233EE100E62371 /* Main.storyboard */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B565111E1D207980002CD3AF /* LaunchScreen.storyboard in Resources */,
+				B597B7FE1D233EE100E62371 /* Main.storyboard in Resources */,
 				B597B7F01D20828A00E62371 /* GoogleService-Info.plist in Resources */,
 				B565111B1D207980002CD3AF /* Assets.xcassets in Resources */,
 				B56511191D207980002CD3AF /* Login.storyboard in Resources */,
