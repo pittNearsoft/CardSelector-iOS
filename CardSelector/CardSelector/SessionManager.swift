@@ -9,40 +9,142 @@
 import Google
 import GoogleSignIn
 
+import FBSDKCoreKit
+import FBSDKLoginKit
+
+
+enum SignInType {
+  case Email
+  case Facebook
+  case Google
+}
+
 class SessionManager {
   
-  func setupSession() {
-    let navigationManager = NavigationManager()
-    if UserViewModel.existLoggedUser() {
-      navigationManager.goMain()
+  //let navigationManager = NavigationManager()
+  private static var signInType: SignInType = .Email
+  
+  static func setupSession() {
+    
+    
+    if CardUserViewModel.existLoggedUser() {
+      NavigationManager.goMain()
     }else{
       var configureError: NSError?
       GGLContext.sharedInstance().configureWithError(&configureError)
       assert(configureError == nil,"Error configuring Google services: \(configureError)")
       GIDSignIn.sharedInstance().delegate = UIApplication.sharedApplication().delegate as! AppDelegate
-      navigationManager.goLogin()
+      NavigationManager.goLogin()
     }
   }
   
-  func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
+  static func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
     if error == nil {
-      let newUser = User(WithGoogleUser: user)
-      UserViewModel.saveUserIntoReal(newUser)
+      let newUser = CardUser(WithGoogleUser: user)
+      CardUserViewModel.saveUserIntoReal(newUser)
       
-      let navigationManager = NavigationManager()
-      navigationManager.goMain()
+      
+      NavigationManager.goMain()
     }else{
       print("Error: \(error.localizedDescription)")
     }
   }
   
-  func signIn(signIn: GIDSignIn!, didDisconnectWithUser user: GIDGoogleUser!, withError error: NSError!) {
+  static func signIn(signIn: GIDSignIn!, didDisconnectWithUser user: GIDGoogleUser!, withError error: NSError!) {
     if error == nil {
-      let user = UserViewModel.getLoggedUser()
-      UserViewModel.deleteUserFromRealm(user)
+      let user = CardUserViewModel.getLoggedUser()
+      CardUserViewModel.deleteUserFromRealm(user)
     }else{
       print("Error: \(error.localizedDescription)")
     }
+  }
+  
+  static func googleSignIn() {
+    SessionManager.signInType = .Google
+    GIDSignIn.sharedInstance().signIn()
+  }
+  
+  static func googleSignOut() {
+    GIDSignIn.sharedInstance().signOut()
+    let user = CardUserViewModel.getLoggedUser()
+    CardUserViewModel.deleteUserFromRealm(user)
+    SessionManager.setupSession()
+  }
+  
+  
+  static func facebookSignIn(FromViewController viewController: UIViewController) {
+    SessionManager.signInType = .Facebook
+    
+    let loginManager = FBSDKLoginManager()
+    loginManager.logInWithReadPermissions(["public_profile", "email", "user_friends"], fromViewController: viewController) { (result, error) in
+      if error != nil {
+        print("Error: \(error.localizedDescription)")
+      }else if result.isCancelled {
+        print("Operation cancelled")
+      }else{
+        self.getFacebookData()
+        
+      }
+    }
+  }
+  
+  static func facebookSignOut() {
+    let logOutManager = FBSDKLoginManager()
+    logOutManager.logOut()
+    let user = CardUserViewModel.getLoggedUser()
+    CardUserViewModel.deleteUserFromRealm(user)
+  }
+  
+  static func getFacebookData() {
+    let facebookRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email, name"])
+    facebookRequest.startWithCompletionHandler { (connection, result, error) in
+      if error == nil{
+        let newUser = CardUser(WithFacebookUser: result as! [String : AnyObject])
+        CardUserViewModel.saveUserIntoReal(newUser)
+        NavigationManager.goMain()
+      }else{
+        print("Error: \(error.localizedDescription)")
+      }
+    }
+  }
+  
+  static func emailSignOut() {
+    print("Implement this please!")
+  }
+  
+  static func application(application: UIApplication, openURL url: NSURL, options: [String: AnyObject]) -> Bool {
+    switch SessionManager.signInType {
+    case .Google:
+      return GIDSignIn.sharedInstance().handleURL(url, sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as? String, annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
+    case .Facebook, .Email:
+      return true
+    }
+  }
+  
+  //Method for iOS 8 and before
+  static func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+    
+    switch SessionManager.signInType {
+    case .Google:
+      return GIDSignIn.sharedInstance().handleURL(url, sourceApplication: sourceApplication, annotation: annotation)
+    case .Facebook:
+      return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+    case .Email:
+      return true
+    }
+    
+  }
+  
+  static func logOut() {
+    switch SessionManager.signInType {
+    case .Google:
+      googleSignOut()
+    case .Facebook:
+      facebookSignOut()
+    case .Email:
+      emailSignOut()
+    }
+
   }
   
 }
