@@ -17,12 +17,10 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate {
   @IBOutlet weak var facebookButton: UIButton!
   @IBOutlet weak var googleButton: UIButton!
   
+  let sessionManager = SessionManager()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-//    let loginButton = FBSDKLoginButton()
-//    loginButton.center = view.center
-//    view.addSubview(loginButton)
     
     emailButton.layer.cornerRadius = 5
     emailButton.clipsToBounds = true
@@ -38,11 +36,11 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate {
   }
 
   @IBAction func googleSignIn(sender: AnyObject) {
-    GIDSignIn.sharedInstance().signIn()
+    SessionManager.googleSignIn()
   }
   
   @IBAction func facebookSignIn(sender: AnyObject) {
-    
+    SessionManager.facebookSignIn(FromViewController: self)
   }
   
   @IBAction func emailSignIn(sender: AnyObject) {
