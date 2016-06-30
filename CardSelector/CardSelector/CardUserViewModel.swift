@@ -11,7 +11,7 @@ import RealmSwift
 
 class CardUserViewModel: NSObject {
   
-  static func saveUserIntoReal(user: User) {
+  static func saveUserIntoReal(user: CardUser) {
     let realm = try! Realm()
     
     try! realm.write({
@@ -19,22 +19,22 @@ class CardUserViewModel: NSObject {
     })
   }
   
-  static func deleteUserFromRealm(user: User) {
+  static func deleteUserFromRealm(user: CardUser) {
     let realm = try! Realm()
     try! realm.write {
       realm.delete(user)
     }
   }
   
-  static func getLoggedUser() -> User{
+  static func getLoggedUser() -> CardUser{
     let realm = try! Realm()
-    let user: User? = realm.objects(User).first
+    let user: CardUser? = realm.objects(CardUser).first
     return user!
   }
   
   static func existLoggedUser() -> Bool {
     let realm = try! Realm()
-    let user = realm.objects(User).first
+    let user = realm.objects(CardUser).first
     return user != nil
   }
   
