@@ -93,6 +93,7 @@ class SessionManager {
     logOutManager.logOut()
     let user = CardUserViewModel.getLoggedUser()
     CardUserViewModel.deleteUserFromRealm(user)
+    SessionManager.setupSession()
   }
   
   static func getFacebookData() {
@@ -115,9 +116,16 @@ class SessionManager {
   static func application(application: UIApplication, openURL url: NSURL, options: [String: AnyObject]) -> Bool {
     switch SessionManager.signInType {
     case .Google:
-      return GIDSignIn.sharedInstance().handleURL(url, sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as? String, annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
-    case .Facebook, .Email:
-      return true
+      return GIDSignIn.sharedInstance().handleURL(url,
+                                                  sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as? String,
+                                                  annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
+    case .Facebook:
+      return FBSDKApplicationDelegate.sharedInstance().application(application,
+                                                                   openURL: url,
+                                                                   sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as! String,
+                                                                   annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
+    case .Email:
+      return false
     }
   }
   
@@ -126,11 +134,16 @@ class SessionManager {
     
     switch SessionManager.signInType {
     case .Google:
-      return GIDSignIn.sharedInstance().handleURL(url, sourceApplication: sourceApplication, annotation: annotation)
+      return GIDSignIn.sharedInstance().handleURL(url,
+                                                  sourceApplication: sourceApplication,
+                                                  annotation: annotation)
     case .Facebook:
-      return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+      return FBSDKApplicationDelegate.sharedInstance().application(application,
+                                                                   openURL: url,
+                                                                   sourceApplication: sourceApplication,
+                                                                   annotation: annotation)
     case .Email:
-      return true
+      return false
     }
     
   }

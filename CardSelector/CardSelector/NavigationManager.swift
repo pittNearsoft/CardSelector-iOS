@@ -17,7 +17,7 @@ class NavigationManager {
     let vc = storyboard.instantiateViewControllerWithIdentifier(viewControllerId)
     app.window?!.rootViewController = vc
     
-    UIView.transitionWithView(app.window!!, duration: 0.5, options: UIViewAnimationOptions.Autoreverse, animations: { app.window?!.rootViewController = vc
+    UIView.transitionWithView(app.window!!, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: { app.window?!.rootViewController = vc
       }, completion: nil)
   }
   
