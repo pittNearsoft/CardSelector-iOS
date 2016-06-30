@@ -12,10 +12,17 @@ import GoogleSignIn
 class MainViewController: UIViewController {
 
   let sessionManager = SessionManager()
+  
+  @IBOutlet weak var userNameLabel: UILabel!
+  @IBOutlet weak var emailLabel: UILabel!
+  
+  let user = CardUserViewModel.getLoggedUser()
+  
+  
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+      super.viewDidLoad()
+      userNameLabel.text = user.name
+      emailLabel.text = user.email
     }
   
   
