@@ -22,11 +22,11 @@ class NavigationManager {
   }
   
   static func goLogin(){
-    goToStoryboard("Login", viewControllerId: "LoginViewController")
+    goToStoryboard("Login", viewControllerId: "NavLoginViewController")
   }
   
   static func goMain(){
-    goToStoryboard("Main", viewControllerId: "MainViewController")
+    goToStoryboard("Main", viewControllerId: "NavMainViewController")
   }
   
 }
