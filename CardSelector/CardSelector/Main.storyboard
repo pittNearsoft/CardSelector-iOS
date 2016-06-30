@@ -1,7 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="t7r-qe-Oec">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="6Cp-kY-DPR">
+            <objects>
+                <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="t7r-qe-Oec" customClass="MainViewController" customModule="CardSelector" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dZU-Ls-KJI"/>
+                        <viewControllerLayoutGuide type="bottom" id="1xd-4i-mky"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qdd-n1-U37">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The app starts here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qU6-S2-mtS">
+                                <rect key="frame" x="225" y="289" width="150" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3jw-lc-kQg">
+                                <rect key="frame" x="20" y="548" width="560" height="44"/>
+                                <color key="backgroundColor" red="0.94509803920000002" green="0.34901960780000002" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Kx3-gE-U2A"/>
+                                </constraints>
+                                <state key="normal" title="Sign Out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="signOut:" destination="t7r-qe-Oec" eventType="touchUpInside" id="ReS-Nd-nDr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1xd-4i-mky" firstAttribute="top" secondItem="3jw-lc-kQg" secondAttribute="bottom" constant="8" id="94u-TR-Mst"/>
+                            <constraint firstItem="3jw-lc-kQg" firstAttribute="leading" secondItem="Qdd-n1-U37" secondAttribute="leading" constant="20" id="PG4-0y-eXw"/>
+                            <constraint firstItem="qU6-S2-mtS" firstAttribute="centerX" secondItem="Qdd-n1-U37" secondAttribute="centerX" id="XaK-97-IgJ"/>
+                            <constraint firstItem="qU6-S2-mtS" firstAttribute="centerY" secondItem="Qdd-n1-U37" secondAttribute="centerY" id="dde-Nw-MSI"/>
+                            <constraint firstAttribute="trailing" secondItem="3jw-lc-kQg" secondAttribute="trailing" constant="20" id="nXk-m4-JBf"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UvJ-95-DlT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="469" y="457"/>
+        </scene>
+    </scenes>
 </document>
