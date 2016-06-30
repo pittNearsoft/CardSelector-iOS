@@ -34,6 +34,13 @@ class CardUser: Object {
     email     = facebookUser["email"] as! String
   }
   
+  convenience init(WithEmail email: String) {
+    self.init()
+    userID = NSUUID().UUIDString
+    name = "projas"
+    self.email = email
+  }
+  
   override static func primaryKey() -> String?{
     return "userID"
   }
