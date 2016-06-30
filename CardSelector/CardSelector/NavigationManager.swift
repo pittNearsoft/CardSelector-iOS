@@ -17,16 +17,16 @@ class NavigationManager {
     let vc = storyboard.instantiateViewControllerWithIdentifier(viewControllerId)
     app.window?!.rootViewController = vc
     
-    UIView.transitionWithView(app.window!!, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: { app.window?!.rootViewController = vc
+    UIView.transitionWithView(app.window!!, duration: 0.5, options: UIViewAnimationOptions.Autoreverse, animations: { app.window?!.rootViewController = vc
       }, completion: nil)
   }
   
-  func goLogin(){
-    NavigationManager.goToStoryboard("Login", viewControllerId: "LoginViewController")
+  static func goLogin(){
+    goToStoryboard("Login", viewControllerId: "LoginViewController")
   }
   
-  func goMain(){
-    NavigationManager.goToStoryboard("Main", viewControllerId: "MyEventsViewController")
+  static func goMain(){
+    goToStoryboard("Main", viewControllerId: "MainViewController")
   }
   
 }
