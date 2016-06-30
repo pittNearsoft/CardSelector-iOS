@@ -9,6 +9,8 @@
 import UIKit
 import FBSDKLoginKit
 import GoogleSignIn
+import LKAlertController
+
 
 class LoginViewController: UIViewController,GIDSignInUIDelegate {
 
@@ -43,9 +45,10 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate {
     SessionManager.facebookSignIn(FromViewController: self)
   }
   
-  @IBAction func emailSignIn(sender: AnyObject) {
-    
+  @IBAction func createAccount(sender: AnyObject) {
+    Alert(title: "Ops!", message: "This feature is not available yet!").showOkay()
   }
+  
   
 }
 
