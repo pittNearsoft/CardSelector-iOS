@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		958A3EF7B89DAC3775579B38 /* Pods_CardSelector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40E44BB5E796BFC035D9F11 /* Pods_CardSelector.framework */; };
 		B52581411D258CDF001CB6BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52581401D258CDF001CB6BC /* LaunchScreen.storyboard */; };
+		B52581431D25D1C6001CB6BC /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52581421D25D1C6001CB6BC /* EmailViewController.swift */; };
 		B56511141D207980002CD3AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56511131D207980002CD3AF /* AppDelegate.swift */; };
 		B56511161D207980002CD3AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56511151D207980002CD3AF /* LoginViewController.swift */; };
 		B56511191D207980002CD3AF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56511171D207980002CD3AF /* Login.storyboard */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		A59E791DB60357784C1D810E /* Pods-CardSelector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardSelector.release.xcconfig"; path = "Pods/Target Support Files/Pods-CardSelector/Pods-CardSelector.release.xcconfig"; sourceTree = "<group>"; };
 		B52581401D258CDF001CB6BC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B52581421D25D1C6001CB6BC /* EmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
 		B56511101D20797F002CD3AF /* CardSelector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardSelector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56511131D207980002CD3AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B56511151D207980002CD3AF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			children = (
 				B56511151D207980002CD3AF /* LoginViewController.swift */,
 				B597B8001D24547B00E62371 /* MainViewController.swift */,
+				B52581421D25D1C6001CB6BC /* EmailViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				B597B8011D24547B00E62371 /* MainViewController.swift in Sources */,
 				B56511161D207980002CD3AF /* LoginViewController.swift in Sources */,
 				B597B7FB1D233B1900E62371 /* CardUserViewModel.swift in Sources */,
+				B52581431D25D1C6001CB6BC /* EmailViewController.swift in Sources */,
 				B597B7F51D2333CC00E62371 /* NavigationManager.swift in Sources */,
 				B56511141D207980002CD3AF /* AppDelegate.swift in Sources */,
 				B597B7F81D23362B00E62371 /* CardUser.swift in Sources */,
