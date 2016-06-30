@@ -109,8 +109,15 @@ class SessionManager {
     }
   }
   
+  static func emailSignIn(email: String){
+    CardUserViewModel.saveUserIntoReal(CardUser(WithEmail: email))
+    NavigationManager.goMain()
+  }
+  
   static func emailSignOut() {
-    print("Implement this please!")
+    let user = CardUserViewModel.getLoggedUser()
+    CardUserViewModel.deleteUserFromRealm(user)
+    SessionManager.setupSession()
   }
   
   static func application(application: UIApplication, openURL url: NSURL, options: [String: AnyObject]) -> Bool {
