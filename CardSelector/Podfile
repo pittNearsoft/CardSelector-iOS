@@ -28,5 +28,8 @@ target 'CardSelector' do
 
    #Realm is a mobile database that runs directly inside phones, tablets or wearables.
    pod 'RealmSwift', '~> 0.98'
+   
+   #An easy to use UIAlertController builder for swift
+   pod 'LKAlertController', '~> 1.7'
 
 end
