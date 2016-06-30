@@ -12,7 +12,7 @@ import Google
 import GoogleSignIn
 
 class CardUser: Object {
-  dynamic var userId = ""
+  dynamic var userID = ""
   dynamic var tokenId = ""
   dynamic var name = ""
   dynamic var email = ""
@@ -20,11 +20,18 @@ class CardUser: Object {
   
   convenience init(WithGoogleUser googleUser: GIDGoogleUser) {
     self.init()
-    userId = googleUser.userID
-    tokenId = googleUser.authentication.idToken
-    name = googleUser.profile.name
-    email = googleUser.profile.email
-    imageUrl = googleUser.profile.imageURLWithDimension(200).absoluteString
+    userID    = googleUser.userID
+    tokenId   = googleUser.authentication.idToken
+    name      = googleUser.profile.name
+    email     = googleUser.profile.email
+    imageUrl  = googleUser.profile.imageURLWithDimension(200).absoluteString
+  }
+  
+  convenience init(WithFacebookUser facebookUser: [String: AnyObject]) {
+    self.init()
+    userID    = facebookUser["id"] as! String
+    name      = facebookUser["name"] as! String
+    email     = facebookUser["email"] as! String
   }
   
   override static func primaryKey() -> String?{
