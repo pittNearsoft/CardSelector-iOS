@@ -165,18 +165,7 @@
                     <view key="view" contentMode="scaleToFill" id="umH-wp-zgf">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="c1l-0O-Pxg">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
-                            </mapView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="c1l-0O-Pxg" firstAttribute="top" secondItem="yx1-Et-afu" secondAttribute="bottom" id="7z3-w1-kAY"/>
-                            <constraint firstItem="c1l-0O-Pxg" firstAttribute="leading" secondItem="umH-wp-zgf" secondAttribute="leading" id="Knp-72-gS4"/>
-                            <constraint firstAttribute="trailing" secondItem="c1l-0O-Pxg" secondAttribute="trailing" id="Oqx-vF-RaA"/>
-                            <constraint firstItem="3FU-x3-UQc" firstAttribute="top" secondItem="c1l-0O-Pxg" secondAttribute="bottom" id="sfO-Ji-9hP"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZMc-ga-7fW"/>
                 </viewController>

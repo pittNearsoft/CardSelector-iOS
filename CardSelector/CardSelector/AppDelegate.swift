@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    
+    //AIzaSyB9MBgfh45DH-k-Ym0hLDTsq1AttHzhLhU
     //Initialize Facebook Sign-in
     FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     
