@@ -10,6 +10,15 @@ import UIKit
 
 class NavigationManager {
   
+  static func setInitialStoryboard() {
+    
+    if CCUserViewModel.existLoggedUser() {
+      goMain()
+    }else{
+      goLogin()
+    }
+  }
+  
   private static func goToStoryboard(storyboardName: String, viewControllerId: String) -> Void{
     let app = UIApplication.sharedApplication().delegate!
     

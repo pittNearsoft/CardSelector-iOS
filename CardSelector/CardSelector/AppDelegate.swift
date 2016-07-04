@@ -22,8 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     //Initialize Facebook Sign-in
     FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     
-    // Initialize Google sign-in
-    SessionManager.setupSession()
+    //Choose the right storyboard to start depending if user is logged or not
+    NavigationManager.setInitialStoryboard()
     
     return true
   }
