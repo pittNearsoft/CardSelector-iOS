@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import GoogleSignIn
+import LKAlertController
+
 
 class MainViewController: UIViewController {
 
@@ -16,18 +17,24 @@ class MainViewController: UIViewController {
   @IBOutlet weak var userNameLabel: UILabel!
   @IBOutlet weak var emailLabel: UILabel!
   
-  let user = CardUserViewModel.getLoggedUser()
+  let user = CCUserViewModel.getLoggedUser()
   
   
-    override func viewDidLoad() {
-      super.viewDidLoad()
-      userNameLabel.text = user.name
-      emailLabel.text = user.email
-    }
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    userNameLabel.text = user!.name
+    emailLabel.text = user!.email
+  }
   
   
   @IBAction func signOut(sender: AnyObject) {
-    SessionManager.logOut()
+    ActionSheet()
+      .addAction("Cancel")
+      .addAction("Sign Out", style: .Default, handler: { _  in
+        SessionManager.logOut()
+      }).show()
+    
+    
   }
 
 }
