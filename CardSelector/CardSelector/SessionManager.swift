@@ -13,7 +13,7 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 
-enum SignInType {
+enum SignInType: Int {
   case Email
   case Facebook
   case Google
@@ -23,25 +23,14 @@ class SessionManager {
   
   //let navigationManager = NavigationManager()
   private static var signInType: SignInType = .Email
+
+
   
-  static func setupSession() {
-    
-    
-    if CardUserViewModel.existLoggedUser() {
-      NavigationManager.goMain()
-    }else{
-      var configureError: NSError?
-      GGLContext.sharedInstance().configureWithError(&configureError)
-      assert(configureError == nil,"Error configuring Google services: \(configureError)")
-      GIDSignIn.sharedInstance().delegate = UIApplication.sharedApplication().delegate as! AppDelegate
-      NavigationManager.goLogin()
-    }
-  }
-  
+//  //MARK: - Google methods
   static func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
     if error == nil {
-      let newUser = CardUser(WithGoogleUser: user)
-      CardUserViewModel.saveUserIntoReal(newUser)
+      let newUser = CCUser(WithGoogleUser: user)
+      CCUserViewModel.saveUserIntoReal(newUser)
       
       
       NavigationManager.goMain()
@@ -52,26 +41,34 @@ class SessionManager {
   
   static func signIn(signIn: GIDSignIn!, didDisconnectWithUser user: GIDGoogleUser!, withError error: NSError!) {
     if error == nil {
-      let user = CardUserViewModel.getLoggedUser()
-      CardUserViewModel.deleteUserFromRealm(user)
+      CCUserViewModel.deleteLoggedUser()
+      NavigationManager.goLogin()
     }else{
       print("Error: \(error.localizedDescription)")
     }
   }
   
+  static func googleSetup(){
+    var configureError: NSError?
+    GGLContext.sharedInstance().configureWithError(&configureError)
+    assert(configureError == nil,"Error configuring Google services: \(configureError)")
+    GIDSignIn.sharedInstance().delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+  }
+  
   static func googleSignIn() {
     SessionManager.signInType = .Google
+    googleSetup()
     GIDSignIn.sharedInstance().signIn()
   }
   
   static func googleSignOut() {
     GIDSignIn.sharedInstance().signOut()
-    let user = CardUserViewModel.getLoggedUser()
-    CardUserViewModel.deleteUserFromRealm(user)
-    SessionManager.setupSession()
+    
+    CCUserViewModel.deleteLoggedUser()
+    NavigationManager.goLogin()
   }
   
-  
+  //MARK: - Facebook methods
   static func facebookSignIn(FromViewController viewController: UIViewController) {
     SessionManager.signInType = .Facebook
     
@@ -91,17 +88,17 @@ class SessionManager {
   static func facebookSignOut() {
     let logOutManager = FBSDKLoginManager()
     logOutManager.logOut()
-    let user = CardUserViewModel.getLoggedUser()
-    CardUserViewModel.deleteUserFromRealm(user)
-    SessionManager.setupSession()
+    
+    CCUserViewModel.deleteLoggedUser()
+    NavigationManager.goLogin()
   }
   
   static func getFacebookData() {
     let facebookRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email, name"])
     facebookRequest.startWithCompletionHandler { (connection, result, error) in
       if error == nil{
-        let newUser = CardUser(WithFacebookUser: result as! [String : AnyObject])
-        CardUserViewModel.saveUserIntoReal(newUser)
+        let newUser = CCUser(WithFacebookUser: result as! [String : AnyObject])
+        CCUserViewModel.saveUserIntoReal(newUser)
         NavigationManager.goMain()
       }else{
         print("Error: \(error.localizedDescription)")
@@ -109,17 +106,18 @@ class SessionManager {
     }
   }
   
+  //MARK: - Email methods
   static func emailSignIn(email: String){
-    CardUserViewModel.saveUserIntoReal(CardUser(WithEmail: email))
+    CCUserViewModel.saveUserIntoReal(CCUser(WithEmail: email))
     NavigationManager.goMain()
   }
   
   static func emailSignOut() {
-    let user = CardUserViewModel.getLoggedUser()
-    CardUserViewModel.deleteUserFromRealm(user)
-    SessionManager.setupSession()
+    CCUserViewModel.deleteLoggedUser()
+    NavigationManager.goLogin()
   }
   
+  //MARK: - Middlewares AppDelegate
   static func application(application: UIApplication, openURL url: NSURL, options: [String: AnyObject]) -> Bool {
     switch SessionManager.signInType {
     case .Google:
@@ -156,7 +154,11 @@ class SessionManager {
   }
   
   static func logOut() {
-    switch SessionManager.signInType {
+    //Add provider to user
+    let user = CCUserViewModel.getLoggedUser()
+    signInType = SignInType.init(rawValue: (user?.provider)!)!
+    
+    switch signInType {
     case .Google:
       googleSignOut()
     case .Facebook:
