@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="6Cp-kY-DPR">
             <objects>
-                <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="t7r-qe-Oec" customClass="MainViewController" customModule="CardSelector" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="t7r-qe-Oec" customClass="ProfileViewController" customModule="CardSelector" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dZU-Ls-KJI"/>
                         <viewControllerLayoutGuide type="bottom" id="1xd-4i-mky"/>
@@ -154,10 +154,10 @@
             </objects>
             <point key="canvasLocation" x="179" y="-14"/>
         </scene>
-        <!--View Controller-->
+        <!--Places View Controller-->
         <scene sceneID="mRn-xX-ZkC">
             <objects>
-                <viewController id="8hq-KY-jHL" sceneMemberID="viewController">
+                <viewController id="8hq-KY-jHL" customClass="PlacesViewController" customModule="CardSelector" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yx1-Et-afu"/>
                         <viewControllerLayoutGuide type="bottom" id="3FU-x3-UQc"/>
@@ -165,9 +165,24 @@
                     <view key="view" contentMode="scaleToFill" id="umH-wp-zgf">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KlB-6x-3Kr" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <color key="backgroundColor" red="0.048156191110000003" green="0.70164262820000001" blue="0.1302307949" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KlB-6x-3Kr" firstAttribute="top" secondItem="yx1-Et-afu" secondAttribute="bottom" id="3NM-EK-4zE"/>
+                            <constraint firstItem="KlB-6x-3Kr" firstAttribute="leading" secondItem="umH-wp-zgf" secondAttribute="leading" id="Jzk-Zf-HEl"/>
+                            <constraint firstAttribute="trailing" secondItem="KlB-6x-3Kr" secondAttribute="trailing" id="Sp7-hp-dlO"/>
+                            <constraint firstItem="3FU-x3-UQc" firstAttribute="top" secondItem="KlB-6x-3Kr" secondAttribute="bottom" id="f7B-Km-5Le"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZMc-ga-7fW"/>
+                    <connections>
+                        <outlet property="mapView" destination="KlB-6x-3Kr" id="YlG-m2-gRo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLR-x0-rgJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

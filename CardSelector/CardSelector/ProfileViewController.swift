@@ -10,7 +10,7 @@ import UIKit
 import LKAlertController
 
 
-class MainViewController: UIViewController {
+class ProfileViewController: UIViewController {
 
   let sessionManager = SessionManager()
   

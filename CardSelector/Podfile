@@ -29,4 +29,7 @@ target 'CardSelector' do
    #An easy to use UIAlertController builder for swift
    pod 'LKAlertController', '~> 1.7'
 
+   #Google Maps SDK for iOS.
+   pod 'GoogleMaps'
+
 end
