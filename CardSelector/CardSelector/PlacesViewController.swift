@@ -13,7 +13,7 @@ import CoreLocation
 class PlacesViewController: UIViewController {
 
   @IBOutlet weak var mapView: GMSMapView!
-  var locationManager: CLLocationManager?
+  var locationManager = CLLocationManager()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -25,15 +25,10 @@ class PlacesViewController: UIViewController {
   }
   
   //MARK: - Map methods
-  func showMapWithLatitude(latitude: Double, longitude: Double, zoom: Float,  enablePosition: Bool){
+  func showMapWithLatitude(latitude: Double, longitude: Double, zoom: Float){
     
-    let camera = GMSCameraPosition.cameraWithLatitude(latitude, longitude: longitude, zoom: zoom)
-    if enablePosition {
-      setMarkerToMapSubViewWithLocation(CLLocationCoordinate2DMake(latitude, longitude), address: "")
-    }
-    mapView.camera = camera
-    mapView.myLocationEnabled = true
-    mapView.settings.myLocationButton = true
+    mapView.camera = GMSCameraPosition.cameraWithLatitude(latitude, longitude: longitude, zoom: zoom)
+
   }
   
   func setMarkerToMapSubViewWithLocation(location: CLLocationCoordinate2D, address: String) {
@@ -51,30 +46,34 @@ class PlacesViewController: UIViewController {
 
 extension PlacesViewController: CLLocationManagerDelegate{
   func setupLocationManager() {
-    self.locationManager = CLLocationManager()
-    self.locationManager!.delegate = self
-    self.locationManager!.desiredAccuracy = kCLLocationAccuracyBest
-    self.locationManager!.requestWhenInUseAuthorization()
-    self.locationManager!.startUpdatingLocation()
-    
-    self.locationManager?.startUpdatingLocation()
+    self.locationManager.delegate = self
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    self.locationManager.requestWhenInUseAuthorization()
   }
   
   func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
     let coordinate = newLocation.coordinate
     
     //configure a default area to get near places
-    let neBoundsCorner = CLLocationCoordinate2D(latitude: coordinate.latitude - 0.1, longitude: coordinate.longitude  - 0.1)
-    let swBoundsCorner = CLLocationCoordinate2D(latitude: coordinate.latitude + 0.1, longitude: coordinate.longitude  + 0.1)
-    let bounds = GMSCoordinateBounds(coordinate: neBoundsCorner, coordinate: swBoundsCorner)
+    //let neBoundsCorner = CLLocationCoordinate2D(latitude: coordinate.latitude - 0.1, longitude: coordinate.longitude  - 0.1)
+    //let swBoundsCorner = CLLocationCoordinate2D(latitude: coordinate.latitude + 0.1, longitude: coordinate.longitude  + 0.1)
+    //let bounds = GMSCoordinateBounds(coordinate: neBoundsCorner, coordinate: swBoundsCorner)
     
     //configureAutoCompleteWithBound(bounds)
-    showMapWithLatitude(coordinate.latitude, longitude: coordinate.longitude , zoom: 15, enablePosition: false)
-    self.locationManager?.stopUpdatingLocation()
+    showMapWithLatitude(coordinate.latitude, longitude: coordinate.longitude , zoom: 15)
+    self.locationManager.stopUpdatingLocation()
+  }
+  
+  func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    if status == .AuthorizedWhenInUse {
+      locationManager.startUpdatingLocation()
+      mapView.myLocationEnabled = true
+      mapView.settings.myLocationButton = true
+    }
   }
   
   func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-    self.locationManager?.stopUpdatingLocation()
+    self.locationManager.stopUpdatingLocation()
     print("Failed to load location. Error: \(error.localizedDescription)")
   }
 }
