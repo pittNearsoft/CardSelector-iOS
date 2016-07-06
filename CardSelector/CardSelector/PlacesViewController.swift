@@ -51,6 +51,8 @@ class PlacesViewController: UIViewController {
     let geocoder = GMSGeocoder()
     
     geocoder.reverseGeocodeCoordinate(coordinate) { (response, error) in
+      self.locationLabel.unlock()
+      
       if let address = response?.firstResult(){
         self.locationLabel.text = address.lines?.joinWithSeparator("\n")
         
@@ -73,7 +75,10 @@ extension PlacesViewController: GMSMapViewDelegate{
   func mapView(mapView: GMSMapView, idleAtCameraPosition position: GMSCameraPosition) {
     reverseGeocodeCoordinate(position.target)
   }
-
+  
+  func mapView(mapView: GMSMapView, willMove gesture: Bool) {
+    locationLabel.lock()
+  }
 }
 
 extension PlacesViewController: CLLocationManagerDelegate{
