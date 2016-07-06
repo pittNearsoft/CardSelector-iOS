@@ -13,14 +13,18 @@ import CoreLocation
 class PlacesViewController: UIViewController {
 
   @IBOutlet weak var mapView: GMSMapView!
+  @IBOutlet weak var locationLabel: UILabel!
+  
+  @IBOutlet weak var mapPinImage: UIImageView!
+  @IBOutlet weak var pinImageVerticalConstraint: NSLayoutConstraint!
+  
+  
   var locationManager = CLLocationManager()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    // Do any additional setup after loading the view.
-
-    
+    mapView.delegate = self
     setupLocationManager()
   }
   
@@ -42,6 +46,34 @@ class PlacesViewController: UIViewController {
     marker.appearAnimation = kGMSMarkerAnimationPop
     marker.map = mapView
   }
+  
+  func reverseGeocodeCoordinate(coordinate: CLLocationCoordinate2D) {
+    let geocoder = GMSGeocoder()
+    
+    geocoder.reverseGeocodeCoordinate(coordinate) { (response, error) in
+      if let address = response?.firstResult(){
+        self.locationLabel.text = address.lines?.joinWithSeparator("\n")
+        
+        //this adds padding to the top and bottom of the map.
+        //The top padding equals the navigation bar’s height, while the bottom padding equals the label’s height.
+        let labelHeight = self.locationLabel.intrinsicContentSize().height
+        self.mapView.padding = UIEdgeInsets(top: self.topLayoutGuide.length, left: 0,bottom: labelHeight, right: 0)
+        
+        UIView.animateWithDuration(0.25, animations: {
+          self.pinImageVerticalConstraint.constant = ((labelHeight - self.topLayoutGuide.length) * 0.5)
+          self.view.layoutIfNeeded()
+        })
+        
+      }
+    }
+  }
+}
+
+extension PlacesViewController: GMSMapViewDelegate{
+  func mapView(mapView: GMSMapView, idleAtCameraPosition position: GMSCameraPosition) {
+    reverseGeocodeCoordinate(position.target)
+  }
+
 }
 
 extension PlacesViewController: CLLocationManagerDelegate{

@@ -17,6 +17,7 @@
 		B525814E1D2A34E0001CB6BC /* FacebookSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B525814D1D2A34E0001CB6BC /* FacebookSessionManager.swift */; };
 		B52581501D2A3C8B001CB6BC /* EmailSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B525814F1D2A3C8B001CB6BC /* EmailSessionManager.swift */; };
 		B52581521D2B3EEA001CB6BC /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52581511D2B3EEA001CB6BC /* PlacesViewController.swift */; };
+		B527EF781D2DAFB7002A24AC /* UIView+VisualEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = B527EF771D2DAFB7002A24AC /* UIView+VisualEffects.swift */; };
 		B56511141D207980002CD3AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56511131D207980002CD3AF /* AppDelegate.swift */; };
 		B56511161D207980002CD3AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56511151D207980002CD3AF /* LoginViewController.swift */; };
 		B56511191D207980002CD3AF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56511171D207980002CD3AF /* Login.storyboard */; };
@@ -39,6 +40,7 @@
 		B525814D1D2A34E0001CB6BC /* FacebookSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookSessionManager.swift; sourceTree = "<group>"; };
 		B525814F1D2A3C8B001CB6BC /* EmailSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailSessionManager.swift; sourceTree = "<group>"; };
 		B52581511D2B3EEA001CB6BC /* PlacesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
+		B527EF771D2DAFB7002A24AC /* UIView+VisualEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+VisualEffects.swift"; sourceTree = "<group>"; };
 		B56511101D20797F002CD3AF /* CardSelector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardSelector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56511131D207980002CD3AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B56511151D207980002CD3AF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,14 @@
 				B525814F1D2A3C8B001CB6BC /* EmailSessionManager.swift */,
 			);
 			name = Sessions;
+			sourceTree = "<group>";
+		};
+		B527EF761D2DAF99002A24AC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B527EF771D2DAFB7002A24AC /* UIView+VisualEffects.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		B56511071D20797F002CD3AF = {
@@ -167,6 +177,7 @@
 		B597B7FF1D24545900E62371 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B527EF761D2DAF99002A24AC /* Extensions */,
 				B56511151D207980002CD3AF /* LoginViewController.swift */,
 				B597B8001D24547B00E62371 /* ProfileViewController.swift */,
 				B52581421D25D1C6001CB6BC /* EmailViewController.swift */,
@@ -308,6 +319,7 @@
 				B52581491D271B87001CB6BC /* CCUser.swift in Sources */,
 				B56511141D207980002CD3AF /* AppDelegate.swift in Sources */,
 				B52581521D2B3EEA001CB6BC /* PlacesViewController.swift in Sources */,
+				B527EF781D2DAFB7002A24AC /* UIView+VisualEffects.swift in Sources */,
 				B52581471D26DAFD001CB6BC /* CCUserViewModel.swift in Sources */,
 				B525814C1D2A33B7001CB6BC /* GoogleSessionManager.swift in Sources */,
 				B597B7F31D23326500E62371 /* SessionManager.swift in Sources */,

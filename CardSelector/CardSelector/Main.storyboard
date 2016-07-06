@@ -170,18 +170,36 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" red="0.048156191110000003" green="0.70164262820000001" blue="0.1302307949" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_me" translatesAutoresizingMaskIntoConstraints="NO" id="D8K-Gh-jch">
+                                <rect key="frame" x="285" y="245" width="30" height="55"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="wqC-WK-y43">
+                                <rect key="frame" x="0.0" y="531" width="600" height="20"/>
+                                <color key="backgroundColor" white="1" alpha="0.84970366379310347" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="KlB-6x-3Kr" firstAttribute="top" secondItem="yx1-Et-afu" secondAttribute="bottom" id="3NM-EK-4zE"/>
+                            <constraint firstAttribute="trailing" secondItem="wqC-WK-y43" secondAttribute="trailing" id="6xN-cp-ecu"/>
+                            <constraint firstItem="3FU-x3-UQc" firstAttribute="top" secondItem="wqC-WK-y43" secondAttribute="bottom" id="9XA-Q9-3ka"/>
+                            <constraint firstItem="D8K-Gh-jch" firstAttribute="centerX" secondItem="umH-wp-zgf" secondAttribute="centerX" id="CWo-2p-GzO"/>
                             <constraint firstItem="KlB-6x-3Kr" firstAttribute="leading" secondItem="umH-wp-zgf" secondAttribute="leading" id="Jzk-Zf-HEl"/>
                             <constraint firstAttribute="trailing" secondItem="KlB-6x-3Kr" secondAttribute="trailing" id="Sp7-hp-dlO"/>
+                            <constraint firstItem="D8K-Gh-jch" firstAttribute="centerY" secondItem="umH-wp-zgf" secondAttribute="centerY" constant="-27.5" id="YuQ-WA-J5a"/>
                             <constraint firstItem="3FU-x3-UQc" firstAttribute="top" secondItem="KlB-6x-3Kr" secondAttribute="bottom" id="f7B-Km-5Le"/>
+                            <constraint firstItem="wqC-WK-y43" firstAttribute="leading" secondItem="umH-wp-zgf" secondAttribute="leading" id="zfm-Ye-VmT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZMc-ga-7fW"/>
                     <connections>
+                        <outlet property="locationLabel" destination="wqC-WK-y43" id="l0J-ee-EPs"/>
+                        <outlet property="mapPinImage" destination="D8K-Gh-jch" id="ydO-EO-1W1"/>
                         <outlet property="mapView" destination="KlB-6x-3Kr" id="YlG-m2-gRo"/>
+                        <outlet property="pinImageVerticalConstraint" destination="YuQ-WA-J5a" id="DwG-4a-JU3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLR-x0-rgJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -201,7 +219,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2up-db-42e" id="ewA-ej-BH0">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -275,4 +293,7 @@
             <point key="canvasLocation" x="1281" y="-879"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_me" width="30" height="55"/>
+    </resources>
 </document>
