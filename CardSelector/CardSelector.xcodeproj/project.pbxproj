@@ -38,6 +38,7 @@
 		B5E266721D2F11480051756C /* CCPlaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E266711D2F11480051756C /* CCPlaceService.swift */; };
 		B5E266741D2F11C10051756C /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E266731D2F11C10051756C /* APIClient.swift */; };
 		B5E266771D2F137A0051756C /* CCPlaceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E266761D2F137A0051756C /* CCPlaceRouter.swift */; };
+		B5E2667A1D2F1E190051756C /* AlamofireExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E266791D2F1E190051756C /* AlamofireExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		B5E266711D2F11480051756C /* CCPlaceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCPlaceService.swift; sourceTree = "<group>"; };
 		B5E266731D2F11C10051756C /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		B5E266761D2F137A0051756C /* CCPlaceRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCPlaceRouter.swift; sourceTree = "<group>"; };
+		B5E266791D2F1E190051756C /* AlamofireExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireExtensions.swift; sourceTree = "<group>"; };
 		CFFA4674F87EF22999DD41B8 /* Pods-CardSelector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardSelector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardSelector/Pods-CardSelector.debug.xcconfig"; sourceTree = "<group>"; };
 		E40E44BB5E796BFC035D9F11 /* Pods_CardSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -237,6 +239,7 @@
 		B5E266701D2F112E0051756C /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B5E266781D2F1E090051756C /* Extensions */,
 				B5E266711D2F11480051756C /* CCPlaceService.swift */,
 				B5E266731D2F11C10051756C /* APIClient.swift */,
 			);
@@ -249,6 +252,14 @@
 				B5E266761D2F137A0051756C /* CCPlaceRouter.swift */,
 			);
 			name = Routers;
+			sourceTree = "<group>";
+		};
+		B5E266781D2F1E090051756C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B5E266791D2F1E190051756C /* AlamofireExtensions.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -400,6 +411,7 @@
 				B5E266721D2F11480051756C /* CCPlaceService.swift in Sources */,
 				B525814E1D2A34E0001CB6BC /* FacebookSessionManager.swift in Sources */,
 				B5E266741D2F11C10051756C /* APIClient.swift in Sources */,
+				B5E2667A1D2F1E190051756C /* AlamofireExtensions.swift in Sources */,
 				B52581451D263B72001CB6BC /* SessionTestManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
