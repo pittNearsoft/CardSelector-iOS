@@ -35,6 +35,7 @@
 		B597B8011D24547B00E62371 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597B8001D24547B00E62371 /* ProfileViewController.swift */; };
 		B5E2666D1D2F015C0051756C /* CCPlaceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E2666C1D2F015C0051756C /* CCPlaceType.swift */; };
 		B5E2666F1D2F08930051756C /* CCPlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E2666E1D2F08930051756C /* CCPlaceViewModel.swift */; };
+		B5E266721D2F11480051756C /* CCPlaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E266711D2F11480051756C /* CCPlaceService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		B597B8001D24547B00E62371 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B5E2666C1D2F015C0051756C /* CCPlaceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCPlaceType.swift; sourceTree = "<group>"; };
 		B5E2666E1D2F08930051756C /* CCPlaceViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCPlaceViewModel.swift; sourceTree = "<group>"; };
+		B5E266711D2F11480051756C /* CCPlaceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCPlaceService.swift; sourceTree = "<group>"; };
 		CFFA4674F87EF22999DD41B8 /* Pods-CardSelector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardSelector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardSelector/Pods-CardSelector.debug.xcconfig"; sourceTree = "<group>"; };
 		E40E44BB5E796BFC035D9F11 /* Pods_CardSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -160,6 +162,7 @@
 		B56511121D207980002CD3AF /* CardSelector */ = {
 			isa = PBXGroup;
 			children = (
+				B5E266701D2F112E0051756C /* Services */,
 				B597B7FF1D24545900E62371 /* Views */,
 				B597B7FC1D233EC700E62371 /* Storyboards */,
 				B597B7F91D233AF600E62371 /* Business */,
@@ -224,6 +227,14 @@
 				B52581511D2B3EEA001CB6BC /* PlacesViewController.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		B5E266701D2F112E0051756C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B5E266711D2F11480051756C /* CCPlaceService.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,6 +382,7 @@
 				B525814C1D2A33B7001CB6BC /* GoogleSessionManager.swift in Sources */,
 				B527EF871D2EC5DB002A24AC /* CCPlaceTypeTransformer.swift in Sources */,
 				B597B7F31D23326500E62371 /* SessionManager.swift in Sources */,
+				B5E266721D2F11480051756C /* CCPlaceService.swift in Sources */,
 				B525814E1D2A34E0001CB6BC /* FacebookSessionManager.swift in Sources */,
 				B52581451D263B72001CB6BC /* SessionTestManager.swift in Sources */,
 			);
