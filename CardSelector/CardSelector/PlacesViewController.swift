@@ -14,12 +14,13 @@ class PlacesViewController: UIViewController {
 
   @IBOutlet weak var mapView: GMSMapView!
   @IBOutlet weak var locationLabel: UILabel!
-  
   @IBOutlet weak var mapPinImage: UIImageView!
   @IBOutlet weak var pinImageVerticalConstraint: NSLayoutConstraint!
-  
-  
+
   var locationManager = CLLocationManager()
+  let placeViewModel = CCPlaceViewModel()
+  
+  let searchRadius: Double = 1000
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -69,6 +70,17 @@ class PlacesViewController: UIViewController {
       }
     }
   }
+  
+  func fetchNearbyPlacesWithCoordinate(coordinate: CLLocationCoordinate2D) {
+    mapView.clear()
+    
+    placeViewModel.fetchNearbyPlacesWithCoordinate(coordinate, radius: searchRadius, types: CCPlaceType.acceptedTypes) { (places) in
+      for place in places{
+        let marker = CCPlaceMarker(place: place)
+        marker.map = self.mapView
+      }
+    }
+  }
 }
 
 extension PlacesViewController: GMSMapViewDelegate{
@@ -90,7 +102,7 @@ extension PlacesViewController: CLLocationManagerDelegate{
   
   func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
     let coordinate = newLocation.coordinate
-    
+    print("latitude: \(coordinate.latitude), longitude: \(coordinate.longitude)")
     //configure a default area to get near places
     //let neBoundsCorner = CLLocationCoordinate2D(latitude: coordinate.latitude - 0.1, longitude: coordinate.longitude  - 0.1)
     //let swBoundsCorner = CLLocationCoordinate2D(latitude: coordinate.latitude + 0.1, longitude: coordinate.longitude  + 0.1)
