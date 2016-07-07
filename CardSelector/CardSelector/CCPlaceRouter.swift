@@ -10,7 +10,7 @@ import Alamofire
 import CoreLocation
 
 enum CCPlaceRouter: URLRequestConvertible {
-  case fetchNearbyPlacesWithCoordinate(coodinate: CLLocationCoordinate2D, radius: Double)
+  case fetchNearbyPlacesWithCoordinate(coodinate: CLLocationCoordinate2D, radius: Double, types: [String])
   
   var method: Alamofire.Method{
     switch self {
@@ -21,8 +21,9 @@ enum CCPlaceRouter: URLRequestConvertible {
   
   var path: String{
     switch self {
-    case .fetchNearbyPlacesWithCoordinate(let coordinate, let radius):
-      return "place/nearbysearch/json?location=\(coordinate.latitude),\(coordinate.longitude)&radius=\(radius)&rankby=prominence&sensor=true"
+    case .fetchNearbyPlacesWithCoordinate(let coordinate, let radius, let types):
+      let typesString = types.joinWithSeparator("|")
+      return "place/nearbysearch/json?location=\(coordinate.latitude),\(coordinate.longitude)&radius=\(radius)&rankby=prominence&sensor=true&types=\(typesString)"
     }
     
     
