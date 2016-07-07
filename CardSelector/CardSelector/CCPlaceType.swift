@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlaceType: NSObject {
+class CCPlaceType: NSObject {
   static var acceptedTypes =  ["bakery", "bar", "cafe", "grocery_or_supermarket", "restaurant"]
   
   
