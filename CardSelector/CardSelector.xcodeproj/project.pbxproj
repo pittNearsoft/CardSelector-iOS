@@ -34,6 +34,7 @@
 		B597B7FE1D233EE100E62371 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B597B7FD1D233EE100E62371 /* Main.storyboard */; };
 		B597B8011D24547B00E62371 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597B8001D24547B00E62371 /* ProfileViewController.swift */; };
 		B5E2666D1D2F015C0051756C /* CCPlaceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E2666C1D2F015C0051756C /* CCPlaceType.swift */; };
+		B5E2666F1D2F08930051756C /* CCPlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E2666E1D2F08930051756C /* CCPlaceViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		B597B7FD1D233EE100E62371 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B597B8001D24547B00E62371 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B5E2666C1D2F015C0051756C /* CCPlaceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCPlaceType.swift; sourceTree = "<group>"; };
+		B5E2666E1D2F08930051756C /* CCPlaceViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCPlaceViewModel.swift; sourceTree = "<group>"; };
 		CFFA4674F87EF22999DD41B8 /* Pods-CardSelector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardSelector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardSelector/Pods-CardSelector.debug.xcconfig"; sourceTree = "<group>"; };
 		E40E44BB5E796BFC035D9F11 /* Pods_CardSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				B52581461D26DAFD001CB6BC /* CCUserViewModel.swift */,
+				B5E2666E1D2F08930051756C /* CCPlaceViewModel.swift */,
 			);
 			name = Business;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				B527EF781D2DAFB7002A24AC /* UIView+VisualEffects.swift in Sources */,
 				B527EF831D2DE474002A24AC /* CCCoordinateTransform.swift in Sources */,
 				B52581471D26DAFD001CB6BC /* CCUserViewModel.swift in Sources */,
+				B5E2666F1D2F08930051756C /* CCPlaceViewModel.swift in Sources */,
 				B527EF7B1D2DCD23002A24AC /* MarkerInfoView.swift in Sources */,
 				B525814C1D2A33B7001CB6BC /* GoogleSessionManager.swift in Sources */,
 				B527EF871D2EC5DB002A24AC /* CCPlaceTypeTransformer.swift in Sources */,
