@@ -32,4 +32,8 @@ target 'CardSelector' do
    #Google Maps SDK for iOS.
    pod 'GoogleMaps'
 
+   #ObjectMapper is a framework written in Swift that makes it easy
+   #for you to convert your model objects (classes and structs) to and from JSON.
+   pod 'ObjectMapper', '~> 1.2'
+
 end
