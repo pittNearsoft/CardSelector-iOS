@@ -21,6 +21,9 @@
 		B527EF7B1D2DCD23002A24AC /* MarkerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B527EF7A1D2DCD23002A24AC /* MarkerInfoView.swift */; };
 		B527EF7D1D2DCD3B002A24AC /* MarkerInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B527EF7C1D2DCD3B002A24AC /* MarkerInfoView.xib */; };
 		B527EF7F1D2DD95F002A24AC /* CCPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = B527EF7E1D2DD95F002A24AC /* CCPlace.swift */; };
+		B527EF831D2DE474002A24AC /* CCCoordinateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = B527EF821D2DE474002A24AC /* CCCoordinateTransform.swift */; };
+		B527EF851D2DE9A0002A24AC /* CCPlaceMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B527EF841D2DE9A0002A24AC /* CCPlaceMarker.swift */; };
+		B527EF871D2EC5DB002A24AC /* CCPlaceTypeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B527EF861D2EC5DB002A24AC /* CCPlaceTypeTransformer.swift */; };
 		B56511141D207980002CD3AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56511131D207980002CD3AF /* AppDelegate.swift */; };
 		B56511161D207980002CD3AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56511151D207980002CD3AF /* LoginViewController.swift */; };
 		B56511191D207980002CD3AF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56511171D207980002CD3AF /* Login.storyboard */; };
@@ -30,6 +33,7 @@
 		B597B7F51D2333CC00E62371 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597B7F41D2333CC00E62371 /* NavigationManager.swift */; };
 		B597B7FE1D233EE100E62371 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B597B7FD1D233EE100E62371 /* Main.storyboard */; };
 		B597B8011D24547B00E62371 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597B8001D24547B00E62371 /* ProfileViewController.swift */; };
+		B5E2666D1D2F015C0051756C /* CCPlaceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E2666C1D2F015C0051756C /* CCPlaceType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +51,9 @@
 		B527EF7A1D2DCD23002A24AC /* MarkerInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerInfoView.swift; sourceTree = "<group>"; };
 		B527EF7C1D2DCD3B002A24AC /* MarkerInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarkerInfoView.xib; sourceTree = "<group>"; };
 		B527EF7E1D2DD95F002A24AC /* CCPlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCPlace.swift; sourceTree = "<group>"; };
+		B527EF821D2DE474002A24AC /* CCCoordinateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCoordinateTransform.swift; sourceTree = "<group>"; };
+		B527EF841D2DE9A0002A24AC /* CCPlaceMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCPlaceMarker.swift; sourceTree = "<group>"; };
+		B527EF861D2EC5DB002A24AC /* CCPlaceTypeTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCPlaceTypeTransformer.swift; sourceTree = "<group>"; };
 		B56511101D20797F002CD3AF /* CardSelector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardSelector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56511131D207980002CD3AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B56511151D207980002CD3AF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +65,7 @@
 		B597B7F41D2333CC00E62371 /* NavigationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		B597B7FD1D233EE100E62371 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B597B8001D24547B00E62371 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		B5E2666C1D2F015C0051756C /* CCPlaceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCPlaceType.swift; sourceTree = "<group>"; };
 		CFFA4674F87EF22999DD41B8 /* Pods-CardSelector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardSelector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardSelector/Pods-CardSelector.debug.xcconfig"; sourceTree = "<group>"; };
 		E40E44BB5E796BFC035D9F11 /* Pods_CardSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -119,6 +127,15 @@
 			name = CustomViews;
 			sourceTree = "<group>";
 		};
+		B527EF811D2DE45B002A24AC /* Transformers */ = {
+			isa = PBXGroup;
+			children = (
+				B527EF821D2DE474002A24AC /* CCCoordinateTransform.swift */,
+				B527EF861D2EC5DB002A24AC /* CCPlaceTypeTransformer.swift */,
+			);
+			name = Transformers;
+			sourceTree = "<group>";
+		};
 		B56511071D20797F002CD3AF = {
 			isa = PBXGroup;
 			children = (
@@ -166,8 +183,11 @@
 		B597B7F61D23358D00E62371 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B527EF811D2DE45B002A24AC /* Transformers */,
 				B52581481D271B87001CB6BC /* CCUser.swift */,
 				B527EF7E1D2DD95F002A24AC /* CCPlace.swift */,
+				B527EF841D2DE9A0002A24AC /* CCPlaceMarker.swift */,
+				B5E2666C1D2F015C0051756C /* CCPlaceType.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -334,14 +354,18 @@
 				B52581431D25D1C6001CB6BC /* EmailViewController.swift in Sources */,
 				B527EF7F1D2DD95F002A24AC /* CCPlace.swift in Sources */,
 				B52581501D2A3C8B001CB6BC /* EmailSessionManager.swift in Sources */,
+				B527EF851D2DE9A0002A24AC /* CCPlaceMarker.swift in Sources */,
 				B597B7F51D2333CC00E62371 /* NavigationManager.swift in Sources */,
 				B52581491D271B87001CB6BC /* CCUser.swift in Sources */,
 				B56511141D207980002CD3AF /* AppDelegate.swift in Sources */,
+				B5E2666D1D2F015C0051756C /* CCPlaceType.swift in Sources */,
 				B52581521D2B3EEA001CB6BC /* PlacesViewController.swift in Sources */,
 				B527EF781D2DAFB7002A24AC /* UIView+VisualEffects.swift in Sources */,
+				B527EF831D2DE474002A24AC /* CCCoordinateTransform.swift in Sources */,
 				B52581471D26DAFD001CB6BC /* CCUserViewModel.swift in Sources */,
 				B527EF7B1D2DCD23002A24AC /* MarkerInfoView.swift in Sources */,
 				B525814C1D2A33B7001CB6BC /* GoogleSessionManager.swift in Sources */,
+				B527EF871D2EC5DB002A24AC /* CCPlaceTypeTransformer.swift in Sources */,
 				B597B7F31D23326500E62371 /* SessionManager.swift in Sources */,
 				B525814E1D2A34E0001CB6BC /* FacebookSessionManager.swift in Sources */,
 				B52581451D263B72001CB6BC /* SessionTestManager.swift in Sources */,
