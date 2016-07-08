@@ -86,6 +86,11 @@ class PlacesViewController: UIViewController {
       }
     )
   }
+  
+  @IBAction func refreshPlaces(sender: AnyObject) {
+    fetchNearbyPlacesWithCoordinate(mapView.camera.target)
+  }
+
 }
 
 extension PlacesViewController: GMSMapViewDelegate{
@@ -116,6 +121,7 @@ extension PlacesViewController: CLLocationManagerDelegate{
     //configureAutoCompleteWithBound(bounds)
     showMapWithLatitude(coordinate.latitude, longitude: coordinate.longitude , zoom: 15)
     self.locationManager.stopUpdatingLocation()
+    fetchNearbyPlacesWithCoordinate(coordinate)
   }
   
   func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {

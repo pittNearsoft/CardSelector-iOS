@@ -194,7 +194,13 @@
                             <constraint firstItem="wqC-WK-y43" firstAttribute="leading" secondItem="umH-wp-zgf" secondAttribute="leading" id="zfm-Ye-VmT"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ZMc-ga-7fW"/>
+                    <navigationItem key="navigationItem" id="ZMc-ga-7fW">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="0g6-xJ-gi6">
+                            <connections>
+                                <action selector="refreshPlaces:" destination="8hq-KY-jHL" id="sT2-Rk-IB9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="locationLabel" destination="wqC-WK-y43" id="l0J-ee-EPs"/>
                         <outlet property="mapPinImage" destination="D8K-Gh-jch" id="ydO-EO-1W1"/>
@@ -219,7 +225,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2up-db-42e" id="ewA-ej-BH0">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
