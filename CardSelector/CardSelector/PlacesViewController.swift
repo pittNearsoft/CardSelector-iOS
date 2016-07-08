@@ -113,7 +113,8 @@ extension PlacesViewController: GMSMapViewDelegate{
     }
   }
   
-  func mapView(mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
+
+  func mapView(mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
     let placeMarker = marker as! CCPlaceMarker
     
     if let infoView = UIView.viewFromNibName("MarkerInfoView") as? MarkerInfoView {
@@ -124,11 +125,15 @@ extension PlacesViewController: GMSMapViewDelegate{
       }else{
         infoView.placePhoto.image = UIImage(named: "generic")
       }
-      
+
       return infoView
     }
     
     return nil
+  }
+  
+  func mapView(mapView: GMSMapView, didTapInfoWindowOfMarker marker: GMSMarker) {
+    print("Hola!")
   }
   
   func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
