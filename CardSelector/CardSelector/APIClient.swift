@@ -10,7 +10,7 @@ import Alamofire
 
 class APIClient {
   private static let googlePlacesBaseUrl = "https://maps.googleapis.com/maps/api/"
-  private static let googlePlacesApiKey = "AIzaSyCTMaGzeNwKSEZOkPqtMo3mqpcJfnoj48w"
+  private static let googlePlacesApiKey = "AIzaSyCy3sXYYV2-SOQioqZSrqgDlSv-p_mQtAE"
   
   var manager: Manager!
   
@@ -19,8 +19,10 @@ class APIClient {
     manager = Alamofire.Manager(configuration: configuration)
   }
   
-  static func getFullUrlWithPath(path: String) -> NSURL{
-    return NSURL(string: googlePlacesBaseUrl+path+"&key=\(googlePlacesApiKey)")!
+  static func getFullUrlWithPath(path: String) -> NSURL?{
+    var urlString = googlePlacesBaseUrl+path+"&key=\(googlePlacesApiKey)"
+    urlString = urlString.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+    return NSURL(string: urlString)
   }
   
 }
