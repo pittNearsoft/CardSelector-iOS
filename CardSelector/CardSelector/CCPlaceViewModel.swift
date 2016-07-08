@@ -11,8 +11,18 @@ import CoreLocation
 import ObjectMapper
 
 class CCPlaceViewModel {
+  let placeService = CCPlaceService()
   
-  func fetchNearbyPlacesWithCoordinate(coordinate: CLLocationCoordinate2D, radius: Double, types: [String], completion: (places: [CCPlace])->Void) {
-    <#function body#>
+  func fetchNearbyPlacesWithCoordinate(coordinate: CLLocationCoordinate2D, radius: Double, types: [String], completion: (places: [CCPlace])->Void, onError: (error: NSError) -> Void) {
+    
+    placeService.fetchNearbyPlacesWithCoordinate(coordinate, radius: radius, types: types,
+      completion: { (jsonPlaces) in
+        let places: [CCPlace] = Mapper<CCPlace>().mapArray(jsonPlaces)!
+        completion(places: places)
+      },
+      onError: { (error) in
+        onError(error: error)
+      }
+    )
   }
 }
