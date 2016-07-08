@@ -74,12 +74,17 @@ class PlacesViewController: UIViewController {
   func fetchNearbyPlacesWithCoordinate(coordinate: CLLocationCoordinate2D) {
     mapView.clear()
     
-    placeViewModel.fetchNearbyPlacesWithCoordinate(coordinate, radius: searchRadius, types: CCPlaceType.acceptedTypes) { (places) in
-      for place in places{
-        let marker = CCPlaceMarker(place: place)
-        marker.map = self.mapView
+    placeViewModel.fetchNearbyPlacesWithCoordinate(coordinate, radius: searchRadius, types: CCPlaceType.acceptedTypes,
+      completion: { places in
+        for place in places{
+          let marker = CCPlaceMarker(place: place)
+          marker.map = self.mapView
+        }
+      },
+      onError: { error in
+        print(error.localizedDescription)
       }
-    }
+    )
   }
 }
 
