@@ -31,7 +31,7 @@ enum CCPlaceRouter: URLRequestConvertible {
   
   var URLRequest: NSMutableURLRequest{
     let url = APIClient.getFullUrlWithPath(path)
-    let mutableURLRequest = NSMutableURLRequest(URL: url)
+    let mutableURLRequest = NSMutableURLRequest(URL: url!)
     
     mutableURLRequest.HTTPMethod = method.rawValue
     
