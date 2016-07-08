@@ -90,6 +90,13 @@ class PlacesViewController: UIViewController {
   @IBAction func refreshPlaces(sender: AnyObject) {
     fetchNearbyPlacesWithCoordinate(mapView.camera.target)
   }
+  
+  func reappearMapPinImage() {
+    mapPinImage.fadeIn(0.25)
+    
+    //Setting the map’s selectedMarker to nil will remove the currently presented infoView.
+    mapView.selectedMarker = nil
+  }
 
 }
 
@@ -100,6 +107,38 @@ extension PlacesViewController: GMSMapViewDelegate{
   
   func mapView(mapView: GMSMapView, willMove gesture: Bool) {
     locationLabel.lock()
+    
+    if gesture {
+      reappearMapPinImage()
+    }
+  }
+  
+  func mapView(mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
+    let placeMarker = marker as! CCPlaceMarker
+    
+    if let infoView = UIView.viewFromNibName("MarkerInfoView") as? MarkerInfoView {
+      infoView.nameLabel.text = placeMarker.place.name
+      
+      if let photo = placeMarker.place.photo {
+        infoView.placePhoto.image = photo
+      }else{
+        infoView.placePhoto.image = UIImage(named: "generic")
+      }
+      
+      return infoView
+    }
+    
+    return nil
+  }
+  
+  func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
+    mapPinImage.fadeOut(0.25)
+    return false
+  }
+  
+  func didTapMyLocationButtonForMapView(mapView: GMSMapView) -> Bool {
+    reappearMapPinImage()
+    return false
   }
 }
 

@@ -58,4 +58,9 @@ extension UIView {
       self.alpha = 1.0
     }
   }
+  
+  static func viewFromNibName(name: String) -> UIView? {
+    let views = NSBundle.mainBundle().loadNibNamed(name, owner: nil, options: nil)
+    return views.first as? UIView
+  }
 }
