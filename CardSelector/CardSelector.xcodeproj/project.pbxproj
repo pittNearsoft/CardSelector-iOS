@@ -10,12 +10,8 @@
 		958A3EF7B89DAC3775579B38 /* Pods_CardSelector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40E44BB5E796BFC035D9F11 /* Pods_CardSelector.framework */; };
 		B52581411D258CDF001CB6BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52581401D258CDF001CB6BC /* LaunchScreen.storyboard */; };
 		B52581431D25D1C6001CB6BC /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52581421D25D1C6001CB6BC /* EmailViewController.swift */; };
-		B52581451D263B72001CB6BC /* SessionTestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52581441D263B72001CB6BC /* SessionTestManager.swift */; };
 		B52581471D26DAFD001CB6BC /* CCUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52581461D26DAFD001CB6BC /* CCUserViewModel.swift */; };
 		B52581491D271B87001CB6BC /* CCUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52581481D271B87001CB6BC /* CCUser.swift */; };
-		B525814C1D2A33B7001CB6BC /* GoogleSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B525814B1D2A33B7001CB6BC /* GoogleSessionManager.swift */; };
-		B525814E1D2A34E0001CB6BC /* FacebookSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B525814D1D2A34E0001CB6BC /* FacebookSessionManager.swift */; };
-		B52581501D2A3C8B001CB6BC /* EmailSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B525814F1D2A3C8B001CB6BC /* EmailSessionManager.swift */; };
 		B52581521D2B3EEA001CB6BC /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52581511D2B3EEA001CB6BC /* PlacesViewController.swift */; };
 		B527EF781D2DAFB7002A24AC /* UIView+VisualEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = B527EF771D2DAFB7002A24AC /* UIView+VisualEffects.swift */; };
 		B527EF7B1D2DCD23002A24AC /* MarkerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B527EF7A1D2DCD23002A24AC /* MarkerInfoView.swift */; };
@@ -45,12 +41,8 @@
 		A59E791DB60357784C1D810E /* Pods-CardSelector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardSelector.release.xcconfig"; path = "Pods/Target Support Files/Pods-CardSelector/Pods-CardSelector.release.xcconfig"; sourceTree = "<group>"; };
 		B52581401D258CDF001CB6BC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B52581421D25D1C6001CB6BC /* EmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
-		B52581441D263B72001CB6BC /* SessionTestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTestManager.swift; sourceTree = "<group>"; };
 		B52581461D26DAFD001CB6BC /* CCUserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCUserViewModel.swift; sourceTree = "<group>"; };
 		B52581481D271B87001CB6BC /* CCUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCUser.swift; sourceTree = "<group>"; };
-		B525814B1D2A33B7001CB6BC /* GoogleSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleSessionManager.swift; sourceTree = "<group>"; };
-		B525814D1D2A34E0001CB6BC /* FacebookSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookSessionManager.swift; sourceTree = "<group>"; };
-		B525814F1D2A3C8B001CB6BC /* EmailSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailSessionManager.swift; sourceTree = "<group>"; };
 		B52581511D2B3EEA001CB6BC /* PlacesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
 		B527EF771D2DAFB7002A24AC /* UIView+VisualEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+VisualEffects.swift"; sourceTree = "<group>"; };
 		B527EF7A1D2DCD23002A24AC /* MarkerInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerInfoView.swift; sourceTree = "<group>"; };
@@ -107,17 +99,6 @@
 				E40E44BB5E796BFC035D9F11 /* Pods_CardSelector.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B525814A1D2A3356001CB6BC /* Sessions */ = {
-			isa = PBXGroup;
-			children = (
-				B52581441D263B72001CB6BC /* SessionTestManager.swift */,
-				B525814B1D2A33B7001CB6BC /* GoogleSessionManager.swift */,
-				B525814D1D2A34E0001CB6BC /* FacebookSessionManager.swift */,
-				B525814F1D2A3C8B001CB6BC /* EmailSessionManager.swift */,
-			);
-			name = Sessions;
 			sourceTree = "<group>";
 		};
 		B527EF761D2DAF99002A24AC /* Extensions */ = {
@@ -185,7 +166,6 @@
 		B597B7F11D23325000E62371 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				B525814A1D2A3356001CB6BC /* Sessions */,
 				B597B7F21D23326500E62371 /* SessionManager.swift */,
 				B597B7F41D2333CC00E62371 /* NavigationManager.swift */,
 			);
@@ -392,7 +372,6 @@
 				B56511161D207980002CD3AF /* LoginViewController.swift in Sources */,
 				B52581431D25D1C6001CB6BC /* EmailViewController.swift in Sources */,
 				B527EF7F1D2DD95F002A24AC /* CCPlace.swift in Sources */,
-				B52581501D2A3C8B001CB6BC /* EmailSessionManager.swift in Sources */,
 				B527EF851D2DE9A0002A24AC /* CCPlaceMarker.swift in Sources */,
 				B597B7F51D2333CC00E62371 /* NavigationManager.swift in Sources */,
 				B52581491D271B87001CB6BC /* CCUser.swift in Sources */,
@@ -404,15 +383,12 @@
 				B52581471D26DAFD001CB6BC /* CCUserViewModel.swift in Sources */,
 				B5E2666F1D2F08930051756C /* CCPlaceViewModel.swift in Sources */,
 				B527EF7B1D2DCD23002A24AC /* MarkerInfoView.swift in Sources */,
-				B525814C1D2A33B7001CB6BC /* GoogleSessionManager.swift in Sources */,
 				B527EF871D2EC5DB002A24AC /* CCPlaceTypeTransformer.swift in Sources */,
 				B5E266771D2F137A0051756C /* CCPlaceRouter.swift in Sources */,
 				B597B7F31D23326500E62371 /* SessionManager.swift in Sources */,
 				B5E266721D2F11480051756C /* CCPlaceService.swift in Sources */,
-				B525814E1D2A34E0001CB6BC /* FacebookSessionManager.swift in Sources */,
 				B5E266741D2F11C10051756C /* APIClient.swift in Sources */,
 				B5E2667A1D2F1E190051756C /* AlamofireExtensions.swift in Sources */,
-				B52581451D263B72001CB6BC /* SessionTestManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
