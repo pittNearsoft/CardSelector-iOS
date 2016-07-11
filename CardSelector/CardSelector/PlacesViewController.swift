@@ -152,9 +152,12 @@ extension PlacesViewController: GMSMapViewDelegate{
 
 extension PlacesViewController: CLLocationManagerDelegate{
   func setupLocationManager() {
-    self.locationManager.delegate = self
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-    self.locationManager.requestWhenInUseAuthorization()
+    locationManager.delegate = self
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    locationManager.requestWhenInUseAuthorization()
+    locationManager.startUpdatingLocation()
+    mapView.myLocationEnabled = true
+    mapView.settings.myLocationButton = true
   }
   
   func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
@@ -168,10 +171,13 @@ extension PlacesViewController: CLLocationManagerDelegate{
   
   func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
     if status == .AuthorizedWhenInUse {
-      locationManager.startUpdatingLocation()
+      //locationManager.startUpdatingLocation()
       mapView.myLocationEnabled = true
       mapView.settings.myLocationButton = true
+    }else{
+      print("asd")
     }
+
   }
   
   func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {

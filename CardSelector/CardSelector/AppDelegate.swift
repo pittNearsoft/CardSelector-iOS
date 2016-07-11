@@ -8,17 +8,16 @@
 
 import UIKit
 import FBSDKCoreKit
-import Google
-import GoogleSignIn
 import GoogleMaps
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    //To use google maps
     GMSServices.provideAPIKey("AIzaSyB9MBgfh45DH-k-Ym0hLDTsq1AttHzhLhU")
     
     //Initialize Facebook Sign-in
@@ -62,17 +61,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     return SessionManager.application(application, openURL: url, options: options)
   }
   
-  
-  //MARK: - Google SignIn methods
-  func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
-    SessionManager.signIn(signIn, didSignInForUser: user, withError: error)
-  }
-
-  func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!, withError error: NSError!) {
-    SessionManager.signIn(signIn, didDisconnectWithUser: user, withError: error)
-  }
-
-
-
 }
 

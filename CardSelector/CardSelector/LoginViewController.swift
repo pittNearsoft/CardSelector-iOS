@@ -12,7 +12,7 @@ import GoogleSignIn
 import LKAlertController
 
 
-class LoginViewController: UIViewController,GIDSignInUIDelegate {
+class LoginViewController: UIViewController,GIDSignInUIDelegate, GIDSignInDelegate {
 
   
   @IBOutlet weak var emailButton: UIButton!
@@ -38,7 +38,7 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate {
   }
 
   @IBAction func googleSignIn(sender: AnyObject) {
-    SessionManager.googleSignIn()
+    SessionManager.googleSignInWithDelegate(self)
   }
   
   @IBAction func facebookSignIn(sender: AnyObject) {
@@ -47,6 +47,29 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate {
   
   @IBAction func createAccount(sender: AnyObject) {
     Alert(title: "Ops!", message: "This feature is not available yet!").showOkay()
+  }
+  
+  
+  //MARK: - Google SignIn methods
+  func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
+    if error == nil {
+      let newUser = CCUser(WithGoogleUser: user)
+      CCUserViewModel.saveUserIntoReal(newUser)
+      
+      
+      NavigationManager.goMain()
+    }else{
+      print("Error: \(error.localizedDescription)")
+    }
+  }
+  
+  func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!, withError error: NSError!) {
+    if error == nil {
+      CCUserViewModel.deleteLoggedUser()
+      NavigationManager.goLogin()
+    }else{
+      print("Error: \(error.localizedDescription)")
+    }
   }
   
   

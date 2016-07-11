@@ -23,41 +23,17 @@ class SessionManager {
   
   //let navigationManager = NavigationManager()
   private static var signInType: SignInType = .Email
-
-
   
-//  //MARK: - Google methods
-  static func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
-    if error == nil {
-      let newUser = CCUser(WithGoogleUser: user)
-      CCUserViewModel.saveUserIntoReal(newUser)
-      
-      
-      NavigationManager.goMain()
-    }else{
-      print("Error: \(error.localizedDescription)")
-    }
-  }
-  
-  static func signIn(signIn: GIDSignIn!, didDisconnectWithUser user: GIDGoogleUser!, withError error: NSError!) {
-    if error == nil {
-      CCUserViewModel.deleteLoggedUser()
-      NavigationManager.goLogin()
-    }else{
-      print("Error: \(error.localizedDescription)")
-    }
-  }
-  
-  static func googleSetup(){
+  private static func googleSetupWithSignInDelegate(delegate: GIDSignInDelegate){
     var configureError: NSError?
     GGLContext.sharedInstance().configureWithError(&configureError)
     assert(configureError == nil,"Error configuring Google services: \(configureError)")
-    GIDSignIn.sharedInstance().delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    GIDSignIn.sharedInstance().delegate = delegate//UIApplication.sharedApplication().delegate as! AppDelegate
   }
   
-  static func googleSignIn() {
+  static func googleSignInWithDelegate(delegate: GIDSignInDelegate) {
     SessionManager.signInType = .Google
-    googleSetup()
+    googleSetupWithSignInDelegate(delegate)
     GIDSignIn.sharedInstance().signIn()
   }
   
