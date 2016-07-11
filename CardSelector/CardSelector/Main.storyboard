@@ -76,6 +76,7 @@
                     <connections>
                         <outlet property="emailLabel" destination="TX2-xY-BWE" id="yNg-O8-OYz"/>
                         <outlet property="profileImageView" destination="5zD-Eu-cw7" id="57g-1v-4wM"/>
+                        <outlet property="signOutButton" destination="3jw-lc-kQg" id="mgl-F5-1m5"/>
                         <outlet property="userNameLabel" destination="N5K-VL-4od" id="RtT-Y0-3NC"/>
                     </connections>
                 </viewController>
@@ -173,7 +174,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2up-db-42e" id="ewA-ej-BH0">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
