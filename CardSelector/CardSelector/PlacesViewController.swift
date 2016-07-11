@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import CoreLocation
+import AlamofireImage
 
 class PlacesViewController: UIViewController {
 
@@ -116,21 +117,23 @@ extension PlacesViewController: GMSMapViewDelegate{
 
   func mapView(mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
     let placeMarker = marker as! CCPlaceMarker
+    placeMarker.tracksInfoWindowChanges = true
     
     if let infoView = UIView.viewFromNibName("MarkerInfoView") as? MarkerInfoView {
       infoView.nameLabel.text = placeMarker.place.name
       
-      if let photo = placeMarker.place.photo {
-        infoView.placePhoto.image = photo
-      }else{
+      if infoView.placePhoto.image == nil {
         infoView.placePhoto.image = UIImage(named: "generic")
+        infoView.placePhoto.af_setImageWithURLRequest(CCPlaceRouter.fetchPlacePhotoFromReference(reference: placeMarker.place.photo_reference))
       }
+      
 
       return infoView
     }
     
     return nil
   }
+  
   
   func mapView(mapView: GMSMapView, didTapInfoWindowOfMarker marker: GMSMarker) {
     print("Hola!")
@@ -157,12 +160,7 @@ extension PlacesViewController: CLLocationManagerDelegate{
   func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
     let coordinate = newLocation.coordinate
     print("latitude: \(coordinate.latitude), longitude: \(coordinate.longitude)")
-    //configure a default area to get near places
-    //let neBoundsCorner = CLLocationCoordinate2D(latitude: coordinate.latitude - 0.1, longitude: coordinate.longitude  - 0.1)
-    //let swBoundsCorner = CLLocationCoordinate2D(latitude: coordinate.latitude + 0.1, longitude: coordinate.longitude  + 0.1)
-    //let bounds = GMSCoordinateBounds(coordinate: neBoundsCorner, coordinate: swBoundsCorner)
     
-    //configureAutoCompleteWithBound(bounds)
     showMapWithLatitude(coordinate.latitude, longitude: coordinate.longitude , zoom: 15)
     self.locationManager.stopUpdatingLocation()
     fetchNearbyPlacesWithCoordinate(coordinate)

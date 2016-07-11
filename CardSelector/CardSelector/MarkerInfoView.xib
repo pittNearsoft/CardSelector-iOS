@@ -23,9 +23,6 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="walking" translatesAutoresizingMaskIntoConstraints="NO" id="QaD-Eg-6K1">
-                    <rect key="frame" x="85" y="138" width="50" height="50"/>
-                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mji-1j-MiJ">
                     <rect key="frame" x="51" y="54" width="119" height="76"/>
                     <constraints>
@@ -33,12 +30,19 @@
                         <constraint firstAttribute="width" constant="119" id="lor-4p-DTl"/>
                     </constraints>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xnH-UW-duH">
+                    <rect key="frame" x="72" y="130" width="77" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="Q4y-sJ-YRg"/>
+                    </constraints>
+                    <state key="normal" title="Show more"/>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="mji-1j-MiJ" firstAttribute="centerX" secondItem="rxq-d2-2GC" secondAttribute="centerX" id="2yD-sd-rju"/>
                 <constraint firstItem="rxq-d2-2GC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="J2G-mT-BFJ"/>
-                <constraint firstItem="QaD-Eg-6K1" firstAttribute="top" secondItem="mji-1j-MiJ" secondAttribute="bottom" constant="8" id="O5Q-1t-hLz"/>
+                <constraint firstItem="xnH-UW-duH" firstAttribute="centerX" secondItem="mji-1j-MiJ" secondAttribute="centerX" id="Mmu-kJ-2zU"/>
                 <constraint firstItem="ZgX-j8-cJa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Q2L-3E-OWq"/>
                 <constraint firstItem="rxq-d2-2GC" firstAttribute="bottom" secondItem="mji-1j-MiJ" secondAttribute="bottom" id="Rf1-f5-YW2"/>
                 <constraint firstItem="ZgX-j8-cJa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="T1Y-2E-FoT"/>
@@ -46,8 +50,8 @@
                 <constraint firstAttribute="bottom" secondItem="ZgX-j8-cJa" secondAttribute="bottom" id="bmh-ti-qNz"/>
                 <constraint firstAttribute="trailing" secondItem="rxq-d2-2GC" secondAttribute="trailing" constant="8" id="c86-Fm-NUa"/>
                 <constraint firstAttribute="trailing" secondItem="ZgX-j8-cJa" secondAttribute="trailing" id="dhP-A7-p2C"/>
+                <constraint firstItem="xnH-UW-duH" firstAttribute="top" secondItem="mji-1j-MiJ" secondAttribute="bottom" id="hz7-vn-b2l"/>
                 <constraint firstItem="rxq-d2-2GC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="maj-9b-Cgl"/>
-                <constraint firstItem="QaD-Eg-6K1" firstAttribute="centerX" secondItem="mji-1j-MiJ" secondAttribute="centerX" id="phH-ru-HXU"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
@@ -64,6 +68,5 @@
     </objects>
     <resources>
         <image name="infoWindow" width="600" height="300"/>
-        <image name="walking" width="50" height="50"/>
     </resources>
 </document>
