@@ -14,6 +14,8 @@ import LKAlertController
 
 class LoginViewController: UIViewController,GIDSignInUIDelegate, GIDSignInDelegate {
 
+  @IBOutlet weak var emailTextField: UITextField!
+  @IBOutlet weak var passwordTextField: UITextField!
   
   @IBOutlet weak var emailButton: UIButton!
   @IBOutlet weak var facebookButton: UIButton!
@@ -44,6 +46,17 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate, GIDSignInDelega
   @IBAction func facebookSignIn(sender: AnyObject) {
     SessionManager.facebookSignIn(FromViewController: self)
   }
+  
+  @IBAction func emailSignIn(sender: AnyObject) {
+    if emailTextField.text == "projas@nearsoft.com"  && passwordTextField.text == "welcome1"{
+      
+      SessionManager.emailSignIn(emailTextField.text!)
+    }else{
+      Alert(title: "Ops!", message: "Invalid email and/or password. Try again.").showOkay()
+    }
+
+  }
+  
   
   @IBAction func createAccount(sender: AnyObject) {
     Alert(title: "Ops!", message: "This feature is not available yet!").showOkay()

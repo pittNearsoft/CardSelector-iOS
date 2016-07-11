@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		958A3EF7B89DAC3775579B38 /* Pods_CardSelector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40E44BB5E796BFC035D9F11 /* Pods_CardSelector.framework */; };
 		B52581411D258CDF001CB6BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52581401D258CDF001CB6BC /* LaunchScreen.storyboard */; };
-		B52581431D25D1C6001CB6BC /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52581421D25D1C6001CB6BC /* EmailViewController.swift */; };
 		B52581471D26DAFD001CB6BC /* CCUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52581461D26DAFD001CB6BC /* CCUserViewModel.swift */; };
 		B52581491D271B87001CB6BC /* CCUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52581481D271B87001CB6BC /* CCUser.swift */; };
 		B52581521D2B3EEA001CB6BC /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52581511D2B3EEA001CB6BC /* PlacesViewController.swift */; };
@@ -40,7 +39,6 @@
 /* Begin PBXFileReference section */
 		A59E791DB60357784C1D810E /* Pods-CardSelector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardSelector.release.xcconfig"; path = "Pods/Target Support Files/Pods-CardSelector/Pods-CardSelector.release.xcconfig"; sourceTree = "<group>"; };
 		B52581401D258CDF001CB6BC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B52581421D25D1C6001CB6BC /* EmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
 		B52581461D26DAFD001CB6BC /* CCUserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCUserViewModel.swift; sourceTree = "<group>"; };
 		B52581481D271B87001CB6BC /* CCUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCUser.swift; sourceTree = "<group>"; };
 		B52581511D2B3EEA001CB6BC /* PlacesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
@@ -210,7 +208,6 @@
 				B527EF761D2DAF99002A24AC /* Extensions */,
 				B56511151D207980002CD3AF /* LoginViewController.swift */,
 				B597B8001D24547B00E62371 /* ProfileViewController.swift */,
-				B52581421D25D1C6001CB6BC /* EmailViewController.swift */,
 				B52581511D2B3EEA001CB6BC /* PlacesViewController.swift */,
 			);
 			name = Views;
@@ -370,7 +367,6 @@
 			files = (
 				B597B8011D24547B00E62371 /* ProfileViewController.swift in Sources */,
 				B56511161D207980002CD3AF /* LoginViewController.swift in Sources */,
-				B52581431D25D1C6001CB6BC /* EmailViewController.swift in Sources */,
 				B527EF7F1D2DD95F002A24AC /* CCPlace.swift in Sources */,
 				B527EF851D2DE9A0002A24AC /* CCPlaceMarker.swift in Sources */,
 				B597B7F51D2333CC00E62371 /* NavigationManager.swift in Sources */,
