@@ -34,6 +34,7 @@
 		B5E266741D2F11C10051756C /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E266731D2F11C10051756C /* APIClient.swift */; };
 		B5E266771D2F137A0051756C /* CCPlaceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E266761D2F137A0051756C /* CCPlaceRouter.swift */; };
 		B5E2667A1D2F1E190051756C /* AlamofireExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E266791D2F1E190051756C /* AlamofireExtensions.swift */; };
+		B5E266831D33905F0051756C /* MyCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E266821D33905F0051756C /* MyCardsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		B5E266731D2F11C10051756C /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		B5E266761D2F137A0051756C /* CCPlaceRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCPlaceRouter.swift; sourceTree = "<group>"; };
 		B5E266791D2F1E190051756C /* AlamofireExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireExtensions.swift; sourceTree = "<group>"; };
+		B5E266821D33905F0051756C /* MyCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCardsViewController.swift; sourceTree = "<group>"; };
 		CFFA4674F87EF22999DD41B8 /* Pods-CardSelector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardSelector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardSelector/Pods-CardSelector.debug.xcconfig"; sourceTree = "<group>"; };
 		E40E44BB5E796BFC035D9F11 /* Pods_CardSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -209,6 +211,7 @@
 				B56511151D207980002CD3AF /* LoginViewController.swift */,
 				B597B8001D24547B00E62371 /* ProfileViewController.swift */,
 				B52581511D2B3EEA001CB6BC /* PlacesViewController.swift */,
+				B5E266821D33905F0051756C /* MyCardsViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				B52581521D2B3EEA001CB6BC /* PlacesViewController.swift in Sources */,
 				B527EF781D2DAFB7002A24AC /* UIView+VisualEffects.swift in Sources */,
 				B527EF831D2DE474002A24AC /* CCCoordinateTransform.swift in Sources */,
+				B5E266831D33905F0051756C /* MyCardsViewController.swift in Sources */,
 				B52581471D26DAFD001CB6BC /* CCUserViewModel.swift in Sources */,
 				B5E2666F1D2F08930051756C /* CCPlaceViewModel.swift in Sources */,
 				B527EF7B1D2DCD23002A24AC /* MarkerInfoView.swift in Sources */,
