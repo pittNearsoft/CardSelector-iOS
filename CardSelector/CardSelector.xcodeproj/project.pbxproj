@@ -35,6 +35,8 @@
 		B5BF109E1D35FBE7008BDF33 /* CCCardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BF109D1D35FBE7008BDF33 /* CCCardType.swift */; };
 		B5BF10A01D3600FC008BDF33 /* CCCardProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BF109F1D3600FC008BDF33 /* CCCardProgram.swift */; };
 		B5BF10A21D360183008BDF33 /* CCCardLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BF10A11D360183008BDF33 /* CCCardLevel.swift */; };
+		B5BF10A81D361BC1008BDF33 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BF10A71D361BC1008BDF33 /* CardView.swift */; };
+		B5BF10AA1D361BCD008BDF33 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BF10A91D361BCD008BDF33 /* CardView.xib */; };
 		B5E2666D1D2F015C0051756C /* CCPlaceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E2666C1D2F015C0051756C /* CCPlaceType.swift */; };
 		B5E2666F1D2F08930051756C /* CCPlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E2666E1D2F08930051756C /* CCPlaceViewModel.swift */; };
 		B5E266721D2F11480051756C /* CCPlaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E266711D2F11480051756C /* CCPlaceService.swift */; };
@@ -75,6 +77,8 @@
 		B5BF109D1D35FBE7008BDF33 /* CCCardType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardType.swift; sourceTree = "<group>"; };
 		B5BF109F1D3600FC008BDF33 /* CCCardProgram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardProgram.swift; sourceTree = "<group>"; };
 		B5BF10A11D360183008BDF33 /* CCCardLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardLevel.swift; sourceTree = "<group>"; };
+		B5BF10A71D361BC1008BDF33 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		B5BF10A91D361BCD008BDF33 /* CardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
 		B5E2666C1D2F015C0051756C /* CCPlaceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCPlaceType.swift; sourceTree = "<group>"; };
 		B5E2666E1D2F08930051756C /* CCPlaceViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCPlaceViewModel.swift; sourceTree = "<group>"; };
 		B5E266711D2F11480051756C /* CCPlaceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCPlaceService.swift; sourceTree = "<group>"; };
@@ -130,6 +134,8 @@
 				B527EF7C1D2DCD3B002A24AC /* MarkerInfoView.xib */,
 				B5BF10941D35F5A2008BDF33 /* CardCell.swift */,
 				B5BF10951D35F5A2008BDF33 /* CardCell.xib */,
+				B5BF10A71D361BC1008BDF33 /* CardView.swift */,
+				B5BF10A91D361BCD008BDF33 /* CardView.xib */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -335,6 +341,7 @@
 			files = (
 				B597B7FE1D233EE100E62371 /* Main.storyboard in Resources */,
 				B597B7F01D20828A00E62371 /* GoogleService-Info.plist in Resources */,
+				B5BF10AA1D361BCD008BDF33 /* CardView.xib in Resources */,
 				B565111B1D207980002CD3AF /* Assets.xcassets in Resources */,
 				B5BF10971D35F5A2008BDF33 /* CardCell.xib in Resources */,
 				B52581411D258CDF001CB6BC /* LaunchScreen.storyboard in Resources */,
@@ -412,6 +419,7 @@
 				B527EF781D2DAFB7002A24AC /* UIView+VisualEffects.swift in Sources */,
 				B5BF10A21D360183008BDF33 /* CCCardLevel.swift in Sources */,
 				B527EF831D2DE474002A24AC /* CCCoordinateTransform.swift in Sources */,
+				B5BF10A81D361BC1008BDF33 /* CardView.swift in Sources */,
 				B5E266831D33905F0051756C /* MyCardsViewController.swift in Sources */,
 				B52581471D26DAFD001CB6BC /* CCUserViewModel.swift in Sources */,
 				B5E2666F1D2F08930051756C /* CCPlaceViewModel.swift in Sources */,
