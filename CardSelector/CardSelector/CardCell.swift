@@ -9,11 +9,19 @@
 import UIKit
 
 class CardCell: UITableViewCell {
+  
+  
+  @IBOutlet weak var cardView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+      cardView.roundCorners()
     }
+  
+  static func reuseIdentifier() -> String {
+    return "CardCell"
+  }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
