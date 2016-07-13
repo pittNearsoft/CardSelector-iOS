@@ -15,6 +15,11 @@ extension UIView {
     self.layer.shadowOffset = CGSizeMake(1.0, 1.0)
   }
   
+  func roundCorners() {
+    self.layer.cornerRadius = 15
+    self.layer.masksToBounds = true
+  }
+  
   func lock() {
     if let _ = viewWithTag(10) {
       //View is already locked
