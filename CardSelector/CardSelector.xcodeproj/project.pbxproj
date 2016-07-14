@@ -24,6 +24,8 @@
 		B56511191D207980002CD3AF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56511171D207980002CD3AF /* Login.storyboard */; };
 		B565111B1D207980002CD3AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B565111A1D207980002CD3AF /* Assets.xcassets */; };
 		B5772E3F1D37E2B6003A5210 /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5772E3E1D37E2B6003A5210 /* AddCardViewController.swift */; };
+		B5772E421D37EBA3003A5210 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5772E401D37EBA3003A5210 /* CardCollectionViewCell.swift */; };
+		B5772E431D37EBA3003A5210 /* CardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5772E411D37EBA3003A5210 /* CardCollectionViewCell.xib */; };
 		B597B7F01D20828A00E62371 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B597B7EF1D20828A00E62371 /* GoogleService-Info.plist */; };
 		B597B7F31D23326500E62371 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597B7F21D23326500E62371 /* SessionManager.swift */; };
 		B597B7F51D2333CC00E62371 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597B7F41D2333CC00E62371 /* NavigationManager.swift */; };
@@ -67,6 +69,8 @@
 		B565111A1D207980002CD3AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B565111F1D207980002CD3AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5772E3E1D37E2B6003A5210 /* AddCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
+		B5772E401D37EBA3003A5210 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		B5772E411D37EBA3003A5210 /* CardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardCollectionViewCell.xib; sourceTree = "<group>"; };
 		B597B7EF1D20828A00E62371 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B597B7F21D23326500E62371 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		B597B7F41D2333CC00E62371 /* NavigationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
@@ -138,6 +142,8 @@
 				B5BF10951D35F5A2008BDF33 /* CardCell.xib */,
 				B5BF10A71D361BC1008BDF33 /* CardView.swift */,
 				B5BF10A91D361BCD008BDF33 /* CardView.xib */,
+				B5772E401D37EBA3003A5210 /* CardCollectionViewCell.swift */,
+				B5772E411D37EBA3003A5210 /* CardCollectionViewCell.xib */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -351,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B597B7FE1D233EE100E62371 /* Main.storyboard in Resources */,
+				B5772E431D37EBA3003A5210 /* CardCollectionViewCell.xib in Resources */,
 				B597B7F01D20828A00E62371 /* GoogleService-Info.plist in Resources */,
 				B5BF10AA1D361BCD008BDF33 /* CardView.xib in Resources */,
 				B565111B1D207980002CD3AF /* Assets.xcassets in Resources */,
@@ -444,6 +451,7 @@
 				B5BF10A01D3600FC008BDF33 /* CCCardProgram.swift in Sources */,
 				B5E266721D2F11480051756C /* CCPlaceService.swift in Sources */,
 				B5E266741D2F11C10051756C /* APIClient.swift in Sources */,
+				B5772E421D37EBA3003A5210 /* CardCollectionViewCell.swift in Sources */,
 				B5E2667A1D2F1E190051756C /* AlamofireExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
