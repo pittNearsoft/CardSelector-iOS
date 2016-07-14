@@ -229,7 +229,13 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="My Cards" id="zct-Ne-8jb"/>
+                    <navigationItem key="navigationItem" title="My Cards" id="zct-Ne-8jb">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="UVr-dn-uFc">
+                            <connections>
+                                <segue destination="O6n-w3-XhG" kind="presentation" id="hbT-rg-bKa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="LnN-8V-jIb" id="LFS-0K-aLt"/>
                     </connections>
@@ -237,6 +243,28 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jIY-bP-UBw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2093" y="-222"/>
+        </scene>
+        <!--Add Card View Controller-->
+        <scene sceneID="S6U-U7-HdZ">
+            <objects>
+                <viewController id="ueE-LB-PAK" customClass="AddCardViewController" customModule="CardSelector" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bgT-KA-ZgZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Urb-F3-YSy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QY9-4N-rhM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Hcl-VP-V3y">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Gow-00-MxW"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="RAd-0L-VUV"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iMq-RW-rqL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3693" y="-222"/>
         </scene>
         <!--Places-->
         <scene sceneID="zYy-3o-asg">
@@ -256,6 +284,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nJu-pc-UoN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1281" y="-879"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="RKm-5q-ufi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="O6n-w3-XhG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bwO-C4-saY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ueE-LB-PAK" kind="relationship" relationship="rootViewController" id="Jyy-wA-oBh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KEc-nj-9es" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2881" y="-222"/>
         </scene>
     </scenes>
     <resources>
