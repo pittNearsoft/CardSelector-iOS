@@ -10,14 +10,20 @@ import UIKit
 
 class CardView: UIView {
 
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
+  @IBOutlet var card: UIView!
   
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    
+    NSBundle.mainBundle().loadNibNamed("CardView", owner: self, options: nil)
+    addSubview(card)
+    card.translatesAutoresizingMaskIntoConstraints = false
 
+    
+    addConstraint(NSLayoutConstraint(item: card, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1, constant: 0 ))
+    
+    addConstraint(NSLayoutConstraint(item: card, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1, constant: 0 ))
+
+  }
 
 }
