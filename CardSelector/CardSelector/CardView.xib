@@ -8,7 +8,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardView" customModule="CardSelector" customModuleProvider="target">
             <connections>
-                <outlet property="card" destination="iN0-l3-epB" id="6MB-se-eN0"/>
+                <outlet property="background" destination="G5Z-BC-zu0" id="B7r-Ux-Pfh"/>
+                <outlet property="bankImage" destination="Nof-27-2xa" id="d3b-r8-yuK"/>
+                <outlet property="cardView" destination="iN0-l3-epB" id="g5O-3c-yQM"/>
+                <outlet property="programLabel" destination="9zU-Uf-Jj3" id="eyE-DI-sWa"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -24,6 +27,12 @@
                         <constraint firstAttribute="width" constant="300" id="jKj-cI-i1b"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Program" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zU-Uf-Jj3">
+                    <rect key="frame" x="66" y="8" width="226" height="50"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="****" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CiG-oF-ilo">
                     <rect key="frame" x="0.0" y="61" width="75" height="25"/>
                     <constraints>
@@ -74,8 +83,11 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="9zU-Uf-Jj3" secondAttribute="trailing" constant="8" id="02U-ae-eHq"/>
+                <constraint firstItem="9zU-Uf-Jj3" firstAttribute="top" secondItem="Nof-27-2xa" secondAttribute="top" id="7Ag-hD-8yl"/>
                 <constraint firstItem="Nof-27-2xa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="DO0-Ig-WHF"/>
                 <constraint firstItem="dzJ-Qd-xZG" firstAttribute="top" secondItem="JUQ-Pq-VJB" secondAttribute="top" id="G0r-8U-4rH"/>
+                <constraint firstItem="9zU-Uf-Jj3" firstAttribute="leading" secondItem="Nof-27-2xa" secondAttribute="trailing" constant="8" id="I1k-mA-AiR"/>
                 <constraint firstItem="sjg-qd-Mtc" firstAttribute="bottom" secondItem="dzJ-Qd-xZG" secondAttribute="bottom" id="K2S-J0-NuE"/>
                 <constraint firstAttribute="bottom" secondItem="G5Z-BC-zu0" secondAttribute="bottom" id="Knd-Wu-5Ye"/>
                 <constraint firstItem="CiG-oF-ilo" firstAttribute="top" secondItem="Nof-27-2xa" secondAttribute="bottom" constant="3" id="Ncu-se-c4Y"/>
@@ -87,6 +99,7 @@
                 <constraint firstItem="G5Z-BC-zu0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="mk9-fZ-o6u"/>
                 <constraint firstItem="dzJ-Qd-xZG" firstAttribute="bottom" secondItem="JUQ-Pq-VJB" secondAttribute="bottom" id="pt8-Gh-d4p"/>
                 <constraint firstItem="JUQ-Pq-VJB" firstAttribute="leading" secondItem="CiG-oF-ilo" secondAttribute="trailing" id="qkQ-fS-San"/>
+                <constraint firstItem="9zU-Uf-Jj3" firstAttribute="bottom" secondItem="Nof-27-2xa" secondAttribute="bottom" id="sKQ-bc-Mxh"/>
                 <constraint firstItem="Nof-27-2xa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" id="tVp-NF-Nsb"/>
                 <constraint firstItem="JUQ-Pq-VJB" firstAttribute="top" secondItem="CiG-oF-ilo" secondAttribute="top" id="xip-Bo-r5t"/>
                 <constraint firstItem="dzJ-Qd-xZG" firstAttribute="leading" secondItem="JUQ-Pq-VJB" secondAttribute="trailing" id="xkd-d2-a9U"/>
