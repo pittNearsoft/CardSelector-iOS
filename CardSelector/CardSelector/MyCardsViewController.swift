@@ -20,7 +20,7 @@ class MyCardsViewController: UIViewController {
       tableView.registerNib(nibName, forCellReuseIdentifier: CardCell.reuseIdentifier())
       
       tableView.rowHeight = UITableViewAutomaticDimension
-      tableView.estimatedRowHeight = 200 //104.0
+      tableView.estimatedRowHeight = 184 //104.0
     }
 
 }
