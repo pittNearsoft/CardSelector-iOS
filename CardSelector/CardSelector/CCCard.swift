@@ -17,6 +17,8 @@ class CCCard: Mappable {
   var cardType: CCCardType?
   var cardProgram: CCCardProgram?
   var cardLevel: CCCardLevel?
+  var color = UIColor.whiteColor()
+  
   
   required init?(_ map: Map) {
     
