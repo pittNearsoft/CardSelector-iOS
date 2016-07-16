@@ -12,9 +12,26 @@
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="338" height="168"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eIJ-6Z-pdp" customClass="CardView" customModule="CardSelector" customModuleProvider="target">
+                        <rect key="frame" x="19" y="34" width="300" height="100"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="Etk-0p-J8Z"/>
+                            <constraint firstAttribute="width" constant="300" id="KXL-cK-zki"/>
+                        </constraints>
+                    </view>
+                </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <constraints>
+                <constraint firstItem="eIJ-6Z-pdp" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="dIU-Q5-iCu"/>
+                <constraint firstItem="eIJ-6Z-pdp" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="dm1-0n-UTj"/>
+            </constraints>
             <size key="customSize" width="378" height="208"/>
+            <connections>
+                <outlet property="card" destination="eIJ-6Z-pdp" id="k7d-Uo-RjW"/>
+            </connections>
             <point key="canvasLocation" x="386" y="486"/>
         </collectionViewCell>
     </objects>
