@@ -12,6 +12,8 @@ class AddCardViewController: UIViewController {
   
   @IBOutlet weak var cardCollectionView: UICollectionView!
   
+  let cardViewModel = CCCardViewModel()
+  
   var listCards: [CCCard] = []
   
   
@@ -23,7 +25,7 @@ class AddCardViewController: UIViewController {
     
     let nibName = UINib(nibName: CardCollectionViewCell.reuseIdentifier(), bundle:nil)
     cardCollectionView.registerNib(nibName, forCellWithReuseIdentifier: CardCollectionViewCell.reuseIdentifier())
-    
+    getAvailableCards()
   }
   
   @IBAction func saveCard(sender: AnyObject) {
@@ -35,6 +37,16 @@ class AddCardViewController: UIViewController {
     dismissViewControllerAnimated(true, completion: nil)
   }
   
+  func getAvailableCards() {
+
+    cardViewModel.getAvailableCards({ (listCards) in
+      self.listCards = listCards
+      self.cardCollectionView.reloadData()
+      }) { (error) in
+        print(error.localizedDescription)
+    }
+  }
+  
 }
 
 
@@ -44,11 +56,13 @@ extension AddCardViewController: UICollectionViewDataSource{
   }
   
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 5
+    return listCards.count
   }
   
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell = cardCollectionView.dequeueReusableCellWithReuseIdentifier(CardCollectionViewCell.reuseIdentifier(), forIndexPath: indexPath)
+    let cell = cardCollectionView.dequeueReusableCellWithReuseIdentifier(CardCollectionViewCell.reuseIdentifier(), forIndexPath: indexPath) as! CardCollectionViewCell
+    
+    cell.configureCellWithCard(listCards[indexPath.row])
     
     return cell
   }
