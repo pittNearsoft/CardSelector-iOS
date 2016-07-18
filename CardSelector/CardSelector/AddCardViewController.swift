@@ -12,6 +12,8 @@ class AddCardViewController: UIViewController {
   
   @IBOutlet weak var cardCollectionView: UICollectionView!
   
+  var listCards: [CCCard] = []
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -53,7 +55,10 @@ extension AddCardViewController: UICollectionViewDataSource{
 }
 
 extension AddCardViewController: UICollectionViewDelegate{
-  
+  func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    let cell = collectionView.cellForItemAtIndexPath(indexPath) as! CardCollectionViewCell
+    cell.checkImage.hidden = !cell.checkImage.hidden
+  }
 }
 
 extension AddCardViewController: UICollectionViewDelegateFlowLayout{
