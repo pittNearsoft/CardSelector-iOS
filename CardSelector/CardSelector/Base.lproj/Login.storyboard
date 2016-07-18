@@ -47,12 +47,6 @@
                                     <action selector="googleSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4aU-w7-b6w"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Compadre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpn-Eg-2HW">
-                                <rect key="frame" x="20" y="96" width="560" height="32"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T58-VF-M9H">
                                 <rect key="frame" x="20" y="364" width="560" height="45"/>
                                 <color key="backgroundColor" red="0.048156191112639128" green="0.70164262820512824" blue="0.13023079494721582" alpha="1" colorSpace="calibratedRGB"/>
@@ -116,32 +110,38 @@
                                     <action selector="createAccount:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1pS-b1-zyv"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardCompadreBigLogo" translatesAutoresizingMaskIntoConstraints="NO" id="eUd-1t-TND">
+                                <rect key="frame" x="20" y="40" width="560" height="88"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="88" id="daC-TP-cFX"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="x0P-ch-KD2" firstAttribute="leading" secondItem="hpn-Eg-2HW" secondAttribute="leading" id="1Mk-3o-xow"/>
-                            <constraint firstItem="N0b-hj-0PN" firstAttribute="trailing" secondItem="hpn-Eg-2HW" secondAttribute="trailing" id="2iI-9y-9fB"/>
                             <constraint firstItem="NO6-KB-TIR" firstAttribute="top" secondItem="Tn9-vL-Ijn" secondAttribute="bottom" constant="26" id="3W2-lf-jlo"/>
                             <constraint firstItem="2Ms-8X-z08" firstAttribute="top" secondItem="NO6-KB-TIR" secondAttribute="bottom" constant="-1" id="4pH-x3-yPW"/>
                             <constraint firstItem="Gzk-tB-Qtg" firstAttribute="top" secondItem="T58-VF-M9H" secondAttribute="bottom" constant="8" id="5wU-tz-Yc8"/>
                             <constraint firstItem="2Ms-8X-z08" firstAttribute="trailing" secondItem="NO6-KB-TIR" secondAttribute="trailing" id="6kS-r2-PJg"/>
                             <constraint firstItem="2Ms-8X-z08" firstAttribute="leading" secondItem="NO6-KB-TIR" secondAttribute="leading" id="8P3-Y6-kHE"/>
+                            <constraint firstItem="eUd-1t-TND" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="9e1-gG-CvX"/>
+                            <constraint firstItem="N0b-hj-0PN" firstAttribute="trailing" secondItem="eUd-1t-TND" secondAttribute="trailing" id="FnO-Ju-jWb"/>
                             <constraint firstItem="2pg-h1-jVR" firstAttribute="top" secondItem="Gzk-tB-Qtg" secondAttribute="bottom" constant="8" id="G3v-lz-p8F"/>
-                            <constraint firstItem="hpn-Eg-2HW" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="76" id="L5A-Mn-nr9"/>
-                            <constraint firstItem="hpn-Eg-2HW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="LBI-MU-IeH"/>
+                            <constraint firstItem="x0P-ch-KD2" firstAttribute="leading" secondItem="eUd-1t-TND" secondAttribute="leading" id="KRv-sq-QWb"/>
                             <constraint firstItem="VLK-Jg-320" firstAttribute="leading" secondItem="x0P-ch-KD2" secondAttribute="leading" id="Myv-aH-ens"/>
                             <constraint firstItem="N0b-hj-0PN" firstAttribute="width" secondItem="x0P-ch-KD2" secondAttribute="width" id="Nd4-Aa-Iuk"/>
-                            <constraint firstAttribute="trailing" secondItem="hpn-Eg-2HW" secondAttribute="trailing" constant="20" id="OaI-Qq-bJ6"/>
+                            <constraint firstItem="eUd-1t-TND" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="ODM-Po-DFh"/>
                             <constraint firstItem="NO6-KB-TIR" firstAttribute="leading" secondItem="VLK-Jg-320" secondAttribute="leading" id="Q5i-QX-sxN"/>
-                            <constraint firstItem="N0b-hj-0PN" firstAttribute="top" secondItem="hpn-Eg-2HW" secondAttribute="bottom" constant="25" id="Q6P-vH-IBO"/>
                             <constraint firstItem="Gzk-tB-Qtg" firstAttribute="leading" secondItem="T58-VF-M9H" secondAttribute="leading" id="RCY-HD-1ku"/>
                             <constraint firstItem="Gzk-tB-Qtg" firstAttribute="trailing" secondItem="T58-VF-M9H" secondAttribute="trailing" id="VTw-yb-YQT"/>
                             <constraint firstItem="2pg-h1-jVR" firstAttribute="leading" secondItem="Gzk-tB-Qtg" secondAttribute="leading" id="WXM-tz-BzU"/>
+                            <constraint firstAttribute="trailing" secondItem="eUd-1t-TND" secondAttribute="trailing" constant="20" id="axq-vE-R3y"/>
                             <constraint firstItem="NO6-KB-TIR" firstAttribute="trailing" secondItem="VLK-Jg-320" secondAttribute="trailing" id="cwX-lU-N7l"/>
                             <constraint firstItem="2pg-h1-jVR" firstAttribute="trailing" secondItem="Gzk-tB-Qtg" secondAttribute="trailing" id="e1L-j5-Vlp"/>
+                            <constraint firstItem="N0b-hj-0PN" firstAttribute="top" secondItem="eUd-1t-TND" secondAttribute="bottom" constant="25" id="gVY-Yb-q2o"/>
                             <constraint firstItem="Tn9-vL-Ijn" firstAttribute="top" secondItem="VLK-Jg-320" secondAttribute="bottom" constant="-1" id="hmC-KF-3nZ"/>
+                            <constraint firstItem="x0P-ch-KD2" firstAttribute="top" secondItem="eUd-1t-TND" secondAttribute="bottom" constant="25" id="hvb-0V-8UB"/>
                             <constraint firstItem="Tn9-vL-Ijn" firstAttribute="trailing" secondItem="VLK-Jg-320" secondAttribute="trailing" id="jMJ-He-uNF"/>
-                            <constraint firstItem="x0P-ch-KD2" firstAttribute="top" secondItem="hpn-Eg-2HW" secondAttribute="bottom" constant="25" id="jvE-Ow-51Y"/>
                             <constraint firstItem="VLK-Jg-320" firstAttribute="trailing" secondItem="N0b-hj-0PN" secondAttribute="trailing" id="lRM-Oj-yUO"/>
                             <constraint firstItem="VLK-Jg-320" firstAttribute="top" secondItem="x0P-ch-KD2" secondAttribute="bottom" constant="8" id="opP-pF-jLP"/>
                             <constraint firstItem="N0b-hj-0PN" firstAttribute="leading" secondItem="x0P-ch-KD2" secondAttribute="trailing" constant="20" id="pj7-lL-2v4"/>
@@ -165,4 +165,7 @@
             <point key="canvasLocation" x="2158" y="479"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cardCompadreBigLogo" width="414" height="186"/>
+    </resources>
 </document>
