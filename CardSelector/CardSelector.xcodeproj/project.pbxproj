@@ -49,6 +49,7 @@
 		B5E266831D33905F0051756C /* MyCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E266821D33905F0051756C /* MyCardsViewController.swift */; };
 		B5EB172E1D3CADEC002AC817 /* CCCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB172D1D3CADEC002AC817 /* CCCardViewModel.swift */; };
 		B5EB17301D3CB04D002AC817 /* CCCardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB172F1D3CB04D002AC817 /* CCCardService.swift */; };
+		B5EB17321D3CB08C002AC817 /* CCCardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB17311D3CB08C002AC817 /* CCCardRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		B5E266821D33905F0051756C /* MyCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCardsViewController.swift; sourceTree = "<group>"; };
 		B5EB172D1D3CADEC002AC817 /* CCCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardViewModel.swift; sourceTree = "<group>"; };
 		B5EB172F1D3CB04D002AC817 /* CCCardService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardService.swift; sourceTree = "<group>"; };
+		B5EB17311D3CB08C002AC817 /* CCCardRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardRouter.swift; sourceTree = "<group>"; };
 		CFFA4674F87EF22999DD41B8 /* Pods-CardSelector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardSelector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardSelector/Pods-CardSelector.debug.xcconfig"; sourceTree = "<group>"; };
 		E40E44BB5E796BFC035D9F11 /* Pods_CardSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -288,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				B5E266761D2F137A0051756C /* CCPlaceRouter.swift */,
+				B5EB17311D3CB08C002AC817 /* CCCardRouter.swift */,
 			);
 			name = Routers;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				B52581471D26DAFD001CB6BC /* CCUserViewModel.swift in Sources */,
 				B5E2666F1D2F08930051756C /* CCPlaceViewModel.swift in Sources */,
 				B527EF7B1D2DCD23002A24AC /* MarkerInfoView.swift in Sources */,
+				B5EB17321D3CB08C002AC817 /* CCCardRouter.swift in Sources */,
 				B527EF871D2EC5DB002A24AC /* CCPlaceTypeTransformer.swift in Sources */,
 				B5BF109B1D35F8B9008BDF33 /* CCBank.swift in Sources */,
 				B5E266771D2F137A0051756C /* CCPlaceRouter.swift in Sources */,
