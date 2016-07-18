@@ -22,4 +22,14 @@ class CardCollectionViewCell: UICollectionViewCell {
     return "CardCollectionViewCell"
   }
   
+  func configureCellWithCard(ccCard: CCCard) {
+    if ccCard.bank?.name == "Bank Of America" {
+      card.bankImage.image = UIImage(named: "america")
+    }else if ccCard.bank?.name == "Chase"{
+      card.bankImage.image = UIImage(named: "chase")
+    }
+    
+    card.programLabel.text = ccCard.cardProgram?.name
+  }
+  
 }
