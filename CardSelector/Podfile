@@ -36,4 +36,7 @@ target 'CardSelector' do
    #for you to convert your model objects (classes and structs) to and from JSON.
    pod 'ObjectMapper', '~> 1.2'
 
+   #SVProgressHUD is a clean and easy-to-use HUD meant to display the progress of an ongoing task on iOS and tvOS.
+   pod 'SVProgressHUD', '~> 2.0'
+
 end
