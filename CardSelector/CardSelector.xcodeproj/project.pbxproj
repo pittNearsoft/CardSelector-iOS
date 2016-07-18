@@ -280,8 +280,8 @@
 			children = (
 				B5E266781D2F1E090051756C /* Extensions */,
 				B5E266711D2F11480051756C /* CCPlaceService.swift */,
-				B5E266731D2F11C10051756C /* APIClient.swift */,
 				B5EB172F1D3CB04D002AC817 /* CCCardService.swift */,
+				B5E266731D2F11C10051756C /* APIClient.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
