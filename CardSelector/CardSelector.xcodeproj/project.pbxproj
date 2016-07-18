@@ -48,6 +48,7 @@
 		B5E2667A1D2F1E190051756C /* AlamofireExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E266791D2F1E190051756C /* AlamofireExtensions.swift */; };
 		B5E266831D33905F0051756C /* MyCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E266821D33905F0051756C /* MyCardsViewController.swift */; };
 		B5EB172E1D3CADEC002AC817 /* CCCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB172D1D3CADEC002AC817 /* CCCardViewModel.swift */; };
+		B5EB17301D3CB04D002AC817 /* CCCardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB172F1D3CB04D002AC817 /* CCCardService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		B5E266791D2F1E190051756C /* AlamofireExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireExtensions.swift; sourceTree = "<group>"; };
 		B5E266821D33905F0051756C /* MyCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCardsViewController.swift; sourceTree = "<group>"; };
 		B5EB172D1D3CADEC002AC817 /* CCCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardViewModel.swift; sourceTree = "<group>"; };
+		B5EB172F1D3CB04D002AC817 /* CCCardService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardService.swift; sourceTree = "<group>"; };
 		CFFA4674F87EF22999DD41B8 /* Pods-CardSelector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardSelector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardSelector/Pods-CardSelector.debug.xcconfig"; sourceTree = "<group>"; };
 		E40E44BB5E796BFC035D9F11 /* Pods_CardSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -277,6 +279,7 @@
 				B5E266781D2F1E090051756C /* Extensions */,
 				B5E266711D2F11480051756C /* CCPlaceService.swift */,
 				B5E266731D2F11C10051756C /* APIClient.swift */,
+				B5EB172F1D3CB04D002AC817 /* CCCardService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				B5E266741D2F11C10051756C /* APIClient.swift in Sources */,
 				B5772E421D37EBA3003A5210 /* CardCollectionViewCell.swift in Sources */,
 				B5E2667A1D2F1E190051756C /* AlamofireExtensions.swift in Sources */,
+				B5EB17301D3CB04D002AC817 /* CCCardService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
