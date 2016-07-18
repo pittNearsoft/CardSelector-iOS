@@ -47,6 +47,7 @@
 		B5E266771D2F137A0051756C /* CCPlaceRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E266761D2F137A0051756C /* CCPlaceRouter.swift */; };
 		B5E2667A1D2F1E190051756C /* AlamofireExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E266791D2F1E190051756C /* AlamofireExtensions.swift */; };
 		B5E266831D33905F0051756C /* MyCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E266821D33905F0051756C /* MyCardsViewController.swift */; };
+		B5EB172E1D3CADEC002AC817 /* CCCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB172D1D3CADEC002AC817 /* CCCardViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		B5E266761D2F137A0051756C /* CCPlaceRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCPlaceRouter.swift; sourceTree = "<group>"; };
 		B5E266791D2F1E190051756C /* AlamofireExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireExtensions.swift; sourceTree = "<group>"; };
 		B5E266821D33905F0051756C /* MyCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCardsViewController.swift; sourceTree = "<group>"; };
+		B5EB172D1D3CADEC002AC817 /* CCCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardViewModel.swift; sourceTree = "<group>"; };
 		CFFA4674F87EF22999DD41B8 /* Pods-CardSelector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardSelector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardSelector/Pods-CardSelector.debug.xcconfig"; sourceTree = "<group>"; };
 		E40E44BB5E796BFC035D9F11 /* Pods_CardSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -233,6 +235,7 @@
 			children = (
 				B52581461D26DAFD001CB6BC /* CCUserViewModel.swift */,
 				B5E2666E1D2F08930051756C /* CCPlaceViewModel.swift */,
+				B5EB172D1D3CADEC002AC817 /* CCCardViewModel.swift */,
 			);
 			name = Business;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				B56511141D207980002CD3AF /* AppDelegate.swift in Sources */,
 				B5BF109E1D35FBE7008BDF33 /* CCCardType.swift in Sources */,
 				B5BF10961D35F5A2008BDF33 /* CardCell.swift in Sources */,
+				B5EB172E1D3CADEC002AC817 /* CCCardViewModel.swift in Sources */,
 				B5E2666D1D2F015C0051756C /* CCPlaceType.swift in Sources */,
 				B52581521D2B3EEA001CB6BC /* PlacesViewController.swift in Sources */,
 				B527EF781D2DAFB7002A24AC /* UIView+VisualEffects.swift in Sources */,
