@@ -11,6 +11,7 @@ import UIKit
 class CardCollectionViewCell: UICollectionViewCell {
   
   @IBOutlet weak var card: CardView!
+  @IBOutlet weak var checkImage: UIImageView!
   
   override func awakeFromNib() {
     super.awakeFromNib()
