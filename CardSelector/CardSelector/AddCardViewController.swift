@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class AddCardViewController: UIViewController {
   
@@ -38,12 +39,14 @@ class AddCardViewController: UIViewController {
   }
   
   func getAvailableCards() {
-
+    SVProgressHUD.show()
     cardViewModel.getAvailableCards({ (listCards) in
       self.listCards = listCards
       self.cardCollectionView.reloadData()
+      SVProgressHUD.dismiss()
       }) { (error) in
         print(error.localizedDescription)
+        SVProgressHUD.dismiss()
     }
   }
   
