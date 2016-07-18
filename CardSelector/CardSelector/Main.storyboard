@@ -184,7 +184,7 @@
         <scene sceneID="Cty-im-O4s">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="46j-rT-Idv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Cards" id="Djg-20-lxn"/>
+                    <tabBarItem key="tabBarItem" title="My Cards" image="Mycards" id="Djg-20-lxn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nfb-iT-sFm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -351,6 +351,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Mycards" width="30" height="30"/>
         <image name="gradient4" width="213" height="378"/>
         <image name="icon_me" width="30" height="55"/>
         <image name="profile" width="338" height="338"/>
