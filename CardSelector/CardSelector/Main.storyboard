@@ -259,7 +259,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient4" translatesAutoresizingMaskIntoConstraints="NO" id="wdq-kI-02T">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                             </imageView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Htf-2T-xCz">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Htf-2T-xCz">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="180"/>
                                 <color key="backgroundColor" red="0.058823529411764705" green="0.078431372549019607" blue="0.15294117647058825" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -273,22 +273,42 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Filters:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7d-4N-j97">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a bank:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7d-4N-j97">
                                 <rect key="frame" x="20" y="188" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QNw-0i-ozV">
+                                <rect key="frame" x="0.0" y="217" width="600" height="89"/>
+                                <color key="backgroundColor" red="0.058823529409999999" green="0.078431372550000003" blue="0.1529411765" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="89" id="PWU-34-KgP"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="z2J-Q0-SEM">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Htf-2T-xCz" secondAttribute="trailing" id="7an-U9-Yla"/>
+                            <constraint firstItem="E7d-4N-j97" firstAttribute="top" secondItem="Htf-2T-xCz" secondAttribute="bottom" constant="8" id="HXD-xG-Dz7"/>
+                            <constraint firstItem="QNw-0i-ozV" firstAttribute="top" secondItem="E7d-4N-j97" secondAttribute="bottom" constant="8" id="IiP-op-Fa9"/>
                             <constraint firstItem="wdq-kI-02T" firstAttribute="top" secondItem="bgT-KA-ZgZ" secondAttribute="bottom" id="JpY-HZ-jR9"/>
+                            <constraint firstItem="QNw-0i-ozV" firstAttribute="trailing" secondItem="wdq-kI-02T" secondAttribute="trailing" id="Kky-Sp-t8d"/>
                             <constraint firstItem="Htf-2T-xCz" firstAttribute="leading" secondItem="QY9-4N-rhM" secondAttribute="leading" id="PHn-Yw-jHB"/>
                             <constraint firstItem="Urb-F3-YSy" firstAttribute="top" secondItem="wdq-kI-02T" secondAttribute="bottom" id="aba-Y7-GoV"/>
                             <constraint firstAttribute="trailing" secondItem="wdq-kI-02T" secondAttribute="trailing" id="fa9-r4-wql"/>
+                            <constraint firstItem="QNw-0i-ozV" firstAttribute="leading" secondItem="wdq-kI-02T" secondAttribute="leading" id="nak-Ec-Uj1"/>
                             <constraint firstItem="wdq-kI-02T" firstAttribute="leading" secondItem="QY9-4N-rhM" secondAttribute="leading" id="p9q-46-Qiv"/>
                             <constraint firstItem="Htf-2T-xCz" firstAttribute="top" secondItem="bgT-KA-ZgZ" secondAttribute="bottom" id="paa-Mq-ejc"/>
+                            <constraint firstAttribute="trailing" secondItem="E7d-4N-j97" secondAttribute="trailing" constant="20" id="u3S-Gm-SgA"/>
+                            <constraint firstItem="E7d-4N-j97" firstAttribute="leading" secondItem="QY9-4N-rhM" secondAttribute="leading" constant="20" id="yUo-dQ-5jI"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
@@ -305,6 +325,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bankCollectionView" destination="QNw-0i-ozV" id="Bq0-ut-YAf"/>
                         <outlet property="cardCollectionView" destination="Htf-2T-xCz" id="O1C-Th-PCF"/>
                     </connections>
                 </viewController>
