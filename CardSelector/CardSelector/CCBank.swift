@@ -24,4 +24,10 @@ class CCBank: Mappable {
     description <- map["Description"]
   }
   
+  init(bankId: Int, name: String, description: String){
+    self.bankId = bankId
+    self.name = name
+    self.description = description
+  }
+  
 }
