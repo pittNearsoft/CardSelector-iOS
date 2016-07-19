@@ -50,6 +50,8 @@
 		B5EB172E1D3CADEC002AC817 /* CCCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB172D1D3CADEC002AC817 /* CCCardViewModel.swift */; };
 		B5EB17301D3CB04D002AC817 /* CCCardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB172F1D3CB04D002AC817 /* CCCardService.swift */; };
 		B5EB17321D3CB08C002AC817 /* CCCardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB17311D3CB08C002AC817 /* CCCardRouter.swift */; };
+		B5EB17391D3DC0E1002AC817 /* BankCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB17371D3DC0E1002AC817 /* BankCollectionViewCell.swift */; };
+		B5EB173A1D3DC0E1002AC817 /* BankCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5EB17381D3DC0E1002AC817 /* BankCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +100,8 @@
 		B5EB172D1D3CADEC002AC817 /* CCCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardViewModel.swift; sourceTree = "<group>"; };
 		B5EB172F1D3CB04D002AC817 /* CCCardService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardService.swift; sourceTree = "<group>"; };
 		B5EB17311D3CB08C002AC817 /* CCCardRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCardRouter.swift; sourceTree = "<group>"; };
+		B5EB17371D3DC0E1002AC817 /* BankCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCollectionViewCell.swift; sourceTree = "<group>"; };
+		B5EB17381D3DC0E1002AC817 /* BankCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BankCollectionViewCell.xib; sourceTree = "<group>"; };
 		CFFA4674F87EF22999DD41B8 /* Pods-CardSelector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardSelector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardSelector/Pods-CardSelector.debug.xcconfig"; sourceTree = "<group>"; };
 		E40E44BB5E796BFC035D9F11 /* Pods_CardSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -150,6 +154,8 @@
 				B5BF10A91D361BCD008BDF33 /* CardView.xib */,
 				B5772E401D37EBA3003A5210 /* CardCollectionViewCell.swift */,
 				B5772E411D37EBA3003A5210 /* CardCollectionViewCell.xib */,
+				B5EB17371D3DC0E1002AC817 /* BankCollectionViewCell.swift */,
+				B5EB17381D3DC0E1002AC817 /* BankCollectionViewCell.xib */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -373,6 +379,7 @@
 				B5BF10971D35F5A2008BDF33 /* CardCell.xib in Resources */,
 				B52581411D258CDF001CB6BC /* LaunchScreen.storyboard in Resources */,
 				B527EF7D1D2DCD3B002A24AC /* MarkerInfoView.xib in Resources */,
+				B5EB173A1D3DC0E1002AC817 /* BankCollectionViewCell.xib in Resources */,
 				B56511191D207980002CD3AF /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,6 +457,7 @@
 				B5BF10A81D361BC1008BDF33 /* CardView.swift in Sources */,
 				B5E266831D33905F0051756C /* MyCardsViewController.swift in Sources */,
 				B52581471D26DAFD001CB6BC /* CCUserViewModel.swift in Sources */,
+				B5EB17391D3DC0E1002AC817 /* BankCollectionViewCell.swift in Sources */,
 				B5E2666F1D2F08930051756C /* CCPlaceViewModel.swift in Sources */,
 				B527EF7B1D2DCD23002A24AC /* MarkerInfoView.swift in Sources */,
 				B5EB17321D3CB08C002AC817 /* CCCardRouter.swift in Sources */,

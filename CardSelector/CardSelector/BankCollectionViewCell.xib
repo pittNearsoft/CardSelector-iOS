@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BankCollectionViewCell" id="gTV-IL-0wX" customClass="BankCollectionViewCell" customModule="CardSelector" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="85" height="60"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="85" height="60"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ddC-ZE-Hd7">
+                        <rect key="frame" x="0.0" y="0.0" width="85" height="60"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="ddC-ZE-Hd7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="3fU-Xk-cbw"/>
+                <constraint firstItem="ddC-ZE-Hd7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ASV-fa-6R8"/>
+                <constraint firstAttribute="bottom" secondItem="ddC-ZE-Hd7" secondAttribute="bottom" id="Dwy-OE-eTp"/>
+                <constraint firstAttribute="trailing" secondItem="ddC-ZE-Hd7" secondAttribute="trailing" id="wqM-cX-qWK"/>
+            </constraints>
+            <size key="customSize" width="317" height="187"/>
+            <connections>
+                <outlet property="bankImage" destination="ddC-ZE-Hd7" id="Dch-l2-LZ5"/>
+            </connections>
+            <point key="canvasLocation" x="942.5" y="497"/>
+        </collectionViewCell>
+    </objects>
+</document>
