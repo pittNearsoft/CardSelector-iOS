@@ -17,20 +17,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="85" height="60"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </imageView>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HYF-jz-W1l">
+                        <rect key="frame" x="0.0" y="0.0" width="85" height="60"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.42020474137931035" colorSpace="calibratedWhite"/>
+                    </view>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="select" translatesAutoresizingMaskIntoConstraints="NO" id="dwd-xT-izy">
+                        <rect key="frame" x="27" y="15" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="Eai-yR-xBF"/>
+                            <constraint firstAttribute="width" constant="30" id="ppz-0r-a0s"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
                 <constraint firstItem="ddC-ZE-Hd7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="3fU-Xk-cbw"/>
+                <constraint firstItem="HYF-jz-W1l" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="8nJ-PQ-5YL"/>
+                <constraint firstItem="HYF-jz-W1l" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="91t-Hw-pjn"/>
                 <constraint firstItem="ddC-ZE-Hd7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ASV-fa-6R8"/>
+                <constraint firstAttribute="trailing" secondItem="HYF-jz-W1l" secondAttribute="trailing" id="AhT-sj-GPw"/>
                 <constraint firstAttribute="bottom" secondItem="ddC-ZE-Hd7" secondAttribute="bottom" id="Dwy-OE-eTp"/>
+                <constraint firstItem="dwd-xT-izy" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="F1e-uv-ALB"/>
+                <constraint firstAttribute="bottom" secondItem="HYF-jz-W1l" secondAttribute="bottom" id="VlU-T0-HAc"/>
+                <constraint firstItem="dwd-xT-izy" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="auM-m8-cvw"/>
                 <constraint firstAttribute="trailing" secondItem="ddC-ZE-Hd7" secondAttribute="trailing" id="wqM-cX-qWK"/>
             </constraints>
             <size key="customSize" width="317" height="187"/>
             <connections>
                 <outlet property="bankImage" destination="ddC-ZE-Hd7" id="Dch-l2-LZ5"/>
+                <outlet property="selectImage" destination="dwd-xT-izy" id="3S4-KF-LrW"/>
+                <outlet property="selectedView" destination="HYF-jz-W1l" id="VSH-ct-xJ4"/>
             </connections>
             <point key="canvasLocation" x="942.5" y="497"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="select" width="50" height="50"/>
+    </resources>
 </document>

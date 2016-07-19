@@ -116,6 +116,9 @@ extension AddCardViewController: UICollectionViewDelegate{
     if collectionView == self.cardCollectionView {
       let cell = collectionView.cellForItemAtIndexPath(indexPath) as! CardCollectionViewCell
       cell.checkImage.hidden = !cell.checkImage.hidden
+    }else{
+      let cell = collectionView.cellForItemAtIndexPath(indexPath) as! BankCollectionViewCell
+      cell.checked = !cell.checked
     }
     
   }
