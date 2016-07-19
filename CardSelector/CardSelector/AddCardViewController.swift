@@ -26,6 +26,7 @@ class AddCardViewController: UIViewController {
   
   
   let cardViewModel = CCCardViewModel()
+  let bankViewModel = CCBankViewModel()
   
   var listCards: [CCCard] = []
   var listBanks: [CCBank] = []
@@ -55,15 +56,16 @@ class AddCardViewController: UIViewController {
     
     heightConstraint.constant = 0
     
-    listBanks.append(CCBank(bankId: 1, name: "Chase", description: ""))
-    listBanks.append(CCBank(bankId: 2, name: "Bank Of America", description: ""))
-    listBanks.append(CCBank(bankId: 3, name: "wells", description: ""))
+//    listBanks.append(CCBank(bankId: 1, name: "Chase", description: ""))
+//    listBanks.append(CCBank(bankId: 2, name: "Bank Of America", description: ""))
+//    listBanks.append(CCBank(bankId: 3, name: "wells", description: ""))
     
     
     //Nofitication to up or down text field when keyboard appear/disappear
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleKeyboardWillShowWithNotification), name: UIKeyboardWillShowNotification, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleKeyboardWillHideWithNotification), name: UIKeyboardWillHideNotification, object: nil)
     
+    getAvailableBanks()
     getAvailableCards()
   }
   
@@ -82,6 +84,20 @@ class AddCardViewController: UIViewController {
   
   @IBAction func cancelOperation(sender: AnyObject) {
     dismissViewControllerAnimated(true, completion: nil)
+  }
+  
+  func getAvailableBanks() {
+    bankCollectionView.lock()
+    
+    bankViewModel.getAvailableBanks({ (listBanks) in
+      self.listBanks = listBanks
+      self.bankCollectionView.reloadData()
+      self.bankCollectionView.unlock()
+      
+    }) { (error) in
+        print(error.localizedDescription)
+        self.bankCollectionView.unlock()
+    }
   }
   
   func getAvailableCards() {
