@@ -66,7 +66,7 @@ class AddCardViewController: UIViewController {
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleKeyboardWillHideWithNotification), name: UIKeyboardWillHideNotification, object: nil)
     
     getAvailableBanks()
-    getAvailableCards()
+    //getAvailableCards()
   }
   
   func dismissKeyboard() {
@@ -87,16 +87,23 @@ class AddCardViewController: UIViewController {
   }
   
   func getAvailableBanks() {
-    bankCollectionView.lock()
-    
+    //bankCollectionView.lock()
+    SVProgressHUD.show()
     bankViewModel.getAvailableBanks({ (listBanks) in
       self.listBanks = listBanks
       self.bankCollectionView.reloadData()
-      self.bankCollectionView.unlock()
+      
+      if listBanks.count > 0{
+        self.getAvailableCardsFromBank(listBanks[0])
+      }
+      
+      //self.bankCollectionView.unlock()
+      SVProgressHUD.dismiss()
       
     }) { (error) in
         print(error.localizedDescription)
-        self.bankCollectionView.unlock()
+        //self.bankCollectionView.unlock()
+      SVProgressHUD.dismiss()
     }
   }
   
@@ -114,19 +121,28 @@ class AddCardViewController: UIViewController {
         self.cardCollectionView.unlock()
     }
     
-//    cardViewModel.getAvailableCardsFromBank(listBanks[0],
-//      completion: { (listCards) in
-//        self.listCards = listCards
-//        self.cardCollectionView.reloadData()
-//        self.cardCollectionView.unlock()
-//
-//      },
-//      onError: { error in
-//        print(error.localizedDescription)
-//        self.cardCollectionView.unlock()
-//      }
-//    )
+
   }
+  
+  func getAvailableCardsFromBank(bank: CCBank) {
+    
+    self.noCardsLabel.hidden = true
+    cardCollectionView.lock()
+    cardViewModel.getAvailableCardsFromBank(bank,
+      completion: { (listCards) in
+        self.listCards = listCards
+        self.cardCollectionView.reloadData()
+        self.cardCollectionView.unlock()
+        
+      },
+      onError: { error in
+        self.noCardsLabel.hidden = false
+        print(error.localizedDescription)
+        self.cardCollectionView.unlock()
+      }
+    )
+  }
+
   
   func handleKeyboardWillShowWithNotification(notification: NSNotification) {
     if let userInfo = notification.userInfo {
@@ -227,6 +243,8 @@ extension AddCardViewController: UICollectionViewDelegate{
       let cell = collectionView.cellForItemAtIndexPath(indexPath) as! BankCollectionViewCell
       cell.checked = !cell.checked
       selectedBank = cell
+      
+      self.getAvailableCardsFromBank(listBanks[indexPath.row])
     }
     
   }
