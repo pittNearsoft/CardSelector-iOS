@@ -12,7 +12,7 @@ import ObjectMapper
 class CCBankViewModel {
   let bankService = CCBankService()
   
-  func getAvailableCards(completion: (listBanks: [CCBank]) -> Void, onError: (error: NSError) -> Void) {
+  func getAvailableBanks(completion: (listBanks: [CCBank]) -> Void, onError: (error: NSError) -> Void) {
     bankService.getAvailableBanks({ (jsonBanks) in
       let banks: [CCBank] = Mapper<CCBank>().mapArray(jsonBanks)!
       completion(listBanks: banks)
