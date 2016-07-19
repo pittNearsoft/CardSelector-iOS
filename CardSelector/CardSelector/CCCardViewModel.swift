@@ -12,13 +12,25 @@ import ObjectMapper
 class CCCardViewModel {
   let cardService = CCCardService()
   
-  func getAvailableCards(completion: (listCards: [CCCard])-> Void, onError: (error: NSError)->Void) {
+  func getAvailableCards(completion: (listCards: [CCCard]) -> Void, onError: (error: NSError) -> Void) {
     cardService.getAvailableCards({ (jsonCards) in
       let cards: [CCCard] = Mapper<CCCard>().mapArray(jsonCards)!
       completion(listCards: cards)
     }) { (error) in
       onError(error: error)
     }
+  }
+  
+  func getAvailableCardsFromBank(bank: CCBank,completion: (listCards: [CCCard]) -> Void, onError: (error: NSError) -> Void) {    
+    cardService.getAvailableCardsFromBank(bank,
+      completion: { (jsonCards) in
+        let cards: [CCCard] = Mapper<CCCard>().mapArray(jsonCards)!
+        completion(listCards: cards)
+      },
+      onError: { (error) in
+        onError(error: error)
+      }
+    )
   }
 
 }

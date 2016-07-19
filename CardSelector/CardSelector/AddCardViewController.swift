@@ -94,6 +94,19 @@ class AddCardViewController: UIViewController {
         print(error.localizedDescription)
         self.cardCollectionView.unlock()
     }
+    
+//    cardViewModel.getAvailableCardsFromBank(listBanks[0],
+//      completion: { (listCards) in
+//        self.listCards = listCards
+//        self.cardCollectionView.reloadData()
+//        self.cardCollectionView.unlock()
+//
+//      },
+//      onError: { error in
+//        print(error.localizedDescription)
+//        self.cardCollectionView.unlock()
+//      }
+//    )
   }
   
   func handleKeyboardWillShowWithNotification(notification: NSNotification) {
