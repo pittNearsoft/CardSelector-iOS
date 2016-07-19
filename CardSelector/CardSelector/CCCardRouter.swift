@@ -15,8 +15,11 @@ enum CCCardRouter: URLRequestConvertible {
   
   var method: Alamofire.Method{
     switch self {
-    case .getAvailableCards, .getAvailableCardsFromBank:
+    case .getAvailableCards:
       return .GET
+      
+    case .getAvailableCardsFromBank:
+      return .POST
       
     }
   }
