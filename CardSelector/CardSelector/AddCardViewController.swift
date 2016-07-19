@@ -18,6 +18,8 @@ class AddCardViewController: UIViewController {
   
   var listCards: [CCCard] = []
   var listBanks: [CCBank] = []
+  var selectedBank: BankCollectionViewCell?
+  var selectedCard: CardCollectionViewCell?
   
   
   override func viewDidLoad() {
@@ -114,11 +116,24 @@ extension AddCardViewController: UICollectionViewDelegate{
   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     
     if collectionView == self.cardCollectionView {
+      
+      selectedCard?.checked = !selectedCard!.checked
       let cell = collectionView.cellForItemAtIndexPath(indexPath) as! CardCollectionViewCell
-      cell.checkImage.hidden = !cell.checkImage.hidden
+
+      if selectedCard != cell {
+        cell.checked = !cell.checked
+        selectedCard = cell
+      }
+      
+      
+      
     }else{
+      
+      selectedBank?.checked = false
+      
       let cell = collectionView.cellForItemAtIndexPath(indexPath) as! BankCollectionViewCell
       cell.checked = !cell.checked
+      selectedBank = cell
     }
     
   }

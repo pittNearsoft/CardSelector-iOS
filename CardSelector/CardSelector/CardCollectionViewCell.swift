@@ -11,7 +11,19 @@ import UIKit
 class CardCollectionViewCell: UICollectionViewCell {
   
   @IBOutlet weak var card: CardView!
-  @IBOutlet weak var checkImage: UIImageView!
+  @IBOutlet weak var selectImage: UIImageView!
+  
+  @IBOutlet weak var selectedView: UIView!
+  
+  var checked: Bool = false {
+    willSet{
+      if newValue == true {
+        didSelect()
+      }else{
+        didUnselect()
+      }
+    }
+  }
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -24,6 +36,16 @@ class CardCollectionViewCell: UICollectionViewCell {
   
   func configureCellWithCard(ccCard: CCCard) {
     card.configureWithCard(ccCard)
+  }
+  
+  private func didSelect() {
+    selectImage.hidden = false
+    selectedView.hidden = false
+  }
+  
+  private func didUnselect() {
+    selectImage.hidden = true
+    selectedView.hidden = true
   }
   
 }
