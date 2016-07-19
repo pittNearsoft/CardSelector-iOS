@@ -54,6 +54,7 @@
 		B5EB173A1D3DC0E1002AC817 /* BankCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5EB17381D3DC0E1002AC817 /* BankCollectionViewCell.xib */; };
 		B5EB173E1D3E754F002AC817 /* CCBankRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB173D1D3E754F002AC817 /* CCBankRouter.swift */; };
 		B5EB17401D3E83A3002AC817 /* CCBankService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB173F1D3E83A3002AC817 /* CCBankService.swift */; };
+		B5EB17421D3E8401002AC817 /* CCBankViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB17411D3E8401002AC817 /* CCBankViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +107,7 @@
 		B5EB17381D3DC0E1002AC817 /* BankCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BankCollectionViewCell.xib; sourceTree = "<group>"; };
 		B5EB173D1D3E754F002AC817 /* CCBankRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCBankRouter.swift; sourceTree = "<group>"; };
 		B5EB173F1D3E83A3002AC817 /* CCBankService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCBankService.swift; sourceTree = "<group>"; };
+		B5EB17411D3E8401002AC817 /* CCBankViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCBankViewModel.swift; sourceTree = "<group>"; };
 		CFFA4674F87EF22999DD41B8 /* Pods-CardSelector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardSelector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardSelector/Pods-CardSelector.debug.xcconfig"; sourceTree = "<group>"; };
 		E40E44BB5E796BFC035D9F11 /* Pods_CardSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -250,6 +252,7 @@
 				B52581461D26DAFD001CB6BC /* CCUserViewModel.swift */,
 				B5E2666E1D2F08930051756C /* CCPlaceViewModel.swift */,
 				B5EB172D1D3CADEC002AC817 /* CCCardViewModel.swift */,
+				B5EB17411D3E8401002AC817 /* CCBankViewModel.swift */,
 			);
 			name = Business;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				B5BF10991D35F78F008BDF33 /* CCCard.swift in Sources */,
 				B597B7F31D23326500E62371 /* SessionManager.swift in Sources */,
 				B5BF10A01D3600FC008BDF33 /* CCCardProgram.swift in Sources */,
+				B5EB17421D3E8401002AC817 /* CCBankViewModel.swift in Sources */,
 				B5E266721D2F11480051756C /* CCPlaceService.swift in Sources */,
 				B5E266741D2F11C10051756C /* APIClient.swift in Sources */,
 				B5772E421D37EBA3003A5210 /* CardCollectionViewCell.swift in Sources */,
