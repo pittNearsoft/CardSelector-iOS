@@ -22,6 +22,7 @@ class AddCardViewController: UIViewController {
   @IBOutlet weak var endingTextField: UITextField!
   @IBOutlet weak var rateTextField: UITextField!
   
+  @IBOutlet weak var noCardsLabel: UILabel!
   
   
   let cardViewModel = CCCardViewModel()
@@ -85,12 +86,14 @@ class AddCardViewController: UIViewController {
   
   func getAvailableCards() {
     
+    self.noCardsLabel.hidden = true
     cardCollectionView.lock()
     cardViewModel.getAvailableCards({ (listCards) in
       self.listCards = listCards
       self.cardCollectionView.reloadData()
       self.cardCollectionView.unlock()
       }) { (error) in
+        self.noCardsLabel.hidden = false
         print(error.localizedDescription)
         self.cardCollectionView.unlock()
     }

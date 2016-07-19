@@ -259,6 +259,15 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient4" translatesAutoresizingMaskIntoConstraints="NO" id="wdq-kI-02T">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                             </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No cards found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ov-Np-pTK">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="Ir5-Br-s0r"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Htf-2T-xCz">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="180"/>
                                 <color key="backgroundColor" red="0.058823529411764705" green="0.078431372549019607" blue="0.15294117647058825" alpha="0.0" colorSpace="calibratedRGB"/>
@@ -372,9 +381,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Htf-2T-xCz" secondAttribute="trailing" id="7an-U9-Yla"/>
+                            <constraint firstItem="3ov-Np-pTK" firstAttribute="leading" secondItem="QY9-4N-rhM" secondAttribute="leading" id="8ZS-zq-iAC"/>
                             <constraint firstItem="Urb-F3-YSy" firstAttribute="top" secondItem="5Vr-Ly-1CV" secondAttribute="bottom" id="BEA-cq-iXO"/>
                             <constraint firstItem="E7d-4N-j97" firstAttribute="top" secondItem="Htf-2T-xCz" secondAttribute="bottom" constant="8" id="HXD-xG-Dz7"/>
+                            <constraint firstItem="3ov-Np-pTK" firstAttribute="top" secondItem="bgT-KA-ZgZ" secondAttribute="bottom" id="HZ1-jM-aLJ"/>
                             <constraint firstItem="QNw-0i-ozV" firstAttribute="top" secondItem="E7d-4N-j97" secondAttribute="bottom" constant="8" id="IiP-op-Fa9"/>
+                            <constraint firstAttribute="trailing" secondItem="3ov-Np-pTK" secondAttribute="trailing" id="J1W-sU-vhj"/>
                             <constraint firstItem="wdq-kI-02T" firstAttribute="top" secondItem="bgT-KA-ZgZ" secondAttribute="bottom" id="JpY-HZ-jR9"/>
                             <constraint firstItem="QNw-0i-ozV" firstAttribute="trailing" secondItem="wdq-kI-02T" secondAttribute="trailing" id="Kky-Sp-t8d"/>
                             <constraint firstItem="Htf-2T-xCz" firstAttribute="leading" secondItem="QY9-4N-rhM" secondAttribute="leading" id="PHn-Yw-jHB"/>
@@ -409,6 +421,7 @@
                         <outlet property="cardCollectionView" destination="Htf-2T-xCz" id="O1C-Th-PCF"/>
                         <outlet property="endingTextField" destination="0s4-1L-d0S" id="Sue-u2-ogk"/>
                         <outlet property="heightConstraint" destination="kW1-0u-oMd" id="Wd2-9x-m2d"/>
+                        <outlet property="noCardsLabel" destination="3ov-Np-pTK" id="Ewh-tB-12c"/>
                         <outlet property="rateTextField" destination="SHG-NB-Nr2" id="IIF-sB-S7H"/>
                     </connections>
                 </viewController>
