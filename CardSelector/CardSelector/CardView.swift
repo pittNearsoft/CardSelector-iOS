@@ -15,6 +15,8 @@ class CardView: UIView {
   @IBOutlet weak var bankImage: UIImageView!
   @IBOutlet weak var background: UIView!
   @IBOutlet weak var programLabel: UILabel!
+  @IBOutlet weak var cardTypeLabel: UILabel!
+  @IBOutlet weak var cardLevelLabel: UILabel!
   
   
   
@@ -36,6 +38,8 @@ class CardView: UIView {
     bankImage.image = UIImage(named: (card.bank?.name)!)
     background.backgroundColor = card.color
     programLabel.text = card.cardProgram?.name
+    cardTypeLabel.text = card.cardType?.name
+    cardLevelLabel.text = (card.cardLevel!.isEnabled) ? card.cardLevel?.name : ""
   }
 
 }
