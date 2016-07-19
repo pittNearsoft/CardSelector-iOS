@@ -11,8 +11,18 @@ import SVProgressHUD
 
 class AddCardViewController: UIViewController {
   
+  
+  @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+  @IBOutlet weak var heightConstraint: NSLayoutConstraint!
+  
   @IBOutlet weak var cardCollectionView: UICollectionView!
   @IBOutlet weak var bankCollectionView: UICollectionView!
+  @IBOutlet weak var additionalInfoView: UIView!
+  
+  @IBOutlet weak var endingTextField: UITextField!
+  @IBOutlet weak var rateTextField: UITextField!
+  
+  
   
   let cardViewModel = CCCardViewModel()
   
@@ -38,19 +48,30 @@ class AddCardViewController: UIViewController {
     bankCollectionView.registerNib(bankNibName, forCellWithReuseIdentifier: BankCollectionViewCell.reuseIdentifier())
     
     
-    listBanks.append(CCBank(bankId: 1, name: "Chase", description: ""))
-    listBanks.append(CCBank(bankId: 2, name: "Bank Of America", description: ""))
-    listBanks.append(CCBank(bankId: 3, name: "wells", description: ""))
+    //Looks for single or multiple taps.
+    let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+    additionalInfoView.addGestureRecognizer(tap)
+    
+    heightConstraint.constant = 0
     
     listBanks.append(CCBank(bankId: 1, name: "Chase", description: ""))
     listBanks.append(CCBank(bankId: 2, name: "Bank Of America", description: ""))
     listBanks.append(CCBank(bankId: 3, name: "wells", description: ""))
     
-    listBanks.append(CCBank(bankId: 1, name: "Chase", description: ""))
-    listBanks.append(CCBank(bankId: 2, name: "Bank Of America", description: ""))
-    listBanks.append(CCBank(bankId: 3, name: "wells", description: ""))
+    
+    //Nofitication to up or down text field when keyboard appear/disappear
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleKeyboardWillShowWithNotification), name: UIKeyboardWillShowNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleKeyboardWillHideWithNotification), name: UIKeyboardWillHideNotification, object: nil)
     
     getAvailableCards()
+  }
+  
+  func dismissKeyboard() {
+    if endingTextField.isFirstResponder() {
+      endingTextField.resignFirstResponder()
+    } else if rateTextField.isFirstResponder(){
+      rateTextField.resignFirstResponder()
+    }
   }
   
   @IBAction func saveCard(sender: AnyObject) {
@@ -73,6 +94,36 @@ class AddCardViewController: UIViewController {
         print(error.localizedDescription)
         self.cardCollectionView.unlock()
     }
+  }
+  
+  func handleKeyboardWillShowWithNotification(notification: NSNotification) {
+    if let userInfo = notification.userInfo {
+      if let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
+        let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! Double
+        let curve = userInfo[UIKeyboardAnimationCurveUserInfoKey] as! UInt
+        
+        animateViewMoving(bottomConstraint,moveValue: keyboardFrame.size.height, curve: curve,duration: duration)
+      }
+    }
+    
+  }
+  
+  func handleKeyboardWillHideWithNotification(notification: NSNotification) {
+    if let userInfo = notification.userInfo {
+      
+      let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! Double
+      let curve = userInfo[UIKeyboardAnimationCurveUserInfoKey] as! UInt
+      animateViewMoving(bottomConstraint,moveValue: 0, curve: curve,duration: duration)
+    }
+  }
+  
+  func animateViewMoving (constraint: NSLayoutConstraint,moveValue :CGFloat, curve: UInt, duration: Double){
+    constraint.constant = moveValue
+    let options = UIViewAnimationOptions(rawValue: curve << 16)
+    UIView.animateWithDuration(duration, delay: 0, options: options,animations: {
+        self.view.layoutIfNeeded()
+      },completion: nil
+    )
   }
   
 }
@@ -102,6 +153,11 @@ extension AddCardViewController: UICollectionViewDataSource{
     } else{
       let cell = bankCollectionView.dequeueReusableCellWithReuseIdentifier(BankCollectionViewCell.reuseIdentifier(), forIndexPath: indexPath) as! BankCollectionViewCell
       
+      if indexPath.row == 0 {
+        cell.checked = true
+        selectedBank = cell
+      }
+      
       cell.bankImage.image = UIImage(named: listBanks[indexPath.row].name)
       return cell
     }
@@ -117,15 +173,20 @@ extension AddCardViewController: UICollectionViewDelegate{
     
     if collectionView == self.cardCollectionView {
       
-      selectedCard?.checked = !selectedCard!.checked
+      
       let cell = collectionView.cellForItemAtIndexPath(indexPath) as! CardCollectionViewCell
 
       if selectedCard != cell {
         cell.checked = !cell.checked
         selectedCard = cell
+        animateViewMoving(heightConstraint,moveValue: 203, curve: UIViewAnimationOptions.CurveLinear.rawValue, duration: 0.3)
+      }else{
+        selectedCard?.checked = !selectedCard!.checked
+        selectedCard = nil
+        animateViewMoving(heightConstraint,moveValue: 0, curve: UIViewAnimationOptions.CurveLinear.rawValue, duration: 0.3)
+        dismissKeyboard()
       }
-      
-      
+
       
     }else{
       
