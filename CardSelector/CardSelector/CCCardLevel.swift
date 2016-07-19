@@ -13,6 +13,7 @@ class CCCardLevel: Mappable {
   var cardLevelId = 0
   var name = ""
   var description = ""
+  var isEnabled = false
 
   required init?(_ map: Map) {
     
@@ -20,7 +21,8 @@ class CCCardLevel: Mappable {
   
   func mapping(map: Map) {
     cardLevelId   <- map["Id"]
-    name            <- map["Name"]
-    description     <- map["Description"]
+    name          <- map["Name"]
+    description   <- map["Description"]
+    isEnabled     <- map["IsEnabled"]
   }
 }
