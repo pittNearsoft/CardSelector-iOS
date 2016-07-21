@@ -112,6 +112,7 @@ class AddCardViewController: UIViewController {
     ActionSheet(message: message)
       .addAction("Cancel")
       .addAction("Yes", style: .Default, handler: { _  in
+        self.dismissKeyboard()
         print("Saving data")
       }).show()
   }
