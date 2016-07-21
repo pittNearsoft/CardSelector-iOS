@@ -33,12 +33,24 @@ class CCCardViewModel {
     )
   }
   
-  func saveCard(card: CCCard, user: CCUser, completion: ((sucess: String)-> Void)?, onError: (error: NSError)->Void) {
+  func saveCard(card: CCProfileCard, user: CCUser, completion: ((sucess: String)-> Void)?, onError: (error: NSError)->Void) {
     cardService.saveCard(card, user: user, completion: { (sucess) in
         completion?(sucess: sucess)
       }) { (error) in
         onError(error: error)
     }
+  }
+  
+  func getProfileCardsFromUser(user: CCUser, completion: (listCards: [CCProfileCard]) -> Void, onError: (error: NSError) -> Void) {
+    cardService.getProfileCardsFromUser(user,
+      completion: { (jsonCards) in
+        let cards: [CCProfileCard] = Mapper<CCProfileCard>().mapArray(jsonCards)!
+        completion(listCards: cards)
+      },
+      onError: { (error) in
+        onError(error: error)
+      }
+    )
   }
 
 }

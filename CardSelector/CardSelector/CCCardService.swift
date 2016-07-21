@@ -46,12 +46,28 @@ class CCCardService {
 
   }
   
-  func saveCard(card: CCCard, user: CCUser, completion: (sucess: String)-> Void, onError: (error: NSError)->Void) {
+  func saveCard(card: CCProfileCard, user: CCUser, completion: (sucess: String)-> Void, onError: (error: NSError)->Void) {
     apiClient.manager.request(CCCardRouter.saveCard(card: card, user: user))
       .CCresponseJSON { (response) in
-        switch response.result{
-        case .Success:
+        switch response.response!.statusCode{
+        case 200:
           completion(sucess: "ok")
+        default:
+          onError(error: Error.error(code: response.response!.statusCode, failureReason: "Server error"))
+        }
+    }
+  }
+  
+  func getProfileCardsFromUser(user: CCUser, completion: (jsonCards: [AnyObject])-> Void, onError: (error: NSError)->Void) {
+    apiClient.manager.request(CCCardRouter.getProfileCardsFromUser(user: user))
+      .CCresponseJSON { (response) in
+        switch response.result{
+        case .Success(let JSON):
+          guard let result = JSON["UserProfileCards"] as? [AnyObject] else{
+            onError(error: Error.error(code: -1, failureReason: "Bad json received"))
+            return
+          }
+          completion(jsonCards: result)
           
         case .Failure(let error):
           onError(error: error)

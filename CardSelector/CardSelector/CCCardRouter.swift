@@ -12,14 +12,15 @@ enum CCCardRouter: URLRequestConvertible {
   
   case getAvailableCards()
   case getAvailableCardsFromBank(bank: CCBank)
-  case saveCard(card: CCCard, user: CCUser)
+  case saveCard(card: CCProfileCard, user: CCUser)
+  case getProfileCardsFromUser(user: CCUser)
   
   var method: Alamofire.Method{
     switch self {
     case .getAvailableCards:
       return .GET
       
-    case .getAvailableCardsFromBank, saveCard:
+    case .getAvailableCardsFromBank, saveCard, .getProfileCardsFromUser:
       return .POST
       
     }
@@ -32,6 +33,9 @@ enum CCCardRouter: URLRequestConvertible {
       
     case .saveCard:
       return "ProfileCards"
+      
+    case .getProfileCardsFromUser:
+      return "ProfileCards/Cards"
     }
   }
   
@@ -42,13 +46,28 @@ enum CCCardRouter: URLRequestConvertible {
         "BankId"         : bank.bankId
       ]
       
-    case .saveCard(let card, let user):
-      return [
+    case .saveCard(let profileCard, let user):
+      
+      var dictionary: [String: AnyObject] = [
         //TODO: REMOVE THIS LATER
         "UserProfileId" : 1,
-        "CardId"        : card.cardId,
-        "EndingCard"    : card.ending,
-        "InterestRate"  : card.interestRate
+        "CardId"        : profileCard.card!.cardId,
+      ]
+      
+      if profileCard.endingCard != -1 {
+        dictionary["EndingCard"] = profileCard.endingCard
+      }
+      
+      if profileCard.interestRate != -1 {
+        dictionary["InterestRate"] = profileCard.interestRate
+      }
+      
+      return dictionary
+      
+    case .getProfileCardsFromUser(let user):
+      return [
+        //TODO: REMOVE THIS LATER
+        "Email" : "javier.eduardo.velarde@gmail.com"
       ]
       
     case .getAvailableCards:
@@ -58,7 +77,7 @@ enum CCCardRouter: URLRequestConvertible {
   
   private var encoding: ParameterEncoding?{
     switch self {
-    case .getAvailableCardsFromBank, .saveCard:
+    case .getAvailableCardsFromBank, .saveCard, .getProfileCardsFromUser:
       return Alamofire.ParameterEncoding.JSON
     case .getAvailableCards:
       return nil
