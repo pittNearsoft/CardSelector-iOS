@@ -45,5 +45,18 @@ class CCCardService {
     }
 
   }
+  
+  func saveCard(card: CCCard, user: CCUser, completion: (sucess: String)-> Void, onError: (error: NSError)->Void) {
+    apiClient.manager.request(CCCardRouter.saveCard(card: card, user: user))
+      .CCresponseJSON { (response) in
+        switch response.result{
+        case .Success:
+          completion(sucess: "ok")
+          
+        case .Failure(let error):
+          onError(error: error)
+        }
+    }
+  }
 
 }

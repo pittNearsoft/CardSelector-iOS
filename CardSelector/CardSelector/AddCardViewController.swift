@@ -31,8 +31,10 @@ class AddCardViewController: UIViewController {
   
   var listCards: [CCCard] = []
   var listBanks: [CCBank] = []
-  var selectedBank: BankCollectionViewCell?
-  var selectedCard: CardCollectionViewCell?
+  var selectedBankCell: BankCollectionViewCell?
+  var selectedCardCell: CardCollectionViewCell?
+  
+  var selectedCard: CCCard?
   
   
   override func viewDidLoad() {
@@ -79,7 +81,7 @@ class AddCardViewController: UIViewController {
   }
   
   @IBAction func saveCard(sender: AnyObject) {
-    if selectedCard == nil {
+    if selectedCardCell == nil {
       Alert(title: "Ops!", message: "Please select a card before saving!").showOkay()
     }else{
       confirmSaving()
@@ -96,10 +98,14 @@ class AddCardViewController: UIViewController {
     
     if endingTextField.text!.isEmpty {
       missingData.append("ending")
+    }else{
+      selectedCard!.ending = Int(endingTextField.text!)!
     }
     
     if rateTextField.text!.isEmpty {
       missingData.append("rate")
+    }else{
+      selectedCard!.interestRate = Double(rateTextField.text!)!
     }
     
     var message = "Are you ready to save?"
@@ -113,8 +119,21 @@ class AddCardViewController: UIViewController {
       .addAction("Cancel")
       .addAction("Yes", style: .Default, handler: { _  in
         self.dismissKeyboard()
-        print("Saving data")
+        self.proceedToSave()
       }).show()
+  }
+  
+  func proceedToSave() {
+    SVProgressHUD.show()
+    
+    let user = CCUserViewModel.getLoggedUser()
+    cardViewModel.saveCard(selectedCard!, user: user!, completion: { (success) in
+      SVProgressHUD.dismiss()
+    }, onError: { (error) in
+      SVProgressHUD.dismiss()
+      Alert(title: "Error", message: "Couldn't save right now, try again later.").showOkay()
+      print(error.localizedDescription)
+    })
   }
   
   func getAvailableBanks() {
@@ -243,7 +262,7 @@ extension AddCardViewController: UICollectionViewDataSource{
       
       if indexPath.row == 0 {
         cell.checked = true
-        selectedBank = cell
+        selectedBankCell = cell
       }
       
       cell.bankImage.image = UIImage(named: listBanks[indexPath.row].name)
@@ -264,12 +283,14 @@ extension AddCardViewController: UICollectionViewDelegate{
       
       let cell = collectionView.cellForItemAtIndexPath(indexPath) as! CardCollectionViewCell
 
-      if selectedCard != cell {
+      if selectedCardCell != cell {
         cell.checked = !cell.checked
-        selectedCard = cell
+        selectedCardCell = cell
+        selectedCard = listCards[indexPath.row]
         showAdditionalInfo()
       }else{
-        selectedCard?.checked = !selectedCard!.checked
+        selectedCardCell?.checked = !selectedCardCell!.checked
+        selectedCardCell = nil
         selectedCard = nil
         hideAdditionalInfo()
       }
@@ -277,17 +298,17 @@ extension AddCardViewController: UICollectionViewDelegate{
       
     }else{
       
-      selectedBank?.checked = false
+      selectedBankCell?.checked = false
       
       let cell = collectionView.cellForItemAtIndexPath(indexPath) as! BankCollectionViewCell
       cell.checked = !cell.checked
-      selectedBank = cell
+      selectedBankCell = cell
       
       self.getAvailableCardsFromBank(listBanks[indexPath.row])
       
-      if selectedCard != nil {
-        selectedCard!.checked = false
-        selectedCard = nil
+      if selectedCardCell != nil {
+        selectedCardCell!.checked = false
+        selectedCardCell = nil
         hideAdditionalInfo()
       }
     }
