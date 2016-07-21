@@ -7,22 +7,62 @@
 //
 
 import UIKit
+import SVProgressHUD
+import LKAlertController
 
 class MyCardsViewController: UIViewController {
-
   
+  
+  @IBOutlet weak var noCardsLabel: UILabel!
   @IBOutlet weak var tableView: UITableView!
   
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  var refreshControl: UIRefreshControl!
+  
+  var profileCards: [CCProfileCard] = []
+  
+  let cardViewModel = CCCardViewModel()
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    let nibName = UINib(nibName: CardCell.reuseIdentifier(), bundle:nil)
+    tableView.registerNib(nibName, forCellReuseIdentifier: CardCell.reuseIdentifier())
+    
+    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.estimatedRowHeight = 184 //104.0
+    setupRefreshControl()
+    getProfileCards()
+  }
+  
+  func getProfileCards() {
+    noCardsLabel.hidden = true
+    SVProgressHUD.show()
+    let user = CCUserViewModel.getLoggedUser()
+    cardViewModel.getProfileCardsFromUser(user!, completion: { (listCards) in
       
-      let nibName = UINib(nibName: CardCell.reuseIdentifier(), bundle:nil)
-      tableView.registerNib(nibName, forCellReuseIdentifier: CardCell.reuseIdentifier())
-      
-      tableView.rowHeight = UITableViewAutomaticDimension
-      tableView.estimatedRowHeight = 184 //104.0
+      self.profileCards = listCards
+      self.tableView.reloadData()
+      self.dismissLoading()
+    }) { (error) in
+      print(error.localizedDescription)
+      //Alert(title: "Error", message: "Please try again later.").showOkay()
+      self.noCardsLabel.hidden = false
+      self.dismissLoading()
     }
-
+  }
+  
+  func setupRefreshControl() {
+    refreshControl = UIRefreshControl()
+    refreshControl.tintColor = UIColor.whiteColor()
+    tableView.addSubview(refreshControl)
+    refreshControl.addTarget(self, action: #selector(getProfileCards), forControlEvents: .ValueChanged)
+  }
+  
+  func dismissLoading() {
+    SVProgressHUD.dismiss()
+    refreshControl?.endRefreshing()
+  }
+  
 }
 
 extension MyCardsViewController: UITableViewDataSource{
@@ -31,11 +71,20 @@ extension MyCardsViewController: UITableViewDataSource{
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 3
+    return profileCards.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(CardCell.reuseIdentifier(), forIndexPath: indexPath) as! CardCell
+    
+    cell.configureCellWithCard(profileCards[indexPath.row].card!)
+    
     return cell
+  }
+}
+
+extension MyCardsViewController: UITableViewDelegate{
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
 }

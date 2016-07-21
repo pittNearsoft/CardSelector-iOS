@@ -34,7 +34,7 @@ class AddCardViewController: UIViewController {
   var selectedBankCell: BankCollectionViewCell?
   var selectedCardCell: CardCollectionViewCell?
   
-  var selectedCard: CCCard?
+  var selectedCard = CCProfileCard()
   
   
   override func viewDidLoad() {
@@ -99,13 +99,13 @@ class AddCardViewController: UIViewController {
     if endingTextField.text!.isEmpty {
       missingData.append("ending")
     }else{
-      selectedCard!.ending = Int(endingTextField.text!)!
+      selectedCard.endingCard = Int(endingTextField.text!)!
     }
     
     if rateTextField.text!.isEmpty {
       missingData.append("rate")
     }else{
-      selectedCard!.interestRate = Double(rateTextField.text!)!
+      selectedCard.interestRate = Double(rateTextField.text!)!
     }
     
     var message = "Are you ready to save?"
@@ -127,8 +127,10 @@ class AddCardViewController: UIViewController {
     SVProgressHUD.show()
     
     let user = CCUserViewModel.getLoggedUser()
-    cardViewModel.saveCard(selectedCard!, user: user!, completion: { (success) in
+    cardViewModel.saveCard(selectedCard, user: user!, completion: { (success) in
+      
       SVProgressHUD.dismiss()
+      self.dismissViewControllerAnimated(true, completion: nil)
     }, onError: { (error) in
       SVProgressHUD.dismiss()
       Alert(title: "Error", message: "Couldn't save right now, try again later.").showOkay()
@@ -286,12 +288,12 @@ extension AddCardViewController: UICollectionViewDelegate{
       if selectedCardCell != cell {
         cell.checked = !cell.checked
         selectedCardCell = cell
-        selectedCard = listCards[indexPath.row]
+        selectedCard.card = listCards[indexPath.row]
         showAdditionalInfo()
       }else{
         selectedCardCell?.checked = !selectedCardCell!.checked
         selectedCardCell = nil
-        selectedCard = nil
+        selectedCard.card = nil
         hideAdditionalInfo()
       }
 

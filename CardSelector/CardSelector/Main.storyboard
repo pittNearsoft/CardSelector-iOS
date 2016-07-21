@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Profile View Controller-->
@@ -211,9 +212,18 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient4" translatesAutoresizingMaskIntoConstraints="NO" id="0SJ-aT-zRm">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient1" translatesAutoresizingMaskIntoConstraints="NO" id="0SJ-aT-zRm">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                             </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No cards found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71U-pX-eOl">
+                                <rect key="frame" x="20" y="258" width="560" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="9Rh-yX-tXn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LnN-8V-jIb">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -228,9 +238,12 @@
                             <constraint firstItem="LsO-0p-OHJ" firstAttribute="top" secondItem="LnN-8V-jIb" secondAttribute="bottom" id="9Tm-xh-AFI"/>
                             <constraint firstAttribute="trailing" secondItem="LnN-8V-jIb" secondAttribute="trailing" id="Dlh-AO-m9h"/>
                             <constraint firstItem="LsO-0p-OHJ" firstAttribute="top" secondItem="0SJ-aT-zRm" secondAttribute="bottom" id="Gac-Po-A5B"/>
+                            <constraint firstItem="71U-pX-eOl" firstAttribute="leading" secondItem="ot9-Cj-7X7" secondAttribute="leadingMargin" id="Jnl-m8-WA6"/>
                             <constraint firstAttribute="trailing" secondItem="0SJ-aT-zRm" secondAttribute="trailing" id="T53-2U-LJI"/>
+                            <constraint firstItem="71U-pX-eOl" firstAttribute="centerY" secondItem="ot9-Cj-7X7" secondAttribute="centerY" id="VPZ-aY-2M7"/>
                             <constraint firstItem="LnN-8V-jIb" firstAttribute="leading" secondItem="ot9-Cj-7X7" secondAttribute="leading" id="XbX-6I-9dr"/>
                             <constraint firstItem="LnN-8V-jIb" firstAttribute="top" secondItem="pi0-Pc-vsW" secondAttribute="bottom" id="btu-qJ-Xxn"/>
+                            <constraint firstItem="71U-pX-eOl" firstAttribute="trailing" secondItem="ot9-Cj-7X7" secondAttribute="trailingMargin" id="c1E-rE-ftD"/>
                             <constraint firstItem="0SJ-aT-zRm" firstAttribute="top" secondItem="pi0-Pc-vsW" secondAttribute="bottom" id="gRQ-yP-iY8"/>
                             <constraint firstItem="0SJ-aT-zRm" firstAttribute="leading" secondItem="ot9-Cj-7X7" secondAttribute="leading" id="i69-7V-z0W"/>
                         </constraints>
@@ -244,6 +257,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="noCardsLabel" destination="71U-pX-eOl" id="DPM-1J-0MK"/>
                         <outlet property="tableView" destination="LnN-8V-jIb" id="LFS-0K-aLt"/>
                     </connections>
                 </viewController>
@@ -477,6 +491,7 @@
     <resources>
         <image name="credit-cards" width="42" height="42"/>
         <image name="dashboard" width="30" height="30"/>
+        <image name="gradient1" width="750" height="1334"/>
         <image name="gradient4" width="213" height="378"/>
         <image name="icon_me" width="30" height="55"/>
         <image name="profile" width="338" height="338"/>
