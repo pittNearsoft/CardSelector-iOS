@@ -12,6 +12,7 @@ import ObjectMapper
 class CCCard: Mappable {
   var cardId = 0
   var code = ""
+  var defaultRate: Double = 0.0
   var interestRate: Double = 0.0
   var bank: CCBank?
   var cardType: CCCardType?
@@ -26,12 +27,13 @@ class CCCard: Mappable {
   }
   
   func mapping(map: Map) {
-    cardId      <- map["Id"]
-    code        <- map["Code"]
-    interestRate <- map["DefaultRate"]
-    bank        <- map["Bank"]
-    cardType    <- map["CardType"]
-    cardProgram <- map["CardProgram"]
-    cardLevel   <- map["Level"]
+    cardId        <- map["Id"]
+    code          <- map["Code"]
+    defaultRate   <- map["DefaultRate"]
+    interestRate  <- map["DefaultRate"]
+    bank          <- map["Bank"]
+    cardType      <- map["CardType"]
+    cardProgram   <- map["CardProgram"]
+    cardLevel     <- map["Level"]
   }
 }
