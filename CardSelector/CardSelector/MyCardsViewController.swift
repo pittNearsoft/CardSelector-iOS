@@ -76,8 +76,8 @@ extension MyCardsViewController: UITableViewDataSource{
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(CardCell.reuseIdentifier(), forIndexPath: indexPath) as! CardCell
-    
-    cell.configureCellWithCard(profileCards[indexPath.row].card!)
+
+    cell.configureCellWithProfileCard(profileCards[indexPath.row])
     
     return cell
   }

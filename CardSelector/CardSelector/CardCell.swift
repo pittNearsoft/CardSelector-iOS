@@ -32,4 +32,10 @@ class CardCell: UITableViewCell {
     card.configureWithCard(ccCard)
   }
   
+  func configureCellWithProfileCard(profileCard: CCProfileCard) {
+    card.configureWithCard(profileCard.card!)
+    card.endingLabel.text = String(profileCard.endingCard)
+    card.endingLabel.font = UIFont(name: "Helvetica", size: 15)
+  }
+  
 }

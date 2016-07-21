@@ -13,6 +13,7 @@
                 <outlet property="cardLevelLabel" destination="agE-KX-1pG" id="kPh-5y-ABE"/>
                 <outlet property="cardTypeLabel" destination="ClO-zL-RM1" id="pX7-MY-u1H"/>
                 <outlet property="cardView" destination="iN0-l3-epB" id="g5O-3c-yQM"/>
+                <outlet property="endingLabel" destination="sjg-qd-Mtc" id="JGR-TR-kyS"/>
                 <outlet property="programLabel" destination="9zU-Uf-Jj3" id="eyE-DI-sWa"/>
             </connections>
         </placeholder>

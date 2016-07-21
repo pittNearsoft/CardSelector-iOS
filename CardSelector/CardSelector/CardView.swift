@@ -17,6 +17,7 @@ class CardView: UIView {
   @IBOutlet weak var programLabel: UILabel!
   @IBOutlet weak var cardTypeLabel: UILabel!
   @IBOutlet weak var cardLevelLabel: UILabel!
+  @IBOutlet weak var endingLabel: UILabel!
   
   
   
