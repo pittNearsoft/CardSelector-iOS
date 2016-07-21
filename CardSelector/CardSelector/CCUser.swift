@@ -15,6 +15,8 @@ class CCUser: NSObject, NSCoding {
   var email     = ""
   var imageUrl  = ""
   var provider  = 0
+  var profileCards: [CCProfileCard] = []
+  
   
   init(userID: String, name: String, email: String, imageUrl: String, provider: Int) {
     self.userID   = userID
