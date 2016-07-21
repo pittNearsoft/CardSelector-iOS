@@ -12,13 +12,14 @@ enum CCCardRouter: URLRequestConvertible {
   
   case getAvailableCards()
   case getAvailableCardsFromBank(bank: CCBank)
+  case saveCard(card: CCCard, user: CCUser)
   
   var method: Alamofire.Method{
     switch self {
     case .getAvailableCards:
       return .GET
       
-    case .getAvailableCardsFromBank:
+    case .getAvailableCardsFromBank, saveCard:
       return .POST
       
     }
@@ -28,6 +29,9 @@ enum CCCardRouter: URLRequestConvertible {
     switch self {
     case .getAvailableCards, .getAvailableCardsFromBank:
       return "Cards"
+      
+    case .saveCard:
+      return "ProfileCards"
     }
   }
   
@@ -38,6 +42,15 @@ enum CCCardRouter: URLRequestConvertible {
         "BankId"         : bank.bankId
       ]
       
+    case .saveCard(let card, let user):
+      return [
+        //TODO: REMOVE THIS LATER
+        "UserProfileId" : 1,
+        "CardId"        : card.cardId,
+        "EndingCard"    : card.ending,
+        "InterestRate"  : card.interestRate
+      ]
+      
     case .getAvailableCards:
       return nil
     }
@@ -45,7 +58,7 @@ enum CCCardRouter: URLRequestConvertible {
   
   private var encoding: ParameterEncoding?{
     switch self {
-    case .getAvailableCardsFromBank:
+    case .getAvailableCardsFromBank, .saveCard:
       return Alamofire.ParameterEncoding.JSON
     case .getAvailableCards:
       return nil
