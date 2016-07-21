@@ -211,9 +211,12 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient4" translatesAutoresizingMaskIntoConstraints="NO" id="0SJ-aT-zRm">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LnN-8V-jIb">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
-                                <color key="backgroundColor" red="0.0" green="0.34004614890000001" blue="0.70498798080000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="2dV-0z-eT7" id="0W7-7R-MvY"/>
                                     <outlet property="delegate" destination="2dV-0z-eT7" id="fPj-8y-2k6"/>
@@ -224,8 +227,12 @@
                         <constraints>
                             <constraint firstItem="LsO-0p-OHJ" firstAttribute="top" secondItem="LnN-8V-jIb" secondAttribute="bottom" id="9Tm-xh-AFI"/>
                             <constraint firstAttribute="trailing" secondItem="LnN-8V-jIb" secondAttribute="trailing" id="Dlh-AO-m9h"/>
+                            <constraint firstItem="LsO-0p-OHJ" firstAttribute="top" secondItem="0SJ-aT-zRm" secondAttribute="bottom" id="Gac-Po-A5B"/>
+                            <constraint firstAttribute="trailing" secondItem="0SJ-aT-zRm" secondAttribute="trailing" id="T53-2U-LJI"/>
                             <constraint firstItem="LnN-8V-jIb" firstAttribute="leading" secondItem="ot9-Cj-7X7" secondAttribute="leading" id="XbX-6I-9dr"/>
                             <constraint firstItem="LnN-8V-jIb" firstAttribute="top" secondItem="pi0-Pc-vsW" secondAttribute="bottom" id="btu-qJ-Xxn"/>
+                            <constraint firstItem="0SJ-aT-zRm" firstAttribute="top" secondItem="pi0-Pc-vsW" secondAttribute="bottom" id="gRQ-yP-iY8"/>
+                            <constraint firstItem="0SJ-aT-zRm" firstAttribute="leading" secondItem="ot9-Cj-7X7" secondAttribute="leading" id="i69-7V-z0W"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
