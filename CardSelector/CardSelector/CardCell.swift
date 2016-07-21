@@ -28,4 +28,8 @@ class CardCell: UITableViewCell {
     
   }
   
+  func configureCellWithCard(ccCard: CCCard) {
+    card.configureWithCard(ccCard)
+  }
+  
 }

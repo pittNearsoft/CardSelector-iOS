@@ -23,13 +23,13 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" red="0.0" green="0.34004614890000001" blue="0.70498798080000002" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="tAc-TK-WVP" secondAttribute="bottom" constant="8" id="905-tD-z2W"/>
                     <constraint firstItem="tAc-TK-WVP" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Yu7-2W-Z8p"/>
                     <constraint firstItem="tAc-TK-WVP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="mFt-gK-Eoa"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="card" destination="tAc-TK-WVP" id="jiJ-EZ-2d7"/>
             </connections>
