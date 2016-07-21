@@ -63,6 +63,16 @@ class CCCardService {
       .CCresponseJSON { (response) in
         switch response.result{
         case .Success(let JSON):
+          
+          if let message = JSON["Message"] as? String{
+            
+            if message == "No Data" {
+              completion(jsonCards: [])
+              return 
+            }
+            
+          }
+          
           guard let result = JSON["UserProfileCards"] as? [AnyObject] else{
             onError(error: Error.error(code: -1, failureReason: "Bad json received"))
             return

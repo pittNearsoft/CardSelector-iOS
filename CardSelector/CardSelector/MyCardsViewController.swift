@@ -18,7 +18,11 @@ class MyCardsViewController: UIViewController {
   
   var refreshControl: UIRefreshControl!
   
-  var profileCards: [CCProfileCard] = []
+  var profileCards: [CCProfileCard] = [] {
+    didSet{
+      self.noCardsLabel.hidden = (profileCards.count > 0) ? true : false
+    }
+  }
   
   let cardViewModel = CCCardViewModel()
   
@@ -35,18 +39,16 @@ class MyCardsViewController: UIViewController {
   }
   
   func getProfileCards() {
-    noCardsLabel.hidden = true
+    
     SVProgressHUD.show()
     let user = CCUserViewModel.getLoggedUser()
     cardViewModel.getProfileCardsFromUser(user!, completion: { (listCards) in
-      
       self.profileCards = listCards
       self.tableView.reloadData()
       self.dismissLoading()
     }) { (error) in
       print(error.localizedDescription)
       //Alert(title: "Error", message: "Please try again later.").showOkay()
-      self.noCardsLabel.hidden = false
       self.dismissLoading()
     }
   }
