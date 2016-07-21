@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import LKAlertController
 
 class AddCardViewController: UIViewController {
   
@@ -78,12 +79,41 @@ class AddCardViewController: UIViewController {
   }
   
   @IBAction func saveCard(sender: AnyObject) {
-    print("Save data here!")
+    if selectedCard == nil {
+      Alert(title: "Ops!", message: "Please select a card before saving!").showOkay()
+    }else{
+      confirmSaving()
+    }
   }
   
   
   @IBAction func cancelOperation(sender: AnyObject) {
     dismissViewControllerAnimated(true, completion: nil)
+  }
+  
+  func confirmSaving() {
+    var missingData: [String] = []
+    
+    if endingTextField.text!.isEmpty {
+      missingData.append("ending")
+    }
+    
+    if rateTextField.text!.isEmpty {
+      missingData.append("rate")
+    }
+    
+    var message = "Are you ready to save?"
+    if missingData.count == 2 {
+      message = "\(missingData[0].capitalizedString) and \(missingData[1]) are blank. Do you want to save anyway?"
+    }else if missingData.count == 1 {
+      message = "\(missingData[0].capitalizedString) is blank. Do you want to save anyway?"
+    }
+    
+    ActionSheet(message: message)
+      .addAction("Cancel")
+      .addAction("Yes", style: .Default, handler: { _  in
+        print("Saving data")
+      }).show()
   }
   
   func getAvailableBanks() {
@@ -174,6 +204,15 @@ class AddCardViewController: UIViewController {
     )
   }
   
+  func showAdditionalInfo() {
+    animateViewMoving(heightConstraint,moveValue: 203, curve: UIViewAnimationOptions.CurveLinear.rawValue, duration: 0.3)
+  }
+  
+  func hideAdditionalInfo() {
+    animateViewMoving(heightConstraint,moveValue: 0, curve: UIViewAnimationOptions.CurveLinear.rawValue, duration: 0.3)
+    dismissKeyboard()
+  }
+  
 }
 
 
@@ -227,12 +266,11 @@ extension AddCardViewController: UICollectionViewDelegate{
       if selectedCard != cell {
         cell.checked = !cell.checked
         selectedCard = cell
-        animateViewMoving(heightConstraint,moveValue: 203, curve: UIViewAnimationOptions.CurveLinear.rawValue, duration: 0.3)
+        showAdditionalInfo()
       }else{
         selectedCard?.checked = !selectedCard!.checked
         selectedCard = nil
-        animateViewMoving(heightConstraint,moveValue: 0, curve: UIViewAnimationOptions.CurveLinear.rawValue, duration: 0.3)
-        dismissKeyboard()
+        hideAdditionalInfo()
       }
 
       
@@ -245,6 +283,12 @@ extension AddCardViewController: UICollectionViewDelegate{
       selectedBank = cell
       
       self.getAvailableCardsFromBank(listBanks[indexPath.row])
+      
+      if selectedCard != nil {
+        selectedCard!.checked = false
+        selectedCard = nil
+        hideAdditionalInfo()
+      }
     }
     
   }
