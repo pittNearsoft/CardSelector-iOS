@@ -55,6 +55,7 @@
 		B5EB173E1D3E754F002AC817 /* CCBankRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB173D1D3E754F002AC817 /* CCBankRouter.swift */; };
 		B5EB17401D3E83A3002AC817 /* CCBankService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB173F1D3E83A3002AC817 /* CCBankService.swift */; };
 		B5EB17421D3E8401002AC817 /* CCBankViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB17411D3E8401002AC817 /* CCBankViewModel.swift */; };
+		B5EB17731D40A666002AC817 /* CCProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB17721D40A666002AC817 /* CCProfileCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +109,7 @@
 		B5EB173D1D3E754F002AC817 /* CCBankRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCBankRouter.swift; sourceTree = "<group>"; };
 		B5EB173F1D3E83A3002AC817 /* CCBankService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCBankService.swift; sourceTree = "<group>"; };
 		B5EB17411D3E8401002AC817 /* CCBankViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCBankViewModel.swift; sourceTree = "<group>"; };
+		B5EB17721D40A666002AC817 /* CCProfileCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCProfileCard.swift; sourceTree = "<group>"; };
 		CFFA4674F87EF22999DD41B8 /* Pods-CardSelector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardSelector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardSelector/Pods-CardSelector.debug.xcconfig"; sourceTree = "<group>"; };
 		E40E44BB5E796BFC035D9F11 /* Pods_CardSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -284,6 +286,7 @@
 				B5BF109D1D35FBE7008BDF33 /* CCCardType.swift */,
 				B5BF109F1D3600FC008BDF33 /* CCCardProgram.swift */,
 				B5BF10A11D360183008BDF33 /* CCCardLevel.swift */,
+				B5EB17721D40A666002AC817 /* CCProfileCard.swift */,
 			);
 			name = Card;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				B5BF109E1D35FBE7008BDF33 /* CCCardType.swift in Sources */,
 				B5BF10961D35F5A2008BDF33 /* CardCell.swift in Sources */,
 				B5EB172E1D3CADEC002AC817 /* CCCardViewModel.swift in Sources */,
+				B5EB17731D40A666002AC817 /* CCProfileCard.swift in Sources */,
 				B5E2666D1D2F015C0051756C /* CCPlaceType.swift in Sources */,
 				B52581521D2B3EEA001CB6BC /* PlacesViewController.swift in Sources */,
 				B527EF781D2DAFB7002A24AC /* UIView+VisualEffects.swift in Sources */,
