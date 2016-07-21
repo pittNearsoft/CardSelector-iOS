@@ -165,7 +165,7 @@
         <scene sceneID="Yig-GD-mon">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="A2k-vY-o5H" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Account" id="iic-WR-wM5"/>
+                    <tabBarItem key="tabBarItem" title="Account" image="user" id="iic-WR-wM5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fUC-yf-tKR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -184,7 +184,7 @@
         <scene sceneID="Cty-im-O4s">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="46j-rT-Idv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Cards" image="Mycards" id="Djg-20-lxn"/>
+                    <tabBarItem key="tabBarItem" title="My Cards" image="credit-cards" id="Djg-20-lxn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nfb-iT-sFm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -429,11 +429,11 @@
             </objects>
             <point key="canvasLocation" x="3693" y="-222"/>
         </scene>
-        <!--Places-->
+        <!--Dashboard-->
         <scene sceneID="zYy-3o-asg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="u9L-zH-omU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Places" id="Juk-L5-ctr"/>
+                    <tabBarItem key="tabBarItem" title="Dashboard" image="dashboard" id="Juk-L5-ctr"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mij-3B-yDf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -468,9 +468,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Mycards" width="30" height="30"/>
+        <image name="credit-cards" width="42" height="42"/>
+        <image name="dashboard" width="30" height="30"/>
         <image name="gradient4" width="213" height="378"/>
         <image name="icon_me" width="30" height="55"/>
         <image name="profile" width="338" height="338"/>
+        <image name="user" width="30" height="30"/>
     </resources>
 </document>
