@@ -123,7 +123,7 @@ extension PlacesViewController: GMSMapViewDelegate{
       infoView.nameLabel.text = placeMarker.place.name
       
       if infoView.placePhoto.image == nil {
-        infoView.placePhoto.image = UIImage(named: "generic")
+        infoView.placePhoto.image = UIImage(named: "ccGeneric")
         infoView.placePhoto.af_setImageWithURLRequest(CCPlaceRouter.fetchPlacePhotoFromReference(reference: placeMarker.place.photo_reference))
       }
       
