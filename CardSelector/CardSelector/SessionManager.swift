@@ -12,7 +12,6 @@ import GoogleSignIn
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-
 enum SignInType: Int {
   case Email
   case Facebook
@@ -56,7 +55,6 @@ class SessionManager {
         print("Operation cancelled")
       }else{
         self.getFacebookData()
-        
       }
     }
   }
@@ -70,14 +68,33 @@ class SessionManager {
   }
   
   static func getFacebookData() {
-    let facebookRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email, name"])
+    let facebookRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email, first_name, last_name, gender, birthday"])
     facebookRequest.startWithCompletionHandler { (connection, result, error) in
       if error == nil{
         let newUser = CCUser(WithFacebookUser: result as! [String : AnyObject])
-        CCUserViewModel.saveUserIntoReal(newUser)
-        NavigationManager.goMain()
+        getFacebookImageForUser(newUser)
+        
+        
       }else{
         print("Error: \(error.localizedDescription)")
+      }
+    }
+    
+  }
+  
+  static func getFacebookImageForUser(user: CCUser) {
+    let request = FBSDKGraphRequest(graphPath: "/\(user.userId)/picture?redirect=false&type=large", parameters: nil, HTTPMethod: "GET")
+    
+    request.startWithCompletionHandler { (connection, result, error) in
+      if error == nil {
+        let dict  =  result as! [String : AnyObject]
+        user.imageUrl = dict["data"]!["url"]! as! String
+        
+        CCUserViewModel.saveUserIntoReal(user)
+        
+        NavigationManager.goMain()
+      }else{
+        print("Error getting facebook picture: \(error.localizedDescription)")
       }
     }
   }
