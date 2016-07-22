@@ -59,7 +59,6 @@ class CCUser: NSObject, NSCoding {
       birthDate = facebookUser["birthday"] as! String
     }
     
-    //imageUrl = facebookUser["picture"]!["data"]!?["url"]! as! String
     provider  = SignInType.Facebook.rawValue
   }
   
