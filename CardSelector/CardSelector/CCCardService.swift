@@ -49,11 +49,34 @@ class CCCardService {
   func saveCard(card: CCProfileCard, user: CCUser, completion: (sucess: String)-> Void, onError: (error: NSError)->Void) {
     apiClient.manager.request(CCCardRouter.saveCard(card: card, user: user))
       .CCresponseJSON { (response) in
-        switch response.response!.statusCode{
+        guard let actualResponse = response.response else{
+          onError(error: Error.error(code: 404, failureReason: "Server couldn't respond"))
+          return
+        }
+        
+        switch actualResponse.statusCode{
         case 200:
           completion(sucess: "ok")
         default:
-          onError(error: Error.error(code: response.response!.statusCode, failureReason: "Server error"))
+          onError(error: Error.error(code: actualResponse.statusCode, failureReason: "Server error"))
+        }
+    }
+  }
+  
+  func deleteCard(card: CCProfileCard, user: CCUser, completion: (sucess: String)-> Void, onError: (error: NSError)->Void) {
+    apiClient.manager.request(CCCardRouter.deleteCard(card: card, user: user))
+      .CCresponseJSON { (response) in
+        
+        guard let actualResponse = response.response else{
+          onError(error: Error.error(code: 404, failureReason: "Server couldn't respond"))
+          return
+        }
+        
+        switch actualResponse.statusCode{
+        case 200:
+          completion(sucess: "ok")
+        default:
+          onError(error: Error.error(code: actualResponse.statusCode, failureReason: "Server error"))
         }
     }
   }
