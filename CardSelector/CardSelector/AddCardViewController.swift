@@ -25,6 +25,8 @@ class AddCardViewController: UIViewController {
   
   @IBOutlet weak var noCardsLabel: UILabel!
   
+  var delegate: AddCardViewControllerDelegate?
+  
   
   let cardViewModel = CCCardViewModel()
   let bankViewModel = CCBankViewModel()
@@ -130,6 +132,7 @@ class AddCardViewController: UIViewController {
     cardViewModel.saveCard(selectedCard, user: user!, completion: { (success) in
       
       SVProgressHUD.dismiss()
+      self.delegate?.didSaveProfileCard(self.selectedCard)
       self.dismissViewControllerAnimated(true, completion: nil)
     }, onError: { (error) in
       SVProgressHUD.dismiss()
@@ -354,4 +357,8 @@ extension AddCardViewController: UICollectionViewDelegateFlowLayout{
     
     
   }
+}
+
+protocol AddCardViewControllerDelegate {
+  func didSaveProfileCard(card: CCProfileCard)
 }

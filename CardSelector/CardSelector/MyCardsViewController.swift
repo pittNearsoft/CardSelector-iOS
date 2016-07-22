@@ -85,6 +85,14 @@ class MyCardsViewController: UIViewController {
     }
   }
   
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "addCardSegue" {
+      let navVC = segue.destinationViewController as! UINavigationController
+      let addCardVC = navVC.viewControllers[0] as! AddCardViewController
+      addCardVC.delegate = self
+    }
+  }
+  
 }
 
 extension MyCardsViewController: UITableViewDataSource{
@@ -118,5 +126,12 @@ extension MyCardsViewController: UITableViewDelegate{
     if editingStyle == .Delete {
       deleteProfileCardWithIndexPath(indexPath)
     }
+  }
+}
+
+extension MyCardsViewController: AddCardViewControllerDelegate{
+  func didSaveProfileCard(card: CCProfileCard) {
+    profileCards.insert(card, atIndex: 0)
+    tableView.reloadData()
   }
 }

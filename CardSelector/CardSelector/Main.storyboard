@@ -252,7 +252,7 @@
                     <navigationItem key="navigationItem" title="My Cards" id="zct-Ne-8jb">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="UVr-dn-uFc">
                             <connections>
-                                <segue destination="O6n-w3-XhG" kind="presentation" id="hbT-rg-bKa"/>
+                                <segue destination="O6n-w3-XhG" kind="presentation" identifier="addCardSegue" id="hbT-rg-bKa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
