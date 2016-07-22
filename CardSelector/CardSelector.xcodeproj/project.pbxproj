@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		958A3EF7B89DAC3775579B38 /* Pods_CardSelector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40E44BB5E796BFC035D9F11 /* Pods_CardSelector.framework */; };
+		B5230CC91D41C5B00046B551 /* CCUserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5230CC81D41C5B00046B551 /* CCUserRouter.swift */; };
 		B52581411D258CDF001CB6BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52581401D258CDF001CB6BC /* LaunchScreen.storyboard */; };
 		B52581471D26DAFD001CB6BC /* CCUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52581461D26DAFD001CB6BC /* CCUserViewModel.swift */; };
 		B52581491D271B87001CB6BC /* CCUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52581481D271B87001CB6BC /* CCUser.swift */; };
@@ -60,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		A59E791DB60357784C1D810E /* Pods-CardSelector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardSelector.release.xcconfig"; path = "Pods/Target Support Files/Pods-CardSelector/Pods-CardSelector.release.xcconfig"; sourceTree = "<group>"; };
+		B5230CC81D41C5B00046B551 /* CCUserRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCUserRouter.swift; sourceTree = "<group>"; };
 		B52581401D258CDF001CB6BC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B52581461D26DAFD001CB6BC /* CCUserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCUserViewModel.swift; sourceTree = "<group>"; };
 		B52581481D271B87001CB6BC /* CCUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCUser.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 				B5E266761D2F137A0051756C /* CCPlaceRouter.swift */,
 				B5EB17311D3CB08C002AC817 /* CCCardRouter.swift */,
 				B5EB173D1D3E754F002AC817 /* CCBankRouter.swift */,
+				B5230CC81D41C5B00046B551 /* CCUserRouter.swift */,
 			);
 			name = Routers;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				B527EF831D2DE474002A24AC /* CCCoordinateTransform.swift in Sources */,
 				B5BF10A81D361BC1008BDF33 /* CardView.swift in Sources */,
 				B5EB17401D3E83A3002AC817 /* CCBankService.swift in Sources */,
+				B5230CC91D41C5B00046B551 /* CCUserRouter.swift in Sources */,
 				B5E266831D33905F0051756C /* MyCardsViewController.swift in Sources */,
 				B52581471D26DAFD001CB6BC /* CCUserViewModel.swift in Sources */,
 				B5EB17391D3DC0E1002AC817 /* BankCollectionViewCell.swift in Sources */,
