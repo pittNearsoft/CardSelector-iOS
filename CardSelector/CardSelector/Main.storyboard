@@ -18,6 +18,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient3" translatesAutoresizingMaskIntoConstraints="NO" id="ya8-Qt-pL7">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3jw-lc-kQg">
                                 <rect key="frame" x="20" y="499" width="560" height="44"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.34901960780000002" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -31,7 +34,7 @@
                                     <action selector="signOut:" destination="t7r-qe-Oec" eventType="touchUpInside" id="ReS-Nd-nDr"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="5zD-Eu-cw7">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-1" translatesAutoresizingMaskIntoConstraints="NO" id="5zD-Eu-cw7">
                                 <rect key="frame" x="237" y="72" width="127" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="127" id="XRf-VY-ksd"/>
@@ -57,18 +60,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.26775264488660522" blue="0.55510817310769234" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="ya8-Qt-pL7" firstAttribute="leading" secondItem="Qdd-n1-U37" secondAttribute="leading" id="3Cy-i5-6gN"/>
                             <constraint firstAttribute="trailing" secondItem="N5K-VL-4od" secondAttribute="trailing" constant="20" id="7nw-6C-Rtd"/>
                             <constraint firstItem="1xd-4i-mky" firstAttribute="top" secondItem="3jw-lc-kQg" secondAttribute="bottom" constant="8" id="94u-TR-Mst"/>
                             <constraint firstItem="TX2-xY-BWE" firstAttribute="leading" secondItem="N5K-VL-4od" secondAttribute="leading" id="BlQ-Ye-dct"/>
                             <constraint firstItem="5zD-Eu-cw7" firstAttribute="top" secondItem="dZU-Ls-KJI" secondAttribute="bottom" constant="8" id="F1V-Vs-rYj"/>
                             <constraint firstItem="N5K-VL-4od" firstAttribute="leading" secondItem="Qdd-n1-U37" secondAttribute="leading" constant="20" id="FZV-km-pKp"/>
+                            <constraint firstAttribute="trailing" secondItem="ya8-Qt-pL7" secondAttribute="trailing" id="HCu-tT-ZpT"/>
                             <constraint firstItem="5zD-Eu-cw7" firstAttribute="centerX" secondItem="Qdd-n1-U37" secondAttribute="centerX" id="Imv-12-etl"/>
                             <constraint firstItem="N5K-VL-4od" firstAttribute="centerX" secondItem="5zD-Eu-cw7" secondAttribute="centerX" id="P5K-Eg-QLE"/>
                             <constraint firstItem="3jw-lc-kQg" firstAttribute="leading" secondItem="Qdd-n1-U37" secondAttribute="leading" constant="20" id="PG4-0y-eXw"/>
                             <constraint firstItem="TX2-xY-BWE" firstAttribute="trailing" secondItem="N5K-VL-4od" secondAttribute="trailing" id="PkJ-Uh-q4S"/>
                             <constraint firstItem="N5K-VL-4od" firstAttribute="top" secondItem="5zD-Eu-cw7" secondAttribute="bottom" id="Tba-h0-ZlK"/>
+                            <constraint firstItem="ya8-Qt-pL7" firstAttribute="top" secondItem="dZU-Ls-KJI" secondAttribute="bottom" id="XcY-jz-GkY"/>
+                            <constraint firstItem="1xd-4i-mky" firstAttribute="top" secondItem="ya8-Qt-pL7" secondAttribute="bottom" id="lAh-gy-x1P"/>
                             <constraint firstAttribute="trailing" secondItem="3jw-lc-kQg" secondAttribute="trailing" constant="20" id="nXk-m4-JBf"/>
                             <constraint firstItem="TX2-xY-BWE" firstAttribute="top" secondItem="N5K-VL-4od" secondAttribute="bottom" id="ocG-l7-zTt"/>
                         </constraints>
@@ -492,9 +498,10 @@
         <image name="credit-cards" width="42" height="42"/>
         <image name="dashboard" width="30" height="30"/>
         <image name="gradient1" width="750" height="1334"/>
+        <image name="gradient3" width="1080" height="1920"/>
         <image name="gradient4" width="213" height="378"/>
         <image name="icon_me" width="30" height="55"/>
-        <image name="profile" width="338" height="338"/>
+        <image name="profile-1" width="256" height="256"/>
         <image name="user" width="30" height="30"/>
     </resources>
 </document>

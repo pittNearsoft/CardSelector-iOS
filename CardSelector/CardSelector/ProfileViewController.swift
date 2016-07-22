@@ -8,6 +8,7 @@
 
 import UIKit
 import LKAlertController
+import AlamofireImage
 
 
 class ProfileViewController: UIViewController {
@@ -24,8 +25,10 @@ class ProfileViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    userNameLabel.text = user!.name
+    userNameLabel.text = "\(user!.firstName) \(user!.lastName)"
     emailLabel.text = user!.email
+    
+    profileImageView.af_setImageWithURL(NSURL(string: user!.imageUrl)! )
     
     profileImageView.layer.cornerRadius = profileImageView.frame.height/2
     profileImageView.layer.masksToBounds = true
