@@ -41,6 +41,14 @@ class CCCardViewModel {
     }
   }
   
+  func deleteCard(card: CCProfileCard, user: CCUser, completion: ((success: String)-> Void)?, onError: (error: NSError)->Void) {
+    cardService.deleteCard(card, user: user, completion: { (sucess) in
+      completion?(success: sucess)
+    }) { (error) in
+      onError(error: error)
+    }
+  }
+  
   func getProfileCardsFromUser(user: CCUser, completion: (listCards: [CCProfileCard]) -> Void, onError: (error: NSError) -> Void) {
     cardService.getProfileCardsFromUser(user,
       completion: { (jsonCards) in

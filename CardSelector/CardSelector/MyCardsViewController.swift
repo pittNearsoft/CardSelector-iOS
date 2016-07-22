@@ -34,6 +34,9 @@ class MyCardsViewController: UIViewController {
     
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 184 //104.0
+    
+    tableView.allowsMultipleSelectionDuringEditing = false
+    
     setupRefreshControl()
     getProfileCards()
   }
@@ -65,6 +68,23 @@ class MyCardsViewController: UIViewController {
     refreshControl?.endRefreshing()
   }
   
+  func deleteProfileCardWithIndexPath(indexPath: NSIndexPath) {
+    let user = CCUserViewModel.getLoggedUser()
+    
+    let cell = tableView.cellForRowAtIndexPath(indexPath)
+    cell?.lock()
+    cardViewModel.deleteCard(profileCards[indexPath.row], user: user!, completion: { (success) in
+      cell?.unlock()
+      self.profileCards.removeAtIndex(indexPath.row)
+      self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    }) { (error) in
+      cell?.unlock()
+      print(error.localizedDescription)
+      Alert(title: "Ops!", message: "Something went wrong in server. Try again later.").showOkay()
+      
+    }
+  }
+  
 }
 
 extension MyCardsViewController: UITableViewDataSource{
@@ -88,5 +108,15 @@ extension MyCardsViewController: UITableViewDataSource{
 extension MyCardsViewController: UITableViewDelegate{
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
+  }
+  
+  func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    return true
+  }
+  
+  func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    if editingStyle == .Delete {
+      deleteProfileCardWithIndexPath(indexPath)
+    }
   }
 }
