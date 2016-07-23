@@ -7,23 +7,25 @@
 //
 
 import Foundation
+import ObjectMapper
 
 class CCUserViewModel {
   private static let defaults = NSUserDefaults.standardUserDefaults()
   private static let objKey = "ccUser"
+  private static let userService = CCUserService()
   
-  static func saveUserIntoReal(user: CCUser) {
+  static func saveUserIntoUserDefaults(user: CCUser) {
     let data = NSKeyedArchiver.archivedDataWithRootObject(user)
     defaults.setObject(data, forKey: objKey)
   }
   
-  static func deleteUserFromRealm(user: CCUser) {
+  static func deleteUserFromUserDefaults(user: CCUser) {
     defaults.removeObjectForKey(objKey)
   }
   
   static func deleteLoggedUser() {
     let user = CCUserViewModel.getLoggedUser()
-    deleteUserFromRealm(user!)
+    deleteUserFromUserDefaults(user!)
   }
   
   static func getLoggedUser() -> CCUser?{
@@ -39,4 +41,33 @@ class CCUserViewModel {
   static func existLoggedUser() -> Bool {
     return getLoggedUser() != nil
   }
+  
+  static func getUserProfileWithEmail(email: String, completion: (profile: CCUser?)-> Void, onError: (error: NSError)->Void ) {
+    userService.getUserProfileWithEmail(email, completion: { (jsonProfile) in
+      
+      if jsonProfile != nil {
+        let user: CCUser = Mapper<CCUser>().map(jsonProfile)!
+        completion(profile: user)
+        return
+      }
+      
+      completion(profile: nil)
+      
+    }) { (error) in
+      onError(error: error)
+    }
+  }
+  
+  static func saveUserIntoServer(user: CCUser, completion: (profile: CCUser?)-> Void, onError: (error: NSError)->Void) {
+    userService.saveUserIntoServer(user, completion: { (jsonProfile) in
+      
+      let user: CCUser = Mapper<CCUser>().map(jsonProfile)!
+      completion(profile: user)
+      
+    }) { (error) in
+      onError(error: error)
+    }
+  }
+  
+  
 }
