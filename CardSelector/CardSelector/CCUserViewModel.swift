@@ -99,6 +99,10 @@ class CCUserViewModel {
       
       //Replace google Id with user Id from server
       user.userId = profile.userId
+      
+      //Retrieve saved cards
+      user.profileCards = profile.profileCards
+      
       //Now save new user in cache
       CCUserViewModel.saveUserIntoUserDefaults(user)
       NavigationManager.goMain()

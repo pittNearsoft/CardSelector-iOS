@@ -38,7 +38,10 @@ class MyCardsViewController: UIViewController {
     tableView.allowsMultipleSelectionDuringEditing = false
     
     setupRefreshControl()
-    getProfileCards()
+    
+    let user = CCUserViewModel.getLoggedUser()
+    profileCards = user!.profileCards
+    //getProfileCards()
   }
   
   func getProfileCards() {

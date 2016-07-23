@@ -60,7 +60,8 @@ enum CCUserRouter: URLRequestConvertible {
       ]
       
       if user.gender != "" {
-        userDict["Gender"] = user.gender
+        let newGender = "\(user.gender.uppercaseString.characters.first!)"
+        userDict["Gender"] = newGender
       }
       
       if user.birthDate != "" {

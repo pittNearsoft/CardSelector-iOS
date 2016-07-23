@@ -10,16 +10,18 @@ import Foundation
 import GoogleSignIn
 import ObjectMapper
 
+
 class CCUser: NSObject, NSCoding {
-  var userId    = ""
-  var firstName = ""
-  var lastName  = ""
-  var email     = ""
-  var gender = ""
-  var birthDate = ""
+  var userId              = ""
+  var firstName           = ""
+  var lastName            = ""
+  var email               = ""
+  var gender              = ""
   
-  var imageUrl  = ""
-  var provider  = 0
+  var birthDate           = ""
+  
+  var imageUrl            = ""
+  var provider            = 0
   var profileCards: [CCProfileCard] = []
   
   
