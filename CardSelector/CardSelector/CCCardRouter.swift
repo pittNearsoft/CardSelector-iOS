@@ -55,8 +55,7 @@ enum CCCardRouter: URLRequestConvertible {
     case .saveCard(let profileCard, let user):
       
       var dictionary: [String: AnyObject] = [
-        //TODO: REMOVE THIS LATER
-        "UserProfileId" : 1,
+        "UserProfileId" : user.userId,
         "CardId"        : profileCard.card!.cardId,
       ]
       
@@ -72,14 +71,12 @@ enum CCCardRouter: URLRequestConvertible {
       
     case .getProfileCardsFromUser(let user):
       return [
-        //TODO: REMOVE THIS LATER
-        "Email" : "javier.eduardo.velarde@gmail.com"
+        "Email" : user.email
       ]
       
     case .deleteCard(let profileCard, let user):
       return [
-        //TODO: REMOVE THIS LATER
-        "UserProfileId" : 1,
+        "UserProfileId" : user.userId,
         "CardId"        : profileCard.card!.cardId
       ]
       
