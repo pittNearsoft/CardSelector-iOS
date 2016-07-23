@@ -39,4 +39,7 @@ target 'CardSelector' do
    #SVProgressHUD is a clean and easy-to-use HUD meant to display the progress of an ongoing task on iOS and tvOS.
    pod 'SVProgressHUD', '~> 2.0'
 
+   #This is a highly customizable, sticky modal view that slides up from the bottom of the screen.
+   pod 'NBSlideUpView', '~> 1.0'
+
 end
