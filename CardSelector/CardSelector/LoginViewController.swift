@@ -10,6 +10,7 @@ import UIKit
 import FBSDKLoginKit
 import GoogleSignIn
 import LKAlertController
+import SVProgressHUD
 
 
 class LoginViewController: UIViewController,GIDSignInUIDelegate, GIDSignInDelegate {
@@ -67,14 +68,50 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate, GIDSignInDelega
   func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
     if error == nil {
       let newUser = CCUser(WithGoogleUser: user)
-      CCUserViewModel.saveUserIntoReal(newUser)
+//      CCUserViewModel.saveUserIntoUserDefaults(newUser)
+//      
+//      
+//      NavigationManager.goMain()
+      
+      SVProgressHUD.show()
+      CCUserViewModel.getUserProfileWithEmail(newUser.email, completion: { (profile) in
+        
+        if profile == nil {
+          CCUserViewModel.saveUserIntoServer(newUser, completion: { (profile) in
+            SVProgressHUD.dismiss()
+            
+            //Replace google Id with user Id from server
+            newUser.userId = profile!.userId
+            
+            //Now save new user in cache
+            CCUserViewModel.saveUserIntoUserDefaults(newUser)
+            NavigationManager.goMain()
+          }, onError: { (error) in
+            SVProgressHUD.dismiss()
+            Alert(title: "Ops!", message: error.localizedDescription).showOkay()
+          })
+        }else{
+          SVProgressHUD.dismiss()
+          
+          //Replace google Id with user Id from server
+          newUser.userId = profile!.userId
+          CCUserViewModel.saveUserIntoUserDefaults(newUser)
+          NavigationManager.goMain()
+        }
+        
+        
+      }, onError: { (error) in
+        Alert(title: "Ops!", message: error.localizedDescription).showOkay()
+      })
       
       
-      NavigationManager.goMain()
+      
     }else{
       print("Error: \(error.localizedDescription)")
     }
   }
+  
+
   
   func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!, withError error: NSError!) {
     if error == nil {

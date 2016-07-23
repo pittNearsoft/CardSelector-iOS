@@ -90,7 +90,7 @@ class SessionManager {
         let dict  =  result as! [String : AnyObject]
         user.imageUrl = dict["data"]!["url"]! as! String
         
-        CCUserViewModel.saveUserIntoReal(user)
+        CCUserViewModel.saveUserIntoUserDefaults(user)
         
         NavigationManager.goMain()
       }else{
@@ -101,7 +101,7 @@ class SessionManager {
   
   //MARK: - Email methods
   static func emailSignIn(email: String){
-    CCUserViewModel.saveUserIntoReal(CCUser(WithEmail: email))
+    CCUserViewModel.saveUserIntoUserDefaults(CCUser(WithEmail: email))
     NavigationManager.goMain()
   }
   
