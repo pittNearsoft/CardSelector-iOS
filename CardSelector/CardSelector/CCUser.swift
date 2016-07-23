@@ -8,13 +8,14 @@
 
 import Foundation
 import GoogleSignIn
+import ObjectMapper
 
 class CCUser: NSObject, NSCoding {
   var userId    = ""
   var firstName = ""
   var lastName  = ""
   var email     = ""
-  var gender    = ""
+  var gender = ""
   var birthDate = ""
   
   var imageUrl  = ""
@@ -50,12 +51,12 @@ class CCUser: NSObject, NSCoding {
     firstName = facebookUser["first_name"] as! String
     lastName  = facebookUser["last_name"] as! String
     email     = facebookUser["email"] as! String
-
+    
     if facebookUser["gender"] != nil {
       gender = facebookUser["gender"] as! String
     }
     
-    if facebookUser["birthday"] != nil {
+    if facebookUser["birthday"]  != nil {
       birthDate = facebookUser["birthday"] as! String
     }
     
@@ -109,4 +110,22 @@ class CCUser: NSObject, NSCoding {
     coder.encodeObject(self.provider,   forKey: "provider")
   }
   
+  
+  required init?(_ map: Map) {
+
+  }
+  
+}
+
+extension CCUser: Mappable{
+
+  func mapping(map: Map) {
+    userId <- map["Id"]
+    email <- map["Email"]
+    firstName <- map["FirstName"]
+    lastName <- map["LastName"]
+    birthDate <- map["DateOfBirth"]
+    gender <- map["Gender"]
+    profileCards <- map["UserProfileCards"]
+  }
 }
