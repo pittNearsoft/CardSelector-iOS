@@ -49,16 +49,26 @@ enum CCUserRouter: URLRequestConvertible {
       ]
       
     case .saveUserIntoServer(let user):
-      return [
+      var userDict =  [
         "Email" : user.email,
         "FirstName"   : user.firstName,
-        "LastName"    : user.lastName,
-        "Gender"      : user.gender,
-        "DateOfBirth" : user.birthDate
+        "LastName"    : user.lastName
+        
         
         //TODO: Add more data here
         //"UserCredentials": [["LoginProvider": "", "Password": password]]
       ]
+      
+      if user.gender != "" {
+        userDict["Gender"] = user.gender
+      }
+      
+      if user.birthDate != "" {
+        userDict["DateOfBirth"] = user.birthDate
+      }
+      
+      
+      return userDict
     }
   }
   
