@@ -8,6 +8,8 @@
 
 import Foundation
 import ObjectMapper
+import SVProgressHUD
+import LKAlertController
 
 class CCUserViewModel {
   private static let defaults = NSUserDefaults.standardUserDefaults()
@@ -67,6 +69,45 @@ class CCUserViewModel {
     }) { (error) in
       onError(error: error)
     }
+  }
+  
+  private static func validateUserInServer(newUser: CCUser, completion: (profile: CCUser)-> Void, onError: (error: NSError)->Void){
+    
+    CCUserViewModel.getUserProfileWithEmail(newUser.email, completion: { (profile) in
+      
+      if profile == nil {
+        CCUserViewModel.saveUserIntoServer(newUser, completion: { (profile) in
+          completion(profile: profile!)
+        }, onError: { (error) in
+          onError(error: error)
+        })
+      }else{
+        completion(profile: profile!)
+      }
+      
+      
+    }, onError: { (error) in
+      onError(error: error)
+    })
+  }
+  
+  
+  static func validateUserInServer(user: CCUser) {
+    SVProgressHUD.show()
+    CCUserViewModel.validateUserInServer(user, completion: { (profile) in
+      SVProgressHUD.dismiss()
+      
+      //Replace google Id with user Id from server
+      user.userId = profile.userId
+      //Now save new user in cache
+      CCUserViewModel.saveUserIntoUserDefaults(user)
+      NavigationManager.goMain()
+      
+      }, onError: { (error) in
+        SVProgressHUD.dismiss()
+        print(error.localizedDescription)
+        Alert(title: "Ops!", message: "Something went wrong in server. Please try again later.").showOkay()
+    })
   }
   
   

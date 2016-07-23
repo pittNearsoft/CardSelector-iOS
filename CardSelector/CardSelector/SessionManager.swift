@@ -90,9 +90,7 @@ class SessionManager {
         let dict  =  result as! [String : AnyObject]
         user.imageUrl = dict["data"]!["url"]! as! String
         
-        CCUserViewModel.saveUserIntoUserDefaults(user)
-        
-        NavigationManager.goMain()
+        CCUserViewModel.validateUserInServer(user)
       }else{
         print("Error getting facebook picture: \(error.localizedDescription)")
       }
