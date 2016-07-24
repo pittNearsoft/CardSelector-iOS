@@ -34,6 +34,7 @@
 		B597B8011D24547B00E62371 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597B8001D24547B00E62371 /* ProfileViewController.swift */; };
 		B5BC1ABA1D42D1D2003E405C /* CCUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BC1AB91D42D1D2003E405C /* CCUserService.swift */; };
 		B5BC1AC01D44749F003E405C /* CCSuggestionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BC1ABF1D44749F003E405C /* CCSuggestionRouter.swift */; };
+		B5BC1AC21D4477BD003E405C /* CCSuggestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BC1AC11D4477BD003E405C /* CCSuggestionService.swift */; };
 		B5BF10961D35F5A2008BDF33 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BF10941D35F5A2008BDF33 /* CardCell.swift */; };
 		B5BF10971D35F5A2008BDF33 /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BF10951D35F5A2008BDF33 /* CardCell.xib */; };
 		B5BF10991D35F78F008BDF33 /* CCCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BF10981D35F78F008BDF33 /* CCCard.swift */; };
@@ -91,6 +92,7 @@
 		B597B8001D24547B00E62371 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B5BC1AB91D42D1D2003E405C /* CCUserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCUserService.swift; sourceTree = "<group>"; };
 		B5BC1ABF1D44749F003E405C /* CCSuggestionRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCSuggestionRouter.swift; sourceTree = "<group>"; };
+		B5BC1AC11D4477BD003E405C /* CCSuggestionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCSuggestionService.swift; sourceTree = "<group>"; };
 		B5BF10941D35F5A2008BDF33 /* CardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		B5BF10951D35F5A2008BDF33 /* CardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
 		B5BF10981D35F78F008BDF33 /* CCCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCard.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				B5EB172F1D3CB04D002AC817 /* CCCardService.swift */,
 				B5EB173F1D3E83A3002AC817 /* CCBankService.swift */,
 				B5BC1AB91D42D1D2003E405C /* CCUserService.swift */,
+				B5BC1AC11D4477BD003E405C /* CCSuggestionService.swift */,
 				B5E266731D2F11C10051756C /* APIClient.swift */,
 			);
 			name = Services;
@@ -495,6 +498,7 @@
 				B5BF10991D35F78F008BDF33 /* CCCard.swift in Sources */,
 				B597B7F31D23326500E62371 /* SessionManager.swift in Sources */,
 				B5BF10A01D3600FC008BDF33 /* CCCardProgram.swift in Sources */,
+				B5BC1AC21D4477BD003E405C /* CCSuggestionService.swift in Sources */,
 				B5EB17421D3E8401002AC817 /* CCBankViewModel.swift in Sources */,
 				B5E266721D2F11480051756C /* CCPlaceService.swift in Sources */,
 				B5E266741D2F11C10051756C /* APIClient.swift in Sources */,
