@@ -10,6 +10,7 @@ import UIKit
 import GoogleMaps
 import CoreLocation
 import AlamofireImage
+import SeamlessSlideUpScrollView
 
 class PlacesViewController: UIViewController {
 
@@ -17,6 +18,10 @@ class PlacesViewController: UIViewController {
   @IBOutlet weak var locationLabel: UILabel!
   @IBOutlet weak var mapPinImage: UIImageView!
   @IBOutlet weak var pinImageVerticalConstraint: NSLayoutConstraint!
+  
+  @IBOutlet weak var slideUpView: SeamlessSlideUpView!
+  @IBOutlet var slideUpTableView: SeamlessSlideUpTableView!
+  
 
   var locationManager = CLLocationManager()
   let placeViewModel = CCPlaceViewModel()
@@ -25,6 +30,13 @@ class PlacesViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    slideUpTableView.dataSource = self
+    
+    slideUpView.tableView = slideUpTableView
+    slideUpView.delegate  = self
+    slideUpView.topWindowHeight = self.view.frame.size.height/2
+    
     
     mapView.delegate = self
     setupLocationManager()
@@ -97,6 +109,7 @@ class PlacesViewController: UIViewController {
     
     //Setting the map’s selectedMarker to nil will remove the currently presented infoView.
     mapView.selectedMarker = nil
+    
   }
 
 }
@@ -107,9 +120,12 @@ extension PlacesViewController: GMSMapViewDelegate{
   }
   
   func mapView(mapView: GMSMapView, willMove gesture: Bool) {
-    locationLabel.lock()
     
+    locationLabel.lock()
     if gesture {
+      dispatch_async(dispatch_get_main_queue()) {
+        self.slideUpView.hide()
+      }
       reappearMapPinImage()
     }
   }
@@ -136,7 +152,8 @@ extension PlacesViewController: GMSMapViewDelegate{
   
   
   func mapView(mapView: GMSMapView, didTapInfoWindowOfMarker marker: GMSMarker) {
-    print("Hola!")
+    
+    slideUpView.show()
   }
   
   func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
@@ -185,3 +202,41 @@ extension PlacesViewController: CLLocationManagerDelegate{
     print("Failed to load location. Error: \(error.localizedDescription)")
   }
 }
+
+
+
+extension PlacesViewController: SeamlessSlideUpViewDelegate{
+  func slideUpViewWillAppear(slideUpView: SeamlessSlideUpView, height: CGFloat) {
+    UIView.animateWithDuration(0.3) { [weak self] in self?.view.layoutIfNeeded() }
+    //addBlurEffect()
+  }
+  
+  func slideUpViewDidAppear(slideUpView: SeamlessSlideUpView, height: CGFloat) {
+  }
+  
+  func slideUpViewWillDisappear(slideUpView: SeamlessSlideUpView) {
+    UIView.animateWithDuration(0.3) { [weak self] in self?.view.layoutIfNeeded() }
+    //removeBlurEffect()
+  }
+  
+  func slideUpViewDidDisappear(slideUpView: SeamlessSlideUpView) {
+  }
+  
+  func slideUpViewDidDrag(slideUpView: SeamlessSlideUpView, height: CGFloat) {
+    self.view.layoutIfNeeded()
+  }
+}
+
+extension PlacesViewController: UITableViewDataSource {
+  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return 4
+  }
+  
+  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCellWithIdentifier("suggestionCell", forIndexPath: indexPath)
+    
+    return cell
+  }
+  
+}
+

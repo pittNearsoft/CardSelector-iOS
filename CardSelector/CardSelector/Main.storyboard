@@ -136,17 +136,25 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ep-gl-3oL" customClass="SeamlessSlideUpView" customModule="SeamlessSlideUpScrollView">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="KlB-6x-3Kr" firstAttribute="top" secondItem="yx1-Et-afu" secondAttribute="bottom" id="3NM-EK-4zE"/>
                             <constraint firstAttribute="trailing" secondItem="wqC-WK-y43" secondAttribute="trailing" id="6xN-cp-ecu"/>
+                            <constraint firstItem="8Ep-gl-3oL" firstAttribute="leading" secondItem="umH-wp-zgf" secondAttribute="leading" id="86e-mP-b12"/>
                             <constraint firstItem="3FU-x3-UQc" firstAttribute="top" secondItem="wqC-WK-y43" secondAttribute="bottom" id="9XA-Q9-3ka"/>
                             <constraint firstItem="D8K-Gh-jch" firstAttribute="centerX" secondItem="umH-wp-zgf" secondAttribute="centerX" id="CWo-2p-GzO"/>
                             <constraint firstItem="KlB-6x-3Kr" firstAttribute="leading" secondItem="umH-wp-zgf" secondAttribute="leading" id="Jzk-Zf-HEl"/>
                             <constraint firstAttribute="trailing" secondItem="KlB-6x-3Kr" secondAttribute="trailing" id="Sp7-hp-dlO"/>
+                            <constraint firstItem="3FU-x3-UQc" firstAttribute="top" secondItem="8Ep-gl-3oL" secondAttribute="bottom" id="XRS-cl-6xE"/>
                             <constraint firstItem="D8K-Gh-jch" firstAttribute="centerY" secondItem="umH-wp-zgf" secondAttribute="centerY" constant="-27.5" id="YuQ-WA-J5a"/>
+                            <constraint firstAttribute="trailing" secondItem="8Ep-gl-3oL" secondAttribute="trailing" id="eKl-l5-zTZ"/>
                             <constraint firstItem="3FU-x3-UQc" firstAttribute="top" secondItem="KlB-6x-3Kr" secondAttribute="bottom" id="f7B-Km-5Le"/>
+                            <constraint firstItem="8Ep-gl-3oL" firstAttribute="top" secondItem="yx1-Et-afu" secondAttribute="bottom" id="qYM-rF-xud"/>
                             <constraint firstItem="wqC-WK-y43" firstAttribute="leading" secondItem="umH-wp-zgf" secondAttribute="leading" id="zfm-Ye-VmT"/>
                         </constraints>
                     </view>
@@ -162,9 +170,50 @@
                         <outlet property="mapPinImage" destination="D8K-Gh-jch" id="ydO-EO-1W1"/>
                         <outlet property="mapView" destination="KlB-6x-3Kr" id="YlG-m2-gRo"/>
                         <outlet property="pinImageVerticalConstraint" destination="YuQ-WA-J5a" id="DwG-4a-JU3"/>
+                        <outlet property="slideUpTableView" destination="LmN-RY-8E1" id="FNP-ud-X4i"/>
+                        <outlet property="slideUpView" destination="8Ep-gl-3oL" id="kFa-Fv-e1d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLR-x0-rgJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="117" sectionHeaderHeight="28" sectionFooterHeight="28" id="LmN-RY-8E1" customClass="SeamlessSlideUpTableView" customModule="SeamlessSlideUpScrollView">
+                    <rect key="frame" x="0.0" y="0.0" width="598" height="182"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <prototypes>
+                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="suggestionCell" rowHeight="117" id="bWs-Xi-xTz">
+                            <rect key="frame" x="0.0" y="28" width="598" height="117"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bWs-Xi-xTz" id="iME-1x-5Yd">
+                                <rect key="frame" x="0.0" y="0.0" width="598" height="116.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chase" translatesAutoresizingMaskIntoConstraints="NO" id="HkD-Ym-PuQ">
+                                        <rect key="frame" x="8" y="23" width="98" height="72"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="98" id="WRo-NB-oCk"/>
+                                            <constraint firstAttribute="height" constant="72" id="lNe-ko-uHO"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4Z-Kx-Yw3">
+                                        <rect key="frame" x="114" y="23" width="476" height="72"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="HkD-Ym-PuQ" firstAttribute="top" secondItem="iME-1x-5Yd" secondAttribute="top" constant="23" id="8ec-Oc-cKf"/>
+                                    <constraint firstAttribute="trailing" secondItem="B4Z-Kx-Yw3" secondAttribute="trailing" constant="8" id="8ri-hr-uB3"/>
+                                    <constraint firstItem="B4Z-Kx-Yw3" firstAttribute="bottom" secondItem="HkD-Ym-PuQ" secondAttribute="bottom" id="M0s-01-OBh"/>
+                                    <constraint firstItem="B4Z-Kx-Yw3" firstAttribute="leading" secondItem="HkD-Ym-PuQ" secondAttribute="trailing" constant="8" id="MBq-Wp-TZF"/>
+                                    <constraint firstItem="B4Z-Kx-Yw3" firstAttribute="top" secondItem="HkD-Ym-PuQ" secondAttribute="top" id="b3A-mb-J4o"/>
+                                    <constraint firstAttribute="bottom" secondItem="HkD-Ym-PuQ" secondAttribute="bottom" constant="22" id="eiD-t7-C9W"/>
+                                    <constraint firstItem="HkD-Ym-PuQ" firstAttribute="leading" secondItem="iME-1x-5Yd" secondAttribute="leading" constant="8" id="pZU-ny-ZK9"/>
+                                </constraints>
+                            </tableViewCellContentView>
+                        </tableViewCell>
+                    </prototypes>
+                </tableView>
             </objects>
             <point key="canvasLocation" x="2093" y="-879"/>
         </scene>
@@ -495,6 +544,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Chase" width="106" height="80"/>
         <image name="credit-cards" width="42" height="42"/>
         <image name="dashboard" width="30" height="30"/>
         <image name="gradient1" width="750" height="1334"/>
