@@ -10,11 +10,11 @@ import Alamofire
 
 enum CCSuggestionRouter: URLRequestConvertible {
   
-  case getSuggestions(user: CCUser, merchant: String)
+  case getSuggestionsWithUser(user: CCUser, merchant: String)
   
   var method: Alamofire.Method{
     switch self {
-    case .getSuggestions:
+    case .getSuggestionsWithUser:
       return .POST
       
     }
@@ -22,14 +22,14 @@ enum CCSuggestionRouter: URLRequestConvertible {
   
   var path: String{
     switch self {
-    case .getSuggestions:
+    case .getSuggestionsWithUser:
       return "ProfileCards/Suggestion"
     }
   }
   
   private var parameters: [String: AnyObject]?{
     switch self {
-    case .getSuggestions(let user, let merchant):
+    case .getSuggestionsWithUser(let user, let merchant):
       return [
         "UserProfileId"  : user.userId,
         //TODO:CHANGE THIS LATER
@@ -41,7 +41,7 @@ enum CCSuggestionRouter: URLRequestConvertible {
   
   private var encoding: ParameterEncoding?{
     switch self {
-    case .getSuggestions:
+    case .getSuggestionsWithUser:
       return Alamofire.ParameterEncoding.JSON
     
     }

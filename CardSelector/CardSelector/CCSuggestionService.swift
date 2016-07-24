@@ -11,8 +11,8 @@ import Alamofire
 class CCSuggestionService {
   private let apiClient = APIClient()
   
-  func getSuggestions(user: CCUser, merchant: String, completion: (jsonSuggestions: [AnyObject])-> Void, onError: (error: NSError)->Void) {
-    apiClient.manager.request(CCSuggestionRouter.getSuggestions(user: user, merchant: merchant))
+  func getSuggestionsWithUser(user: CCUser, merchant: String, completion: (jsonSuggestions: [AnyObject])-> Void, onError: (error: NSError)->Void) {
+    apiClient.manager.request(CCSuggestionRouter.getSuggestionsWithUser(user: user, merchant: merchant))
       .CCresponseJSON { (response) in
         
         switch response.result{
