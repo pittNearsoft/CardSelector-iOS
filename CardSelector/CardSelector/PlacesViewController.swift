@@ -25,8 +25,11 @@ class PlacesViewController: UIViewController {
 
   var locationManager = CLLocationManager()
   let placeViewModel = CCPlaceViewModel()
+  let suggestionViewModel = CCSuggestionViewModel()
   
   let searchRadius: Double = 1000
+  
+  var listSuggestions: [String] = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -154,6 +157,15 @@ extension PlacesViewController: GMSMapViewDelegate{
   func mapView(mapView: GMSMapView, didTapInfoWindowOfMarker marker: GMSMarker) {
     
     slideUpView.show()
+    
+    let placeMarker = marker as! CCPlaceMarker
+    let user = CCUserViewModel.getLoggedUser()
+    suggestionViewModel.getSuggestionsWithUser(user!, merchant: placeMarker.place.name, completion: { (listSuggestions) in
+      self.listSuggestions = listSuggestions
+      self.slideUpTableView.reloadData()
+    }) { (error) in
+      print(error.localizedDescription)
+    }
   }
   
   func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
@@ -229,11 +241,13 @@ extension PlacesViewController: SeamlessSlideUpViewDelegate{
 
 extension PlacesViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 4
+    return listSuggestions.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("suggestionCell", forIndexPath: indexPath)
+    let cell = tableView.dequeueReusableCellWithIdentifier("suggestionCell", forIndexPath: indexPath) as! SuggestionViewCell
+    
+    cell.suggestionDescription.text = listSuggestions[indexPath.row]
     
     return cell
   }

@@ -180,7 +180,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <prototypes>
-                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="suggestionCell" rowHeight="117" id="bWs-Xi-xTz">
+                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="suggestionCell" rowHeight="117" id="bWs-Xi-xTz" customClass="SuggestionViewCell" customModule="CardSelector" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="28" width="598" height="117"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bWs-Xi-xTz" id="iME-1x-5Yd">
@@ -211,6 +211,9 @@
                                     <constraint firstItem="HkD-Ym-PuQ" firstAttribute="leading" secondItem="iME-1x-5Yd" secondAttribute="leading" constant="8" id="pZU-ny-ZK9"/>
                                 </constraints>
                             </tableViewCellContentView>
+                            <connections>
+                                <outlet property="suggestionDescription" destination="B4Z-Kx-Yw3" id="a7a-BE-LxM"/>
+                            </connections>
                         </tableViewCell>
                     </prototypes>
                 </tableView>
