@@ -35,6 +35,7 @@
 		B5BC1ABA1D42D1D2003E405C /* CCUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BC1AB91D42D1D2003E405C /* CCUserService.swift */; };
 		B5BC1AC01D44749F003E405C /* CCSuggestionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BC1ABF1D44749F003E405C /* CCSuggestionRouter.swift */; };
 		B5BC1AC21D4477BD003E405C /* CCSuggestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BC1AC11D4477BD003E405C /* CCSuggestionService.swift */; };
+		B5BC1AC41D4478D1003E405C /* CCSuggestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BC1AC31D4478D1003E405C /* CCSuggestionViewModel.swift */; };
 		B5BF10961D35F5A2008BDF33 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BF10941D35F5A2008BDF33 /* CardCell.swift */; };
 		B5BF10971D35F5A2008BDF33 /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BF10951D35F5A2008BDF33 /* CardCell.xib */; };
 		B5BF10991D35F78F008BDF33 /* CCCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BF10981D35F78F008BDF33 /* CCCard.swift */; };
@@ -93,6 +94,7 @@
 		B5BC1AB91D42D1D2003E405C /* CCUserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCUserService.swift; sourceTree = "<group>"; };
 		B5BC1ABF1D44749F003E405C /* CCSuggestionRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCSuggestionRouter.swift; sourceTree = "<group>"; };
 		B5BC1AC11D4477BD003E405C /* CCSuggestionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCSuggestionService.swift; sourceTree = "<group>"; };
+		B5BC1AC31D4478D1003E405C /* CCSuggestionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCSuggestionViewModel.swift; sourceTree = "<group>"; };
 		B5BF10941D35F5A2008BDF33 /* CardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		B5BF10951D35F5A2008BDF33 /* CardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
 		B5BF10981D35F78F008BDF33 /* CCCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCard.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				B5E2666E1D2F08930051756C /* CCPlaceViewModel.swift */,
 				B5EB172D1D3CADEC002AC817 /* CCCardViewModel.swift */,
 				B5EB17411D3E8401002AC817 /* CCBankViewModel.swift */,
+				B5BC1AC31D4478D1003E405C /* CCSuggestionViewModel.swift */,
 			);
 			name = Business;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 				B597B8011D24547B00E62371 /* ProfileViewController.swift in Sources */,
 				B56511161D207980002CD3AF /* LoginViewController.swift in Sources */,
 				B5BC1AC01D44749F003E405C /* CCSuggestionRouter.swift in Sources */,
+				B5BC1AC41D4478D1003E405C /* CCSuggestionViewModel.swift in Sources */,
 				B527EF7F1D2DD95F002A24AC /* CCPlace.swift in Sources */,
 				B5EB173E1D3E754F002AC817 /* CCBankRouter.swift in Sources */,
 				B527EF851D2DE9A0002A24AC /* CCPlaceMarker.swift in Sources */,
