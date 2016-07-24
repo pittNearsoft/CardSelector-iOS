@@ -83,7 +83,7 @@ class SessionManager {
   }
   
   static func getFacebookImageForUser(user: CCUser) {
-    let request = FBSDKGraphRequest(graphPath: "/\(user.userId)/picture?redirect=false&type=large", parameters: nil, HTTPMethod: "GET")
+    let request = FBSDKGraphRequest(graphPath: "/\(user.providerId)/picture?redirect=false&type=large", parameters: nil, HTTPMethod: "GET")
     
     request.startWithCompletionHandler { (connection, result, error) in
       if error == nil {

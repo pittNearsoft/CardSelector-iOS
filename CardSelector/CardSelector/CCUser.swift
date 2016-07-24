@@ -12,7 +12,11 @@ import ObjectMapper
 
 
 class CCUser: NSObject, NSCoding {
-  var userId              = ""
+  //Googgle or Facebook
+  dynamic var providerId          = ""
+  
+  //CC Id
+  var userId              = 0
   var firstName           = ""
   var lastName            = ""
   var email               = ""
@@ -26,19 +30,21 @@ class CCUser: NSObject, NSCoding {
   
   
   init(userDictionary: [String: AnyObject]) {
-    self.userId     = userDictionary["userId"] as! String
-    self.firstName  = userDictionary["firstName"] as! String
-    self.lastName   = userDictionary["lastName"] as! String
-    self.email      = userDictionary["email"] as! String
-    self.gender     = userDictionary["gender"] as! String
-    self.birthDate  = userDictionary["birthDate"] as! String
+    self.providerId   = userDictionary["providerId"] as! String
+    self.userId       = userDictionary["userId"] as! Int
+    self.firstName    = userDictionary["firstName"] as! String
+    self.lastName     = userDictionary["lastName"] as! String
+    self.email        = userDictionary["email"] as! String
+    self.gender       = userDictionary["gender"] as! String
+    self.birthDate    = userDictionary["birthDate"] as! String
     
-    self.imageUrl   = userDictionary["imageUrl"] as! String
-    self.provider   = userDictionary["provider"] as! Int
+    self.imageUrl     = userDictionary["imageUrl"] as! String
+    self.provider     = userDictionary["provider"] as! Int
+    self.profileCards = userDictionary["profileCards"] as! [CCProfileCard]
   }
   
   init(WithGoogleUser googleUser: GIDGoogleUser) {
-    userId    = googleUser.userID
+    providerId    = googleUser.userID
     firstName = googleUser.profile.givenName
     lastName  = googleUser.profile.familyName
     email     = googleUser.profile.email
@@ -49,7 +55,7 @@ class CCUser: NSObject, NSCoding {
   }
   
   init(WithFacebookUser facebookUser: [String: AnyObject]) {
-    userId    = facebookUser["id"] as! String
+    providerId    = facebookUser["id"] as! String
     firstName = facebookUser["first_name"] as! String
     lastName  = facebookUser["last_name"] as! String
     email     = facebookUser["email"] as! String
@@ -74,33 +80,38 @@ class CCUser: NSObject, NSCoding {
   }
   
   convenience required init?(coder decoder: NSCoder) {
-    guard let userId      = decoder.decodeObjectForKey("userId") as? String,
-          let firstName   = decoder.decodeObjectForKey("firstName") as? String,
-          let lastName    = decoder.decodeObjectForKey("lastName") as? String,
-          let email       = decoder.decodeObjectForKey("email") as? String,
-          let gender      = decoder.decodeObjectForKey("gender") as? String,
-          let birthDate   = decoder.decodeObjectForKey("birthDate") as? String,
+    guard let providerId    = decoder.decodeObjectForKey("providerId") as? String,
+          let userId        = decoder.decodeObjectForKey("userId") as? Int,
+          let firstName     = decoder.decodeObjectForKey("firstName") as? String,
+          let lastName      = decoder.decodeObjectForKey("lastName") as? String,
+          let email         = decoder.decodeObjectForKey("email") as? String,
+          let gender        = decoder.decodeObjectForKey("gender") as? String,
+          let birthDate     = decoder.decodeObjectForKey("birthDate") as? String,
       
-          let imageUrl    = decoder.decodeObjectForKey("imageUrl") as? String,
-          let provider    = decoder.decodeObjectForKey("provider") as? Int
+          let imageUrl      = decoder.decodeObjectForKey("imageUrl") as? String,
+          let provider      = decoder.decodeObjectForKey("provider") as? Int,
+          let profileCards  = decoder.decodeObjectForKey("profileCards") as? [CCProfileCard]
       else{ return nil }
     
     let dictionary = [
-      "userId": userId,
-      "firstName" : firstName,
-      "lastName"  : lastName,
-      "email"     : email,
-      "gender"    : gender,
-      "birthDate" : birthDate,
+      "providerId"    : providerId,
+      "userId"        : userId,
+      "firstName"     : firstName,
+      "lastName"      : lastName,
+      "email"         : email,
+      "gender"        : gender,
+      "birthDate"     : birthDate,
       
-      "imageUrl"  : imageUrl,
-      "provider"  : provider
+      "imageUrl"      : imageUrl,
+      "provider"      : provider,
+      "profileCards"  : profileCards
     ]
     
     self.init(userDictionary: dictionary as! [String : AnyObject] )
   }
   
   func encodeWithCoder(coder: NSCoder) {
+    coder.encodeObject(self.providerId, forKey: "providerId")
     coder.encodeObject(self.userId,     forKey: "userId")
     coder.encodeObject(self.firstName,  forKey: "firstName")
     coder.encodeObject(self.lastName,   forKey: "lastName")
@@ -110,6 +121,7 @@ class CCUser: NSObject, NSCoding {
     
     coder.encodeObject(self.imageUrl,   forKey: "imageUrl")
     coder.encodeObject(self.provider,   forKey: "provider")
+    coder.encodeObject(self.profileCards, forKey: "profileCards")
   }
   
   
@@ -122,12 +134,12 @@ class CCUser: NSObject, NSCoding {
 extension CCUser: Mappable{
 
   func mapping(map: Map) {
-    userId <- map["Id"]
-    email <- map["Email"]
-    firstName <- map["FirstName"]
-    lastName <- map["LastName"]
-    birthDate <- map["DateOfBirth"]
-    gender <- map["Gender"]
-    profileCards <- map["UserProfileCards"]
+    userId        <- map["Id"]
+    email         <- map["Email"]
+    firstName     <- map["FirstName"]
+    lastName      <- map["LastName"]
+    birthDate     <- map["DateOfBirth"]
+    gender        <- map["Gender"]
+    profileCards  <- map["UserProfileCards"]
   }
 }
