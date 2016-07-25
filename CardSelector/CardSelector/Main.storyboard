@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Profile View Controller-->
+        <!--Account-->
         <scene sceneID="6Cp-kY-DPR">
             <objects>
                 <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="t7r-qe-Oec" customClass="ProfileViewController" customModule="CardSelector" customModuleProvider="target" sceneMemberID="viewController">
@@ -79,7 +79,7 @@
                             <constraint firstItem="TX2-xY-BWE" firstAttribute="top" secondItem="N5K-VL-4od" secondAttribute="bottom" id="ocG-l7-zTt"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Bel-jn-4uq"/>
+                    <navigationItem key="navigationItem" title="Account" id="Bel-jn-4uq"/>
                     <connections>
                         <outlet property="emailLabel" destination="TX2-xY-BWE" id="yNg-O8-OYz"/>
                         <outlet property="profileImageView" destination="5zD-Eu-cw7" id="57g-1v-4wM"/>
@@ -110,7 +110,7 @@
             </objects>
             <point key="canvasLocation" x="179" y="-14"/>
         </scene>
-        <!--Places View Controller-->
+        <!--Nearby Places-->
         <scene sceneID="mRn-xX-ZkC">
             <objects>
                 <viewController id="8hq-KY-jHL" customClass="PlacesViewController" customModule="CardSelector" customModuleProvider="target" sceneMemberID="viewController">
@@ -158,7 +158,7 @@
                             <constraint firstItem="wqC-WK-y43" firstAttribute="leading" secondItem="umH-wp-zgf" secondAttribute="leading" id="zfm-Ye-VmT"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ZMc-ga-7fW">
+                    <navigationItem key="navigationItem" title="Nearby Places" id="ZMc-ga-7fW">
                         <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="0g6-xJ-gi6">
                             <connections>
                                 <action selector="refreshPlaces:" destination="8hq-KY-jHL" id="sT2-Rk-IB9"/>
@@ -172,6 +172,7 @@
                         <outlet property="pinImageVerticalConstraint" destination="YuQ-WA-J5a" id="DwG-4a-JU3"/>
                         <outlet property="slideUpTableView" destination="LmN-RY-8E1" id="FNP-ud-X4i"/>
                         <outlet property="slideUpView" destination="8Ep-gl-3oL" id="kFa-Fv-e1d"/>
+                        <segue destination="Sba-2H-8S2" kind="presentation" identifier="enableLocationSegue" id="qYN-vb-ps2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLR-x0-rgJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -219,6 +220,75 @@
                 </tableView>
             </objects>
             <point key="canvasLocation" x="2093" y="-879"/>
+        </scene>
+        <!--Enable Location View Controller-->
+        <scene sceneID="Xzg-hX-Tdu">
+            <objects>
+                <viewController storyboardIdentifier="enableLocationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Sba-2H-8S2" customClass="EnableLocationViewController" customModule="CardSelector" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AoG-PN-lTv"/>
+                        <viewControllerLayoutGuide type="bottom" id="KD1-k1-xvM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aNA-mU-Tie">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient5" translatesAutoresizingMaskIntoConstraints="NO" id="cec-BY-vBX">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warning" translatesAutoresizingMaskIntoConstraints="NO" id="9qf-Hg-MSw">
+                                <rect key="frame" x="236" y="28" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="bo5-RQ-mht"/>
+                                    <constraint firstAttribute="height" constant="128" id="y8J-dL-8gb"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You location for this app isn't enabled. Please go to Settings and change to &quot;While Using this app&quot; " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOu-zw-3pd">
+                                <rect key="frame" x="20" y="164" width="560" height="83"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="83" id="CoW-1r-UfS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sdg-S8-KS5">
+                                <rect key="frame" x="20" y="255" width="560" height="330"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mOo-Ly-g9j">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="vOu-zw-3pd" secondAttribute="trailing" constant="20" id="07W-ip-97c"/>
+                            <constraint firstItem="sdg-S8-KS5" firstAttribute="top" secondItem="vOu-zw-3pd" secondAttribute="bottom" constant="8" id="3gP-bH-533"/>
+                            <constraint firstItem="cec-BY-vBX" firstAttribute="leading" secondItem="aNA-mU-Tie" secondAttribute="leading" id="618-D4-OPw"/>
+                            <constraint firstItem="KD1-k1-xvM" firstAttribute="top" secondItem="cec-BY-vBX" secondAttribute="bottom" id="DjV-hQ-sK6"/>
+                            <constraint firstAttribute="trailing" secondItem="sdg-S8-KS5" secondAttribute="trailing" constant="20" id="S0v-mP-qcM"/>
+                            <constraint firstItem="9qf-Hg-MSw" firstAttribute="top" secondItem="AoG-PN-lTv" secondAttribute="bottom" constant="8" id="Ufd-ca-Vx5"/>
+                            <constraint firstItem="vOu-zw-3pd" firstAttribute="top" secondItem="9qf-Hg-MSw" secondAttribute="bottom" constant="8" id="VK8-7Z-WJY"/>
+                            <constraint firstItem="sdg-S8-KS5" firstAttribute="leading" secondItem="aNA-mU-Tie" secondAttribute="leading" constant="20" id="ZFj-Jd-19w"/>
+                            <constraint firstItem="vOu-zw-3pd" firstAttribute="leading" secondItem="aNA-mU-Tie" secondAttribute="leading" constant="20" id="dGD-Pk-2kE"/>
+                            <constraint firstItem="cec-BY-vBX" firstAttribute="top" secondItem="aNA-mU-Tie" secondAttribute="top" id="eWH-lo-B6L"/>
+                            <constraint firstItem="KD1-k1-xvM" firstAttribute="top" secondItem="sdg-S8-KS5" secondAttribute="bottom" constant="15" id="ksS-JZ-lOg"/>
+                            <constraint firstAttribute="trailing" secondItem="cec-BY-vBX" secondAttribute="trailing" id="oFk-JR-vi4"/>
+                            <constraint firstItem="vOu-zw-3pd" firstAttribute="centerX" secondItem="aNA-mU-Tie" secondAttribute="centerX" id="vce-1O-Hfk"/>
+                            <constraint firstItem="9qf-Hg-MSw" firstAttribute="centerX" secondItem="aNA-mU-Tie" secondAttribute="centerX" id="ybZ-l5-5aP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="sdg-S8-KS5" id="Xv9-UC-0CG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qdI-7U-h12" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2881" y="-879"/>
         </scene>
         <!--Account-->
         <scene sceneID="Yig-GD-mon">
@@ -553,8 +623,10 @@
         <image name="gradient1" width="750" height="1334"/>
         <image name="gradient3" width="1080" height="1920"/>
         <image name="gradient4" width="213" height="378"/>
+        <image name="gradient5" width="750" height="1334"/>
         <image name="icon_me" width="30" height="55"/>
         <image name="profile-1" width="256" height="256"/>
         <image name="user" width="30" height="30"/>
+        <image name="warning" width="128" height="128"/>
     </resources>
 </document>

@@ -31,6 +31,7 @@ class PlacesViewController: UIViewController {
   
   var listSuggestions: [String] = []
   
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -43,6 +44,14 @@ class PlacesViewController: UIViewController {
     
     mapView.delegate = self
     setupLocationManager()
+  }
+  
+  override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+    
+    if CLLocationManager.authorizationStatus() == .Denied {
+      performSegueWithIdentifier("enableLocationSegue", sender: self)
+    }
   }
   
   //MARK: - Map methods
@@ -204,7 +213,7 @@ extension PlacesViewController: CLLocationManagerDelegate{
       mapView.myLocationEnabled = true
       mapView.settings.myLocationButton = true
     }else{
-      print("asd")
+      performSegueWithIdentifier("enableLocationSegue", sender: self)
     }
 
   }

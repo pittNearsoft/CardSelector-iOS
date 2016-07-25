@@ -37,6 +37,9 @@
 		B5BC1AC21D4477BD003E405C /* CCSuggestionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BC1AC11D4477BD003E405C /* CCSuggestionService.swift */; };
 		B5BC1AC41D4478D1003E405C /* CCSuggestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BC1AC31D4478D1003E405C /* CCSuggestionViewModel.swift */; };
 		B5BC1AC81D447B13003E405C /* SuggestionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BC1AC71D447B13003E405C /* SuggestionViewCell.swift */; };
+		B5BC1ACA1D4567D9003E405C /* EnableLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BC1AC91D4567D9003E405C /* EnableLocationViewController.swift */; };
+		B5BC1ACD1D458A1D003E405C /* SettingsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BC1ACB1D458A1D003E405C /* SettingsCollectionViewCell.swift */; };
+		B5BC1ACE1D458A1D003E405C /* SettingsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BC1ACC1D458A1D003E405C /* SettingsCollectionViewCell.xib */; };
 		B5BF10961D35F5A2008BDF33 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BF10941D35F5A2008BDF33 /* CardCell.swift */; };
 		B5BF10971D35F5A2008BDF33 /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BF10951D35F5A2008BDF33 /* CardCell.xib */; };
 		B5BF10991D35F78F008BDF33 /* CCCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BF10981D35F78F008BDF33 /* CCCard.swift */; };
@@ -97,6 +100,9 @@
 		B5BC1AC11D4477BD003E405C /* CCSuggestionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCSuggestionService.swift; sourceTree = "<group>"; };
 		B5BC1AC31D4478D1003E405C /* CCSuggestionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCSuggestionViewModel.swift; sourceTree = "<group>"; };
 		B5BC1AC71D447B13003E405C /* SuggestionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionViewCell.swift; sourceTree = "<group>"; };
+		B5BC1AC91D4567D9003E405C /* EnableLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnableLocationViewController.swift; sourceTree = "<group>"; };
+		B5BC1ACB1D458A1D003E405C /* SettingsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCollectionViewCell.swift; sourceTree = "<group>"; };
+		B5BC1ACC1D458A1D003E405C /* SettingsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsCollectionViewCell.xib; sourceTree = "<group>"; };
 		B5BF10941D35F5A2008BDF33 /* CardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		B5BF10951D35F5A2008BDF33 /* CardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
 		B5BF10981D35F78F008BDF33 /* CCCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCard.swift; sourceTree = "<group>"; };
@@ -177,6 +183,8 @@
 				B5EB17371D3DC0E1002AC817 /* BankCollectionViewCell.swift */,
 				B5EB17381D3DC0E1002AC817 /* BankCollectionViewCell.xib */,
 				B5BC1AC71D447B13003E405C /* SuggestionViewCell.swift */,
+				B5BC1ACB1D458A1D003E405C /* SettingsCollectionViewCell.swift */,
+				B5BC1ACC1D458A1D003E405C /* SettingsCollectionViewCell.xib */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -235,6 +243,7 @@
 				B52581511D2B3EEA001CB6BC /* PlacesViewController.swift */,
 				B5E266821D33905F0051756C /* MyCardsViewController.swift */,
 				B5772E3E1D37E2B6003A5210 /* AddCardViewController.swift */,
+				B5BC1AC91D4567D9003E405C /* EnableLocationViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -411,6 +420,7 @@
 				B527EF7D1D2DCD3B002A24AC /* MarkerInfoView.xib in Resources */,
 				B5EB173A1D3DC0E1002AC817 /* BankCollectionViewCell.xib in Resources */,
 				B56511191D207980002CD3AF /* Login.storyboard in Resources */,
+				B5BC1ACE1D458A1D003E405C /* SettingsCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,8 +520,10 @@
 				B5BC1AC81D447B13003E405C /* SuggestionViewCell.swift in Sources */,
 				B5E266721D2F11480051756C /* CCPlaceService.swift in Sources */,
 				B5E266741D2F11C10051756C /* APIClient.swift in Sources */,
+				B5BC1ACA1D4567D9003E405C /* EnableLocationViewController.swift in Sources */,
 				B5772E421D37EBA3003A5210 /* CardCollectionViewCell.swift in Sources */,
 				B5E2667A1D2F1E190051756C /* AlamofireExtensions.swift in Sources */,
+				B5BC1ACD1D458A1D003E405C /* SettingsCollectionViewCell.swift in Sources */,
 				B5EB17301D3CB04D002AC817 /* CCCardService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
