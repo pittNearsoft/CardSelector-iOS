@@ -148,6 +148,7 @@ extension PlacesViewController: GMSMapViewDelegate{
       }
       
 
+      infoView.addShadowEffect()
       return infoView
     }
     
