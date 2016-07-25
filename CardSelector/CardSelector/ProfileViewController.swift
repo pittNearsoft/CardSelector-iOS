@@ -11,7 +11,7 @@ import LKAlertController
 import AlamofireImage
 
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: BaseViewController {
 
   let sessionManager = SessionManager()
   

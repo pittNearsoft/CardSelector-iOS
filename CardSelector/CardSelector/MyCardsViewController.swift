@@ -10,7 +10,7 @@ import UIKit
 import SVProgressHUD
 import LKAlertController
 
-class MyCardsViewController: UIViewController {
+class MyCardsViewController: BaseViewController {
   
   
   @IBOutlet weak var noCardsLabel: UILabel!

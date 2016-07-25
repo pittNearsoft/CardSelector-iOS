@@ -10,7 +10,7 @@ import UIKit
 import SVProgressHUD
 import LKAlertController
 
-class AddCardViewController: UIViewController {
+class AddCardViewController: BaseViewController {
   
   
   @IBOutlet weak var bottomConstraint: NSLayoutConstraint!

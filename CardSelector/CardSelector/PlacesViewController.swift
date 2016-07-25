@@ -12,7 +12,7 @@ import CoreLocation
 import AlamofireImage
 import SeamlessSlideUpScrollView
 
-class PlacesViewController: UIViewController {
+class PlacesViewController: BaseViewController {
 
   @IBOutlet weak var mapView: GMSMapView!
   @IBOutlet weak var locationLabel: UILabel!
@@ -44,14 +44,6 @@ class PlacesViewController: UIViewController {
     
     mapView.delegate = self
     setupLocationManager()
-  }
-  
-  override func viewDidAppear(animated: Bool) {
-    super.viewDidAppear(animated)
-    
-    if CLLocationManager.authorizationStatus() == .Denied {
-      performSegueWithIdentifier("enableLocationSegue", sender: self)
-    }
   }
   
   //MARK: - Map methods
@@ -212,7 +204,7 @@ extension PlacesViewController: CLLocationManagerDelegate{
       //locationManager.startUpdatingLocation()
       mapView.myLocationEnabled = true
       mapView.settings.myLocationButton = true
-    }else{
+    }else if status == .Denied{
       performSegueWithIdentifier("enableLocationSegue", sender: self)
     }
 
