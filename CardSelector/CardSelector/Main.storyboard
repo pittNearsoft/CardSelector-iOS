@@ -383,7 +383,8 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="My Cards" id="zct-Ne-8jb">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="UVr-dn-uFc">
+                        <barButtonItem key="rightBarButtonItem" image="add" id="UVr-dn-uFc">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="O6n-w3-XhG" kind="presentation" identifier="addCardSegue" id="hbT-rg-bKa"/>
                             </connections>
@@ -398,7 +399,7 @@
             </objects>
             <point key="canvasLocation" x="2093" y="-222"/>
         </scene>
-        <!--Add Card View Controller-->
+        <!--Add a new card-->
         <scene sceneID="S6U-U7-HdZ">
             <objects>
                 <viewController id="ueE-LB-PAK" customClass="AddCardViewController" customModule="CardSelector" customModuleProvider="target" sceneMemberID="viewController">
@@ -422,13 +423,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Htf-2T-xCz">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Htf-2T-xCz">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="180"/>
                                 <color key="backgroundColor" red="0.058823529411764705" green="0.078431372549019607" blue="0.15294117647058825" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="HlS-W5-w1M"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="i4K-j8-5s5">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="i4K-j8-5s5" customClass="CenterCellCollectionViewFlowLayout" customModule="CardSelector" customModuleProvider="target">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -556,13 +557,15 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" id="Hcl-VP-V3y">
+                    <navigationItem key="navigationItem" title="Add a new card" id="Hcl-VP-V3y">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Gow-00-MxW">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="cancelOperation:" destination="ueE-LB-PAK" id="mhK-kj-v2X"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="RAd-0L-VUV">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="saveCard:" destination="ueE-LB-PAK" id="yrh-Z0-Yng"/>
                             </connections>
@@ -623,6 +626,7 @@
     </scenes>
     <resources>
         <image name="Chase" width="106" height="80"/>
+        <image name="add" width="30" height="30"/>
         <image name="gradient1" width="750" height="1334"/>
         <image name="gradient3" width="1080" height="1920"/>
         <image name="gradient4" width="213" height="378"/>

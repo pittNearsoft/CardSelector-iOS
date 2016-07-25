@@ -361,7 +361,7 @@ extension AddCardViewController: UICollectionViewDelegateFlowLayout{
   
   func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
     if collectionView == self.cardCollectionView {
-      return CGSize(width: cardCollectionView.frame.width, height: cardCollectionView.frame.height)
+      return CGSize(width: cardCollectionView.frame.width-60, height: cardCollectionView.frame.height)
     }else{
       return CGSize(width: 85, height: 70)
     }
