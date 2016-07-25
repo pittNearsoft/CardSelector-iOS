@@ -50,6 +50,9 @@ class MyCardsViewController: BaseViewController {
     let user = CCUserViewModel.getLoggedUser()
     cardViewModel.getProfileCardsFromUser(user!, completion: { (listCards) in
       self.profileCards = listCards
+      user?.profileCards = listCards
+      CCUserViewModel.saveUserIntoUserDefaults(user!)
+      
       self.tableView.reloadData()
       self.dismissLoading()
     }) { (error) in
@@ -79,6 +82,8 @@ class MyCardsViewController: BaseViewController {
     cardViewModel.deleteCard(profileCards[indexPath.row], user: user!, completion: { (success) in
       cell?.unlock()
       self.profileCards.removeAtIndex(indexPath.row)
+      user?.profileCards.removeAtIndex(indexPath.row)
+      CCUserViewModel.saveUserIntoUserDefaults(user!)
       self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }) { (error) in
       cell?.unlock()
@@ -135,6 +140,10 @@ extension MyCardsViewController: UITableViewDelegate{
 extension MyCardsViewController: AddCardViewControllerDelegate{
   func didSaveProfileCard(card: CCProfileCard) {
     profileCards.insert(card, atIndex: 0)
+    let user = CCUserViewModel.getLoggedUser()
+    user?.profileCards.append(card)
+    CCUserViewModel.saveUserIntoUserDefaults(user!)
+    
     tableView.reloadData()
   }
 }
