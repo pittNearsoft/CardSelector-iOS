@@ -48,6 +48,9 @@ class AddCardViewController: BaseViewController {
     bankCollectionView.dataSource = self
     bankCollectionView.delegate = self
     
+    endingTextField.delegate = self
+    rateTextField.delegate = self
+    
     let cardNibName = UINib(nibName: CardCollectionViewCell.reuseIdentifier(), bundle:nil)
     cardCollectionView.registerNib(cardNibName, forCellWithReuseIdentifier: CardCollectionViewCell.reuseIdentifier())
     
@@ -60,11 +63,6 @@ class AddCardViewController: BaseViewController {
     additionalInfoView.addGestureRecognizer(tap)
     
     heightConstraint.constant = 0
-    
-//    listBanks.append(CCBank(bankId: 1, name: "Chase", description: ""))
-//    listBanks.append(CCBank(bankId: 2, name: "Bank Of America", description: ""))
-//    listBanks.append(CCBank(bankId: 3, name: "wells", description: ""))
-    
     
     //Nofitication to up or down text field when keyboard appear/disappear
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleKeyboardWillShowWithNotification), name: UIKeyboardWillShowNotification, object: nil)
@@ -238,6 +236,19 @@ class AddCardViewController: BaseViewController {
     dismissKeyboard()
   }
   
+}
+
+extension AddCardViewController: UITextFieldDelegate{
+  func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    guard let text = textField.text else { return true }
+    
+    if textField == endingTextField {
+      let newLength = text.utf16.count + string.utf16.count - range.length
+      return newLength <= 4 // Bool
+    }
+    
+    return true
+  }
 }
 
 
