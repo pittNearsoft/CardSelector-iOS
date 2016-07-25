@@ -69,7 +69,6 @@ class AddCardViewController: BaseViewController {
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleKeyboardWillHideWithNotification), name: UIKeyboardWillHideNotification, object: nil)
     
     getAvailableBanks()
-    //getAvailableCards()
   }
   
   func dismissKeyboard() {
@@ -181,8 +180,14 @@ class AddCardViewController: BaseViewController {
     
     self.noCardsLabel.hidden = true
     cardCollectionView.lock()
-    cardViewModel.getAvailableCardsFromBank(bank,
+    
+    let user = CCUserViewModel.getLoggedUser()
+    cardViewModel.getAvailableCardsFromBank(bank, user: user! ,
       completion: { (listCards) in
+        
+
+        self.noCardsLabel.hidden = (listCards.count == 0) ? false : true
+        
         self.listCards = listCards
         self.cardCollectionView.reloadData()
         self.cardCollectionView.unlock()

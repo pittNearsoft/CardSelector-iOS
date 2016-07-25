@@ -21,11 +21,22 @@ class CCCardViewModel {
     }
   }
   
-  func getAvailableCardsFromBank(bank: CCBank,completion: (listCards: [CCCard]) -> Void, onError: (error: NSError) -> Void) {    
+  func getAvailableCardsFromBank(bank: CCBank, user: CCUser, completion: (listCards: [CCCard]) -> Void, onError: (error: NSError) -> Void) {
     cardService.getAvailableCardsFromBank(bank,
       completion: { (jsonCards) in
         let cards: [CCCard] = Mapper<CCCard>().mapArray(jsonCards)!
-        completion(listCards: cards)
+        
+        let cardsNoSelectedByUser = cards.filter({ (card) -> Bool in
+          for profileCard in user.profileCards{
+            if profileCard.card?.cardId == card.cardId{
+              return false
+            }
+          }
+          
+          return true
+        })
+        
+        completion(listCards: cardsNoSelectedByUser)
       },
       onError: { (error) in
         onError(error: error)
