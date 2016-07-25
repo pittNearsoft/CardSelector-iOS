@@ -165,7 +165,7 @@ extension PlacesViewController: GMSMapViewDelegate{
     
     let placeMarker = marker as! CCPlaceMarker
     let user = CCUserViewModel.getLoggedUser()
-    suggestionViewModel.getSuggestionsWithUser(user!, merchant: placeMarker.place.name, completion: { (listSuggestions) in
+    suggestionViewModel.getSuggestionsWithUser(user!, merchant: placeMarker.place, completion: { (listSuggestions) in
       
       self.listSuggestions = (listSuggestions.count > 0) ? listSuggestions : ["No data found"]
       

@@ -10,7 +10,7 @@ import Alamofire
 
 enum CCSuggestionRouter: URLRequestConvertible {
   
-  case getSuggestionsWithUser(user: CCUser, merchant: String)
+  case getSuggestionsWithUser(user: CCUser, merchant: CCPlace)
   
   var method: Alamofire.Method{
     switch self {
@@ -33,7 +33,7 @@ enum CCSuggestionRouter: URLRequestConvertible {
       return [
         "UserProfileId"  : user.userId,
         //TODO:CHANGE THIS LATER
-        "Merchant"       : merchant
+        "Merchant"       : merchant.name
       ]
       
     }
