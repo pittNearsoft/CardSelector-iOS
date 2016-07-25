@@ -30,8 +30,9 @@
                         <constraint firstAttribute="width" constant="300" id="jKj-cI-i1b"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" alpha="0.34999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Visa_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Nof-27-2xa">
+                <imageView userInteractionEnabled="NO" alpha="0.34999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chase" translatesAutoresizingMaskIntoConstraints="NO" id="Nof-27-2xa">
                     <rect key="frame" x="8" y="8" width="284" height="104"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Program" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zU-Uf-Jj3">
                     <rect key="frame" x="8" y="8" width="202" height="24"/>
@@ -150,6 +151,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Visa_Logo" width="659" height="202"/>
+        <image name="Chase" width="106" height="80"/>
     </resources>
 </document>

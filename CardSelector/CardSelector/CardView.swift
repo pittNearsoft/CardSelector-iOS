@@ -38,7 +38,7 @@ class CardView: UIView {
   
   func configureWithCard(card: CCCard) {
     bankImage.image = UIImage(named: (card.bank?.name)!)
-    background.backgroundColor = card.color
+    background.backgroundColor = UIColor.whiteColor()//card.color
     programLabel.text = card.cardProgram?.name
     cardTypeLabel.text = card.cardType?.name
     cardLevelLabel.text = (card.cardLevel!.isEnabled) ? card.cardLevel?.name : ""
