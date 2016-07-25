@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //To use google maps
     GMSServices.provideAPIKey("AIzaSyB9MBgfh45DH-k-Ym0hLDTsq1AttHzhLhU")
     
+    UIApplication.sharedApplication().statusBarStyle = .LightContent
+    
     //Initialize Facebook Sign-in
     FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     
