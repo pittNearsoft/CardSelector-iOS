@@ -11,6 +11,7 @@ import GoogleMaps
 import CoreLocation
 import AlamofireImage
 import SeamlessSlideUpScrollView
+import LKAlertController
 
 class PlacesViewController: BaseViewController {
 
@@ -159,14 +160,19 @@ extension PlacesViewController: GMSMapViewDelegate{
   func mapView(mapView: GMSMapView, didTapInfoWindowOfMarker marker: GMSMarker) {
     
     slideUpView.show()
+    slideUpTableView.lock()
     
     let placeMarker = marker as! CCPlaceMarker
     let user = CCUserViewModel.getLoggedUser()
     suggestionViewModel.getSuggestionsWithUser(user!, merchant: placeMarker.place.name, completion: { (listSuggestions) in
       self.listSuggestions = listSuggestions
+      self.slideUpTableView.unlock()
       self.slideUpTableView.reloadData()
     }) { (error) in
+      self.slideUpTableView.unlock()
       print(error.localizedDescription)
+      Alert(title: "Ops!", message: "Something went wrong, try again later.").showOkay()
+      self.slideUpView.hide()
     }
   }
   
