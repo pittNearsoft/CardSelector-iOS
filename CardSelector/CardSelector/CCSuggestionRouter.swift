@@ -33,7 +33,7 @@ enum CCSuggestionRouter: URLRequestConvertible {
       return [
         "UserProfileId"  : user.userId,
         //TODO:CHANGE THIS LATER
-        "Merchant"       : "Starbucks"
+        "Merchant"       : merchant
       ]
       
     }

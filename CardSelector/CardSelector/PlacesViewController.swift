@@ -166,14 +166,16 @@ extension PlacesViewController: GMSMapViewDelegate{
     let placeMarker = marker as! CCPlaceMarker
     let user = CCUserViewModel.getLoggedUser()
     suggestionViewModel.getSuggestionsWithUser(user!, merchant: placeMarker.place.name, completion: { (listSuggestions) in
-      self.listSuggestions = listSuggestions
+      
+      self.listSuggestions = (listSuggestions.count > 0) ? listSuggestions : ["No data found"]
+      
       self.slideUpTableView.unlock()
       self.slideUpTableView.reloadData()
     }) { (error) in
       self.slideUpTableView.unlock()
       print(error.localizedDescription)
-      Alert(title: "Ops!", message: "Something went wrong, try again later.").showOkay()
       self.slideUpView.hide()
+      Alert(title: "Ops!", message: "Something went wrong, try again later.").showOkay()
     }
   }
   
