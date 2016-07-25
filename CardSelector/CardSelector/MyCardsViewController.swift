@@ -132,7 +132,13 @@ extension MyCardsViewController: UITableViewDelegate{
   
   func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     if editingStyle == .Delete {
-      deleteProfileCardWithIndexPath(indexPath)
+      
+      
+      Alert(message: "Do you really want to delete this card?")
+        .addAction("Cancel")
+        .addAction("Yes", style: .Destructive, handler: { _ in
+          self.deleteProfileCardWithIndexPath(indexPath)
+        }).show()
     }
   }
 }
