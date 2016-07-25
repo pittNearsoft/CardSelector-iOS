@@ -37,6 +37,7 @@ class PlacesViewController: BaseViewController {
     super.viewDidLoad()
     
     slideUpTableView.dataSource = self
+    slideUpTableView.delegate = self
     
     slideUpView.tableView = slideUpTableView
     slideUpView.delegate  = self
@@ -260,5 +261,11 @@ extension PlacesViewController: UITableViewDataSource {
     return cell
   }
   
+}
+
+extension PlacesViewController: UITableViewDelegate{
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+  }
 }
 
