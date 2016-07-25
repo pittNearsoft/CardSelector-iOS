@@ -16,6 +16,12 @@ class BaseViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    self.tabBarController?.viewControllers![0].tabBarItem = UITabBarItem(title: "Dashboard", image: UIImage(named: "dashboard")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "dashboard"))
+    
+    self.tabBarController?.viewControllers![1].tabBarItem = UITabBarItem(title: "My Cards", image: UIImage(named: "credit-cards")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "credit-cards"))
+    
+    self.tabBarController?.viewControllers![2].tabBarItem = UITabBarItem(title: "My Cards", image: UIImage(named: "user")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "user"))
+    
     customizeNavigationBar()
     customizeTabBar()
   }

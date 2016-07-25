@@ -163,7 +163,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Nearby Places" id="ZMc-ga-7fW">
-                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="0g6-xJ-gi6">
+                        <barButtonItem key="leftBarButtonItem" image="refresh-button" id="0g6-xJ-gi6">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="refreshPlaces:" destination="8hq-KY-jHL" id="sT2-Rk-IB9"/>
                             </connections>
@@ -313,11 +314,11 @@
             </objects>
             <point key="canvasLocation" x="1252" y="506"/>
         </scene>
-        <!--My Cards-->
+        <!--Navigation Controller-->
         <scene sceneID="Cty-im-O4s">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="46j-rT-Idv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Cards" image="credit-cards" id="Djg-20-lxn"/>
+                    <tabBarItem key="tabBarItem" title="" id="Djg-20-lxn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nfb-iT-sFm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -582,11 +583,11 @@
             </objects>
             <point key="canvasLocation" x="3693" y="-222"/>
         </scene>
-        <!--Dashboard-->
+        <!--Navigation Controller-->
         <scene sceneID="zYy-3o-asg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="u9L-zH-omU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Dashboard" image="dashboard" id="Juk-L5-ctr"/>
+                    <tabBarItem key="tabBarItem" title="" id="Juk-L5-ctr"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mij-3B-yDf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -622,14 +623,13 @@
     </scenes>
     <resources>
         <image name="Chase" width="106" height="80"/>
-        <image name="credit-cards" width="42" height="42"/>
-        <image name="dashboard" width="30" height="30"/>
         <image name="gradient1" width="750" height="1334"/>
         <image name="gradient3" width="1080" height="1920"/>
         <image name="gradient4" width="213" height="378"/>
         <image name="gradient5" width="750" height="1334"/>
         <image name="location-pointer" width="128" height="128"/>
         <image name="profile-1" width="256" height="256"/>
+        <image name="refresh-button" width="30" height="30"/>
         <image name="user" width="30" height="30"/>
         <image name="warning" width="256" height="256"/>
     </resources>
