@@ -27,6 +27,7 @@
 		B5772E3F1D37E2B6003A5210 /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5772E3E1D37E2B6003A5210 /* AddCardViewController.swift */; };
 		B5772E421D37EBA3003A5210 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5772E401D37EBA3003A5210 /* CardCollectionViewCell.swift */; };
 		B5772E431D37EBA3003A5210 /* CardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5772E411D37EBA3003A5210 /* CardCollectionViewCell.xib */; };
+		B581C2C71D45E47E00441514 /* CenterCellCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B581C2C61D45E47E00441514 /* CenterCellCollectionViewFlowLayout.swift */; };
 		B597B7F01D20828A00E62371 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B597B7EF1D20828A00E62371 /* GoogleService-Info.plist */; };
 		B597B7F31D23326500E62371 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597B7F21D23326500E62371 /* SessionManager.swift */; };
 		B597B7F51D2333CC00E62371 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597B7F41D2333CC00E62371 /* NavigationManager.swift */; };
@@ -91,6 +92,7 @@
 		B5772E3E1D37E2B6003A5210 /* AddCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
 		B5772E401D37EBA3003A5210 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		B5772E411D37EBA3003A5210 /* CardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardCollectionViewCell.xib; sourceTree = "<group>"; };
+		B581C2C61D45E47E00441514 /* CenterCellCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterCellCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		B597B7EF1D20828A00E62371 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B597B7F21D23326500E62371 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		B597B7F41D2333CC00E62371 /* NavigationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 			children = (
 				B527EF791D2DCCE3002A24AC /* CustomViews */,
 				B527EF761D2DAF99002A24AC /* Extensions */,
+				B581C2C61D45E47E00441514 /* CenterCellCollectionViewFlowLayout.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B597B8011D24547B00E62371 /* ProfileViewController.swift in Sources */,
+				B581C2C71D45E47E00441514 /* CenterCellCollectionViewFlowLayout.swift in Sources */,
 				B56511161D207980002CD3AF /* LoginViewController.swift in Sources */,
 				B5BC1AC01D44749F003E405C /* CCSuggestionRouter.swift in Sources */,
 				B5BC1AC41D4478D1003E405C /* CCSuggestionViewModel.swift in Sources */,
