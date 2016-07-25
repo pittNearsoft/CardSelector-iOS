@@ -209,7 +209,6 @@ extension PlacesViewController: CLLocationManagerDelegate{
   
   func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
     if status == .AuthorizedWhenInUse {
-      //locationManager.startUpdatingLocation()
       mapView.myLocationEnabled = true
       mapView.settings.myLocationButton = true
     }else if status == .Denied{
