@@ -37,9 +37,12 @@ class CardCell: UITableViewCell {
     
     if profileCard.endingCard != -1 {
       card.endingLabel.text = String(profileCard.endingCard)
-      card.endingLabel.font = UIFont(name: "Helvetica", size: 15)
+      //card.endingLabel.font = UIFont(name: "Helvetica", size: 15)
     }
     
+    if profileCard.interestRate != -1 {
+      card.rateLabel.text = "Rate: \(profileCard.interestRate)%"
+    }
   }
   
 }

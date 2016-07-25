@@ -18,6 +18,7 @@ class CardView: UIView {
   @IBOutlet weak var cardTypeLabel: UILabel!
   @IBOutlet weak var cardLevelLabel: UILabel!
   @IBOutlet weak var endingLabel: UILabel!
+  @IBOutlet weak var rateLabel: UILabel!
   
   
   
@@ -41,6 +42,8 @@ class CardView: UIView {
     programLabel.text = card.cardProgram?.name
     cardTypeLabel.text = card.cardType?.name
     cardLevelLabel.text = (card.cardLevel!.isEnabled) ? card.cardLevel?.name : ""
+    
+    rateLabel.text = ""
   }
 
 }
