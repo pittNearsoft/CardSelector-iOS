@@ -40,6 +40,7 @@
 		B5BC1ACA1D4567D9003E405C /* EnableLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BC1AC91D4567D9003E405C /* EnableLocationViewController.swift */; };
 		B5BC1ACD1D458A1D003E405C /* SettingsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BC1ACB1D458A1D003E405C /* SettingsCollectionViewCell.swift */; };
 		B5BC1ACE1D458A1D003E405C /* SettingsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BC1ACC1D458A1D003E405C /* SettingsCollectionViewCell.xib */; };
+		B5BC1AD01D4596D1003E405C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BC1ACF1D4596D1003E405C /* BaseViewController.swift */; };
 		B5BF10961D35F5A2008BDF33 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BF10941D35F5A2008BDF33 /* CardCell.swift */; };
 		B5BF10971D35F5A2008BDF33 /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5BF10951D35F5A2008BDF33 /* CardCell.xib */; };
 		B5BF10991D35F78F008BDF33 /* CCCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BF10981D35F78F008BDF33 /* CCCard.swift */; };
@@ -103,6 +104,7 @@
 		B5BC1AC91D4567D9003E405C /* EnableLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnableLocationViewController.swift; sourceTree = "<group>"; };
 		B5BC1ACB1D458A1D003E405C /* SettingsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCollectionViewCell.swift; sourceTree = "<group>"; };
 		B5BC1ACC1D458A1D003E405C /* SettingsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsCollectionViewCell.xib; sourceTree = "<group>"; };
+		B5BC1ACF1D4596D1003E405C /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		B5BF10941D35F5A2008BDF33 /* CardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		B5BF10951D35F5A2008BDF33 /* CardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
 		B5BF10981D35F78F008BDF33 /* CCCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCard.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				B5E266821D33905F0051756C /* MyCardsViewController.swift */,
 				B5772E3E1D37E2B6003A5210 /* AddCardViewController.swift */,
 				B5BC1AC91D4567D9003E405C /* EnableLocationViewController.swift */,
+				B5BC1ACF1D4596D1003E405C /* BaseViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 				B56511141D207980002CD3AF /* AppDelegate.swift in Sources */,
 				B5BF109E1D35FBE7008BDF33 /* CCCardType.swift in Sources */,
 				B5BF10961D35F5A2008BDF33 /* CardCell.swift in Sources */,
+				B5BC1AD01D4596D1003E405C /* BaseViewController.swift in Sources */,
 				B5EB172E1D3CADEC002AC817 /* CCCardViewModel.swift in Sources */,
 				B5EB17731D40A666002AC817 /* CCProfileCard.swift in Sources */,
 				B5BC1ABA1D42D1D2003E405C /* CCUserService.swift in Sources */,
