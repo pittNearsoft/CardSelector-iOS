@@ -33,7 +33,8 @@ class AddCardViewController: BaseViewController {
   
   var listCards: [CCCard] = []
   var listBanks: [CCBank] = []
-  var selectedBankCell: BankCollectionViewCell?
+  //var selectedBankCell: BankCollectionViewCell?
+  var selectedBank: CCBank?
   var selectedCardCell: CardCollectionViewCell?
   
   var selectedCard = CCProfileCard()
@@ -143,6 +144,7 @@ class AddCardViewController: BaseViewController {
     SVProgressHUD.show()
     bankViewModel.getAvailableBanks({ (listBanks) in
       self.listBanks = listBanks
+      self.listBanks[0].selected = true
       self.bankCollectionView.reloadData()
       
       if listBanks.count > 0{
@@ -281,12 +283,13 @@ extension AddCardViewController: UICollectionViewDataSource{
     } else{
       let cell = bankCollectionView.dequeueReusableCellWithReuseIdentifier(BankCollectionViewCell.reuseIdentifier(), forIndexPath: indexPath) as! BankCollectionViewCell
       
-      if indexPath.row == 0 {
-        cell.checked = true
-        selectedBankCell = cell
+      let bank = listBanks[indexPath.row]
+      
+      if bank.selected {
+        selectedBank = bank
       }
       
-      cell.bankImage.image = UIImage(named: listBanks[indexPath.row].name)
+      cell.configureCellWithBank(bank)
       return cell
     }
     
@@ -319,13 +322,14 @@ extension AddCardViewController: UICollectionViewDelegate{
       
     }else{
       
-      selectedBankCell?.checked = false
+      selectedBank?.selected = false
       
-      let cell = collectionView.cellForItemAtIndexPath(indexPath) as! BankCollectionViewCell
-      cell.checked = !cell.checked
-      selectedBankCell = cell
       
-      self.getAvailableCardsFromBank(listBanks[indexPath.row])
+      selectedBank = listBanks[indexPath.row]
+      selectedBank!.selected = true
+      bankCollectionView.reloadData()
+      
+      self.getAvailableCardsFromBank(selectedBank!)
       
       if selectedCardCell != nil {
         selectedCardCell!.checked = false

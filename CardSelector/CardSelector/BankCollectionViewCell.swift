@@ -39,6 +39,17 @@ class BankCollectionViewCell: UICollectionViewCell {
     return "BankCollectionViewCell"
   }
   
+  func configureCellWithBank(bank: CCBank) {
+    
+    if bank.selected {
+      didSelect()
+    }else{
+      didUnselect()
+    }
+    
+    bankImage.image = UIImage(named: bank.name)
+  }
+  
   private func didSelect() {
     selectImage.hidden = false
     selectedView.hidden = false

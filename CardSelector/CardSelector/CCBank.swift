@@ -9,19 +9,15 @@
 import Foundation
 import ObjectMapper
 
-class CCBank: NSObject, NSCoding, Mappable {
+class CCBank: NSObject, NSCoding {
   var bankId = 0
   var name = ""
   var bankDescription = ""
   
+  var selected = false
+  
   required init?(_ map: Map) {
     
-  }
-  
-  func mapping(map: Map) {
-    bankId      <- map["Id"]
-    name        <- map["Name"]
-    bankDescription <- map["Description"]
   }
   
   init(bankId: Int, name: String, description: String){
@@ -61,3 +57,12 @@ class CCBank: NSObject, NSCoding, Mappable {
     
   }
 }
+
+extension CCBank: Mappable{
+  func mapping(map: Map) {
+    bankId      <- map["Id"]
+    name        <- map["Name"]
+    bankDescription <- map["Description"]
+  }
+}
+
