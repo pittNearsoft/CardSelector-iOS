@@ -35,14 +35,10 @@ class CardCell: UITableViewCell {
   func configureCellWithProfileCard(profileCard: CCProfileCard) {
     card.configureWithCard(profileCard.card!)
     
-    if profileCard.endingCard != -1 {
-      card.endingLabel.text = String(profileCard.endingCard)
-      //card.endingLabel.font = UIFont(name: "Helvetica", size: 15)
-    }
+
+    card.endingLabel.text = (profileCard.endingCard != -1 ) ? String(profileCard.endingCard) : ""
+    card.rateLabel.text = (profileCard.interestRate != -1) ? "Rate: \(profileCard.interestRate)%" : ""
     
-    if profileCard.interestRate != -1 {
-      card.rateLabel.text = "Rate: \(profileCard.interestRate)%"
-    }
   }
   
 }
