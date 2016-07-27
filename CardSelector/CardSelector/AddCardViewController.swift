@@ -33,9 +33,7 @@ class AddCardViewController: BaseViewController {
   
   var listCards: [CCCard] = []
   var listBanks: [CCBank] = []
-  //var selectedBankCell: BankCollectionViewCell?
   var selectedBank: CCBank?
-  //var selectedCardCell: CardCollectionViewCell?
   var selectedCard: CCCard?
   
   
@@ -308,11 +306,10 @@ extension AddCardViewController: UICollectionViewDelegate{
       
       let card = listCards[indexPath.row]
 
+      //Compare if user has selected another card, if yes, proceed within if condition
       if selectedCard != card {
         selectedCard?.selected = false
-        
         card.selected = !card.selected
-        
         selectedCard = card
         selectedProfileCard.card = selectedCard
         showAdditionalInfo()
@@ -326,15 +323,13 @@ extension AddCardViewController: UICollectionViewDelegate{
       cardCollectionView.reloadData()
     }else{
       
-      let bank = listBanks[indexPath.row]
-      
-      if bank == selectedBank {
+      //Ignore operations if user has selected the same selected bank
+      if listBanks[indexPath.row] == selectedBank {
         return
       }
       
+      //Otherwise, replace the new selected bank and update the table (with a check for the bank)
       selectedBank?.selected = false
-      
-      
       selectedBank = listBanks[indexPath.row]
       selectedBank!.selected = true
       bankCollectionView.reloadData()
