@@ -15,16 +15,6 @@ class CardCollectionViewCell: UICollectionViewCell {
   
   @IBOutlet weak var selectedView: UIView!
   
-  var checked: Bool = false {
-    willSet{
-      if newValue == true {
-        didSelect()
-      }else{
-        didUnselect()
-      }
-    }
-  }
-  
   override func awakeFromNib() {
     super.awakeFromNib()
     card.roundCorners()
@@ -35,6 +25,13 @@ class CardCollectionViewCell: UICollectionViewCell {
   }
   
   func configureCellWithCard(ccCard: CCCard) {
+    
+    if ccCard.selected {
+      didSelect()
+    }else{
+      didUnselect()
+    }
+    
     card.configureWithCard(ccCard)
   }
   

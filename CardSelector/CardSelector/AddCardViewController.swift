@@ -35,9 +35,11 @@ class AddCardViewController: BaseViewController {
   var listBanks: [CCBank] = []
   //var selectedBankCell: BankCollectionViewCell?
   var selectedBank: CCBank?
-  var selectedCardCell: CardCollectionViewCell?
+  //var selectedCardCell: CardCollectionViewCell?
+  var selectedCard: CCCard?
   
-  var selectedCard = CCProfileCard()
+  
+  var selectedProfileCard = CCProfileCard()
   
   
   override func viewDidLoad() {
@@ -81,7 +83,7 @@ class AddCardViewController: BaseViewController {
   }
   
   @IBAction func saveCard(sender: AnyObject) {
-    if selectedCardCell == nil {
+    if selectedCard == nil {
       Alert(title: "Ops!", message: "Please select a card before saving!").showOkay()
     }else{
       confirmSaving()
@@ -99,13 +101,13 @@ class AddCardViewController: BaseViewController {
     if endingTextField.text!.isEmpty {
       missingData.append("ending")
     }else{
-      selectedCard.endingCard = Int(endingTextField.text!)!
+      selectedProfileCard.endingCard = Int(endingTextField.text!)!
     }
     
     if rateTextField.text!.isEmpty {
       missingData.append("rate")
     }else{
-      selectedCard.interestRate = Double(rateTextField.text!)!
+      selectedProfileCard.interestRate = Double(rateTextField.text!)!
     }
     
     var message = "Are you ready to save?"
@@ -127,10 +129,10 @@ class AddCardViewController: BaseViewController {
     SVProgressHUD.show()
     
     let user = CCUserViewModel.getLoggedUser()
-    cardViewModel.saveCard(selectedCard, user: user!, completion: { (success) in
+    cardViewModel.saveCard(selectedProfileCard, user: user!, completion: { (success) in
       
       SVProgressHUD.dismiss()
-      self.delegate?.didSaveProfileCard(self.selectedCard)
+      self.delegate?.didSaveProfileCard(self.selectedProfileCard)
       self.dismissViewControllerAnimated(true, completion: nil)
     }, onError: { (error) in
       SVProgressHUD.dismiss()
@@ -304,23 +306,31 @@ extension AddCardViewController: UICollectionViewDelegate{
     
     if collectionView == self.cardCollectionView {
       
-      
-      let cell = collectionView.cellForItemAtIndexPath(indexPath) as! CardCollectionViewCell
+      let card = listCards[indexPath.row]
 
-      if selectedCardCell != cell {
-        cell.checked = !cell.checked
-        selectedCardCell = cell
-        selectedCard.card = listCards[indexPath.row]
+      if selectedCard != card {
+        selectedCard?.selected = false
+        
+        card.selected = !card.selected
+        
+        selectedCard = card
+        selectedProfileCard.card = selectedCard
         showAdditionalInfo()
       }else{
-        selectedCardCell?.checked = !selectedCardCell!.checked
-        selectedCardCell = nil
-        selectedCard.card = nil
+        selectedCard?.selected = !selectedCard!.selected
+        selectedCard = nil
+        selectedProfileCard.card = nil
         hideAdditionalInfo()
       }
 
-      
+      cardCollectionView.reloadData()
     }else{
+      
+      let bank = listBanks[indexPath.row]
+      
+      if bank == selectedBank {
+        return
+      }
       
       selectedBank?.selected = false
       
@@ -331,9 +341,9 @@ extension AddCardViewController: UICollectionViewDelegate{
       
       self.getAvailableCardsFromBank(selectedBank!)
       
-      if selectedCardCell != nil {
-        selectedCardCell!.checked = false
-        selectedCardCell = nil
+      if selectedCard != nil {
+        selectedCard?.selected = false
+        selectedCard = nil
         hideAdditionalInfo()
       }
     }

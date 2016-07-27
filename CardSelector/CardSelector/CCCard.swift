@@ -18,6 +18,7 @@ class CCCard: NSObject, Mappable, NSCoding {
   var cardProgram: CCCardProgram?
   var cardLevel: CCCardLevel?
   var color = UIColor.whiteColor()
+  var selected = false
   
   
   required init?(_ map: Map) {
