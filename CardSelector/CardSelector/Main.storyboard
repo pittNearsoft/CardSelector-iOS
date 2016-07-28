@@ -193,31 +193,32 @@
                                 <rect key="frame" x="0.0" y="0.0" width="598" height="59.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4Z-Kx-Yw3">
-                                        <rect key="frame" x="78" y="0.0" width="512" height="49"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chase" translatesAutoresizingMaskIntoConstraints="NO" id="HkD-Ym-PuQ">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HkD-Ym-PuQ">
                                         <rect key="frame" x="8" y="0.0" width="62" height="49"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="49" id="cGh-XZ-BZw"/>
                                             <constraint firstAttribute="width" constant="62" id="qVV-xv-f3f"/>
                                         </constraints>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B4Z-Kx-Yw3">
+                                        <rect key="frame" x="78" y="0.0" width="512" height="49"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="B4Z-Kx-Yw3" firstAttribute="top" secondItem="HkD-Ym-PuQ" secondAttribute="top" id="4ru-Lg-Bgh"/>
                                     <constraint firstAttribute="bottom" secondItem="HkD-Ym-PuQ" secondAttribute="bottom" constant="11" id="Ee3-Al-xCC"/>
-                                    <constraint firstItem="B4Z-Kx-Yw3" firstAttribute="bottom" secondItem="HkD-Ym-PuQ" secondAttribute="bottom" id="F7m-CR-Szk"/>
                                     <constraint firstItem="HkD-Ym-PuQ" firstAttribute="leading" secondItem="iME-1x-5Yd" secondAttribute="leading" constant="8" id="Qcb-h9-Vs4"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="B4Z-Kx-Yw3" secondAttribute="trailing" id="SCF-6b-1A1"/>
                                     <constraint firstItem="B4Z-Kx-Yw3" firstAttribute="leading" secondItem="HkD-Ym-PuQ" secondAttribute="trailing" constant="8" id="odD-fp-wwl"/>
                                     <constraint firstItem="HkD-Ym-PuQ" firstAttribute="top" secondItem="iME-1x-5Yd" secondAttribute="top" id="uQH-P9-ugA"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="B4Z-Kx-Yw3" secondAttribute="bottom" constant="3" id="vnP-qq-2NU"/>
                                 </constraints>
                             </tableViewCellContentView>
                             <connections>
+                                <outlet property="bankImage" destination="HkD-Ym-PuQ" id="eGU-xO-XBv"/>
                                 <outlet property="suggestionDescription" destination="B4Z-Kx-Yw3" id="a7a-BE-LxM"/>
                             </connections>
                         </tableViewCell>
@@ -659,7 +660,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Chase" width="106" height="80"/>
         <image name="add" width="30" height="30"/>
         <image name="gradient1" width="750" height="1334"/>
         <image name="gradient3" width="1080" height="1920"/>

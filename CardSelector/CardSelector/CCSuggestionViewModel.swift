@@ -11,9 +11,10 @@ import ObjectMapper
 class CCSuggestionViewModel {
   let suggestionService = CCSuggestionService()
   
-  func getSuggestionsWithUser(user: CCUser, merchant: CCPlace, completion: (listSuggestions: [String]) -> Void, onError: (error: NSError) -> Void) {
+  func getSuggestionsWithUser(user: CCUser, merchant: CCPlace, completion: (listSuggestions: [CCSuggestion]) -> Void, onError: (error: NSError) -> Void) {
     suggestionService.getSuggestionsWithUser(user, merchant: merchant, completion: { (jsonSuggestions) in
-      completion(listSuggestions: jsonSuggestions as! [String])
+      let suggestions: [CCSuggestion] = Mapper<CCSuggestion>().mapArray(jsonSuggestions)!
+      completion(listSuggestions: suggestions)
     }) { (error) in
       onError(error: error)
     }

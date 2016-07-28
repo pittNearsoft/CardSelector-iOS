@@ -11,6 +11,7 @@ import UIKit
 class SuggestionViewCell: UITableViewCell {
   
   
+  @IBOutlet weak var bankImage: UIImageView!
   @IBOutlet weak var suggestionDescription: UILabel!
   
   override func awakeFromNib() {
@@ -21,6 +22,11 @@ class SuggestionViewCell: UITableViewCell {
   override func setSelected(selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
 
+  }
+  
+  func configureWithSuggestion(suggestion: CCSuggestion) {
+    bankImage.image = UIImage(named: suggestion.bankName)
+    suggestionDescription.text = suggestion.message
   }
   
 }

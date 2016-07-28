@@ -30,7 +30,7 @@ class PlacesViewController: BaseViewController {
   
   let searchRadius: Double = 1000
   
-  var listSuggestions: [String] = []
+  var listSuggestions: [CCSuggestion] = []
   
   
   override func viewDidLoad() {
@@ -117,6 +117,15 @@ class PlacesViewController: BaseViewController {
     mapView.selectedMarker = nil
     
   }
+  
+  func closeListOfSuggestions() {
+    
+      dispatch_async(dispatch_get_main_queue()) {
+        self.slideUpView.hide()
+      }
+    
+    
+  }
 
 }
 
@@ -129,9 +138,7 @@ extension PlacesViewController: GMSMapViewDelegate{
     
     locationLabel.lock()
     if gesture {
-      dispatch_async(dispatch_get_main_queue()) {
-        self.slideUpView.hide()
-      }
+      closeListOfSuggestions()
       reappearMapPinImage()
     }
   }
@@ -167,7 +174,13 @@ extension PlacesViewController: GMSMapViewDelegate{
     let user = CCUserViewModel.getLoggedUser()
     suggestionViewModel.getSuggestionsWithUser(user!, merchant: placeMarker.place, completion: { (listSuggestions) in
       
-      self.listSuggestions = (listSuggestions.count > 0) ? listSuggestions : ["No data found"]
+      guard listSuggestions.count > 0 else{
+        self.closeListOfSuggestions()
+        Alert(title: "Ops!", message: "You have not added any card yet. Please add one first.").showOkay()
+        return
+      }
+      
+      self.listSuggestions = listSuggestions
       
       self.slideUpTableView.unlock()
       self.slideUpTableView.reloadData()
@@ -177,6 +190,10 @@ extension PlacesViewController: GMSMapViewDelegate{
       self.slideUpView.hide()
       Alert(title: "Ops!", message: "Something went wrong, try again later.").showOkay()
     }
+  }
+  
+  func mapView(mapView: GMSMapView, didCloseInfoWindowOfMarker marker: GMSMarker) {
+    closeListOfSuggestions()
   }
   
   func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
@@ -257,7 +274,7 @@ extension PlacesViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("suggestionCell", forIndexPath: indexPath) as! SuggestionViewCell
     
-    cell.suggestionDescription.text = listSuggestions[indexPath.row]
+    cell.configureWithSuggestion(listSuggestions[indexPath.row])
     
     return cell
   }
