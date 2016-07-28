@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		958A3EF7B89DAC3775579B38 /* Pods_CardSelector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40E44BB5E796BFC035D9F11 /* Pods_CardSelector.framework */; };
+		B50353C91D497E52003DC527 /* kredit.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B50353C81D497DF2003DC527 /* kredit.ttf */; };
+		B50353CA1D497E63003DC527 /* kredit front.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B50353C61D497DF2003DC527 /* kredit front.ttf */; };
+		B50353CB1D497E66003DC527 /* kredit back.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B50353C51D497DF2003DC527 /* kredit back.ttf */; };
 		B5230CC91D41C5B00046B551 /* CCUserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5230CC81D41C5B00046B551 /* CCUserRouter.swift */; };
 		B52581411D258CDF001CB6BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52581401D258CDF001CB6BC /* LaunchScreen.storyboard */; };
 		B52581471D26DAFD001CB6BC /* CCUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52581461D26DAFD001CB6BC /* CCUserViewModel.swift */; };
@@ -71,6 +74,9 @@
 
 /* Begin PBXFileReference section */
 		A59E791DB60357784C1D810E /* Pods-CardSelector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardSelector.release.xcconfig"; path = "Pods/Target Support Files/Pods-CardSelector/Pods-CardSelector.release.xcconfig"; sourceTree = "<group>"; };
+		B50353C51D497DF2003DC527 /* kredit back.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "kredit back.ttf"; sourceTree = "<group>"; };
+		B50353C61D497DF2003DC527 /* kredit front.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "kredit front.ttf"; sourceTree = "<group>"; };
+		B50353C81D497DF2003DC527 /* kredit.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kredit.ttf; sourceTree = "<group>"; };
 		B5230CC81D41C5B00046B551 /* CCUserRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCUserRouter.swift; sourceTree = "<group>"; };
 		B52581401D258CDF001CB6BC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B52581461D26DAFD001CB6BC /* CCUserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCUserViewModel.swift; sourceTree = "<group>"; };
@@ -165,6 +171,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B50353C31D497DD0003DC527 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B50353C41D497DD8003DC527 /* Fonts */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		B50353C41D497DD8003DC527 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B50353C51D497DF2003DC527 /* kredit back.ttf */,
+				B50353C61D497DF2003DC527 /* kredit front.ttf */,
+				B50353C81D497DF2003DC527 /* kredit.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		B527EF761D2DAF99002A24AC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +248,7 @@
 		B56511121D207980002CD3AF /* CardSelector */ = {
 			isa = PBXGroup;
 			children = (
+				B50353C31D497DD0003DC527 /* Resources */,
 				B5772E3D1D37E296003A5210 /* Controllers */,
 				B5E266751D2F13650051756C /* Routers */,
 				B5E266701D2F112E0051756C /* Services */,
@@ -417,6 +442,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B597B7FE1D233EE100E62371 /* Main.storyboard in Resources */,
+				B50353C91D497E52003DC527 /* kredit.ttf in Resources */,
 				B5772E431D37EBA3003A5210 /* CardCollectionViewCell.xib in Resources */,
 				B597B7F01D20828A00E62371 /* GoogleService-Info.plist in Resources */,
 				B5BF10AA1D361BCD008BDF33 /* CardView.xib in Resources */,
@@ -424,7 +450,9 @@
 				B5BF10971D35F5A2008BDF33 /* CardCell.xib in Resources */,
 				B52581411D258CDF001CB6BC /* LaunchScreen.storyboard in Resources */,
 				B527EF7D1D2DCD3B002A24AC /* MarkerInfoView.xib in Resources */,
+				B50353CB1D497E66003DC527 /* kredit back.ttf in Resources */,
 				B5EB173A1D3DC0E1002AC817 /* BankCollectionViewCell.xib in Resources */,
+				B50353CA1D497E63003DC527 /* kredit front.ttf in Resources */,
 				B56511191D207980002CD3AF /* Login.storyboard in Resources */,
 				B5BC1ACE1D458A1D003E405C /* SettingsCollectionViewCell.xib in Resources */,
 			);
