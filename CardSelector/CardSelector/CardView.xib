@@ -4,6 +4,21 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="kredit front.ttf">
+            <string>KreditFront-Regular</string>
+            <string>KreditFront-Regular</string>
+            <string>KreditFront-Regular</string>
+            <string>KreditFront-Regular</string>
+        </mutableArray>
+        <mutableArray key="kredit.ttf">
+            <string>Kredit-Regular</string>
+            <string>Kredit-Regular</string>
+            <string>Kredit-Regular</string>
+            <string>Kredit-Regular</string>
+            <string>Kredit-Regular</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardView" customModule="CardSelector" customModuleProvider="target">
             <connections>
@@ -12,6 +27,7 @@
                 <outlet property="cardLevelLabel" destination="agE-KX-1pG" id="kPh-5y-ABE"/>
                 <outlet property="cardTypeLabel" destination="ClO-zL-RM1" id="pX7-MY-u1H"/>
                 <outlet property="cardView" destination="iN0-l3-epB" id="g5O-3c-yQM"/>
+                <outlet property="cutoffLabel" destination="J8D-E1-2cI" id="ZJX-Iv-f7Z"/>
                 <outlet property="endingLabel" destination="sjg-qd-Mtc" id="JGR-TR-kyS"/>
                 <outlet property="programLabel" destination="9zU-Uf-Jj3" id="eyE-DI-sWa"/>
                 <outlet property="rateLabel" destination="1oW-nO-3Vi" id="UAv-SV-k7V"/>
@@ -24,14 +40,28 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G5Z-BC-zu0">
                     <rect key="frame" x="0.0" y="0.0" width="300" height="120"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ClO-zL-RM1">
+                            <rect key="frame" x="0.0" y="99" width="82" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="82" id="Nsq-6M-tlz"/>
+                                <constraint firstAttribute="height" constant="21" id="s2I-Qj-imj"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Kredit-Regular" family="Kredit" pointSize="13"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="ClO-zL-RM1" firstAttribute="leading" secondItem="G5Z-BC-zu0" secondAttribute="leading" id="ATI-vE-UWA"/>
                         <constraint firstAttribute="height" constant="120" id="TSR-0M-sdK"/>
                         <constraint firstAttribute="width" constant="300" id="jKj-cI-i1b"/>
+                        <constraint firstAttribute="bottom" secondItem="ClO-zL-RM1" secondAttribute="bottom" id="reC-b7-vpK"/>
                     </constraints>
                 </view>
                 <imageView userInteractionEnabled="NO" alpha="0.34999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chase" translatesAutoresizingMaskIntoConstraints="NO" id="Nof-27-2xa">
-                    <rect key="frame" x="8" y="8" width="284" height="104"/>
+                    <rect key="frame" x="16" y="16" width="268" height="88"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Program" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zU-Uf-Jj3">
@@ -39,7 +69,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="6He-Dk-dPg"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="Kredit-Regular" family="Kredit" pointSize="15"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -49,7 +79,7 @@
                         <constraint firstAttribute="width" constant="75" id="cXy-Vc-SMO"/>
                         <constraint firstAttribute="height" constant="25" id="cgQ-gR-G4U"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <fontDescription key="fontDescription" name="KreditFront-Regular" family="Kredit" pointSize="22"/>
                     <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -59,7 +89,7 @@
                         <constraint firstAttribute="height" constant="25" id="D3y-cE-FAL"/>
                         <constraint firstAttribute="width" constant="75" id="v3V-Wf-l4n"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <fontDescription key="fontDescription" name="KreditFront-Regular" family="Kredit" pointSize="22"/>
                     <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -69,7 +99,7 @@
                         <constraint firstAttribute="width" constant="75" id="UVl-Dm-q9c"/>
                         <constraint firstAttribute="height" constant="25" id="nu2-Pa-Vt2"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <fontDescription key="fontDescription" name="KreditFront-Regular" family="Kredit" pointSize="22"/>
                     <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -79,28 +109,8 @@
                         <constraint firstAttribute="width" constant="75" id="hHQ-MX-MRk"/>
                         <constraint firstAttribute="height" constant="25" id="q0l-jJ-Wwb"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <fontDescription key="fontDescription" name="KreditFront-Regular" family="Kredit" pointSize="22"/>
                     <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ClO-zL-RM1">
-                    <rect key="frame" x="8" y="91" width="69" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="HtF-jT-VNE"/>
-                        <constraint firstAttribute="width" constant="69" id="Qr2-AF-b6s"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agE-KX-1pG">
-                    <rect key="frame" x="85" y="91" width="207" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="207" id="Mwc-2e-00X"/>
-                        <constraint firstAttribute="height" constant="21" id="hdm-sl-Kbh"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1oW-nO-3Vi">
@@ -108,33 +118,52 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="74" id="gSD-EE-lGs"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                    <fontDescription key="fontDescription" name="Kredit-Regular" family="Kredit" pointSize="14"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cutoff day: 12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8D-E1-2cI">
+                    <rect key="frame" x="98" y="103" width="104" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="104" id="czv-Pv-XZS"/>
+                        <constraint firstAttribute="height" constant="17" id="ntH-WH-Hd9"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Kredit-Regular" family="Kredit" pointSize="13"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agE-KX-1pG">
+                    <rect key="frame" x="226" y="103" width="74" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="74" id="ncL-E5-67q"/>
+                        <constraint firstAttribute="height" constant="17" id="vP0-lf-y9R"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Kredit-Regular" family="Kredit" pointSize="13"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="agE-KX-1pG" firstAttribute="bottom" secondItem="ClO-zL-RM1" secondAttribute="bottom" id="3wf-5I-63L"/>
-                <constraint firstAttribute="trailing" secondItem="Nof-27-2xa" secondAttribute="trailing" constant="8" id="40i-di-Ziw"/>
-                <constraint firstItem="agE-KX-1pG" firstAttribute="leading" secondItem="ClO-zL-RM1" secondAttribute="trailing" constant="8" id="4bJ-sE-J1y"/>
+                <constraint firstAttribute="trailing" secondItem="Nof-27-2xa" secondAttribute="trailing" constant="16" id="40i-di-Ziw"/>
                 <constraint firstAttribute="trailing" secondItem="1oW-nO-3Vi" secondAttribute="trailing" constant="8" id="5Lr-AK-t2t"/>
-                <constraint firstAttribute="bottom" secondItem="Nof-27-2xa" secondAttribute="bottom" constant="8" id="DWD-2c-0Qa"/>
+                <constraint firstAttribute="trailing" secondItem="agE-KX-1pG" secondAttribute="trailing" id="5TH-dW-mM3"/>
+                <constraint firstItem="J8D-E1-2cI" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="9zf-px-PXj"/>
+                <constraint firstAttribute="bottom" secondItem="Nof-27-2xa" secondAttribute="bottom" constant="16" id="DWD-2c-0Qa"/>
                 <constraint firstItem="dzJ-Qd-xZG" firstAttribute="top" secondItem="JUQ-Pq-VJB" secondAttribute="top" id="G0r-8U-4rH"/>
                 <constraint firstItem="1oW-nO-3Vi" firstAttribute="top" secondItem="9zU-Uf-Jj3" secondAttribute="top" id="H3T-fw-Qnb"/>
                 <constraint firstItem="sjg-qd-Mtc" firstAttribute="bottom" secondItem="dzJ-Qd-xZG" secondAttribute="bottom" id="K2S-J0-NuE"/>
                 <constraint firstAttribute="bottom" secondItem="G5Z-BC-zu0" secondAttribute="bottom" id="Knd-Wu-5Ye"/>
-                <constraint firstItem="agE-KX-1pG" firstAttribute="top" secondItem="ClO-zL-RM1" secondAttribute="top" id="M6u-py-6hI"/>
-                <constraint firstItem="Nof-27-2xa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="NC8-Uz-s0C"/>
+                <constraint firstItem="ClO-zL-RM1" firstAttribute="top" secondItem="CiG-oF-ilo" secondAttribute="bottom" constant="13" id="LHZ-0u-CMp"/>
+                <constraint firstItem="Nof-27-2xa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="NC8-Uz-s0C"/>
                 <constraint firstItem="JUQ-Pq-VJB" firstAttribute="bottom" secondItem="CiG-oF-ilo" secondAttribute="bottom" id="RER-Nl-5g9"/>
                 <constraint firstItem="1oW-nO-3Vi" firstAttribute="bottom" secondItem="9zU-Uf-Jj3" secondAttribute="bottom" id="RX8-AE-Id3"/>
-                <constraint firstItem="ClO-zL-RM1" firstAttribute="top" secondItem="CiG-oF-ilo" secondAttribute="bottom" constant="5" id="YXL-Sx-PEE"/>
+                <constraint firstAttribute="bottom" secondItem="J8D-E1-2cI" secondAttribute="bottom" id="Ur8-vt-FM1"/>
                 <constraint firstItem="CiG-oF-ilo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Ys0-Zy-xZj"/>
-                <constraint firstItem="ClO-zL-RM1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="aBh-9V-2JI"/>
+                <constraint firstAttribute="bottom" secondItem="agE-KX-1pG" secondAttribute="bottom" id="bbj-l8-eY2"/>
                 <constraint firstItem="sjg-qd-Mtc" firstAttribute="leading" secondItem="dzJ-Qd-xZG" secondAttribute="trailing" id="c8X-Pu-IC7"/>
-                <constraint firstAttribute="bottom" secondItem="ClO-zL-RM1" secondAttribute="bottom" constant="8" id="d43-yF-esT"/>
                 <constraint firstItem="G5Z-BC-zu0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ddw-Ya-0U2"/>
-                <constraint firstItem="Nof-27-2xa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="efS-6s-Xbj"/>
+                <constraint firstItem="Nof-27-2xa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="efS-6s-Xbj"/>
                 <constraint firstItem="1oW-nO-3Vi" firstAttribute="leading" secondItem="9zU-Uf-Jj3" secondAttribute="trailing" constant="8" id="esv-kE-p3g"/>
                 <constraint firstItem="sjg-qd-Mtc" firstAttribute="top" secondItem="dzJ-Qd-xZG" secondAttribute="top" id="gJT-mY-Zda"/>
                 <constraint firstItem="9zU-Uf-Jj3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="gV3-81-6e8"/>
