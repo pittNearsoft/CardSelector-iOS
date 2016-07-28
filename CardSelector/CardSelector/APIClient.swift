@@ -17,6 +17,11 @@ class APIClient {
   
   init(){
     let configuration  = NSURLSessionConfiguration.defaultSessionConfiguration()
+    
+    var addedHeaders = Manager.defaultHTTPHeaders
+    addedHeaders["Authorization"] = "Basic QWRtaW46QzRyZEMwbXA0ZHIzOjVFOTA3ODRSRg=="
+    
+    configuration.HTTPAdditionalHeaders = addedHeaders
     manager = Alamofire.Manager(configuration: configuration)
   }
   
