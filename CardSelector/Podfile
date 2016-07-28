@@ -45,4 +45,10 @@ target 'CardSelector' do
    #Elegant iOS Forms in pure Swift 2
    pod 'Eureka', '~> 1.7'
 
+   #Intuitive NSDate extensions in Swift
+   pod 'Timepiece', '~> 0.4'
+
+   #To Validate forms
+   pod 'SwiftValidators', '~> 3.0'
+
 end
