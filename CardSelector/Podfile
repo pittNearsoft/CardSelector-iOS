@@ -42,4 +42,7 @@ target 'CardSelector' do
    #This is a highly customizable, sticky modal view that slides up from the bottom of the screen.
    pod 'SeamlessSlideUpScrollView'
 
+   #Elegant iOS Forms in pure Swift 2
+   pod 'Eureka', '~> 1.7'
+
 end
