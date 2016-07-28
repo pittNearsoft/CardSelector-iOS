@@ -101,6 +101,17 @@ class MyCardsViewController: BaseViewController {
     }
   }
   
+  func scrollToBottomIfNeeded() {
+    let delay = 0.1 * Double(NSEC_PER_SEC)
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay)), dispatch_get_main_queue()) { () -> Void in
+      if self.profileCards.count > 0 {
+        let lastRowIndexPath = NSIndexPath(forRow: self.profileCards.count - 1, inSection: 0)
+        self.tableView.scrollToRowAtIndexPath(lastRowIndexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+      }
+    }
+  }
+  
 }
 
 extension MyCardsViewController: UITableViewDataSource{
@@ -145,11 +156,12 @@ extension MyCardsViewController: UITableViewDelegate{
 
 extension MyCardsViewController: AddCardViewControllerDelegate{
   func didSaveProfileCard(card: CCProfileCard) {
-    profileCards.insert(card, atIndex: 0)
+    profileCards.append(card)
     let user = CCUserViewModel.getLoggedUser()
     user?.profileCards.append(card)
     CCUserViewModel.saveUserIntoUserDefaults(user!)
     
     tableView.reloadData()
+    scrollToBottomIfNeeded()
   }
 }
