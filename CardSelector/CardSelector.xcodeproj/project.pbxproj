@@ -14,6 +14,7 @@
 		B50353CF1D498C7A003DC527 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50353CE1D498C7A003DC527 /* StartViewController.swift */; };
 		B50353D21D49EBAF003DC527 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50353D11D49EBAF003DC527 /* NewUserViewController.swift */; };
 		B50353D81D4AAF82003DC527 /* CCSuggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50353D71D4AAF82003DC527 /* CCSuggestion.swift */; };
+		B50353DA1D4ABAAD003DC527 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50353D91D4ABAAD003DC527 /* UIViewController+Extensions.swift */; };
 		B5230CC91D41C5B00046B551 /* CCUserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5230CC81D41C5B00046B551 /* CCUserRouter.swift */; };
 		B52581411D258CDF001CB6BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52581401D258CDF001CB6BC /* LaunchScreen.storyboard */; };
 		B52581471D26DAFD001CB6BC /* CCUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52581461D26DAFD001CB6BC /* CCUserViewModel.swift */; };
@@ -83,6 +84,7 @@
 		B50353CE1D498C7A003DC527 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		B50353D11D49EBAF003DC527 /* NewUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
 		B50353D71D4AAF82003DC527 /* CCSuggestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCSuggestion.swift; sourceTree = "<group>"; };
+		B50353D91D4ABAAD003DC527 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		B5230CC81D41C5B00046B551 /* CCUserRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCUserRouter.swift; sourceTree = "<group>"; };
 		B52581401D258CDF001CB6BC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B52581461D26DAFD001CB6BC /* CCUserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCUserViewModel.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				B5BC1ACF1D4596D1003E405C /* BaseViewController.swift */,
 				B50353CE1D498C7A003DC527 /* StartViewController.swift */,
 				B50353D11D49EBAF003DC527 /* NewUserViewController.swift */,
+				B50353D91D4ABAAD003DC527 /* UIViewController+Extensions.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 				B5230CC91D41C5B00046B551 /* CCUserRouter.swift in Sources */,
 				B5E266831D33905F0051756C /* MyCardsViewController.swift in Sources */,
 				B52581471D26DAFD001CB6BC /* CCUserViewModel.swift in Sources */,
+				B50353DA1D4ABAAD003DC527 /* UIViewController+Extensions.swift in Sources */,
 				B5EB17391D3DC0E1002AC817 /* BankCollectionViewCell.swift in Sources */,
 				B5E2666F1D2F08930051756C /* CCPlaceViewModel.swift in Sources */,
 				B50353D81D4AAF82003DC527 /* CCSuggestion.swift in Sources */,
