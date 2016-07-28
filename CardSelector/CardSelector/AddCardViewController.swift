@@ -22,6 +22,8 @@ class AddCardViewController: BaseViewController {
   
   @IBOutlet weak var endingTextField: UITextField!
   @IBOutlet weak var rateTextField: UITextField!
+  @IBOutlet weak var cutoffTextField: UITextField!
+  
   
   @IBOutlet weak var noCardsLabel: UILabel!
   
@@ -103,13 +105,36 @@ class AddCardViewController: BaseViewController {
     }
     
     if rateTextField.text!.isEmpty {
-      missingData.append("rate")
+      missingData.append("interest rate")
     }else{
-      selectedProfileCard.interestRate = Double(rateTextField.text!)!
+      
+      let rateValue = Double(rateTextField.text!)!
+      
+      if rateValue > 100.0 || rateValue < 0{
+        Alert(title: "Ops!", message: "Interest rate must be between 0-100%").showOkay()
+        return
+      }
+      
+      selectedProfileCard.interestRate = rateValue
+    }
+    
+    if cutoffTextField.text!.isEmpty {
+      missingData.append("cutoff day")
+    }else{
+      let cutValue = Int(cutoffTextField.text!)!
+      
+      if cutValue > 31 || cutValue < 1{
+        Alert(title: "Ops!", message: "Cutoff Day must be between 1-31").showOkay()
+        return
+      }
+      
+      selectedProfileCard.cuttOffDay = cutValue
     }
     
     var message = "Are you ready to save?"
-    if missingData.count == 2 {
+    if missingData.count == 3 {
+      message = "\(missingData[0].capitalizedString), \(missingData[1]), and \(missingData[2]) are blank. Do you want to save anyway?"
+    }else if missingData.count == 2 {
       message = "\(missingData[0].capitalizedString) and \(missingData[1]) are blank. Do you want to save anyway?"
     }else if missingData.count == 1 {
       message = "\(missingData[0].capitalizedString) is blank. Do you want to save anyway?"
@@ -235,7 +260,7 @@ class AddCardViewController: BaseViewController {
   }
   
   func showAdditionalInfo() {
-    animateViewMoving(heightConstraint,moveValue: 203, curve: UIViewAnimationOptions.CurveLinear.rawValue, duration: 0.3)
+    animateViewMoving(heightConstraint,moveValue: 260, curve: UIViewAnimationOptions.CurveLinear.rawValue, duration: 0.3)
   }
   
   func hideAdditionalInfo() {

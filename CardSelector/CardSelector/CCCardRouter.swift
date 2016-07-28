@@ -67,6 +67,10 @@ enum CCCardRouter: URLRequestConvertible {
         dictionary["InterestRate"] = profileCard.interestRate
       }
       
+      if profileCard.cuttOffDay != -1 {
+        dictionary["CuttOffDay"] = profileCard.cuttOffDay
+      }
+      
       return dictionary
       
     case .getProfileCardsFromUser(let user):
