@@ -59,10 +59,6 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate, GIDSignInDelega
   }
   
   
-  @IBAction func createAccount(sender: AnyObject) {
-    Alert(title: "Ops!", message: "This feature is not available yet!").showOkay()
-  }
-  
   
   //MARK: - Google SignIn methods
   func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {

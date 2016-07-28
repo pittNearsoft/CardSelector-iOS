@@ -12,6 +12,7 @@
 		B50353CA1D497E63003DC527 /* kredit front.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B50353C61D497DF2003DC527 /* kredit front.ttf */; };
 		B50353CB1D497E66003DC527 /* kredit back.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B50353C51D497DF2003DC527 /* kredit back.ttf */; };
 		B50353CF1D498C7A003DC527 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50353CE1D498C7A003DC527 /* StartViewController.swift */; };
+		B50353D21D49EBAF003DC527 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50353D11D49EBAF003DC527 /* NewUserViewController.swift */; };
 		B5230CC91D41C5B00046B551 /* CCUserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5230CC81D41C5B00046B551 /* CCUserRouter.swift */; };
 		B52581411D258CDF001CB6BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52581401D258CDF001CB6BC /* LaunchScreen.storyboard */; };
 		B52581471D26DAFD001CB6BC /* CCUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52581461D26DAFD001CB6BC /* CCUserViewModel.swift */; };
@@ -79,6 +80,7 @@
 		B50353C61D497DF2003DC527 /* kredit front.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "kredit front.ttf"; sourceTree = "<group>"; };
 		B50353C81D497DF2003DC527 /* kredit.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kredit.ttf; sourceTree = "<group>"; };
 		B50353CE1D498C7A003DC527 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		B50353D11D49EBAF003DC527 /* NewUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
 		B5230CC81D41C5B00046B551 /* CCUserRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCUserRouter.swift; sourceTree = "<group>"; };
 		B52581401D258CDF001CB6BC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B52581461D26DAFD001CB6BC /* CCUserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCUserViewModel.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				B5BC1AC91D4567D9003E405C /* EnableLocationViewController.swift */,
 				B5BC1ACF1D4596D1003E405C /* BaseViewController.swift */,
 				B50353CE1D498C7A003DC527 /* StartViewController.swift */,
+				B50353D11D49EBAF003DC527 /* NewUserViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -558,6 +561,7 @@
 				B5BC1AC21D4477BD003E405C /* CCSuggestionService.swift in Sources */,
 				B5EB17421D3E8401002AC817 /* CCBankViewModel.swift in Sources */,
 				B5BC1AC81D447B13003E405C /* SuggestionViewCell.swift in Sources */,
+				B50353D21D49EBAF003DC527 /* NewUserViewController.swift in Sources */,
 				B5E266721D2F11480051756C /* CCPlaceService.swift in Sources */,
 				B5E266741D2F11C10051756C /* APIClient.swift in Sources */,
 				B5BC1ACA1D4567D9003E405C /* EnableLocationViewController.swift in Sources */,

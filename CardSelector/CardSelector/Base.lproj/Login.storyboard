@@ -107,7 +107,7 @@
                                 </constraints>
                                 <state key="normal" title="Create an account"/>
                                 <connections>
-                                    <action selector="createAccount:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1pS-b1-zyv"/>
+                                    <segue destination="eav-jS-MTr" kind="presentation" id="KxW-bV-o1v"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardCompadreBigLogo" translatesAutoresizingMaskIntoConstraints="NO" id="eUd-1t-TND">
@@ -164,6 +164,35 @@
             </objects>
             <point key="canvasLocation" x="2639" y="517"/>
         </scene>
+        <!--Create a new user-->
+        <scene sceneID="xmb-gK-Dij">
+            <objects>
+                <viewController id="Vk5-em-SlK" customClass="NewUserViewController" customModule="CardSelector" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="M2G-G6-22W"/>
+                        <viewControllerLayoutGuide type="bottom" id="m9G-5i-pMe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wiR-y9-Ocw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Create a new user" id="EjH-XK-qQc">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="feb-1n-0tf">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancelNewUser:" destination="Vk5-em-SlK" id="OBZ-Sj-hz0"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Oy4-tb-hvp">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mor-ek-WPs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4277" y="517"/>
+        </scene>
         <!--Start View Controller-->
         <scene sceneID="NUs-uL-f3M">
             <objects>
@@ -191,6 +220,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cGO-kW-Ndc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1939" y="517"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8bf-MK-UQv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eav-jS-MTr" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yW7-Sw-wCW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Vk5-em-SlK" kind="relationship" relationship="rootViewController" id="f8E-07-Yuk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nie-B2-NIp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3465" y="517"/>
         </scene>
     </scenes>
     <resources>
