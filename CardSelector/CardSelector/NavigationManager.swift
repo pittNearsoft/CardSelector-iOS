@@ -14,6 +14,8 @@ class NavigationManager {
   
   static func setInitialStoryboard() {
     
+    SVProgressHUD.setBackgroundColor(UIColor.clearColor())
+    SVProgressHUD.setDefaultStyle(.Custom)
     SVProgressHUD.show()
     if CCUserViewModel.existLoggedUser() {
       let user = CCUserViewModel.getLoggedUser()

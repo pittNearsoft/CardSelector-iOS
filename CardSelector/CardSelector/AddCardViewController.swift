@@ -71,6 +71,7 @@ class AddCardViewController: BaseViewController {
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleKeyboardWillShowWithNotification), name: UIKeyboardWillShowNotification, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleKeyboardWillHideWithNotification), name: UIKeyboardWillHideNotification, object: nil)
     
+    SVProgressHUD.setDefaultStyle(.Light)
     getAvailableBanks()
   }
   
