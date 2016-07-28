@@ -27,6 +27,8 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate, GIDSignInDelega
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    self.hideKeyboardWhenTappedAround()
+    
     emailButton.layer.cornerRadius = 5
     emailButton.clipsToBounds = true
     
