@@ -69,10 +69,14 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate, GIDSignInDelega
     if error == nil {
       let newUser = CCUser(WithGoogleUser: user)
       CCUserViewModel.validateUserInServer(newUser)
-      
+      SessionManager.googleSignOut()
     }else{
       print("Error: \(error.localizedDescription)")
-      Alert(title: "Ops!", message: "Something went wrong in server. Please try again later.").showOkay()
+      
+      if error.code != -5 {
+        Alert(title: "Ops!", message: "Something went wrong in server. Please try again later.").showOkay()
+      }
+      
     }
   }
   

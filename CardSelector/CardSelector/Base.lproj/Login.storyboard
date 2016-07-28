@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5ap-TN-z6q">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -162,7 +162,35 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2158" y="479"/>
+            <point key="canvasLocation" x="2639" y="517"/>
+        </scene>
+        <!--Start View Controller-->
+        <scene sceneID="NUs-uL-f3M">
+            <objects>
+                <viewController id="5ap-TN-z6q" customClass="StartViewController" customModule="CardSelector" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zuT-on-s7e"/>
+                        <viewControllerLayoutGuide type="bottom" id="fBM-Rh-24e"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xCh-kP-jsT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardCompadreBigLogo" translatesAutoresizingMaskIntoConstraints="NO" id="HTl-k7-fsg">
+                                <rect key="frame" x="15" y="108" width="560" height="186"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HTl-k7-fsg" firstAttribute="top" secondItem="zuT-on-s7e" secondAttribute="bottom" constant="88" id="bkV-gM-8ZS"/>
+                            <constraint firstAttribute="trailing" secondItem="HTl-k7-fsg" secondAttribute="trailing" constant="25" id="eua-Yo-3Py"/>
+                            <constraint firstItem="HTl-k7-fsg" firstAttribute="leading" secondItem="xCh-kP-jsT" secondAttribute="leading" constant="15" id="sIS-ej-hg1"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cGO-kW-Ndc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1939" y="517"/>
         </scene>
     </scenes>
     <resources>

@@ -27,9 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //Initialize Facebook Sign-in
     FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     
-    //Choose the right storyboard to start depending if user is logged or not
-    NavigationManager.setInitialStoryboard()
-    
     return true
   }
 

@@ -165,7 +165,7 @@ class AddCardViewController: BaseViewController {
   }
   
   func getAvailableBanks() {
-    //bankCollectionView.lock()
+
     SVProgressHUD.show()
     bankViewModel.getAvailableBanks({ (listBanks) in
       self.listBanks = listBanks
@@ -176,13 +176,13 @@ class AddCardViewController: BaseViewController {
         self.getAvailableCardsFromBank(listBanks[0])
       }
       
-      //self.bankCollectionView.unlock()
       SVProgressHUD.dismiss()
       
     }) { (error) in
-        print(error.localizedDescription)
-        //self.bankCollectionView.unlock()
+      print(error.localizedDescription)
       SVProgressHUD.dismiss()
+      Alert(title: "Ops!", message: "Banks weren't found. Please try again later.").showOkay()
+      self.dismissViewControllerAnimated(true, completion: nil)
     }
   }
   

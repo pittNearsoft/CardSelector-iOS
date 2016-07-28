@@ -39,8 +39,8 @@ class SessionManager {
   static func googleSignOut() {
     GIDSignIn.sharedInstance().signOut()
     
-    CCUserViewModel.deleteLoggedUser()
-    NavigationManager.goLogin()
+//    CCUserViewModel.deleteLoggedUser()
+//    NavigationManager.goLogin()
   }
   
   //MARK: - Facebook methods
@@ -63,8 +63,8 @@ class SessionManager {
     let logOutManager = FBSDKLoginManager()
     logOutManager.logOut()
     
-    CCUserViewModel.deleteLoggedUser()
-    NavigationManager.goLogin()
+//    CCUserViewModel.deleteLoggedUser()
+//    NavigationManager.goLogin()
   }
   
   static func getFacebookData() {
@@ -91,6 +91,7 @@ class SessionManager {
         user.imageUrl = dict["data"]!["url"]! as! String
         
         CCUserViewModel.validateUserInServer(user)
+        facebookSignOut()
       }else{
         print("Error getting facebook picture: \(error.localizedDescription)")
       }
@@ -104,8 +105,8 @@ class SessionManager {
   }
   
   static func emailSignOut() {
-    CCUserViewModel.deleteLoggedUser()
-    NavigationManager.goLogin()
+//    CCUserViewModel.deleteLoggedUser()
+//    NavigationManager.goLogin()
   }
   
   //MARK: - Middlewares AppDelegate
@@ -146,17 +147,20 @@ class SessionManager {
   
   static func logOut() {
     //Add provider to user
-    let user = CCUserViewModel.getLoggedUser()
-    signInType = SignInType.init(rawValue: (user?.provider)!)!
+    //let user = CCUserViewModel.getLoggedUser()
     
-    switch signInType {
-    case .Google:
-      googleSignOut()
-    case .Facebook:
-      facebookSignOut()
-    case .Email:
-      emailSignOut()
-    }
+    CCUserViewModel.deleteLoggedUser()
+    NavigationManager.goLogin()
+//    signInType = SignInType.init(rawValue: (user?.provider)!)!
+//    
+//    switch signInType {
+//    case .Google:
+//      googleSignOut()
+//    case .Facebook:
+//      facebookSignOut()
+//    case .Email:
+//      emailSignOut()
+//    }
 
   }
   
