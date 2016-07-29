@@ -61,21 +61,13 @@
                                     <action selector="emailSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5hT-tB-Z5d"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VLK-Jg-320">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VLK-Jg-320">
                                 <rect key="frame" x="20" y="205" width="560" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="T1D-Kn-u6g"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NO6-KB-TIR">
-                                <rect key="frame" x="20" y="275" width="560" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="OdL-af-XS3"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tn9-vL-Ijn">
                                 <rect key="frame" x="20" y="248" width="560" height="1"/>
@@ -107,7 +99,7 @@
                                 </constraints>
                                 <state key="normal" title="Create an account"/>
                                 <connections>
-                                    <segue destination="eav-jS-MTr" kind="presentation" id="KxW-bV-o1v"/>
+                                    <segue destination="eav-jS-MTr" kind="presentation" identifier="createNewUserSegue" id="KxW-bV-o1v"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardCompadreBigLogo" translatesAutoresizingMaskIntoConstraints="NO" id="eUd-1t-TND">
@@ -116,6 +108,14 @@
                                     <constraint firstAttribute="height" constant="88" id="daC-TP-cFX"/>
                                 </constraints>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NO6-KB-TIR">
+                                <rect key="frame" x="20" y="275" width="560" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="OdL-af-XS3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>

@@ -52,8 +52,10 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate, GIDSignInDelega
   
   @IBAction func emailSignIn(sender: AnyObject) {
     
+    SVProgressHUD.show()
     CCUserViewModel.authenticateUserWithEmail(emailTextField.text!, password: passwordTextField.text!, completion: { (user) in
       
+      SVProgressHUD.dismiss()
       guard user != nil else{
         Alert(title: "Ops!", message: "Invalid email and/or password. Try again.").showOkay()
         return
@@ -62,6 +64,7 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate, GIDSignInDelega
       CCUserViewModel.validateUserInServer(user!)
       
     }) { (error) in
+      SVProgressHUD.dismiss()
       print(error.localizedDescription)
       Alert(title: "Ops!", message: "Invalid email and/or password. Try again.").showOkay()
     }
@@ -97,6 +100,20 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate, GIDSignInDelega
     }
   }
   
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "createNewUserSegue" {
+      let nav = segue.destinationViewController as! UINavigationController
+      let newUserVC = nav.viewControllers[0] as! NewUserViewController
+      newUserVC.delegate = self
+    }
+  }
+  
 
+}
+
+extension LoginViewController: NewUserViewControllerDelegate{
+  func didSaveNewUserWithEmail(email: String) {
+    emailTextField.text = email
+  }
 }
 

@@ -17,6 +17,7 @@ class NewUserViewController: FormViewController {
   
   private let mainColor = UIColor(red:0.04, green:0.69, blue:0.92, alpha:1.0)
   private let errorColor = UIColor ( red: 1.0, green: 0.3524, blue: 0.3492, alpha: 1.0 )
+  var delegate: NewUserViewControllerDelegate?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -146,7 +147,7 @@ class NewUserViewController: FormViewController {
         SVProgressHUD.dismiss()
         Alert(title: "Done!", message: "Data was saved. Now you can sign in with your email: \(profile!.email)")
           .addAction("OK", style: .Default, handler: { _ in
-            
+            self.delegate?.didSaveNewUserWithEmail(profile!.email)
             self.dismissViewControllerAnimated(true, completion: nil)
           })
           .show()
@@ -217,4 +218,8 @@ class NewUserViewController: FormViewController {
     
   }
   
+}
+
+protocol NewUserViewControllerDelegate {
+  func didSaveNewUserWithEmail(email: String)
 }
