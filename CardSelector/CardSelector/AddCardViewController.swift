@@ -21,7 +21,6 @@ class AddCardViewController: BaseViewController {
   @IBOutlet weak var bankCollectionView: UICollectionView!
   @IBOutlet weak var additionalInfoView: UIView!
   
-  @IBOutlet weak var endingTextField: UITextField!
   @IBOutlet weak var rateTextField: UITextField!
   
   
@@ -48,6 +47,15 @@ class AddCardViewController: BaseViewController {
                     "21st","22nd","23rd","24th","25th","26th","27th","28th","29th","30th","31st"]
   
   
+  @IBOutlet weak var ending1TextField: UITextField!
+  @IBOutlet weak var ending2TextField: UITextField!
+  @IBOutlet weak var ending3TextField: UITextField!
+  @IBOutlet weak var ending4TextField: UITextField!
+  
+  var endingCardNumbers = ["","","",""]
+  
+  
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -57,7 +65,11 @@ class AddCardViewController: BaseViewController {
     bankCollectionView.dataSource = self
     bankCollectionView.delegate = self
     
-    endingTextField.delegate = self
+    ending1TextField.delegate = self
+    ending2TextField.delegate = self
+    ending3TextField.delegate = self
+    ending4TextField.delegate = self
+    
     rateTextField.delegate = self
     
     cutoffPickerView.dataSource = self
@@ -95,8 +107,14 @@ class AddCardViewController: BaseViewController {
   }
   
   func dismissKeyboard() {
-    if endingTextField.isFirstResponder() {
-      endingTextField.resignFirstResponder()
+    if ending1TextField.isFirstResponder() {
+      ending1TextField.resignFirstResponder()
+    }else if ending2TextField.isFirstResponder() {
+      ending2TextField.resignFirstResponder()
+    }else if ending3TextField.isFirstResponder() {
+      ending3TextField.resignFirstResponder()
+    }else if ending4TextField.isFirstResponder() {
+      ending4TextField.resignFirstResponder()
     } else if rateTextField.isFirstResponder(){
       rateTextField.resignFirstResponder()
     }
@@ -118,11 +136,22 @@ class AddCardViewController: BaseViewController {
   func confirmSaving() {
     var missingData: [String] = []
     
-    if endingTextField.text!.isEmpty {
+//    if endingTextField.text!.isEmpty {
+//      missingData.append("ending")
+//    }else{
+//      selectedProfileCard.endingCard = Int(endingTextField.text!)!
+//    }
+    
+    let endingNumber = Int(endingCardNumbers.joinWithSeparator(""))
+    
+    if endingNumber == nil {
       missingData.append("ending")
-    }else{
-      selectedProfileCard.endingCard = Int(endingTextField.text!)!
+    }else if endingNumber! < 1000 {
+      Alert(title: "Ops!", message: "Card's ending is incomplete. Please add the rest of numbers").showOkay()
+      return
     }
+    selectedProfileCard.endingCard = endingNumber!
+    
     
     if rateTextField.text!.isEmpty {
       missingData.append("interest rate")
@@ -282,13 +311,31 @@ extension AddCardViewController: UITextFieldDelegate{
   func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
     guard let text = textField.text else { return true }
     
-    if textField == endingTextField {
+    
+    switch textField {
+    case ending1TextField:
+      endingCardNumbers[0] = string
+    case ending2TextField:
+      endingCardNumbers[1] = string
+    case ending3TextField:
+      endingCardNumbers[2] = string
+    case ending4TextField:
+      endingCardNumbers[3] = string
+    default:
+      break
+    }
+    
+    
+    
+    if textField == ending1TextField || textField == ending2TextField || textField == ending3TextField || textField == ending4TextField {
       let newLength = text.utf16.count + string.utf16.count - range.length
-      return newLength <= 4 // Bool
+      return newLength <= 1
     }
     
     return true
   }
+  
+  
 }
 
 
