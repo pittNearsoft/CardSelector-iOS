@@ -114,5 +114,21 @@ class CCUserViewModel {
     })
   }
   
+  static func authenticateUserWithEmail(email: String, password: String, completion: (user: CCUser?)-> Void, onError: (error: NSError)->Void){
+    userService.authenticateUserWithEmail(email, password: password, completion: { (jsonProfile) in
+      
+      if jsonProfile != nil{
+        let user: CCUser = Mapper<CCUser>().map(jsonProfile)!
+        completion(user: user)
+      }else{
+        completion(user: nil)
+      }
+      
+      
+    }) { (error) in
+        onError(error: error)
+    }
+  }
+  
   
 }

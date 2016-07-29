@@ -51,14 +51,20 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate, GIDSignInDelega
   }
   
   @IBAction func emailSignIn(sender: AnyObject) {
-    if emailTextField.text == "projas@nearsoft.com"  && passwordTextField.text == "welcome1"{
+    
+    CCUserViewModel.authenticateUserWithEmail(emailTextField.text!, password: passwordTextField.text!, completion: { (user) in
       
-      SessionManager.emailSignIn(emailTextField.text!)
-    }else{
+      guard user != nil else{
+        Alert(title: "Ops!", message: "Invalid email and/or password. Try again.").showOkay()
+        return
+      }
+      
+      CCUserViewModel.validateUserInServer(user!)
+      
+    }) { (error) in
+      print(error.localizedDescription)
       Alert(title: "Ops!", message: "Invalid email and/or password. Try again.").showOkay()
     }
-    
-    
 
   }
   
