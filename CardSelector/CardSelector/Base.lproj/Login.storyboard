@@ -186,6 +186,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="Oy4-tb-hvp">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="saveNewUser:" destination="Vk5-em-SlK" id="YZl-iT-Q2A"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>

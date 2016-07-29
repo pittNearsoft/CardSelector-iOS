@@ -57,6 +57,8 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate, GIDSignInDelega
     }else{
       Alert(title: "Ops!", message: "Invalid email and/or password. Try again.").showOkay()
     }
+    
+    
 
   }
   

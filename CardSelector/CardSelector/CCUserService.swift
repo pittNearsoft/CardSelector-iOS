@@ -40,8 +40,8 @@ class CCUserService {
     }
   }
   
-  func saveUserIntoServer(user: CCUser, completion: (jsonProfile: [String: AnyObject])-> Void, onError: (error: NSError)->Void) {
-    apiClient.manager.request(CCUserRouter.saveUserIntoServer(user: user))
+  func saveUserIntoServer(user: CCUser, password: String = "" , completion: (jsonProfile: [String: AnyObject])-> Void, onError: (error: NSError)->Void) {
+    apiClient.manager.request(CCUserRouter.saveUserIntoServer(user: user, password: password))
       .CCresponseJSON { (response) in
       
         switch response.result{

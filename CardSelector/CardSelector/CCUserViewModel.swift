@@ -60,8 +60,8 @@ class CCUserViewModel {
     }
   }
   
-  static func saveUserIntoServer(user: CCUser, completion: (profile: CCUser?)-> Void, onError: (error: NSError)->Void) {
-    userService.saveUserIntoServer(user, completion: { (jsonProfile) in
+  static func saveUserIntoServer(user: CCUser, password: String = "" , completion: (profile: CCUser?)-> Void, onError: (error: NSError)->Void) {
+    userService.saveUserIntoServer(user, password: password, completion: { (jsonProfile) in
       
       let user: CCUser = Mapper<CCUser>().map(jsonProfile)!
       completion(profile: user)

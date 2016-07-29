@@ -10,6 +10,8 @@ import UIKit
 import Eureka
 import Timepiece
 import SwiftValidators
+import LKAlertController
+import SVProgressHUD
 
 class NewUserViewController: FormViewController {
   
@@ -19,7 +21,7 @@ class NewUserViewController: FormViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    form +++ Section("Required")
+    form +++ Section("Basic")
       <<< NameRow("FirstName"){ row in
         row.title = "First Name"
         row.placeholder = "Enter first name"
@@ -73,7 +75,7 @@ class NewUserViewController: FormViewController {
         row.updateCell()
         
       })
-      +++ Section("Optional")
+      +++ Section("Additional")
       <<< DateInlineRow("Birth"){ row in
         row.title = "Date of birth"
         row.value = NSDate.yesterday()
@@ -107,6 +109,112 @@ class NewUserViewController: FormViewController {
   
   @IBAction func cancelNewUser(sender: AnyObject) {
     dismissViewControllerAnimated(true, completion: nil)
+  }
+  
+  
+  @IBAction func saveNewUser(sender: AnyObject) {
+    let values = form.values()
+    
+    if isDataCorrect(values) {
+      SVProgressHUD.show()
+      
+      let firstName = values["FirstName"] as! String
+      let lastName = values["LastName"] as! String
+      let email = values["Email"] as! String
+      var gender = values["Gender"] as! String
+      gender = (gender == "Male") ? "M" : "F"
+      let password = values["Password"] as! String
+      let birth = values["Birth"] as! NSDate
+      
+      let user = CCUser(userDictionary: [
+          "firstName"   : firstName,
+          "lastName"    : lastName,
+          "email"       : email,
+          "gender"      : gender,
+          "birthDate"   : birth.stringFromFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"),
+        
+        //Extra info required
+          "providerId" : "",
+          "userId": 0,
+          "imageUrl": "",
+          "provider": 0,
+          "profileCards": [CCProfileCard]()
+        ])
+      
+      
+      CCUserViewModel.saveUserIntoServer(user, password: password, completion: { (profile) in
+        SVProgressHUD.dismiss()
+        Alert(title: "Done!", message: "Data was saved. Now you can sign in with your email: \(profile!.email)")
+          .addAction("OK", style: .Default, handler: { _ in
+            
+            self.dismissViewControllerAnimated(true, completion: nil)
+          })
+          .show()
+      }, onError: { (error) in
+        SVProgressHUD.dismiss()
+        Alert(title: "Ops!", message: "Something went wrong saving data. Please try again later.").showOkay()
+      })
+      
+    }
+  }
+  
+  func isDataCorrect(values: [String: Any?]) -> Bool{
+    
+    if values["FirstName"] == nil {
+      Alert(title: "Ops!", message: "First name field is empty.").showOkay()
+      return false
+    }
+    
+    if values["LastName"] == nil {
+      Alert(title: "Ops!", message: "Last name field is empty.").showOkay()
+      return false
+    }
+    
+    if values["Email"] == nil {
+      Alert(title: "Ops!", message: "Email field is empty").showOkay()
+      return false
+    }
+    
+    if values["Email"] == nil || !Validator.isEmail(values["Email"] as! String) {
+      Alert(title: "Ops!", message: "Email format is not correct").showOkay()
+      return false
+    }
+    
+    if values["Password"] == nil {
+      Alert(title: "Ops!", message: "Password field is empty").showOkay()
+      return false
+    }
+    
+    let password = values["Password"] as! String
+    if password.characters.count < 6 {
+      Alert(title: "Ops!", message: "Password is too short. Must be at least 6 characters").showOkay()
+      return false
+    }
+    
+    
+    if values["ConfirmPassword"] == nil {
+      Alert(title: "Ops!", message: "Password confirmation field is empty").showOkay()
+      return false
+    }
+    
+    
+    let passwordConfirmation = values["ConfirmPassword"] as! String
+    if passwordConfirmation != password {
+      Alert(title: "Ops!", message: "Password confirmation does not match with actual password").showOkay()
+      return false
+    }
+    
+    
+    let dateOfBirth = values["Birth"] as! NSDate
+    if dateOfBirth > NSDate.yesterday() {
+      Alert(title: "Ops!", message: "Date of birth is incorrect.").showOkay()
+      return false
+    }
+    
+    
+    return true
+    
+    
   }
   
 }

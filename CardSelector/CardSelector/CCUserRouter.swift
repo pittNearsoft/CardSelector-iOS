@@ -12,7 +12,7 @@ enum CCUserRouter: URLRequestConvertible {
   
   case getUserFromServerWithEmail(email: String)
   case authenticateUserWithEmail(email: String, password: String)
-  case saveUserIntoServer(user: CCUser)
+  case saveUserIntoServer(user: CCUser, password: String)
   
   var method: Alamofire.Method{
     switch self {
@@ -48,12 +48,11 @@ enum CCUserRouter: URLRequestConvertible {
         "UserCredentials": [["LoginProvider": "", "Password": password]]
       ]
       
-    case .saveUserIntoServer(let user):
-      var userDict =  [
+    case .saveUserIntoServer(let user, let password):
+      var userDict: [String: AnyObject] =  [
         "Email" : user.email,
         "FirstName"   : user.firstName,
         "LastName"    : user.lastName
-        
         
         //TODO: Add more data here
         //"UserCredentials": [["LoginProvider": "", "Password": password]]
@@ -68,6 +67,10 @@ enum CCUserRouter: URLRequestConvertible {
         userDict["DateOfBirth"] = user.birthDate
       }
       
+      
+      if password != "" {
+        userDict["UserCredentials"] = [["LoginProvider": "Email", "Password": password]]
+      }
       
       return userDict
     }
