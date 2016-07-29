@@ -70,7 +70,13 @@ class AddCardViewController: BaseViewController {
     ending3TextField.delegate = self
     ending4TextField.delegate = self
     
+    ending1TextField.addDoneButtonOnKeyboard()
+    ending2TextField.addDoneButtonOnKeyboard()
+    ending3TextField.addDoneButtonOnKeyboard()
+    ending4TextField.addDoneButtonOnKeyboard()
+    
     rateTextField.delegate = self
+    rateTextField.addDoneButtonOnKeyboard()
     
     cutoffPickerView.dataSource = self
     cutoffPickerView.delegate = self
@@ -335,6 +341,10 @@ extension AddCardViewController: UITextFieldDelegate{
     return true
   }
   
+  func textFieldShouldReturn(textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
+    return true
+  }
   
 }
 
