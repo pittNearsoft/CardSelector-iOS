@@ -51,4 +51,7 @@ target 'CardSelector' do
    #To Validate forms
    pod 'SwiftValidators', '~> 3.0'
 
+   #Horizontal picker
+   pod 'AKPickerView'
+
 end
