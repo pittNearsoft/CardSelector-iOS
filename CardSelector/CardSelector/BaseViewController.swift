@@ -20,7 +20,7 @@ class BaseViewController: UIViewController {
     
     self.tabBarController?.viewControllers![1].tabBarItem = UITabBarItem(title: "My Cards", image: UIImage(named: "credit-cards")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "credit-cards"))
     
-    self.tabBarController?.viewControllers![2].tabBarItem = UITabBarItem(title: "My Cards", image: UIImage(named: "user")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "user"))
+    self.tabBarController?.viewControllers![2].tabBarItem = UITabBarItem(title: "Account", image: UIImage(named: "user")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "user"))
     
     customizeNavigationBar()
     customizeTabBar()
