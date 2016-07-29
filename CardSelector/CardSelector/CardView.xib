@@ -29,6 +29,9 @@
                 <outlet property="cardView" destination="iN0-l3-epB" id="g5O-3c-yQM"/>
                 <outlet property="cutoffLabel" destination="J8D-E1-2cI" id="ZJX-Iv-f7Z"/>
                 <outlet property="endingLabel" destination="sjg-qd-Mtc" id="JGR-TR-kyS"/>
+                <outlet property="placeholder1Label" destination="CiG-oF-ilo" id="DAQ-Lf-P5L"/>
+                <outlet property="placeholder2Label" destination="JUQ-Pq-VJB" id="9b8-hd-n1N"/>
+                <outlet property="placeholder3Label" destination="dzJ-Qd-xZG" id="ihT-Et-m9a"/>
                 <outlet property="programLabel" destination="9zU-Uf-Jj3" id="eyE-DI-sWa"/>
                 <outlet property="rateLabel" destination="1oW-nO-3Vi" id="UAv-SV-k7V"/>
             </connections>
@@ -60,7 +63,7 @@
                         <constraint firstAttribute="bottom" secondItem="ClO-zL-RM1" secondAttribute="bottom" id="reC-b7-vpK"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" alpha="0.34999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chase" translatesAutoresizingMaskIntoConstraints="NO" id="Nof-27-2xa">
+                <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chase" translatesAutoresizingMaskIntoConstraints="NO" id="Nof-27-2xa">
                     <rect key="frame" x="16" y="16" width="268" height="88"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </imageView>
