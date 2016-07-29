@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 import LKAlertController
+import AKPickerView
 
 class AddCardViewController: BaseViewController {
   
@@ -22,9 +23,9 @@ class AddCardViewController: BaseViewController {
   
   @IBOutlet weak var endingTextField: UITextField!
   @IBOutlet weak var rateTextField: UITextField!
-  @IBOutlet weak var cutoffTextField: UITextField!
   
   
+  @IBOutlet weak var cutoffPickerView: AKPickerView!
   @IBOutlet weak var noCardsLabel: UILabel!
   
   var delegate: AddCardViewControllerDelegate?
@@ -42,6 +43,11 @@ class AddCardViewController: BaseViewController {
   var selectedProfileCard = CCProfileCard()
   
   
+  let cutoffDays = ["1st","2nd","3rd","4th","5th","6th","7th","8th","9th","10th",
+                    "11th","12th","13th","14th","15th","16th","17th","18th","19th","20th",
+                    "21st","22nd","23rd","24th","25th","26th","27th","28th","29th","30th","31st"]
+  
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -53,6 +59,19 @@ class AddCardViewController: BaseViewController {
     
     endingTextField.delegate = self
     rateTextField.delegate = self
+    
+    cutoffPickerView.dataSource = self
+    cutoffPickerView.delegate = self
+    cutoffPickerView.autoresizingMask = [.FlexibleWidth , .FlexibleHeight]
+    cutoffPickerView.font = UIFont(name: "HelveticaNeue-Light", size: 20)
+    cutoffPickerView.highlightedFont = UIFont(name: "HelveticaNeue", size: 20)
+    cutoffPickerView.interitemSpacing = 20.0
+    cutoffPickerView.fisheyeFactor = 0.001
+    cutoffPickerView.pickerViewStyle = .Style3D
+    cutoffPickerView.maskDisabled = false
+    cutoffPickerView.selectItem(14, animated: true)
+    
+    
     
     let cardNibName = UINib(nibName: CardCollectionViewCell.reuseIdentifier(), bundle:nil)
     cardCollectionView.registerNib(cardNibName, forCellWithReuseIdentifier: CardCollectionViewCell.reuseIdentifier())
@@ -119,23 +138,11 @@ class AddCardViewController: BaseViewController {
       selectedProfileCard.interestRate = rateValue
     }
     
-    if cutoffTextField.text!.isEmpty {
-      missingData.append("cutoff day")
-    }else{
-      let cutValue = Int(cutoffTextField.text!)!
-      
-      if cutValue > 31 || cutValue < 1{
-        Alert(title: "Ops!", message: "Cutoff Day must be between 1-31").showOkay()
-        return
-      }
-      
-      selectedProfileCard.cuttOffDay = cutValue
-    }
+    let selectedCutoff = Int(cutoffPickerView.selectedItem)+1
+    selectedProfileCard.cuttOffDay = selectedCutoff
     
     var message = "Are you ready to save?"
-    if missingData.count == 3 {
-      message = "\(missingData[0].capitalizedString), \(missingData[1]), and \(missingData[2]) are blank. Do you want to save anyway?"
-    }else if missingData.count == 2 {
+    if missingData.count == 2 {
       message = "\(missingData[0].capitalizedString) and \(missingData[1]) are blank. Do you want to save anyway?"
     }else if missingData.count == 1 {
       message = "\(missingData[0].capitalizedString) is blank. Do you want to save anyway?"
@@ -407,6 +414,22 @@ extension AddCardViewController: UICollectionViewDelegateFlowLayout{
     }
     
     
+  }
+}
+
+extension AddCardViewController: AKPickerViewDataSource{
+  func numberOfItemsInPickerView(pickerView: AKPickerView!) -> UInt {
+    return UInt(cutoffDays.count)
+  }
+  
+  func pickerView(pickerView: AKPickerView!, titleForItem item: Int) -> String! {
+    return cutoffDays[item]
+  }
+}
+
+extension AddCardViewController: AKPickerViewDelegate{
+  func pickerView(pickerView: AKPickerView!, didSelectItem item: Int) {
+    print(cutoffDays[item])
   }
 }
 
