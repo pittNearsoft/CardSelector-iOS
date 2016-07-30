@@ -33,7 +33,7 @@ class NavigationManager {
             goMain()
           }else{
             SVProgressHUD.dismiss()
-            Alert(title: "Ops!", message: "Session couldn't be retrieved. Please login again.")
+            Alert(title: "Oops!", message: "Session couldn't be retrieved. Please login again.")
               .addAction("OK", style: .Default, handler: { _ in
                 goLogin()
               }).show()
@@ -43,7 +43,7 @@ class NavigationManager {
         onError: { (error) in
           SVProgressHUD.dismiss()
           print(error.localizedDescription)
-          Alert(title: "Ops!", message: "Session couldn't be retrieved. Please login again.")
+          Alert(title: "Oops!", message: "Session couldn't be retrieved. Please login again.")
             .addAction("OK", style: .Default, handler: { _ in
               goLogin()
             }).show()

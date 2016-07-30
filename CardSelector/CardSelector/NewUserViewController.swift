@@ -153,7 +153,7 @@ class NewUserViewController: FormViewController {
           .show()
       }, onError: { (error) in
         SVProgressHUD.dismiss()
-        Alert(title: "Ops!", message: "Something went wrong saving data. Please try again later.").showOkay()
+        Alert(title: "Oops!", message: "Something went wrong saving data. Please try again later.").showOkay()
       })
       
     }
@@ -162,53 +162,53 @@ class NewUserViewController: FormViewController {
   func isDataCorrect(values: [String: Any?]) -> Bool{
     
     if values["FirstName"] == nil {
-      Alert(title: "Ops!", message: "First name field is empty.").showOkay()
+      Alert(title: "Oops!", message: "First name field is empty.").showOkay()
       return false
     }
     
     if values["LastName"] == nil {
-      Alert(title: "Ops!", message: "Last name field is empty.").showOkay()
+      Alert(title: "Oops!", message: "Last name field is empty.").showOkay()
       return false
     }
     
     if values["Email"] == nil {
-      Alert(title: "Ops!", message: "Email field is empty").showOkay()
+      Alert(title: "Oops!", message: "Email field is empty").showOkay()
       return false
     }
     
     if values["Email"] == nil || !Validator.isEmail(values["Email"] as! String) {
-      Alert(title: "Ops!", message: "Email format is not correct").showOkay()
+      Alert(title: "Oops!", message: "Email format is not correct").showOkay()
       return false
     }
     
     if values["Password"] == nil {
-      Alert(title: "Ops!", message: "Password field is empty").showOkay()
+      Alert(title: "Oops!", message: "Password field is empty").showOkay()
       return false
     }
     
     let password = values["Password"] as! String
     if password.characters.count < 6 {
-      Alert(title: "Ops!", message: "Password is too short. Must be at least 6 characters").showOkay()
+      Alert(title: "Oops!", message: "Password is too short. Must be at least 6 characters").showOkay()
       return false
     }
     
     
     if values["ConfirmPassword"] == nil {
-      Alert(title: "Ops!", message: "Password confirmation field is empty").showOkay()
+      Alert(title: "Oops!", message: "Password confirmation field is empty").showOkay()
       return false
     }
     
     
     let passwordConfirmation = values["ConfirmPassword"] as! String
     if passwordConfirmation != password {
-      Alert(title: "Ops!", message: "Password confirmation does not match with actual password").showOkay()
+      Alert(title: "Oops!", message: "Password confirmation does not match with actual password").showOkay()
       return false
     }
     
     
     let dateOfBirth = values["Birth"] as! NSDate
     if dateOfBirth > NSDate.yesterday() {
-      Alert(title: "Ops!", message: "Date of birth is incorrect.").showOkay()
+      Alert(title: "Oops!", message: "Date of birth is incorrect.").showOkay()
       return false
     }
     

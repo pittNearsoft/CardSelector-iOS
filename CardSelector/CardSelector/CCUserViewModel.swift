@@ -110,7 +110,7 @@ class CCUserViewModel {
       }, onError: { (error) in
         SVProgressHUD.dismiss()
         print(error.localizedDescription)
-        Alert(title: "Ops!", message: "Something went wrong in server. Please try again later.").showOkay()
+        Alert(title: "Oops!", message: "Something went wrong in server. Please try again later.").showOkay()
     })
   }
   

@@ -176,7 +176,7 @@ extension PlacesViewController: GMSMapViewDelegate{
       
       guard listSuggestions.count > 0 else{
         self.closeListOfSuggestions()
-        Alert(title: "Ops!", message: "You have not added any card yet. Please add one first.").showOkay()
+        Alert(title: "Oops!", message: "You have not added any card yet. Please add one first.").showOkay()
         return
       }
       
@@ -188,7 +188,7 @@ extension PlacesViewController: GMSMapViewDelegate{
       self.slideUpTableView.unlock()
       print(error.localizedDescription)
       self.slideUpView.hide()
-      Alert(title: "Ops!", message: "Something went wrong, try again later.").showOkay()
+      Alert(title: "Oops!", message: "Something went wrong, try again later.").showOkay()
     }
   }
   

@@ -32,7 +32,6 @@ enum CCSuggestionRouter: URLRequestConvertible {
     case .getSuggestionsWithUser(let user, let merchant):
       return [
         "UserProfileId"  : user.userId,
-        //TODO:CHANGE THIS LATER
         "Merchant"       : merchant.name
       ]
       

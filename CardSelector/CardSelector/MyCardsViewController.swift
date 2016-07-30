@@ -88,7 +88,7 @@ class MyCardsViewController: BaseViewController {
     }) { (error) in
       cell?.unlock()
       print(error.localizedDescription)
-      Alert(title: "Ops!", message: "Something went wrong in server. Try again later.").showOkay()
+      Alert(title: "Oops!", message: "Something went wrong in server. Try again later.").showOkay()
       
     }
   }

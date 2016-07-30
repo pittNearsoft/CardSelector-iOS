@@ -53,9 +53,6 @@ enum CCUserRouter: URLRequestConvertible {
         "Email" : user.email,
         "FirstName"   : user.firstName,
         "LastName"    : user.lastName
-        
-        //TODO: Add more data here
-        //"UserCredentials": [["LoginProvider": "", "Password": password]]
       ]
       
       if user.gender != "" {

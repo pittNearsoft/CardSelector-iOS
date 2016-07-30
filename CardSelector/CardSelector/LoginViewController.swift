@@ -57,7 +57,7 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate, GIDSignInDelega
       
       SVProgressHUD.dismiss()
       guard user != nil else{
-        Alert(title: "Ops!", message: "Invalid email and/or password. Try again.").showOkay()
+        Alert(title: "Oops!", message: "Invalid email and/or password. Try again.").showOkay()
         return
       }
       
@@ -66,7 +66,7 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate, GIDSignInDelega
     }) { (error) in
       SVProgressHUD.dismiss()
       print(error.localizedDescription)
-      Alert(title: "Ops!", message: "Invalid email and/or password. Try again.").showOkay()
+      Alert(title: "Oops!", message: "Invalid email and/or password. Try again.").showOkay()
     }
 
   }
@@ -83,7 +83,7 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate, GIDSignInDelega
       print("Error: \(error.localizedDescription)")
       
       if error.code != -5 {
-        Alert(title: "Ops!", message: "Something went wrong in server. Please try again later.").showOkay()
+        Alert(title: "Oops!", message: "Something went wrong in server. Please try again later.").showOkay()
       }
       
     }
