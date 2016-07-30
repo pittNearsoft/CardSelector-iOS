@@ -44,7 +44,7 @@ class AddCardViewController: BaseViewController {
   
   let cutoffDays = ["1st","2nd","3rd","4th","5th","6th","7th","8th","9th","10th",
                     "11th","12th","13th","14th","15th","16th","17th","18th","19th","20th",
-                    "21st","22nd","23rd","24th","25th","26th","27th","28th","29th","30th","31st"]
+                    "21st","22nd","23rd","24th","25th","26th","27th","28th"]
   
   
   @IBOutlet weak var ending1TextField: UITextField!
@@ -87,7 +87,7 @@ class AddCardViewController: BaseViewController {
     cutoffPickerView.fisheyeFactor = 0.001
     cutoffPickerView.pickerViewStyle = .Style3D
     cutoffPickerView.maskDisabled = false
-    cutoffPickerView.selectItem(14, animated: true)
+    cutoffPickerView.selectItem(13, animated: true)
     
     
     
@@ -128,7 +128,7 @@ class AddCardViewController: BaseViewController {
   
   @IBAction func saveCard(sender: AnyObject) {
     if selectedCard == nil {
-      Alert(title: "Ops!", message: "Please select a card before saving!").showOkay()
+      Alert(title: "Oops!", message: "Please select a card before saving!").showOkay()
     }else{
       confirmSaving()
     }
@@ -153,10 +153,11 @@ class AddCardViewController: BaseViewController {
     if endingNumber == nil {
       missingData.append("ending")
     }else if endingNumber! < 1000 {
-      Alert(title: "Ops!", message: "Card's ending is incomplete. Please add the rest of numbers").showOkay()
+      Alert(title: "Oops!", message: "Card's ending is incomplete. Please add the rest of numbers").showOkay()
       return
+    }else{
+      selectedProfileCard.endingCard = endingNumber!
     }
-    selectedProfileCard.endingCard = endingNumber!
     
     
     if rateTextField.text!.isEmpty {
@@ -166,7 +167,7 @@ class AddCardViewController: BaseViewController {
       let rateValue = Double(rateTextField.text!)!
       
       if rateValue > 100.0 || rateValue < 0{
-        Alert(title: "Ops!", message: "Interest rate must be between 0-100%").showOkay()
+        Alert(title: "Oops!", message: "Interest rate must be between 0-100%").showOkay()
         return
       }
       
@@ -224,7 +225,7 @@ class AddCardViewController: BaseViewController {
     }) { (error) in
       print(error.localizedDescription)
       SVProgressHUD.dismiss()
-      Alert(title: "Ops!", message: "Banks weren't found. Please try again later.").showOkay()
+      Alert(title: "Oops!", message: "Banks weren't found. Please try again later.").showOkay()
       self.dismissViewControllerAnimated(true, completion: nil)
     }
   }
