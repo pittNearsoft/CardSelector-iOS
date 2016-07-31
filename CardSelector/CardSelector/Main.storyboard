@@ -9,7 +9,7 @@
         <!--Account-->
         <scene sceneID="6Cp-kY-DPR">
             <objects>
-                <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="t7r-qe-Oec" customClass="ProfileViewController" customModule="CardSelector" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="t7r-qe-Oec" customClass="ProfileViewController" customModule="Card_Compadre" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dZU-Ls-KJI"/>
                         <viewControllerLayoutGuide type="bottom" id="1xd-4i-mky"/>
@@ -113,7 +113,7 @@
         <!--Nearby Places-->
         <scene sceneID="mRn-xX-ZkC">
             <objects>
-                <viewController id="8hq-KY-jHL" customClass="PlacesViewController" customModule="CardSelector" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8hq-KY-jHL" customClass="PlacesViewController" customModule="Card_Compadre" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yx1-Et-afu"/>
                         <viewControllerLayoutGuide type="bottom" id="3FU-x3-UQc"/>
@@ -186,7 +186,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <prototypes>
-                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="suggestionCell" rowHeight="60" id="bWs-Xi-xTz" customClass="SuggestionViewCell" customModule="CardSelector" customModuleProvider="target">
+                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="suggestionCell" rowHeight="60" id="bWs-Xi-xTz" customClass="SuggestionViewCell" customModule="Card_Compadre" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="28" width="598" height="60"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bWs-Xi-xTz" id="iME-1x-5Yd">
@@ -230,7 +230,7 @@
         <!--Enable Location View Controller-->
         <scene sceneID="Xzg-hX-Tdu">
             <objects>
-                <viewController storyboardIdentifier="enableLocationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Sba-2H-8S2" customClass="EnableLocationViewController" customModule="CardSelector" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="enableLocationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Sba-2H-8S2" customClass="EnableLocationViewController" customModule="Card_Compadre" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AoG-PN-lTv"/>
                         <viewControllerLayoutGuide type="bottom" id="KD1-k1-xvM"/>
@@ -337,7 +337,7 @@
         <!--My Cards-->
         <scene sceneID="ZVD-Ro-Was">
             <objects>
-                <viewController id="2dV-0z-eT7" customClass="MyCardsViewController" customModule="CardSelector" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2dV-0z-eT7" customClass="MyCardsViewController" customModule="Card_Compadre" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pi0-Pc-vsW"/>
                         <viewControllerLayoutGuide type="bottom" id="LsO-0p-OHJ"/>
@@ -403,7 +403,7 @@
         <!--Add a new card-->
         <scene sceneID="S6U-U7-HdZ">
             <objects>
-                <viewController id="ueE-LB-PAK" customClass="AddCardViewController" customModule="CardSelector" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ueE-LB-PAK" customClass="AddCardViewController" customModule="Card_Compadre" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bgT-KA-ZgZ"/>
                         <viewControllerLayoutGuide type="bottom" id="Urb-F3-YSy"/>
@@ -430,7 +430,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="HlS-W5-w1M"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="i4K-j8-5s5" customClass="CenterCellCollectionViewFlowLayout" customModule="CardSelector" customModuleProvider="target">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="i4K-j8-5s5" customClass="CenterCellCollectionViewFlowLayout" customModule="Card_Compadre" customModuleProvider="target">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>

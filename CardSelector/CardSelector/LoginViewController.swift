@@ -39,6 +39,9 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate, GIDSignInDelega
     googleButton.clipsToBounds = true
     
     
+    facebookButton.imageView?.contentMode = .ScaleAspectFit
+    googleButton.imageView?.contentMode = .ScaleAspectFit
+    
     GIDSignIn.sharedInstance().uiDelegate = self
   }
 
