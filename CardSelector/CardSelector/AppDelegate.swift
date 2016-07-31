@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     //To use google maps
-    GMSServices.provideAPIKey("AIzaSyB9MBgfh45DH-k-Ym0hLDTsq1AttHzhLhU")
+    GMSServices.provideAPIKey("AIzaSyAIW8JVUuEzbIR3yMUFdR9zplAokh2Eb4Q")
     
     UIApplication.sharedApplication().statusBarStyle = .LightContent
     UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState:.Normal)

@@ -12,6 +12,8 @@ import GoogleSignIn
 import FBSDKCoreKit
 import FBSDKLoginKit
 
+import LKAlertController
+
 enum SignInType: Int {
   case Email
   case Facebook
@@ -22,6 +24,8 @@ class SessionManager {
   
   //let navigationManager = NavigationManager()
   private static var signInType: SignInType = .Email
+  
+  private static let loginManager = FBSDKLoginManager()
   
   private static func googleSetupWithSignInDelegate(delegate: GIDSignInDelegate){
     var configureError: NSError?
@@ -38,16 +42,13 @@ class SessionManager {
   
   static func googleSignOut() {
     GIDSignIn.sharedInstance().signOut()
-    
-//    CCUserViewModel.deleteLoggedUser()
-//    NavigationManager.goLogin()
   }
   
   //MARK: - Facebook methods
   static func facebookSignIn(FromViewController viewController: UIViewController) {
     SessionManager.signInType = .Facebook
     
-    let loginManager = FBSDKLoginManager()
+    loginManager.loginBehavior = .Native
     loginManager.logInWithReadPermissions(["public_profile", "email", "user_friends"], fromViewController: viewController) { (result, error) in
       if error != nil {
         print("Error: \(error.localizedDescription)")
@@ -60,17 +61,19 @@ class SessionManager {
   }
   
   static func facebookSignOut() {
-    let logOutManager = FBSDKLoginManager()
-    logOutManager.logOut()
-    
-//    CCUserViewModel.deleteLoggedUser()
-//    NavigationManager.goLogin()
+    loginManager.logOut()
   }
   
   static func getFacebookData() {
     let facebookRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email, first_name, last_name, gender, birthday"])
     facebookRequest.startWithCompletionHandler { (connection, result, error) in
       if error == nil{
+        
+        guard (result["email"]!) != nil else{
+          Alert(title: "Oops!", message: "Card Compadre requires your email to sign in.").showOkay()
+          return
+        }
+        
         let newUser = CCUser(WithFacebookUser: result as! [String : AnyObject])
         getFacebookImageForUser(newUser)
         
@@ -102,11 +105,6 @@ class SessionManager {
   static func emailSignIn(email: String){
     CCUserViewModel.saveUserIntoUserDefaults(CCUser(WithEmail: email))
     NavigationManager.goMain()
-  }
-  
-  static func emailSignOut() {
-//    CCUserViewModel.deleteLoggedUser()
-//    NavigationManager.goLogin()
   }
   
   //MARK: - Middlewares AppDelegate
@@ -146,22 +144,8 @@ class SessionManager {
   }
   
   static func logOut() {
-    //Add provider to user
-    //let user = CCUserViewModel.getLoggedUser()
-    
     CCUserViewModel.deleteLoggedUser()
     NavigationManager.goLogin()
-//    signInType = SignInType.init(rawValue: (user?.provider)!)!
-//    
-//    switch signInType {
-//    case .Google:
-//      googleSignOut()
-//    case .Facebook:
-//      facebookSignOut()
-//    case .Email:
-//      emailSignOut()
-//    }
-
   }
   
 }
