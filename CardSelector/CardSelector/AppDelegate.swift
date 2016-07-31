@@ -10,6 +10,10 @@ import UIKit
 import FBSDKCoreKit
 import GoogleMaps
 
+import Fabric
+import Crashlytics
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -19,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     //To use google maps
     GMSServices.provideAPIKey("AIzaSyAIW8JVUuEzbIR3yMUFdR9zplAokh2Eb4Q")
+    
+    Fabric.with([Crashlytics.self])
+
     
     UIApplication.sharedApplication().statusBarStyle = .LightContent
     UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState:.Normal)

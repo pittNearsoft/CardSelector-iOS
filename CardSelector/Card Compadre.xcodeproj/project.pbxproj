@@ -407,6 +407,7 @@
 				B565110E1D20797F002CD3AF /* Resources */,
 				8110E5B62FBB4EBE5CFF84F1 /* [CP] Embed Pods Frameworks */,
 				60B893A51BEE466D43C926DF /* [CP] Copy Pods Resources */,
+				B50353DF1D4DA402003DC527 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -505,6 +506,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Card Compadre/Pods-Card Compadre-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		B50353DF1D4DA402003DC527 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" e62ed94a5296d46dcb07bd9333bb75ce6d03f539 cdc42d278446995e8b71addb5de6873df6b5dd37bba0a8cfcf11c3fa8df9fffb";
 		};
 		F1A7E4064A5627C1513855A4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -689,6 +703,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				INFOPLIST_FILE = CardSelector/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mbt.cardcompadre;

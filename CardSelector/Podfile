@@ -54,4 +54,8 @@ target 'Card Compadre' do
    #Horizontal picker
    pod 'AKPickerView'
 
+   #For beta testing and analytics
+   pod 'Fabric'
+   pod 'Crashlytics'
+
 end

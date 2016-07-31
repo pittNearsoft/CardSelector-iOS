@@ -9,7 +9,10 @@ PODS:
   - Bolts/AppLinks (1.8.3):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.3)
+  - Crashlytics (3.7.2):
+    - Fabric (~> 1.6.3)
   - Eureka (1.7.0)
+  - Fabric (1.6.7)
   - FBSDKCoreKit (4.13.1):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.13.1):
@@ -57,7 +60,9 @@ DEPENDENCIES:
   - Alamofire (~> 3.3)
   - AlamofireImage (~> 2.0)
   - Bolts
+  - Crashlytics
   - Eureka (~> 1.7)
+  - Fabric
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
@@ -75,7 +80,9 @@ SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   AlamofireImage: 87408b652e0f5ae5fe364035f15aea8b9b24c77e
   Bolts: 52551f96df2f8aac6b4414347f3f8353a39f1966
+  Crashlytics: 130ab943f8c78cda7a814b434f270b2e2c8a3cba
   Eureka: 2020d9faeef7b7e9adeb9e3d8af779e5931c1897
+  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   FBSDKCoreKit: 2807fe0da2ddb49a1469da6d6ff597f99912980f
   FBSDKLoginKit: 6d350cb6a22d6956e9d078885de6ee8a0ebc51b4
   FBSDKShareKit: c9438df7573b33780ac8c3451201c5ebb260ffca
@@ -97,6 +104,6 @@ SPEC CHECKSUMS:
   SwiftValidators: 25d42833be4c6019f3996c62f15fe0facdf75280
   Timepiece: b5038887b91d6eb70653173f4270e06b3abeac41
 
-PODFILE CHECKSUM: daf1ee536a79352fd303ded865628917ecb8a0c4
+PODFILE CHECKSUM: 9c66231a4d0349d8028dd863c50ad7c8f69ed1d0
 
 COCOAPODS: 1.0.1
