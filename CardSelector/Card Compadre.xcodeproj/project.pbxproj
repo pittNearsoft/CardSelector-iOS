@@ -426,11 +426,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = ABC;
+				ORGANIZATIONNAME = mbt;
 				TargetAttributes = {
 					B565110F1D20797F002CD3AF = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = LHJA6J73E9;
+						DevelopmentTeam = 7PAQVUFGBU;
 					};
 				};
 			};
@@ -518,7 +518,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" e62ed94a5296d46dcb07bd9333bb75ce6d03f539 cdc42d278446995e8b71addb5de6873df6b5dd37bba0a8cfcf11c3fa8df9fffb";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 67ea4b8aa7e21adef64cd6176c1d4126c252a82a a560ff4029c021146092b652f93d561d6f5967bc422e66605f4ad1f0135c9202";
 		};
 		F1A7E4064A5627C1513855A4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
