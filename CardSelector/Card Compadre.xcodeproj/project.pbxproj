@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		958A3EF7B89DAC3775579B38 /* Pods_CardSelector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40E44BB5E796BFC035D9F11 /* Pods_CardSelector.framework */; };
 		B50353C91D497E52003DC527 /* kredit.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B50353C81D497DF2003DC527 /* kredit.ttf */; };
 		B50353CA1D497E63003DC527 /* kredit front.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B50353C61D497DF2003DC527 /* kredit front.ttf */; };
 		B50353CB1D497E66003DC527 /* kredit back.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B50353C51D497DF2003DC527 /* kredit back.ttf */; };
@@ -75,10 +74,12 @@
 		B5EB17401D3E83A3002AC817 /* CCBankService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB173F1D3E83A3002AC817 /* CCBankService.swift */; };
 		B5EB17421D3E8401002AC817 /* CCBankViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB17411D3E8401002AC817 /* CCBankViewModel.swift */; };
 		B5EB17731D40A666002AC817 /* CCProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EB17721D40A666002AC817 /* CCProfileCard.swift */; };
+		F9AECA65701DCA5D1992CBBE /* Pods_Card_Compadre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D676C3217ECF98DDB85F49 /* Pods_Card_Compadre.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A59E791DB60357784C1D810E /* Pods-CardSelector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardSelector.release.xcconfig"; path = "Pods/Target Support Files/Pods-CardSelector/Pods-CardSelector.release.xcconfig"; sourceTree = "<group>"; };
+		1842173CC7D5BFBFDD5E21B0 /* Pods-Card Compadre.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Card Compadre.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Card Compadre/Pods-Card Compadre.debug.xcconfig"; sourceTree = "<group>"; };
+		28D676C3217ECF98DDB85F49 /* Pods_Card_Compadre.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Card_Compadre.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B50353C51D497DF2003DC527 /* kredit back.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "kredit back.ttf"; sourceTree = "<group>"; };
 		B50353C61D497DF2003DC527 /* kredit front.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "kredit front.ttf"; sourceTree = "<group>"; };
 		B50353C81D497DF2003DC527 /* kredit.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kredit.ttf; sourceTree = "<group>"; };
@@ -148,8 +149,7 @@
 		B5EB173F1D3E83A3002AC817 /* CCBankService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCBankService.swift; sourceTree = "<group>"; };
 		B5EB17411D3E8401002AC817 /* CCBankViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCBankViewModel.swift; sourceTree = "<group>"; };
 		B5EB17721D40A666002AC817 /* CCProfileCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCProfileCard.swift; sourceTree = "<group>"; };
-		CFFA4674F87EF22999DD41B8 /* Pods-CardSelector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardSelector.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardSelector/Pods-CardSelector.debug.xcconfig"; sourceTree = "<group>"; };
-		E40E44BB5E796BFC035D9F11 /* Pods_CardSelector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardSelector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD9BFFCC8EAD9229880ABAAA /* Pods-Card Compadre.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Card Compadre.release.xcconfig"; path = "Pods/Target Support Files/Pods-Card Compadre/Pods-Card Compadre.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,7 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				958A3EF7B89DAC3775579B38 /* Pods_CardSelector.framework in Frameworks */,
+				F9AECA65701DCA5D1992CBBE /* Pods_Card_Compadre.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,8 +167,8 @@
 		06C3B459FFCCDE33603187EE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CFFA4674F87EF22999DD41B8 /* Pods-CardSelector.debug.xcconfig */,
-				A59E791DB60357784C1D810E /* Pods-CardSelector.release.xcconfig */,
+				1842173CC7D5BFBFDD5E21B0 /* Pods-Card Compadre.debug.xcconfig */,
+				CD9BFFCC8EAD9229880ABAAA /* Pods-Card Compadre.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -176,7 +176,7 @@
 		A8281DAC7FC6108F33FF6C30 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E40E44BB5E796BFC035D9F11 /* Pods_CardSelector.framework */,
+				28D676C3217ECF98DDB85F49 /* Pods_Card_Compadre.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -488,7 +488,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CardSelector/Pods-CardSelector-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Card Compadre/Pods-Card Compadre-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8110E5B62FBB4EBE5CFF84F1 /* [CP] Embed Pods Frameworks */ = {
@@ -503,7 +503,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CardSelector/Pods-CardSelector-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Card Compadre/Pods-Card Compadre-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F1A7E4064A5627C1513855A4 /* [CP] Check Pods Manifest.lock */ = {
@@ -683,7 +683,7 @@
 		};
 		B56511231D207980002CD3AF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CFFA4674F87EF22999DD41B8 /* Pods-CardSelector.debug.xcconfig */;
+			baseConfigurationReference = 1842173CC7D5BFBFDD5E21B0 /* Pods-Card Compadre.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -701,7 +701,7 @@
 		};
 		B56511241D207980002CD3AF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A59E791DB60357784C1D810E /* Pods-CardSelector.release.xcconfig */;
+			baseConfigurationReference = CD9BFFCC8EAD9229880ABAAA /* Pods-Card Compadre.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
