@@ -15,7 +15,6 @@
 		B50353D81D4AAF82003DC527 /* CCSuggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50353D71D4AAF82003DC527 /* CCSuggestion.swift */; };
 		B50353DA1D4ABAAD003DC527 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50353D91D4ABAAD003DC527 /* UIViewController+Extensions.swift */; };
 		B50353DC1D4BC40C003DC527 /* UIView+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50353DB1D4BC40C003DC527 /* UIView+UITextField.swift */; };
-		B50353DE1D4D770B003DC527 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B50353DD1D4D770B003DC527 /* GoogleService-Info.plist */; };
 		B50353E11D4EE0E1003DC527 /* ResultViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50353E01D4EE0E1003DC527 /* ResultViewCell.swift */; };
 		B50353E31D4EEB89003DC527 /* CCLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50353E21D4EEB89003DC527 /* CCLocation.swift */; };
 		B5230CC91D41C5B00046B551 /* CCUserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5230CC81D41C5B00046B551 /* CCUserRouter.swift */; };
@@ -30,6 +29,7 @@
 		B527EF831D2DE474002A24AC /* CCCoordinateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = B527EF821D2DE474002A24AC /* CCCoordinateTransform.swift */; };
 		B527EF851D2DE9A0002A24AC /* CCPlaceMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B527EF841D2DE9A0002A24AC /* CCPlaceMarker.swift */; };
 		B527EF871D2EC5DB002A24AC /* CCPlaceTypeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B527EF861D2EC5DB002A24AC /* CCPlaceTypeTransformer.swift */; };
+		B53BD9211D4FD7530036841D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B53BD9201D4FD7530036841D /* GoogleService-Info.plist */; };
 		B56511141D207980002CD3AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56511131D207980002CD3AF /* AppDelegate.swift */; };
 		B56511161D207980002CD3AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56511151D207980002CD3AF /* LoginViewController.swift */; };
 		B56511191D207980002CD3AF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56511171D207980002CD3AF /* Login.storyboard */; };
@@ -90,7 +90,6 @@
 		B50353D71D4AAF82003DC527 /* CCSuggestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCSuggestion.swift; sourceTree = "<group>"; };
 		B50353D91D4ABAAD003DC527 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		B50353DB1D4BC40C003DC527 /* UIView+UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+UITextField.swift"; sourceTree = "<group>"; };
-		B50353DD1D4D770B003DC527 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B50353E01D4EE0E1003DC527 /* ResultViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewCell.swift; sourceTree = "<group>"; };
 		B50353E21D4EEB89003DC527 /* CCLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCLocation.swift; sourceTree = "<group>"; };
 		B5230CC81D41C5B00046B551 /* CCUserRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCUserRouter.swift; sourceTree = "<group>"; };
@@ -105,6 +104,7 @@
 		B527EF821D2DE474002A24AC /* CCCoordinateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCCoordinateTransform.swift; sourceTree = "<group>"; };
 		B527EF841D2DE9A0002A24AC /* CCPlaceMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCPlaceMarker.swift; sourceTree = "<group>"; };
 		B527EF861D2EC5DB002A24AC /* CCPlaceTypeTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCPlaceTypeTransformer.swift; sourceTree = "<group>"; };
+		B53BD9201D4FD7530036841D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B56511101D20797F002CD3AF /* Card Compadre.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Card Compadre.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56511131D207980002CD3AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B56511151D207980002CD3AF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -245,7 +245,7 @@
 		B56511071D20797F002CD3AF = {
 			isa = PBXGroup;
 			children = (
-				B50353DD1D4D770B003DC527 /* GoogleService-Info.plist */,
+				B53BD9201D4FD7530036841D /* GoogleService-Info.plist */,
 				B56511121D207980002CD3AF /* CardSelector */,
 				B56511111D20797F002CD3AF /* Products */,
 				06C3B459FFCCDE33603187EE /* Pods */,
@@ -475,8 +475,8 @@
 				B5EB173A1D3DC0E1002AC817 /* BankCollectionViewCell.xib in Resources */,
 				B50353CA1D497E63003DC527 /* kredit front.ttf in Resources */,
 				B56511191D207980002CD3AF /* Login.storyboard in Resources */,
-				B50353DE1D4D770B003DC527 /* GoogleService-Info.plist in Resources */,
 				B5BC1ACE1D458A1D003E405C /* SettingsCollectionViewCell.xib in Resources */,
+				B53BD9211D4FD7530036841D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,7 +524,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 67ea4b8aa7e21adef64cd6176c1d4126c252a82a a560ff4029c021146092b652f93d561d6f5967bc422e66605f4ad1f0135c9202";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" e62ed94a5296d46dcb07bd9333bb75ce6d03f539 cdc42d278446995e8b71addb5de6873df6b5dd37bba0a8cfcf11c3fa8df9fffb";
 		};
 		F1A7E4064A5627C1513855A4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -714,7 +714,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				INFOPLIST_FILE = CardSelector/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mbt.cardcompadre;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mbtx.cardcompadre;
 				PRODUCT_NAME = "Card Compadre";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -732,7 +732,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CardSelector/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mbt.cardcompadre;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mbtx.cardcompadre;
 				PRODUCT_NAME = "Card Compadre";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";

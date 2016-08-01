@@ -3,15 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>379802708061-pbompv3o5ldfthg349avhh8rrh8t95us.apps.googleusercontent.com</string>
+	<string>45377266588-29r1dct6a87467g3rfjdcgsic2ku65f5.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.379802708061-pbompv3o5ldfthg349avhh8rrh8t95us</string>
+	<string>com.googleusercontent.apps.45377266588-29r1dct6a87467g3rfjdcgsic2ku65f5</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.mbt.cardcompadre</string>
+	<string>com.mbtx.cardcompadre</string>
 	<key>PROJECT_ID</key>
-	<string>card-compadre</string>
+	<string>cardcompadre</string>
 	<key>IS_ADS_ENABLED</key>
 	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -23,6 +23,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:379802708061:ios:346de2146da5f744</string>
+	<string>1:45377266588:ios:bd02080829b29e21</string>
 </dict>
 </plist>

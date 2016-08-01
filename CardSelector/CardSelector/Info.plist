@@ -23,7 +23,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb1771441966402294</string>
+				<string>fb838189699615421</string>
 			</array>
 		</dict>
 		<dict>
@@ -31,7 +31,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.379802708061-pbompv3o5ldfthg349avhh8rrh8t95us</string>
+				<string>com.googleusercontent.apps.45377266588-29r1dct6a87467g3rfjdcgsic2ku65f5</string>
 			</array>
 		</dict>
 		<dict>
@@ -39,7 +39,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.mbt.cardcompadre</string>
+				<string>com.mbtx.cardcompadre</string>
 			</array>
 		</dict>
 	</array>
@@ -48,7 +48,7 @@
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
-		<string>67ea4b8aa7e21adef64cd6176c1d4126c252a82a</string>
+		<string>e62ed94a5296d46dcb07bd9333bb75ce6d03f539</string>
 		<key>Kits</key>
 		<array>
 			<dict>
@@ -60,9 +60,9 @@
 		</array>
 	</dict>
 	<key>FacebookAppID</key>
-	<string>1771441966402294</string>
+	<string>838189699615421</string>
 	<key>FacebookDisplayName</key>
-	<string>Card Compadre</string>
+	<string>CardCompadre</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>googlechromes</string>

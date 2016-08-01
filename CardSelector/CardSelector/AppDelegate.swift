@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     //To use google maps
-    GMSServices.provideAPIKey("AIzaSyAIW8JVUuEzbIR3yMUFdR9zplAokh2Eb4Q")
+    GMSServices.provideAPIKey("AIzaSyDYrHJV4WhpDjueEZLSPzkrrk8jaDrn7e4")
     
     Fabric.with([Crashlytics.self])
 
