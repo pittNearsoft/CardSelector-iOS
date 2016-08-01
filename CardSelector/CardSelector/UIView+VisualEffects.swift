@@ -15,6 +15,24 @@ extension UIView {
     self.layer.shadowOffset = CGSizeMake(1.0, 1.0)
   }
   
+  func hideViewAnimated() {
+    UIView.transitionWithView(self, duration: 0.3, options: .TransitionCrossDissolve, animations: {() -> Void in
+      
+      self.hidden = true
+      
+      
+      }, completion: nil)
+  }
+  
+  func showViewAnimated() {
+    UIView.transitionWithView(self, duration: 0.3, options: .TransitionCrossDissolve, animations: {() -> Void in
+      
+      self.hidden = false
+      
+      
+      }, completion: nil)
+  }
+  
   func roundCorners() {
     self.layer.cornerRadius = 5
     self.layer.masksToBounds = true

@@ -16,6 +16,7 @@
 		B50353DA1D4ABAAD003DC527 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50353D91D4ABAAD003DC527 /* UIViewController+Extensions.swift */; };
 		B50353DC1D4BC40C003DC527 /* UIView+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50353DB1D4BC40C003DC527 /* UIView+UITextField.swift */; };
 		B50353DE1D4D770B003DC527 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B50353DD1D4D770B003DC527 /* GoogleService-Info.plist */; };
+		B50353E11D4EE0E1003DC527 /* ResultViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50353E01D4EE0E1003DC527 /* ResultViewCell.swift */; };
 		B5230CC91D41C5B00046B551 /* CCUserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5230CC81D41C5B00046B551 /* CCUserRouter.swift */; };
 		B52581411D258CDF001CB6BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52581401D258CDF001CB6BC /* LaunchScreen.storyboard */; };
 		B52581471D26DAFD001CB6BC /* CCUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52581461D26DAFD001CB6BC /* CCUserViewModel.swift */; };
@@ -89,6 +90,7 @@
 		B50353D91D4ABAAD003DC527 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		B50353DB1D4BC40C003DC527 /* UIView+UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+UITextField.swift"; sourceTree = "<group>"; };
 		B50353DD1D4D770B003DC527 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B50353E01D4EE0E1003DC527 /* ResultViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewCell.swift; sourceTree = "<group>"; };
 		B5230CC81D41C5B00046B551 /* CCUserRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCUserRouter.swift; sourceTree = "<group>"; };
 		B52581401D258CDF001CB6BC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B52581461D26DAFD001CB6BC /* CCUserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCUserViewModel.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				B5EB17371D3DC0E1002AC817 /* BankCollectionViewCell.swift */,
 				B5EB17381D3DC0E1002AC817 /* BankCollectionViewCell.xib */,
 				B5BC1AC71D447B13003E405C /* SuggestionViewCell.swift */,
+				B50353E01D4EE0E1003DC527 /* ResultViewCell.swift */,
 				B5BC1ACB1D458A1D003E405C /* SettingsCollectionViewCell.swift */,
 				B5BC1ACC1D458A1D003E405C /* SettingsCollectionViewCell.xib */,
 			);
@@ -543,6 +546,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B597B8011D24547B00E62371 /* ProfileViewController.swift in Sources */,
+				B50353E11D4EE0E1003DC527 /* ResultViewCell.swift in Sources */,
 				B581C2C71D45E47E00441514 /* CenterCellCollectionViewFlowLayout.swift in Sources */,
 				B56511161D207980002CD3AF /* LoginViewController.swift in Sources */,
 				B5BC1AC01D44749F003E405C /* CCSuggestionRouter.swift in Sources */,

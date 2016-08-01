@@ -9,6 +9,7 @@
 import Foundation
 import CoreLocation
 import ObjectMapper
+import GoogleMaps
 
 
 class CCPlace: Mappable {
@@ -18,6 +19,7 @@ class CCPlace: Mappable {
   var placeType = ""
   var photo_reference = ""
   var photo = UIImage(named: "generic")
+  var id = ""
   
   required init?(_ map: Map) {
     
@@ -29,6 +31,12 @@ class CCPlace: Mappable {
     coordinate  <- (map["geometry.location"], CCCoordinateTransform())
     placeType   <- (map["types"],CCPlaceTypeTransform())
     photo_reference    <- map["photos.0.photo_reference"]
+  }
+  
+  init(WithPrediction prediction: GMSAutocompletePrediction) {
+    self.address = prediction.attributedFullText.string
+    self.name = prediction.attributedPrimaryText.string
+    self.id = prediction.placeID!
   }
   
 }

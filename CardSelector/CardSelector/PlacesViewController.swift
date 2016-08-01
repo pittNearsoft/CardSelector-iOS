@@ -23,6 +23,11 @@ class PlacesViewController: BaseViewController {
   @IBOutlet weak var slideUpView: SeamlessSlideUpView!
   @IBOutlet var slideUpTableView: SeamlessSlideUpTableView!
   
+  @IBOutlet weak var searchTextField: UITextField!
+  @IBOutlet weak var resultTableView: UITableView!
+  @IBOutlet weak var searchView: UIView!
+  @IBOutlet weak var resultView: UIView!
+  
 
   var locationManager = CLLocationManager()
   let placeViewModel = CCPlaceViewModel()
@@ -31,6 +36,10 @@ class PlacesViewController: BaseViewController {
   let searchRadius: Double = 1000
   
   var listSuggestions: [CCSuggestion] = []
+  
+  var fetcher: GMSAutocompleteFetcher?
+  var listPlaces: [CCPlace] = []
+  
   
   
   override func viewDidLoad() {
@@ -42,6 +51,15 @@ class PlacesViewController: BaseViewController {
     slideUpView.tableView = slideUpTableView
     slideUpView.delegate  = self
     slideUpView.topWindowHeight = self.view.frame.size.height/2
+    
+    searchTextField.addDoneButtonOnKeyboard()
+    searchTextField.delegate = self
+    
+    searchView.addShadowEffect()
+    resultView.addShadowEffect()
+    resultView.hidden = true
+    
+    resultTableView.dataSource = self
     
     
     mapView.delegate = self
@@ -126,6 +144,19 @@ class PlacesViewController: BaseViewController {
     
     
   }
+  
+  //MARK: - Autocomplete methods
+  func configureAutoCompleteWithBound(bounds: GMSCoordinateBounds?) {
+    
+    //Set up the autocomplete filter
+    let filter = GMSAutocompleteFilter()
+    filter.type = .Establishment
+    
+    //Create the fetcher, engine for autocomplete
+    fetcher = GMSAutocompleteFetcher(bounds: bounds, filter: filter)
+    fetcher?.delegate = self
+  }
+  
 
 }
 
@@ -221,6 +252,14 @@ extension PlacesViewController: CLLocationManagerDelegate{
     let coordinate = newLocation.coordinate
     print("latitude: \(coordinate.latitude), longitude: \(coordinate.longitude)")
     
+    //configure a default area to get near places
+    let neBoundsCorner = CLLocationCoordinate2D(latitude: coordinate.latitude - 0.1, longitude: coordinate.longitude  - 0.1)
+    let swBoundsCorner = CLLocationCoordinate2D(latitude: coordinate.latitude + 0.1, longitude: coordinate.longitude  + 0.1)
+    let bounds = GMSCoordinateBounds(coordinate: neBoundsCorner, coordinate: swBoundsCorner)
+    
+    configureAutoCompleteWithBound(bounds)
+    
+    
     showMapWithLatitude(coordinate.latitude, longitude: coordinate.longitude , zoom: 15)
     self.locationManager.stopUpdatingLocation()
     fetchNearbyPlacesWithCoordinate(coordinate)
@@ -268,15 +307,30 @@ extension PlacesViewController: SeamlessSlideUpViewDelegate{
 
 extension PlacesViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return listSuggestions.count
+    if slideUpTableView ==  tableView {
+      return listSuggestions.count
+    }else{
+      return listPlaces.count
+    }
+    
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("suggestionCell", forIndexPath: indexPath) as! SuggestionViewCell
     
-    cell.configureWithSuggestion(listSuggestions[indexPath.row])
-    
-    return cell
+    if slideUpTableView == tableView {
+      let cell = tableView.dequeueReusableCellWithIdentifier("suggestionCell", forIndexPath: indexPath) as! SuggestionViewCell
+      
+      cell.configureWithSuggestion(listSuggestions[indexPath.row])
+      
+      return cell
+    }else{
+      let cell = tableView.dequeueReusableCellWithIdentifier("resultCell", forIndexPath: indexPath) as! ResultViewCell
+      
+      cell.resultLabel.text = listPlaces[indexPath.row].address
+      
+      return cell
+      
+    }
   }
   
 }
@@ -286,4 +340,89 @@ extension PlacesViewController: UITableViewDelegate{
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
 }
+
+extension PlacesViewController: UITextFieldDelegate{
+  
+  func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    mapPinImage.fadeOut(0.25)
+//    resultView.showViewAnimated()
+    mapView.userInteractionEnabled = false
+    return true
+  }
+  
+  func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+    reappearMapPinImage()
+    resultView.hideViewAnimated()
+    mapView.userInteractionEnabled = true
+    return true
+  }
+  
+  func textFieldShouldClear(textField: UITextField) -> Bool {
+    reappearMapPinImage()
+    resultView.hideViewAnimated()
+    mapView.userInteractionEnabled = true
+    searchTextField.text = ""
+    searchTextField.resignFirstResponder()
+    return false
+  }
+  
+  func textFieldShouldReturn(textField: UITextField) -> Bool {
+    resultView.hideViewAnimated()
+    mapView.userInteractionEnabled = true
+    searchTextField.text = ""
+    searchTextField.resignFirstResponder()
+    print("search starts")
+    return true
+  }
+  
+  func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    
+    let text = searchTextField.text!
+    let textFieldRange = NSMakeRange(0, text.characters.count)
+    
+    
+    
+    if (NSEqualRanges(range, textFieldRange) && string.characters.count == 0) {
+      resultView.hideViewAnimated()
+    }else{
+      resultView.showViewAnimated()
+      fetcher?.sourceTextHasChanged(text)
+    }
+
+    
+    return true
+  }
+}
+
+
+//MARK: - Fetcher Methods
+extension PlacesViewController: GMSAutocompleteFetcherDelegate{
+  func didAutocompleteWithPredictions(predictions: [GMSAutocompletePrediction]) {
+    
+//    let filterPredictions = predictions.filter { (prediction) -> Bool in
+//      
+//      for type in prediction.types{
+//        if CCPlaceType.acceptedTypes.contains(type){
+//          return true
+//        }
+//      }
+//      
+//      return false
+//    }
+    
+    listPlaces.removeAll()
+    for prediction in predictions {
+      listPlaces.append(CCPlace(WithPrediction: prediction))
+    }
+    resultTableView.reloadData()
+  }
+  
+  func didFailAutocompleteWithError(error: NSError) {
+    print(error.localizedDescription)
+  }
+  
+  
+}
+
+
 
