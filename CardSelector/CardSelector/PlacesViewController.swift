@@ -145,6 +145,35 @@ class PlacesViewController: BaseViewController {
     
   }
   
+  func showSuggestionsWithPlace(place: CCPlace) {
+    if slideUpView.hidden {
+      slideUpView.show()
+    }
+    
+    
+    slideUpTableView.lock()
+    
+    let user = CCUserViewModel.getLoggedUser()
+    suggestionViewModel.getSuggestionsWithUser(user!, merchant: place, completion: { (listSuggestions) in
+      
+      guard listSuggestions.count > 0 else{
+        self.closeListOfSuggestions()
+        Alert(title: "Oops!", message: "You have not added any card yet. Please add one first.").showOkay()
+        return
+      }
+      
+      self.listSuggestions = listSuggestions
+      
+      self.slideUpTableView.unlock()
+      self.slideUpTableView.reloadData()
+    }) { (error) in
+      self.slideUpTableView.unlock()
+      print(error.localizedDescription)
+      self.slideUpView.hide()
+      Alert(title: "Oops!", message: "Something went wrong, try again later.").showOkay()
+    }
+  }
+  
   //MARK: - Autocomplete methods
   func configureAutoCompleteWithBound(bounds: GMSCoordinateBounds?) {
     
@@ -189,42 +218,24 @@ extension PlacesViewController: GMSMapViewDelegate{
       
 
       infoView.addShadowEffect()
+      
       return infoView
     }
+    
+    
     
     return nil
   }
   
   
   func mapView(mapView: GMSMapView, didTapInfoWindowOfMarker marker: GMSMarker) {
-    
     if slideUpView.hidden == false {
       return
     }
     
-    slideUpView.show()
-    slideUpTableView.lock()
     
     let placeMarker = marker as! CCPlaceMarker
-    let user = CCUserViewModel.getLoggedUser()
-    suggestionViewModel.getSuggestionsWithUser(user!, merchant: placeMarker.place, completion: { (listSuggestions) in
-      
-      guard listSuggestions.count > 0 else{
-        self.closeListOfSuggestions()
-        Alert(title: "Oops!", message: "You have not added any card yet. Please add one first.").showOkay()
-        return
-      }
-      
-      self.listSuggestions = listSuggestions
-      
-      self.slideUpTableView.unlock()
-      self.slideUpTableView.reloadData()
-    }) { (error) in
-      self.slideUpTableView.unlock()
-      print(error.localizedDescription)
-      self.slideUpView.hide()
-      Alert(title: "Oops!", message: "Something went wrong, try again later.").showOkay()
-    }
+    showSuggestionsWithPlace(placeMarker.place)
   }
   
   func mapView(mapView: GMSMapView, didCloseInfoWindowOfMarker marker: GMSMarker) {
