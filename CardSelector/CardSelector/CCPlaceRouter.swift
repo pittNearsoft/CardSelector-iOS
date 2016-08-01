@@ -12,10 +12,11 @@ import CoreLocation
 enum CCPlaceRouter: URLRequestConvertible {
   case fetchNearbyPlacesWithCoordinate(coodinate: CLLocationCoordinate2D, radius: Double, types: [String])
   case fetchPlacePhotoFromReference(reference: String)
+  case getGeocodeByPlaceId(placeId: String)
   
   var method: Alamofire.Method{
     switch self {
-    case .fetchNearbyPlacesWithCoordinate,.fetchPlacePhotoFromReference:
+    case .fetchNearbyPlacesWithCoordinate, .fetchPlacePhotoFromReference, .getGeocodeByPlaceId:
       return .GET
     }
   }
@@ -28,6 +29,10 @@ enum CCPlaceRouter: URLRequestConvertible {
       
     case .fetchPlacePhotoFromReference(let reference):
       return "place/photo?maxwidth=200&photoreference=\(reference)"
+      
+    case .getGeocodeByPlaceId(let placeId):
+      return "place/details/json?placeid=\(placeId)"
+
     }
     
     

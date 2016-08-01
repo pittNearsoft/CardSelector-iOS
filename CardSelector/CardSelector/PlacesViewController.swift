@@ -60,6 +60,7 @@ class PlacesViewController: BaseViewController {
     resultView.hidden = true
     
     resultTableView.dataSource = self
+    resultTableView.delegate = self
     
     
     mapView.delegate = self
@@ -67,21 +68,20 @@ class PlacesViewController: BaseViewController {
   }
   
   //MARK: - Map methods
-  func showMapWithLatitude(latitude: Double, longitude: Double, zoom: Float){
+  func showMapWithLatitude(latitude: Double, longitude: Double, zoom: Float, place: CCPlace?){
     
     mapView.camera = GMSCameraPosition.cameraWithLatitude(latitude, longitude: longitude, zoom: zoom)
+    if place != nil {
+      setMarkerToMapSubViewWithLocation(CLLocationCoordinate2DMake(latitude, longitude), place: place!)
+    }
 
   }
   
-  func setMarkerToMapSubViewWithLocation(location: CLLocationCoordinate2D, address: String) {
-    let camera = GMSCameraPosition.cameraWithLatitude(location.latitude, longitude: location.longitude, zoom: 15)
+  func setMarkerToMapSubViewWithLocation(location: CLLocationCoordinate2D, place: CCPlace) {
+    //let camera = GMSCameraPosition.cameraWithLatitude(location.latitude, longitude: location.longitude, zoom: 15)
     mapView.clear()
-    let marker = GMSMarker()
-    marker.position = camera.target
-    marker.title = address
-    marker.snippet = address
-    marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.5)
-    marker.appearAnimation = kGMSMarkerAnimationPop
+    let marker = CCPlaceMarker(place: place)
+    marker.position = mapView.camera.target
     marker.map = mapView
   }
   
@@ -198,6 +198,10 @@ extension PlacesViewController: GMSMapViewDelegate{
   
   func mapView(mapView: GMSMapView, didTapInfoWindowOfMarker marker: GMSMarker) {
     
+    if slideUpView.hidden == false {
+      return
+    }
+    
     slideUpView.show()
     slideUpTableView.lock()
     
@@ -260,7 +264,7 @@ extension PlacesViewController: CLLocationManagerDelegate{
     configureAutoCompleteWithBound(bounds)
     
     
-    showMapWithLatitude(coordinate.latitude, longitude: coordinate.longitude , zoom: 15)
+    showMapWithLatitude(coordinate.latitude, longitude: coordinate.longitude , zoom: 15, place: nil)
     self.locationManager.stopUpdatingLocation()
     fetchNearbyPlacesWithCoordinate(coordinate)
   }
@@ -338,6 +342,24 @@ extension PlacesViewController: UITableViewDataSource {
 extension PlacesViewController: UITableViewDelegate{
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    if tableView == resultTableView {
+      
+      let place = listPlaces[indexPath.row]
+      searchTextField.text = place.address
+      
+      placeViewModel.getGeocodeByPlaceId(listPlaces[indexPath.row].id,
+        completion: { (coordinate) in
+          //dismiss keyboard
+          self.searchTextField.resignFirstResponder()
+          
+          self.showMapWithLatitude(coordinate.latitude, longitude: coordinate.longitude , zoom: 15, place: place)
+          self.mapPinImage.fadeOut(0.25)
+        },
+        onFailure: { (error) in
+          print(error.localizedDescription)
+        }
+      )
+    }
   }
 }
 
@@ -353,6 +375,7 @@ extension PlacesViewController: UITextFieldDelegate{
   func textFieldShouldEndEditing(textField: UITextField) -> Bool {
     reappearMapPinImage()
     resultView.hideViewAnimated()
+    searchTextField.text = ""
     mapView.userInteractionEnabled = true
     return true
   }
@@ -371,7 +394,7 @@ extension PlacesViewController: UITextFieldDelegate{
     mapView.userInteractionEnabled = true
     searchTextField.text = ""
     searchTextField.resignFirstResponder()
-    print("search starts")
+
     return true
   }
   
@@ -398,17 +421,6 @@ extension PlacesViewController: UITextFieldDelegate{
 //MARK: - Fetcher Methods
 extension PlacesViewController: GMSAutocompleteFetcherDelegate{
   func didAutocompleteWithPredictions(predictions: [GMSAutocompletePrediction]) {
-    
-//    let filterPredictions = predictions.filter { (prediction) -> Bool in
-//      
-//      for type in prediction.types{
-//        if CCPlaceType.acceptedTypes.contains(type){
-//          return true
-//        }
-//      }
-//      
-//      return false
-//    }
     
     listPlaces.removeAll()
     for prediction in predictions {

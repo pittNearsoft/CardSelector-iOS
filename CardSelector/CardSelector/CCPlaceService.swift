@@ -29,4 +29,26 @@ class CCPlaceService {
         }
     }
   }
+  
+  func getGeocodeByPlaceId(placeId: String, completion: (json: [String: AnyObject]) -> Void, onFailure: (error: NSError)-> Void ) {
+    
+    apiClient.manager.request(CCPlaceRouter.getGeocodeByPlaceId(placeId: placeId))
+      .CCresponseJSON { response in
+        
+        switch response.result{
+        case .Success(let JSON):
+          
+          guard let result = JSON["result"] as? [String: AnyObject]
+            else{
+              onFailure(error: Error.error(code: -1, failureReason: "Bad json received"))
+              return
+          }
+          completion(json: result)
+        case .Failure(let error):
+          onFailure(error: error)
+          
+        }
+        
+    }
+  }
 }

@@ -25,4 +25,14 @@ class CCPlaceViewModel {
       }
     )
   }
+  
+  func getGeocodeByPlaceId(placeId: String, completion: (coordinate: CLLocationCoordinate2D) -> Void, onFailure: (error: NSError)-> Void ) {
+    
+    placeService.getGeocodeByPlaceId(placeId, completion: { (json) in
+      let location = Mapper<CCLocation>().map(json)
+      completion(coordinate: CLLocationCoordinate2DMake((location?.latitude)!, (location?.longitude)!))
+    }) { (error) in
+      onFailure(error: error)
+    }
+  }
 }
