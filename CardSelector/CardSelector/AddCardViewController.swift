@@ -141,13 +141,7 @@ class AddCardViewController: BaseViewController {
   
   func confirmSaving() {
     var missingData: [String] = []
-    
-//    if endingTextField.text!.isEmpty {
-//      missingData.append("ending")
-//    }else{
-//      selectedProfileCard.endingCard = Int(endingTextField.text!)!
-//    }
-    
+
     let endingNumber = Int(endingCardNumbers.joinWithSeparator(""))
     
     if endingNumber == nil {
@@ -316,8 +310,7 @@ class AddCardViewController: BaseViewController {
 
 extension AddCardViewController: UITextFieldDelegate{
   func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-    guard let text = textField.text else { return true }
-    
+    guard textField.text != nil else { return true }
     
     switch textField {
     case ending1TextField:
@@ -332,11 +325,36 @@ extension AddCardViewController: UITextFieldDelegate{
       break
     }
     
-    
-    
     if textField == ending1TextField || textField == ending2TextField || textField == ending3TextField || textField == ending4TextField {
-      let newLength = text.utf16.count + string.utf16.count - range.length
-      return newLength <= 1
+
+      let newLength = string.characters.count
+      
+      guard newLength == 1 else{ return true }
+      
+      if textField == ending1TextField {
+        ending1TextField.text = string
+        ending2TextField.becomeFirstResponder()
+        return false
+      }
+      
+      if textField == ending2TextField {
+        ending2TextField.text = string
+        ending3TextField.becomeFirstResponder()
+        return false
+      }
+      
+      if textField == ending3TextField {
+        ending3TextField.text = string
+        ending4TextField.becomeFirstResponder()
+        return false
+      }
+      
+      if textField == ending4TextField {
+        ending4TextField.text = string
+        rateTextField.becomeFirstResponder()
+        return false
+      }
+      
     }
     
     return true
@@ -346,6 +364,7 @@ extension AddCardViewController: UITextFieldDelegate{
     textField.resignFirstResponder()
     return true
   }
+
   
 }
 
