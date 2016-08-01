@@ -155,7 +155,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="584" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gds-Bi-G5m" id="lob-8t-3DR">
-                                                    <rect key="frame" x="0.0" y="0.0" width="584" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="584" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNT-Qu-7qf">
@@ -549,7 +549,7 @@
                                             <constraint firstAttribute="height" constant="1" id="fii-XN-b9C"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SHG-NB-Nr2">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Default APR:" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SHG-NB-Nr2">
                                         <rect key="frame" x="20" y="115" width="560" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="gWL-Gz-fsm"/>

@@ -36,7 +36,14 @@ class AddCardViewController: BaseViewController {
   var listCards: [CCCard] = []
   var listBanks: [CCBank] = []
   var selectedBank: CCBank?
-  var selectedCard: CCCard?
+  var selectedCard: CCCard? {
+    didSet{
+      if selectedCard != nil {
+        rateTextField.placeholder = "Default APR: \(selectedCard!.defaultRate)%"
+      }
+      
+    }
+  }
   
   
   var selectedProfileCard = CCProfileCard()
