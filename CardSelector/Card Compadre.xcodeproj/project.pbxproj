@@ -17,6 +17,7 @@
 		B50353DC1D4BC40C003DC527 /* UIView+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50353DB1D4BC40C003DC527 /* UIView+UITextField.swift */; };
 		B50353DE1D4D770B003DC527 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B50353DD1D4D770B003DC527 /* GoogleService-Info.plist */; };
 		B50353E11D4EE0E1003DC527 /* ResultViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50353E01D4EE0E1003DC527 /* ResultViewCell.swift */; };
+		B50353E31D4EEB89003DC527 /* CCLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50353E21D4EEB89003DC527 /* CCLocation.swift */; };
 		B5230CC91D41C5B00046B551 /* CCUserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5230CC81D41C5B00046B551 /* CCUserRouter.swift */; };
 		B52581411D258CDF001CB6BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52581401D258CDF001CB6BC /* LaunchScreen.storyboard */; };
 		B52581471D26DAFD001CB6BC /* CCUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52581461D26DAFD001CB6BC /* CCUserViewModel.swift */; };
@@ -91,6 +92,7 @@
 		B50353DB1D4BC40C003DC527 /* UIView+UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+UITextField.swift"; sourceTree = "<group>"; };
 		B50353DD1D4D770B003DC527 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B50353E01D4EE0E1003DC527 /* ResultViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewCell.swift; sourceTree = "<group>"; };
+		B50353E21D4EEB89003DC527 /* CCLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCLocation.swift; sourceTree = "<group>"; };
 		B5230CC81D41C5B00046B551 /* CCUserRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCUserRouter.swift; sourceTree = "<group>"; };
 		B52581401D258CDF001CB6BC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B52581461D26DAFD001CB6BC /* CCUserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCUserViewModel.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				B527EF841D2DE9A0002A24AC /* CCPlaceMarker.swift */,
 				B5E2666C1D2F015C0051756C /* CCPlaceType.swift */,
 				B50353D71D4AAF82003DC527 /* CCSuggestion.swift */,
+				B50353E21D4EEB89003DC527 /* CCLocation.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -593,6 +596,7 @@
 				B5BC1AC81D447B13003E405C /* SuggestionViewCell.swift in Sources */,
 				B50353D21D49EBAF003DC527 /* NewUserViewController.swift in Sources */,
 				B5E266721D2F11480051756C /* CCPlaceService.swift in Sources */,
+				B50353E31D4EEB89003DC527 /* CCLocation.swift in Sources */,
 				B5E266741D2F11C10051756C /* APIClient.swift in Sources */,
 				B5BC1ACA1D4567D9003E405C /* EnableLocationViewController.swift in Sources */,
 				B5772E421D37EBA3003A5210 /* CardCollectionViewCell.swift in Sources */,
