@@ -37,8 +37,8 @@ class CardCell: UITableViewCell {
     
 
     card.endingLabel.text = (profileCard.endingCard != -1 ) ? String(profileCard.endingCard) : "••••"
-    card.rateLabel.text = (profileCard.interestRate != -1) ? "Rate: \(profileCard.interestRate)%" : ""
-    card.cutoffLabel.text = (profileCard.cuttOffDay != -1) ? "Cutoff day: \(profileCard.cuttOffDay)" : ""
+    card.rateLabel.text = (profileCard.interestRate != -1) ? "APR: \(profileCard.interestRate)%" :  "APR: \(profileCard.card!.defaultRate)%"
+    card.cutoffLabel.text = "Cutoff day: \(profileCard.cuttOffDay)"
     
   }
   
