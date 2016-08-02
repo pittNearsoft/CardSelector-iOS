@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kompis" translatesAutoresizingMaskIntoConstraints="NO" id="vap-fy-0fb">
+                            <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kompi" translatesAutoresizingMaskIntoConstraints="NO" id="vap-fy-0fb">
                                 <rect key="frame" x="220" y="244" width="160" height="113"/>
                             </imageView>
                         </subviews>
@@ -34,6 +34,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="kompis" width="160" height="113"/>
+        <image name="kompi" width="160" height="113"/>
     </resources>
 </document>

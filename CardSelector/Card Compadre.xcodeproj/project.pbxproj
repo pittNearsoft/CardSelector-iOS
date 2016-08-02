@@ -105,7 +105,7 @@
 		B527EF841D2DE9A0002A24AC /* CCPlaceMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCPlaceMarker.swift; sourceTree = "<group>"; };
 		B527EF861D2EC5DB002A24AC /* CCPlaceTypeTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCPlaceTypeTransformer.swift; sourceTree = "<group>"; };
 		B53BD9201D4FD7530036841D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		B56511101D20797F002CD3AF /* Kompis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kompis.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B56511101D20797F002CD3AF /* Kompi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kompi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56511131D207980002CD3AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B56511151D207980002CD3AF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B56511181D207980002CD3AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
@@ -256,7 +256,7 @@
 		B56511111D20797F002CD3AF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B56511101D20797F002CD3AF /* Kompis.app */,
+				B56511101D20797F002CD3AF /* Kompi.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -421,7 +421,7 @@
 			);
 			name = "Card Compadre";
 			productName = CardSelector;
-			productReference = B56511101D20797F002CD3AF /* Kompis.app */;
+			productReference = B56511101D20797F002CD3AF /* Kompi.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -715,7 +715,7 @@
 				INFOPLIST_FILE = CardSelector/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mbtx.cardcompadre;
-				PRODUCT_NAME = Kompis;
+				PRODUCT_NAME = Kompi;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -733,7 +733,7 @@
 				INFOPLIST_FILE = CardSelector/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mbtx.cardcompadre;
-				PRODUCT_NAME = Kompis;
+				PRODUCT_NAME = Kompi;
 				PROVISIONING_PROFILE = "984459af-4d29-4b8d-abbb-c48639b0b93e";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};

@@ -8,7 +8,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="NavLoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Kompis" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NavLoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Kompi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -102,7 +102,7 @@
                                     <segue destination="eav-jS-MTr" kind="presentation" identifier="createNewUserSegue" id="KxW-bV-o1v"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kompis" translatesAutoresizingMaskIntoConstraints="NO" id="eUd-1t-TND">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kompi" translatesAutoresizingMaskIntoConstraints="NO" id="eUd-1t-TND">
                                 <rect key="frame" x="20" y="40" width="560" height="88"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="88" id="daC-TP-cFX"/>
@@ -167,7 +167,7 @@
         <!--Create a new user-->
         <scene sceneID="xmb-gK-Dij">
             <objects>
-                <viewController id="Vk5-em-SlK" customClass="NewUserViewController" customModule="Kompis" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Vk5-em-SlK" customClass="NewUserViewController" customModule="Kompi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="M2G-G6-22W"/>
                         <viewControllerLayoutGuide type="bottom" id="m9G-5i-pMe"/>
@@ -199,7 +199,7 @@
         <!--Start View Controller-->
         <scene sceneID="NUs-uL-f3M">
             <objects>
-                <viewController id="5ap-TN-z6q" customClass="StartViewController" customModule="Kompis" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5ap-TN-z6q" customClass="StartViewController" customModule="Kompi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zuT-on-s7e"/>
                         <viewControllerLayoutGuide type="bottom" id="fBM-Rh-24e"/>
@@ -208,7 +208,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kompis" translatesAutoresizingMaskIntoConstraints="NO" id="HTl-k7-fsg">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kompi" translatesAutoresizingMaskIntoConstraints="NO" id="HTl-k7-fsg">
                                 <rect key="frame" x="20" y="101" width="560" height="113"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="113" id="pjv-e7-pNh"/>
@@ -250,6 +250,6 @@
     <resources>
         <image name="fb-logo" width="25" height="25"/>
         <image name="g-logo" width="23" height="23"/>
-        <image name="kompis" width="160" height="113"/>
+        <image name="kompi" width="160" height="113"/>
     </resources>
 </document>
