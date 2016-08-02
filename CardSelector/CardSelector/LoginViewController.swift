@@ -34,13 +34,15 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate, GIDSignInDelega
     
     facebookButton.layer.cornerRadius = 5
     facebookButton.clipsToBounds = true
+    facebookButton.titleLabel?.adjustsFontSizeToFitWidth = true
+    facebookButton.contentHorizontalAlignment = .Center
     
     googleButton.layer.cornerRadius = 5
     googleButton.clipsToBounds = true
-    
-    
-    facebookButton.imageView?.contentMode = .ScaleAspectFit
-    googleButton.imageView?.contentMode = .ScaleAspectFit
+    googleButton.titleLabel?.adjustsFontSizeToFitWidth = true
+    googleButton.contentHorizontalAlignment = .Center
+    googleButton.layer.borderWidth = 0.5
+    googleButton.layer.borderColor = UIColor ( red: 0.8838, green: 0.8795, blue: 0.8881, alpha: 1.0 ).CGColor
     
     GIDSignIn.sharedInstance().uiDelegate = self
   }

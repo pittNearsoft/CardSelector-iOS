@@ -17,29 +17,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0P-ch-KD2">
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0P-ch-KD2">
                                 <rect key="frame" x="20" y="153" width="270" height="44"/>
-                                <color key="backgroundColor" red="0.1764705882352941" green="0.26666666666666666" blue="0.52549019607843139" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.22745098039215686" green="0.35686274509803922" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="270" id="WY0-3f-oS0"/>
                                     <constraint firstAttribute="height" constant="44" id="l0u-4w-TnE"/>
                                 </constraints>
-                                <state key="normal" title="Facebook" image="facebook-login">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Login with facebook" image="fb-logo">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="facebookSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R4o-iC-cqu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0b-hj-0PN">
+                            <button opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0b-hj-0PN">
                                 <rect key="frame" x="310" y="153" width="270" height="44"/>
-                                <color key="backgroundColor" red="0.87450980392156863" green="0.29019607843137252" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="2LP-t5-Get"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="270" id="fBe-7p-iLy"/>
                                 </constraints>
-                                <state key="normal" title="Google" image="loginGoogle">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title=" Login with Google" image="g-logo">
+                                    <color key="titleColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="googleSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4aU-w7-b6w"/>
@@ -243,7 +245,7 @@
     </scenes>
     <resources>
         <image name="cardCompadreBigLogo" width="414" height="186"/>
-        <image name="facebook-login" width="326" height="60"/>
-        <image name="loginGoogle" width="300" height="50"/>
+        <image name="fb-logo" width="25" height="25"/>
+        <image name="g-logo" width="23" height="23"/>
     </resources>
 </document>
