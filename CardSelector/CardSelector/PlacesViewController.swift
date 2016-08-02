@@ -276,9 +276,7 @@ extension PlacesViewController: CLLocationManagerDelegate{
     print("latitude: \(coordinate.latitude), longitude: \(coordinate.longitude)")
     
     //configure a default area to get near places
-    let neBoundsCorner = CLLocationCoordinate2D(latitude: coordinate.latitude - 0.1, longitude: coordinate.longitude  - 0.1)
-    let swBoundsCorner = CLLocationCoordinate2D(latitude: coordinate.latitude + 0.1, longitude: coordinate.longitude  + 0.1)
-    let bounds = GMSCoordinateBounds(coordinate: neBoundsCorner, coordinate: swBoundsCorner)
+    let bounds = GMSCoordinateBounds(region: GMSVisibleRegion(nearLeft: coordinate, nearRight: coordinate, farLeft: coordinate, farRight: coordinate))
     
     configureAutoCompleteWithBound(bounds)
     
