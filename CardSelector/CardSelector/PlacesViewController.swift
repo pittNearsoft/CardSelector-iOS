@@ -174,6 +174,14 @@ class PlacesViewController: BaseViewController {
     }
   }
   
+  func showMarkerInfoWindowWithPlace(place: CCPlace) {
+    let marker = CCPlaceMarker(place: place)
+    marker.map = mapView
+    marker.position = mapView.camera.target
+    mapView.selectedMarker = marker
+    mapView(mapView, markerInfoWindow: mapView.selectedMarker!)
+  }
+  
   //MARK: - Autocomplete methods
   func configureAutoCompleteWithBound(bounds: GMSCoordinateBounds?) {
     
@@ -364,7 +372,12 @@ extension PlacesViewController: UITableViewDelegate{
           self.searchTextField.resignFirstResponder()
           
           self.showMapWithLatitude(coordinate.latitude, longitude: coordinate.longitude , zoom: 15, place: place)
+          self.showSuggestionsWithPlace(place)
           self.mapPinImage.fadeOut(0.25)
+          self.showMarkerInfoWindowWithPlace(place)
+          
+          
+
         },
         onFailure: { (error) in
           print(error.localizedDescription)
@@ -378,7 +391,6 @@ extension PlacesViewController: UITextFieldDelegate{
   
   func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
     mapPinImage.fadeOut(0.25)
-//    resultView.showViewAnimated()
     mapView.userInteractionEnabled = false
     return true
   }
