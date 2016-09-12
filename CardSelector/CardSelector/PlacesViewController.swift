@@ -12,6 +12,7 @@ import CoreLocation
 import AlamofireImage
 import SeamlessSlideUpScrollView
 import LKAlertController
+import Crashlytics
 
 class PlacesViewController: BaseViewController {
 
@@ -164,6 +165,14 @@ class PlacesViewController: BaseViewController {
       
       self.listSuggestions = listSuggestions
       
+      
+      listSuggestions.forEach({ (suggestion) in
+        Answers.logCustomEventWithName("List of suggestions", customAttributes: [
+          "Suggestion Message": suggestion.message,
+          "Bank": suggestion.bankName
+          ])
+      })
+      
       self.slideUpTableView.unlock()
       self.slideUpTableView.reloadData()
     }) { (error) in
@@ -242,7 +251,11 @@ extension PlacesViewController: GMSMapViewDelegate{
     }
     
     
+    
     let placeMarker = marker as! CCPlaceMarker
+    
+    Answers.logCustomEventWithName("Place selected", customAttributes: ["Place": placeMarker.place.name])
+    
     showSuggestionsWithPlace(placeMarker.place)
   }
   

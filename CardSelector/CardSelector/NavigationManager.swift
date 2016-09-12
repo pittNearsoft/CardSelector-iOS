@@ -9,6 +9,7 @@
 import UIKit
 import LKAlertController
 import SVProgressHUD
+import Crashlytics
 
 class NavigationManager {
   
@@ -72,6 +73,7 @@ class NavigationManager {
   }
   
   static func goMain(){
+    Answers.logCustomEventWithName("User logged in", customAttributes: ["time": NSDate().stringFromFormat("dd/MMM/yyyy h:mm a")])
     goToStoryboard("Main", viewControllerId: "NavMainViewController")
   }
   

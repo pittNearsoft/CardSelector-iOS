@@ -9,7 +9,7 @@ PODS:
   - Bolts/AppLinks (1.8.3):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.3)
-  - Crashlytics (3.7.2):
+  - Crashlytics (3.8.1):
     - Fabric (~> 1.6.3)
   - Eureka (1.7.0)
   - Fabric (1.6.7)
@@ -80,7 +80,7 @@ SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   AlamofireImage: 87408b652e0f5ae5fe364035f15aea8b9b24c77e
   Bolts: 52551f96df2f8aac6b4414347f3f8353a39f1966
-  Crashlytics: 130ab943f8c78cda7a814b434f270b2e2c8a3cba
+  Crashlytics: 4391d8df0b125345e9f209c5db6e7f40a6a8435d
   Eureka: 2020d9faeef7b7e9adeb9e3d8af779e5931c1897
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   FBSDKCoreKit: 2807fe0da2ddb49a1469da6d6ff597f99912980f

@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //Initialize Facebook Sign-in
     FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     
+    Answers.logCustomEventWithName("App was opened", customAttributes: ["time": NSDate().stringFromFormat("dd/MMM/yyyy h:mm a")])
     return true
   }
 
