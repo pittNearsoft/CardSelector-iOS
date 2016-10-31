@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5ap-TN-z6q">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5ap-TN-z6q">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -14,55 +15,51 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0P-ch-KD2">
-                                <rect key="frame" x="20" y="153" width="270" height="44"/>
-                                <color key="backgroundColor" red="0.22745098039215686" green="0.35686274509803922" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.22745098039215686" green="0.35686274509803922" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="270" id="WY0-3f-oS0"/>
                                     <constraint firstAttribute="height" constant="44" id="l0u-4w-TnE"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Login with facebook" image="fb-logo">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="facebookSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R4o-iC-cqu"/>
+                                    <action selector="facebookSignInSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EEQ-dH-Ynn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0b-hj-0PN">
-                                <rect key="frame" x="310" y="153" width="270" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="2LP-t5-Get"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="270" id="fBe-7p-iLy"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title=" Login with Google" image="g-logo">
-                                    <color key="titleColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="googleSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4aU-w7-b6w"/>
+                                    <action selector="googleSignInSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ouz-gj-JCk"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T58-VF-M9H">
-                                <rect key="frame" x="20" y="364" width="560" height="45"/>
-                                <color key="backgroundColor" red="0.048156191112639128" green="0.70164262820512824" blue="0.13023079494721582" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.048156191112639128" green="0.70164262820512824" blue="0.13023079494721582" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="cLs-8a-ciH"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Sign In">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="emailSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5hT-tB-Z5d"/>
+                                    <action selector="emailSignInSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4eM-31-F1p"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VLK-Jg-320">
-                                <rect key="frame" x="20" y="205" width="560" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="T1D-Kn-u6g"/>
                                 </constraints>
@@ -70,30 +67,26 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tn9-vL-Ijn">
-                                <rect key="frame" x="20" y="248" width="560" height="1"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="04M-b2-IVv"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ms-8X-z08">
-                                <rect key="frame" x="20" y="318" width="560" height="1"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="vbe-cc-Idn"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gzk-tB-Qtg">
-                                <rect key="frame" x="20" y="417" width="560" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="KXm-1W-jWh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pg-h1-jVR">
-                                <rect key="frame" x="20" y="446" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="zN4-Df-bJv"/>
                                 </constraints>
@@ -103,13 +96,11 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kompi" translatesAutoresizingMaskIntoConstraints="NO" id="eUd-1t-TND">
-                                <rect key="frame" x="20" y="40" width="560" height="88"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="88" id="daC-TP-cFX"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NO6-KB-TIR">
-                                <rect key="frame" x="20" y="275" width="560" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="OdL-af-XS3"/>
                                 </constraints>
@@ -117,7 +108,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="NO6-KB-TIR" firstAttribute="top" secondItem="Tn9-vL-Ijn" secondAttribute="bottom" constant="26" id="3W2-lf-jlo"/>
                             <constraint firstItem="2Ms-8X-z08" firstAttribute="top" secondItem="NO6-KB-TIR" secondAttribute="bottom" constant="-1" id="4pH-x3-yPW"/>
@@ -173,21 +164,21 @@
                         <viewControllerLayoutGuide type="bottom" id="m9G-5i-pMe"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wiR-y9-Ocw">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Create a new user" id="EjH-XK-qQc">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="feb-1n-0tf">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="cancelNewUser:" destination="Vk5-em-SlK" id="OBZ-Sj-hz0"/>
+                                <action selector="cancelNewUser:" destination="Vk5-em-SlK" id="HOt-hC-si4"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="Oy4-tb-hvp">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="saveNewUser:" destination="Vk5-em-SlK" id="YZl-iT-Q2A"/>
+                                <action selector="saveNewUser:" destination="Vk5-em-SlK" id="QLr-C7-bJa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -205,17 +196,16 @@
                         <viewControllerLayoutGuide type="bottom" id="fBM-Rh-24e"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xCh-kP-jsT">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kompi" translatesAutoresizingMaskIntoConstraints="NO" id="HTl-k7-fsg">
-                                <rect key="frame" x="20" y="101" width="560" height="113"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="113" id="pjv-e7-pNh"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="HTl-k7-fsg" firstAttribute="top" secondItem="zuT-on-s7e" secondAttribute="bottom" constant="81" id="GUe-ko-1j4"/>
                             <constraint firstAttribute="trailing" secondItem="HTl-k7-fsg" secondAttribute="trailing" constant="20" id="gHF-9n-YNp"/>
@@ -233,7 +223,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eav-jS-MTr" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yW7-Sw-wCW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="yW7-Sw-wCW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

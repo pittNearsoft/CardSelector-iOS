@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMaps
+import GooglePlaces
 import CoreLocation
 import AlamofireImage
 import SeamlessSlideUpScrollView
@@ -58,7 +59,7 @@ class PlacesViewController: BaseViewController {
     
     searchView.addShadowEffect()
     resultView.addShadowEffect()
-    resultView.hidden = true
+    resultView.isHidden = true
     
     resultTableView.dataSource = self
     resultTableView.delegate = self
@@ -71,9 +72,9 @@ class PlacesViewController: BaseViewController {
   //MARK: - Map methods
   func showMapWithLatitude(latitude: Double, longitude: Double, zoom: Float, place: CCPlace?){
     
-    mapView.camera = GMSCameraPosition.cameraWithLatitude(latitude, longitude: longitude, zoom: zoom)
+    mapView.camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: zoom)
     if place != nil {
-      setMarkerToMapSubViewWithLocation(CLLocationCoordinate2DMake(latitude, longitude), place: place!)
+      setMarkerToMapSubViewWithLocation(location: CLLocationCoordinate2DMake(latitude, longitude), place: place!)
     }
 
   }
@@ -93,14 +94,14 @@ class PlacesViewController: BaseViewController {
       self.locationLabel.unlock()
       
       if let address = response?.firstResult(){
-        self.locationLabel.text = address.lines?.joinWithSeparator("\n")
+        self.locationLabel.text = address.lines?.joined(separator: "\n")
         
         //this adds padding to the top and bottom of the map.
         //The top padding equals the navigation bar’s height, while the bottom padding equals the label’s height.
-        let labelHeight = self.locationLabel.intrinsicContentSize().height
+        let labelHeight = self.locationLabel.intrinsicContentSize.height
         self.mapView.padding = UIEdgeInsets(top: self.topLayoutGuide.length, left: 0,bottom: labelHeight, right: 0)
         
-        UIView.animateWithDuration(0.25, animations: {
+        UIView.animate(withDuration: 0.25, animations: {
           self.pinImageVerticalConstraint.constant = ((labelHeight - self.topLayoutGuide.length) * 0.5)
           self.view.layoutIfNeeded()
         })
@@ -112,7 +113,7 @@ class PlacesViewController: BaseViewController {
   func fetchNearbyPlacesWithCoordinate(coordinate: CLLocationCoordinate2D) {
     mapView.clear()
     
-    placeViewModel.fetchNearbyPlacesWithCoordinate(coordinate, radius: searchRadius, types: CCPlaceType.acceptedTypes,
+    placeViewModel.fetchNearbyPlacesWithCoordinate(coordinate: coordinate, radius: searchRadius, types: CCPlaceType.acceptedTypes,
       completion: { places in
         for place in places{
           let marker = CCPlaceMarker(place: place)
@@ -126,11 +127,11 @@ class PlacesViewController: BaseViewController {
   }
   
   @IBAction func refreshPlaces(sender: AnyObject) {
-    fetchNearbyPlacesWithCoordinate(mapView.camera.target)
+    fetchNearbyPlacesWithCoordinate(coordinate: mapView.camera.target)
   }
   
   func reappearMapPinImage() {
-    mapPinImage.fadeIn(0.25)
+    mapPinImage.fadeIn(duration: 0.25)
     
     //Setting the map’s selectedMarker to nil will remove the currently presented infoView.
     mapView.selectedMarker = nil
@@ -139,15 +140,15 @@ class PlacesViewController: BaseViewController {
   
   func closeListOfSuggestions() {
     
-      dispatch_async(dispatch_get_main_queue()) {
-        self.slideUpView.hide()
-      }
+    DispatchQueue.main.async {
+      self.slideUpView.hide()
+    }
     
     
   }
   
   func showSuggestionsWithPlace(place: CCPlace) {
-    if slideUpView.hidden {
+    if slideUpView.isHidden {
       slideUpView.show()
     }
     
@@ -155,7 +156,7 @@ class PlacesViewController: BaseViewController {
     slideUpTableView.lock()
     
     let user = CCUserViewModel.getLoggedUser()
-    suggestionViewModel.getSuggestionsWithUser(user!, merchant: place, completion: { (listSuggestions) in
+    suggestionViewModel.getSuggestionsWithUser(user: user!, merchant: place, completion: { (listSuggestions) in
       
       guard listSuggestions.count > 0 else{
         self.closeListOfSuggestions()
@@ -167,7 +168,7 @@ class PlacesViewController: BaseViewController {
       
       
       listSuggestions.forEach({ (suggestion) in
-        Answers.logCustomEventWithName("List of suggestions", customAttributes: [
+        Answers.logCustomEvent(withName: "List of suggestions", customAttributes: [
           "Suggestion Message": suggestion.message,
           "Bank": suggestion.bankName
           ])
@@ -188,7 +189,7 @@ class PlacesViewController: BaseViewController {
     marker.map = mapView
     marker.position = mapView.camera.target
     mapView.selectedMarker = marker
-    mapView(mapView, markerInfoWindow: mapView.selectedMarker!)
+    _ = mapView(mapView, markerInfoWindow: mapView.selectedMarker!)
   }
   
   //MARK: - Autocomplete methods
@@ -196,7 +197,7 @@ class PlacesViewController: BaseViewController {
     
     //Set up the autocomplete filter
     let filter = GMSAutocompleteFilter()
-    filter.type = .Establishment
+    filter.type = .establishment
     
     //Create the fetcher, engine for autocomplete
     fetcher = GMSAutocompleteFetcher(bounds: bounds, filter: filter)
@@ -207,11 +208,11 @@ class PlacesViewController: BaseViewController {
 }
 
 extension PlacesViewController: GMSMapViewDelegate{
-  func mapView(mapView: GMSMapView, idleAtCameraPosition position: GMSCameraPosition) {
-    reverseGeocodeCoordinate(position.target)
+  func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+    reverseGeocodeCoordinate(coordinate: position.target)
   }
   
-  func mapView(mapView: GMSMapView, willMove gesture: Bool) {
+  func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
     
     locationLabel.lock()
     if gesture {
@@ -221,16 +222,16 @@ extension PlacesViewController: GMSMapViewDelegate{
   }
   
 
-  func mapView(mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+  func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
     let placeMarker = marker as! CCPlaceMarker
     placeMarker.tracksInfoWindowChanges = true
     
-    if let infoView = UIView.viewFromNibName("MarkerInfoView") as? MarkerInfoView {
+    if let infoView = UIView.viewFromNibName(name: "MarkerInfoView") as? MarkerInfoView {
       infoView.nameLabel.text = placeMarker.place.name
       
       if infoView.placePhoto.image == nil {
         infoView.placePhoto.image = UIImage(named: "ccGeneric")
-        infoView.placePhoto.af_setImageWithURLRequest(CCPlaceRouter.fetchPlacePhotoFromReference(reference: placeMarker.place.photo_reference))
+        infoView.placePhoto.af_setImage(withURLRequest: CCPlaceRouter.fetchPlacePhotoFromReference(reference: placeMarker.place.photo_reference))
       }
       
 
@@ -245,8 +246,8 @@ extension PlacesViewController: GMSMapViewDelegate{
   }
   
   
-  func mapView(mapView: GMSMapView, didTapInfoWindowOfMarker marker: GMSMarker) {
-    if slideUpView.hidden == false {
+  func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+    if slideUpView.isHidden == false {
       return
     }
     
@@ -254,21 +255,21 @@ extension PlacesViewController: GMSMapViewDelegate{
     
     let placeMarker = marker as! CCPlaceMarker
     
-    Answers.logCustomEventWithName("Place selected", customAttributes: ["Place": placeMarker.place.name])
+    Answers.logCustomEvent(withName: "Place selected", customAttributes: ["Place": placeMarker.place.name])
     
-    showSuggestionsWithPlace(placeMarker.place)
+    showSuggestionsWithPlace(place: placeMarker.place)
   }
   
-  func mapView(mapView: GMSMapView, didCloseInfoWindowOfMarker marker: GMSMarker) {
+  func mapView(_ mapView: GMSMapView, didCloseInfoWindowOf marker: GMSMarker) {
     closeListOfSuggestions()
   }
   
-  func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
-    mapPinImage.fadeOut(0.25)
+  func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+    mapPinImage.fadeOut(duration: 0.25)
     return false
   }
   
-  func didTapMyLocationButtonForMapView(mapView: GMSMapView) -> Bool {
+  func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
     reappearMapPinImage()
     return false
   }
@@ -280,36 +281,37 @@ extension PlacesViewController: CLLocationManagerDelegate{
     locationManager.desiredAccuracy = kCLLocationAccuracyBest
     locationManager.requestWhenInUseAuthorization()
     locationManager.startUpdatingLocation()
-    mapView.myLocationEnabled = true
+    mapView.isMyLocationEnabled = true
     mapView.settings.myLocationButton = true
   }
   
-  func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
-    let coordinate = newLocation.coordinate
-    print("latitude: \(coordinate.latitude), longitude: \(coordinate.longitude)")
-    
-    //configure a default area to get near places
-    let bounds = GMSCoordinateBounds(region: GMSVisibleRegion(nearLeft: coordinate, nearRight: coordinate, farLeft: coordinate, farRight: coordinate))
-    
-    configureAutoCompleteWithBound(bounds)
-    
-    
-    showMapWithLatitude(coordinate.latitude, longitude: coordinate.longitude , zoom: 15, place: nil)
-    self.locationManager.stopUpdatingLocation()
-    fetchNearbyPlacesWithCoordinate(coordinate)
+  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    if let coordinate = locations.first?.coordinate {
+      print("latitude: \(coordinate.latitude), longitude: \(coordinate.longitude)")
+      
+      //configure a default area to get near places
+      let bounds = GMSCoordinateBounds(region: GMSVisibleRegion(nearLeft: coordinate, nearRight: coordinate, farLeft: coordinate, farRight: coordinate))
+      
+      configureAutoCompleteWithBound(bounds: bounds)
+      
+      
+      showMapWithLatitude(latitude: coordinate.latitude, longitude: coordinate.longitude , zoom: 15, place: nil)
+      self.locationManager.stopUpdatingLocation()
+      fetchNearbyPlacesWithCoordinate(coordinate: coordinate)
+    }
   }
   
-  func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-    if status == .AuthorizedWhenInUse {
-      mapView.myLocationEnabled = true
+  func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    if status == .authorizedWhenInUse {
+      mapView.isMyLocationEnabled = true
       mapView.settings.myLocationButton = true
-    }else if status == .Denied{
-      performSegueWithIdentifier("enableLocationSegue", sender: self)
+    }else if status == .denied{
+      performSegue(withIdentifier: "enableLocationSegue", sender: self)
     }
 
   }
   
-  func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+  private func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
     self.locationManager.stopUpdatingLocation()
     print("Failed to load location. Error: \(error.localizedDescription)")
   }
@@ -318,47 +320,47 @@ extension PlacesViewController: CLLocationManagerDelegate{
 
 
 extension PlacesViewController: SeamlessSlideUpViewDelegate{
-  func slideUpViewWillAppear(slideUpView: SeamlessSlideUpView, height: CGFloat) {
-    UIView.animateWithDuration(0.3) { [weak self] in self?.view.layoutIfNeeded() }
+  func slideUpViewWillAppear(_ slideUpView: SeamlessSlideUpView, height: CGFloat) {
+    UIView.animate(withDuration: 0.3) { [weak self] in self?.view.layoutIfNeeded() }
     //addBlurEffect()
   }
   
-  func slideUpViewDidAppear(slideUpView: SeamlessSlideUpView, height: CGFloat) {
+  func slideUpViewDidAppear(_ slideUpView: SeamlessSlideUpView, height: CGFloat) {
   }
   
-  func slideUpViewWillDisappear(slideUpView: SeamlessSlideUpView) {
-    UIView.animateWithDuration(0.3) { [weak self] in self?.view.layoutIfNeeded() }
+  func slideUpViewWillDisappear(_ slideUpView: SeamlessSlideUpView) {
+    UIView.animate(withDuration: 0.3) { [weak self] in self?.view.layoutIfNeeded() }
     //removeBlurEffect()
   }
   
-  func slideUpViewDidDisappear(slideUpView: SeamlessSlideUpView) {
+  func slideUpViewDidDisappear(_ slideUpView: SeamlessSlideUpView) {
   }
   
-  func slideUpViewDidDrag(slideUpView: SeamlessSlideUpView, height: CGFloat) {
+  func slideUpViewDidDrag(_ slideUpView: SeamlessSlideUpView, height: CGFloat) {
     self.view.layoutIfNeeded()
   }
 }
 
 extension PlacesViewController: UITableViewDataSource {
-  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if slideUpTableView ==  tableView {
       return listSuggestions.count
     }else{
       return listPlaces.count
     }
-    
   }
   
-  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if slideUpTableView == tableView {
-      let cell = tableView.dequeueReusableCellWithIdentifier("suggestionCell", forIndexPath: indexPath) as! SuggestionViewCell
+      let cell = tableView.dequeueReusableCell(withIdentifier: "suggestionCell", for: indexPath) as! SuggestionViewCell
       
-      cell.configureWithSuggestion(listSuggestions[indexPath.row])
+      cell.configureWithSuggestion(suggestion: listSuggestions[indexPath.row])
       
       return cell
     }else{
-      let cell = tableView.dequeueReusableCellWithIdentifier("resultCell", forIndexPath: indexPath) as! ResultViewCell
+      let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell", for: indexPath) as! ResultViewCell
       
       cell.resultLabel.text = listPlaces[indexPath.row].address
       
@@ -366,31 +368,32 @@ extension PlacesViewController: UITableViewDataSource {
       
     }
   }
-  
 }
 
 extension PlacesViewController: UITableViewDelegate{
-  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
     if tableView == resultTableView {
       
       let place = listPlaces[indexPath.row]
       searchTextField.text = place.address
       
-      placeViewModel.getGeocodeByPlaceId(listPlaces[indexPath.row].id,
-        completion: { (coordinate) in
+      placeViewModel.getGeocodeByPlaceId(placeId: listPlaces[indexPath.row].id,
+                                         completion: { (coordinate) in
           //dismiss keyboard
           self.searchTextField.resignFirstResponder()
           
-          self.showMapWithLatitude(coordinate.latitude, longitude: coordinate.longitude , zoom: 15, place: place)
-          self.showSuggestionsWithPlace(place)
-          self.mapPinImage.fadeOut(0.25)
-          self.showMarkerInfoWindowWithPlace(place)
-          
-          
-
+          self.showMapWithLatitude(latitude: coordinate.latitude, longitude: coordinate.longitude , zoom: 15, place: place)
+          self.showSuggestionsWithPlace(place: place)
+          self.mapPinImage.fadeOut(duration: 0.25)
+          self.showMarkerInfoWindowWithPlace(place: place)
+                                          
+                                          
+                                          
         },
-        onFailure: { (error) in
+         onFailure: { (error) in
           print(error.localizedDescription)
         }
       )
@@ -400,39 +403,39 @@ extension PlacesViewController: UITableViewDelegate{
 
 extension PlacesViewController: UITextFieldDelegate{
   
-  func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-    mapPinImage.fadeOut(0.25)
-    mapView.userInteractionEnabled = false
+  func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+    mapPinImage.fadeOut(duration: 0.25)
+    mapView.isUserInteractionEnabled = false
     return true
   }
   
-  func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+  func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
     reappearMapPinImage()
     resultView.hideViewAnimated()
     searchTextField.text = ""
-    mapView.userInteractionEnabled = true
+    mapView.isUserInteractionEnabled = true
     return true
   }
   
-  func textFieldShouldClear(textField: UITextField) -> Bool {
+  func textFieldShouldClear(_ textField: UITextField) -> Bool {
     reappearMapPinImage()
     resultView.hideViewAnimated()
-    mapView.userInteractionEnabled = true
+    mapView.isUserInteractionEnabled = true
     searchTextField.text = ""
     searchTextField.resignFirstResponder()
     return false
   }
   
-  func textFieldShouldReturn(textField: UITextField) -> Bool {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     resultView.hideViewAnimated()
-    mapView.userInteractionEnabled = true
+    mapView.isUserInteractionEnabled = true
     searchTextField.text = ""
     searchTextField.resignFirstResponder()
 
     return true
   }
   
-  func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     
     let text = searchTextField.text!
     let textFieldRange = NSMakeRange(0, text.characters.count)
@@ -454,8 +457,9 @@ extension PlacesViewController: UITextFieldDelegate{
 
 //MARK: - Fetcher Methods
 extension PlacesViewController: GMSAutocompleteFetcherDelegate{
-  func didAutocompleteWithPredictions(predictions: [GMSAutocompletePrediction]) {
-    
+
+  
+  func didAutocomplete(with predictions: [GMSAutocompletePrediction]) {
     listPlaces.removeAll()
     for prediction in predictions {
       listPlaces.append(CCPlace(WithPrediction: prediction))
@@ -463,7 +467,9 @@ extension PlacesViewController: GMSAutocompleteFetcherDelegate{
     resultTableView.reloadData()
   }
   
-  func didFailAutocompleteWithError(error: NSError) {
+
+  
+  func didFailAutocompleteWithError(_ error: Error) {
     print(error.localizedDescription)
   }
   

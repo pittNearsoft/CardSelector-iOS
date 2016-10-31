@@ -10,14 +10,29 @@ import Alamofire
 
 enum CCUserRouter: URLRequestConvertible {
   
+  func asURLRequest() throws -> URLRequest {
+    let url = APIClient.getFullUrlWithPath(path: path)
+    var urlRequest = URLRequest(url: url!)
+    
+    urlRequest.httpMethod = method.rawValue
+    urlRequest.setValue("Basic QWRtaW46QzRyZEMwbXA0ZHIzOjVFOTA3ODRSRg==", forHTTPHeaderField: "Authorization")
+    
+    switch self {
+    case .getUserFromServerWithEmail, .authenticateUserWithEmail, .saveUserIntoServer:
+      urlRequest = try URLEncoding.default.encode(urlRequest, with: self.parameters)
+    }
+    
+    return urlRequest
+  }
+  
   case getUserFromServerWithEmail(email: String)
   case authenticateUserWithEmail(email: String, password: String)
   case saveUserIntoServer(user: CCUser, password: String)
   
-  var method: Alamofire.Method{
+  var method: HTTPMethod{
     switch self {
     case .getUserFromServerWithEmail, .authenticateUserWithEmail, .saveUserIntoServer:
-      return .POST
+      return .post
       
     }
   }
@@ -35,7 +50,7 @@ enum CCUserRouter: URLRequestConvertible {
     }
   }
   
-  private var parameters: [String: AnyObject]?{
+  private var parameters: [String: Any]?{
     switch self {
     case .getUserFromServerWithEmail(let email):
       return [
@@ -49,14 +64,14 @@ enum CCUserRouter: URLRequestConvertible {
       ]
       
     case .saveUserIntoServer(let user, let password):
-      var userDict: [String: AnyObject] =  [
+      var userDict: [String: Any] =  [
         "Email" : user.email,
         "FirstName"   : user.firstName,
         "LastName"    : user.lastName
       ]
       
       if user.gender != "" {
-        let newGender = "\(user.gender.uppercaseString.characters.first!)"
+        let newGender = "\(user.gender.uppercased().characters.first!)"
         userDict["Gender"] = newGender
       }
       
@@ -72,26 +87,5 @@ enum CCUserRouter: URLRequestConvertible {
       return userDict
     }
   }
-  
-  private var encoding: ParameterEncoding?{
-    switch self {
-    case .getUserFromServerWithEmail, .authenticateUserWithEmail, .saveUserIntoServer:
-      return Alamofire.ParameterEncoding.JSON
-      
-    }
-  }
-  
-  var URLRequest: NSMutableURLRequest{
-    let url = APIClient.getFullUrlWithPath(path)
-    let mutableURLRequest = NSMutableURLRequest(URL: url!)
-    
-    mutableURLRequest.HTTPMethod = method.rawValue
-    
-    if let encoding = self.encoding {
-      return encoding.encode(mutableURLRequest, parameters: self.parameters).0
-    }
-    
-    return mutableURLRequest
-    
-  }
+
 }

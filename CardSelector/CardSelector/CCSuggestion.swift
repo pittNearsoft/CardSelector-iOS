@@ -15,7 +15,7 @@ class CCSuggestion: Mappable {
   var bankName = ""
   var message = "No data found"
   
-  required init?(_ map: Map) {
+  required init?(map: Map) {
     
   }
   

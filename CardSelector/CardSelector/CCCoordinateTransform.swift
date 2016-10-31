@@ -12,14 +12,13 @@ import CoreLocation
 
 class CCCoordinateTransform: TransformType {
 
-  func transformFromJSON(value: AnyObject?) -> CLLocationCoordinate2D? {
-    
+  func transformFromJSON(_ value: Any?) -> CLLocationCoordinate2D? {
     guard let coordinate = value as? [String: Double] else { return nil}
     
     return CLLocationCoordinate2D(latitude: coordinate["lat"]!, longitude: coordinate["lng"]!)
   }
   
-  func transformToJSON(value: CLLocationCoordinate2D?) -> [String: Double]?{
+  func transformToJSON(_ value: CLLocationCoordinate2D?) -> Dictionary<String, Double>? {
     if let coordinate = value {
       return [
         "lat": coordinate.latitude,

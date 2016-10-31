@@ -10,12 +10,24 @@ import Alamofire
 
 enum CCBankRouter: URLRequestConvertible {
   
+  
+  func asURLRequest() throws -> URLRequest {
+    let url = APIClient.getFullUrlWithPath(path: path)
+    var urlRequest = URLRequest(url: url!)
+    
+    urlRequest.httpMethod = method.rawValue
+    urlRequest.setValue("Basic QWRtaW46QzRyZEMwbXA0ZHIzOjVFOTA3ODRSRg==", forHTTPHeaderField: "Authorization")
+    
+    
+    return urlRequest
+  }
+  
   case getAvailableBanks()
   
-  var method: Alamofire.Method{
+  var method: HTTPMethod{
     switch self {
     case .getAvailableBanks:
-      return .GET
+      return .get
       
     }
   }
@@ -29,14 +41,4 @@ enum CCBankRouter: URLRequestConvertible {
   
 
   
-  var URLRequest: NSMutableURLRequest{
-    let url = APIClient.getFullUrlWithPath(path)
-    let mutableURLRequest = NSMutableURLRequest(URL: url!)
-    
-    mutableURLRequest.HTTPMethod = method.rawValue
-    
-    
-    return mutableURLRequest
-    
-  }
 }

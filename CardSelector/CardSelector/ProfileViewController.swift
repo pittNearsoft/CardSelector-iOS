@@ -13,7 +13,7 @@ import AlamofireImage
 
 class ProfileViewController: BaseViewController {
 
-  let sessionManager = SessionManager()
+
   
   @IBOutlet weak var userNameLabel: UILabel!
   @IBOutlet weak var emailLabel: UILabel!
@@ -28,12 +28,12 @@ class ProfileViewController: BaseViewController {
     userNameLabel.text = "\(user!.firstName) \(user!.lastName)"
     emailLabel.text = user!.email
     
-    profileImageView.af_setImageWithURL(NSURL(string: user!.imageUrl)! )
+    profileImageView.af_setImage(withURL: URL(string: user!.imageUrl)!)
     
     profileImageView.layer.cornerRadius = profileImageView.frame.height/2
     profileImageView.layer.masksToBounds = true
     
-    profileImageView.layer.borderColor = UIColor.whiteColor().CGColor
+    profileImageView.layer.borderColor = UIColor.white.cgColor
     profileImageView.layer.borderWidth = 5.0
     
     signOutButton.layer.cornerRadius = 5
@@ -45,8 +45,8 @@ class ProfileViewController: BaseViewController {
   @IBAction func signOut(sender: AnyObject) {
     ActionSheet()
       .addAction("Cancel")
-      .addAction("Sign Out", style: .Default, handler: { _  in
-        SessionManager.logOut()
+      .addAction("Sign Out", style: .default, handler: { _  in
+        CCSessionManager.logOut()
       }).show()
     
     

@@ -16,7 +16,7 @@ class CCBank: NSObject, NSCoding {
   
   var selected = false
   
-  required init?(_ map: Map) {
+  required init?(map: Map) {
     
   }
   
@@ -27,7 +27,7 @@ class CCBank: NSObject, NSCoding {
   }
   
   
-  init(bankDictionary: [String: AnyObject]) {
+  init(bankDictionary: [String: Any]) {
     self.bankId     = bankDictionary["bankId"] as! Int
     self.name     = bankDictionary["name"] as! String
     self.bankDescription = bankDictionary["description"] as! String
@@ -35,13 +35,13 @@ class CCBank: NSObject, NSCoding {
   
   
   convenience required init?(coder decoder: NSCoder) {
-    guard let bankId      = decoder.decodeObjectForKey("bankId") as? Int,
-      let name      = decoder.decodeObjectForKey("name") as? String,
-      let description  = decoder.decodeObjectForKey("description") as? String
+    guard let bankId      = decoder.decodeObject(forKey: "bankId") as? Int,
+      let name      = decoder.decodeObject(forKey: "name") as? String,
+      let description  = decoder.decodeObject(forKey: "description") as? String
       
       else{ return nil }
     
-    let dictionary: [String : AnyObject]  = [
+    let dictionary: [String : Any]  = [
       "bankId"      : bankId,
       "name"      : name,
       "description"  : description
@@ -50,10 +50,10 @@ class CCBank: NSObject, NSCoding {
     self.init(bankDictionary: dictionary)
   }
   
-  func encodeWithCoder(coder: NSCoder) {
-    coder.encodeObject(self.bankId,   forKey: "bankId")
-    coder.encodeObject(self.name,   forKey: "name")
-    coder.encodeObject(self.description, forKey: "description")
+  func encode(with aCoder: NSCoder) {
+    aCoder.encode(self.bankId,   forKey: "bankId")
+    aCoder.encode(self.name,   forKey: "name")
+    aCoder.encode(self.description, forKey: "description")
     
   }
 }

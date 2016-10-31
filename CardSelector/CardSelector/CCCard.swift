@@ -17,11 +17,11 @@ class CCCard: NSObject, Mappable, NSCoding {
   var cardType: CCCardType?
   var cardProgram: CCCardProgram?
   var cardLevel: CCCardLevel?
-  var color = UIColor.whiteColor()
+  var color = UIColor.white
   var selected = false
   
   
-  required init?(_ map: Map) {
+  required init?(map: Map) {
     
   }
   
@@ -37,7 +37,7 @@ class CCCard: NSObject, Mappable, NSCoding {
   
   
   
-  init(cardDictionary: [String: AnyObject]) {
+  init(cardDictionary: [String: Any]) {
     self.cardId     = cardDictionary["cardId"] as! Int
     self.code     = cardDictionary["code"] as! String
     self.defaultRate = cardDictionary["defaultRate"] as! Double
@@ -52,19 +52,19 @@ class CCCard: NSObject, Mappable, NSCoding {
   
   
   convenience required init?(coder decoder: NSCoder) {
-    guard let cardId      = decoder.decodeObjectForKey("cardId") as? Int,
-      let code      = decoder.decodeObjectForKey("code") as? String,
-      let defaultRate  = decoder.decodeObjectForKey("defaultRate") as? Double,
+    guard let cardId      = decoder.decodeObject(forKey: "cardId") as? Int,
+      let code      = decoder.decodeObject(forKey: "code") as? String,
+      let defaultRate  = decoder.decodeObject(forKey: "defaultRate") as? Double,
       
-      let bank  = decoder.decodeObjectForKey("bank") as? CCBank,
-      let cardType  = decoder.decodeObjectForKey("cardType") as? CCCardType,
-      let cardProgram  = decoder.decodeObjectForKey("cardProgram") as? CCCardProgram,
-      let cardLevel  = decoder.decodeObjectForKey("cardLevel") as? CCCardLevel,
-      let color  = decoder.decodeObjectForKey("color") as? UIColor
+      let bank  = decoder.decodeObject(forKey: "bank") as? CCBank,
+      let cardType  = decoder.decodeObject(forKey: "cardType") as? CCCardType,
+      let cardProgram  = decoder.decodeObject(forKey: "cardProgram") as? CCCardProgram,
+      let cardLevel  = decoder.decodeObject(forKey: "cardLevel") as? CCCardLevel,
+      let color  = decoder.decodeObject(forKey: "color") as? UIColor
     
       else{ return nil }
     
-    let dictionary: [String: AnyObject] = [
+    let dictionary: [String: Any] = [
       "cardId"      : cardId,
       "code"      : code,
       "defaultRate"  : defaultRate,
@@ -78,15 +78,16 @@ class CCCard: NSObject, Mappable, NSCoding {
     self.init(cardDictionary: dictionary )
   }
   
-  func encodeWithCoder(coder: NSCoder) {
-    coder.encodeObject(self.cardId,   forKey: "cardId")
-    coder.encodeObject(self.code,   forKey: "code")
-    coder.encodeObject(self.defaultRate, forKey: "defaultRate")
+
+  func encode(with aCoder: NSCoder) {
+    aCoder.encode(self.cardId,   forKey: "cardId")
+    aCoder.encode(self.code,   forKey: "code")
+    aCoder.encode(self.defaultRate, forKey: "defaultRate")
     
-    coder.encodeObject(self.bank, forKey: "bank")
-    coder.encodeObject(self.cardType, forKey: "cardType")
-    coder.encodeObject(self.cardProgram, forKey: "cardProgram")
-    coder.encodeObject(self.cardLevel, forKey: "cardLevel")
-    coder.encodeObject(self.color, forKey: "color")
+    aCoder.encode(self.bank, forKey: "bank")
+    aCoder.encode(self.cardType, forKey: "cardType")
+    aCoder.encode(self.cardProgram, forKey: "cardProgram")
+    aCoder.encode(self.cardLevel, forKey: "cardLevel")
+    aCoder.encode(self.color, forKey: "color")
   }
 }

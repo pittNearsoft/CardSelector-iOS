@@ -13,27 +13,27 @@ class APIClient {
   private static let googlePlacesApiKey = "AIzaSyCy3sXYYV2-SOQioqZSrqgDlSv-p_mQtAE"
   private static let baseUrl = "http://www.muybuenotech.com/CC/Api/"
   
-  var manager: Manager!
+  var manager: SessionManager!
   
   init(){
-    let configuration  = NSURLSessionConfiguration.defaultSessionConfiguration()
+    let configuration  = URLSessionConfiguration.default
     
-    var addedHeaders = Manager.defaultHTTPHeaders
-    addedHeaders["Authorization"] = "Basic QWRtaW46QzRyZEMwbXA0ZHIzOjVFOTA3ODRSRg=="
-    
-    configuration.HTTPAdditionalHeaders = addedHeaders
-    manager = Alamofire.Manager(configuration: configuration)
+//    var addedHeaders = manager .defaultHTTPHeaders
+//    addedHeaders["Authorization"] = "Basic QWRtaW46QzRyZEMwbXA0ZHIzOjVFOTA3ODRSRg=="
+//    
+//    configuration.httpAdditionalHeaders = addedHeaders
+    manager = Alamofire.SessionManager(configuration: configuration)
   }
   
-  static func getFullGoogleUrlWithPath(path: String) -> NSURL?{
+  static func getFullGoogleUrlWithPath(path: String) -> URL?{
     var urlString = googlePlacesBaseUrl+path+"&key=\(googlePlacesApiKey)"
-    urlString = urlString.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-    return NSURL(string: urlString)
+    urlString = urlString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
+    return URL(string: urlString)
   }
   
-  static func getFullUrlWithPath(path: String) -> NSURL?{
+  static func getFullUrlWithPath(path: String) -> URL?{
     let urlString = baseUrl+path
-    return NSURL(string: urlString)
+    return URL(string: urlString)
   }
   
 }

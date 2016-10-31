@@ -11,79 +11,87 @@ import Alamofire
 class CCUserService {
   private let apiClient = APIClient()
 
-  func getUserProfileWithEmail(email: String, completion: (jsonProfile: [String: AnyObject]?)-> Void, onError: (error: NSError)->Void ) {
+  func getUserProfileWithEmail(email: String, completion: @escaping (_ jsonProfile: [String: Any]?)-> Void, onError: @escaping (_ error: NSError)->Void ) {
     apiClient.manager.request(CCUserRouter.getUserFromServerWithEmail(email: email))
-      .CCresponseJSON { (response) in
+      .responseJSON { (response) in
         
         switch response.result{
-        case .Success(let JSON):
+        case .success(let JSON as AnyObject):
           
           if let message = JSON["Message"] as? String{
             
             if message == "No Data" {
-              completion(jsonProfile: nil)
+              completion(nil)
               return
             }
             
           }
           
-          guard let result = JSON as? [String: AnyObject] else{
-            onError(error: Error.error(code: -1, failureReason: "Bad json received"))
+          guard let result = JSON as? [String: Any] else{
+            onError(NSError(domain: "com.kompi", code: -1, userInfo: ["reason": "Bad json received"]))
             return
           }
-          completion(jsonProfile: result)
+          completion(result)
           
-        case .Failure(let error):
-          onError(error: error)
+        case .failure(let error):
+          onError(error as NSError)
+        
+        default:
+          break
         }
         
     }
   }
   
-  func saveUserIntoServer(user: CCUser, password: String = "" , completion: (jsonProfile: [String: AnyObject])-> Void, onError: (error: NSError)->Void) {
+  func saveUserIntoServer(user: CCUser, password: String = "" , completion: @escaping (_ jsonProfile: [String: Any])-> Void, onError: @escaping (_ error: NSError)->Void) {
     apiClient.manager.request(CCUserRouter.saveUserIntoServer(user: user, password: password))
-      .CCresponseJSON { (response) in
+      .responseJSON { (response) in
       
         switch response.result{
-        case .Success(let JSON):
+        case .success(let JSON):
           
-          guard let result = JSON as? [String: AnyObject] else{
-            onError(error: Error.error(code: -1, failureReason: "Bad json received"))
+          guard let result = JSON as? [String: Any] else{
+            onError(NSError(domain: "com.kompi", code: -1, userInfo: ["reason": "Bad json received"]))
             return
           }
-          completion(jsonProfile: result)
+          completion(result)
           
-        case .Failure(let error):
-          onError(error: error)
+        case .failure(let error):
+          onError(error as NSError)
+        
+
         }
         
     }
   }
   
   
-  func authenticateUserWithEmail(email: String, password: String, completion: (jsonProfile: [String: AnyObject]?)-> Void, onError: (error: NSError)->Void) {
+  func authenticateUserWithEmail(email: String, password: String, completion: @escaping (_ jsonProfile: [String: Any]?)-> Void, onError: @escaping (_ error: NSError)->Void) {
     apiClient.manager.request(CCUserRouter.authenticateUserWithEmail(email: email, password: password))
-      .CCresponseJSON { (response) in
+      .responseJSON { (response) in
         switch response.result{
-        case .Success(let JSON):
+        case .success(let JSON as AnyObject):
           if let message = JSON["Message"] as? String{
             
             if message == "No Authenticated" {
-              completion(jsonProfile: nil)
+              completion(nil)
               return
             }
             
           }
           
           
-          guard let result = JSON as? [String: AnyObject] else{
-            onError(error: Error.error(code: -1, failureReason: "Bad json received"))
+          guard let result = JSON as? [String: Any] else{
+            onError(NSError(domain: "com.kompi", code: -1, userInfo: ["reason": "Bad json received"]))
             return
           }
-          completion(jsonProfile: result)
+          completion(result)
           
-        case .Failure(let error):
-          onError(error: error)
+        case .failure(let error):
+          onError(error as NSError)
+          
+        default:
+          break
         }
     }
   }

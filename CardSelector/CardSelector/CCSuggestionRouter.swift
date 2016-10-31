@@ -9,13 +9,33 @@
 import Alamofire
 
 enum CCSuggestionRouter: URLRequestConvertible {
+  /// Returns a URL request or throws if an `Error` was encountered.
+  ///
+  /// - throws: An `Error` if the underlying `URLRequest` is `nil`.
+  ///
+  /// - returns: A URL request.
+  public func asURLRequest() throws -> URLRequest {
+    let url = APIClient.getFullUrlWithPath(path: path)
+    var urlRequest = URLRequest(url: url!)
+    
+    urlRequest.httpMethod = method.rawValue
+    urlRequest.setValue("Basic QWRtaW46QzRyZEMwbXA0ZHIzOjVFOTA3ODRSRg==", forHTTPHeaderField: "Authorization")
+    
+    switch self {
+    case .getSuggestionsWithUser:
+      urlRequest = try URLEncoding.default.encode(urlRequest, with: self.parameters)
+    }
+    
+    return urlRequest
+  }
+
   
   case getSuggestionsWithUser(user: CCUser, merchant: CCPlace)
   
-  var method: Alamofire.Method{
+  var method: HTTPMethod{
     switch self {
     case .getSuggestionsWithUser:
-      return .POST
+      return .post
       
     }
   }
@@ -27,7 +47,7 @@ enum CCSuggestionRouter: URLRequestConvertible {
     }
   }
   
-  private var parameters: [String: AnyObject]?{
+  private var parameters: [String: Any]?{
     switch self {
     case .getSuggestionsWithUser(let user, let merchant):
       return [
@@ -38,25 +58,5 @@ enum CCSuggestionRouter: URLRequestConvertible {
     }
   }
   
-  private var encoding: ParameterEncoding?{
-    switch self {
-    case .getSuggestionsWithUser:
-      return Alamofire.ParameterEncoding.JSON
-    
-    }
-  }
   
-  var URLRequest: NSMutableURLRequest{
-    let url = APIClient.getFullUrlWithPath(path)
-    let mutableURLRequest = NSMutableURLRequest(URL: url!)
-    
-    mutableURLRequest.HTTPMethod = method.rawValue
-    
-    if let encoding = self.encoding {
-      return encoding.encode(mutableURLRequest, parameters: self.parameters).0
-    }
-    
-    return mutableURLRequest
-    
-  }
 }

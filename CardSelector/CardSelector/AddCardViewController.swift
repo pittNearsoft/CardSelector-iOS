@@ -87,22 +87,22 @@ class AddCardViewController: BaseViewController {
     
     cutoffPickerView.dataSource = self
     cutoffPickerView.delegate = self
-    cutoffPickerView.autoresizingMask = [.FlexibleWidth , .FlexibleHeight]
+    cutoffPickerView.autoresizingMask = [.flexibleWidth , .flexibleHeight]
     cutoffPickerView.font = UIFont(name: "HelveticaNeue-Light", size: 20)
     cutoffPickerView.highlightedFont = UIFont(name: "HelveticaNeue", size: 20)
     cutoffPickerView.interitemSpacing = 20.0
     cutoffPickerView.fisheyeFactor = 0.001
-    cutoffPickerView.pickerViewStyle = .Style3D
-    cutoffPickerView.maskDisabled = false
+    cutoffPickerView.pickerViewStyle = .style3D
+    cutoffPickerView.isMaskDisabled = false
     cutoffPickerView.selectItem(13, animated: true)
     
     
     
     let cardNibName = UINib(nibName: CardCollectionViewCell.reuseIdentifier(), bundle:nil)
-    cardCollectionView.registerNib(cardNibName, forCellWithReuseIdentifier: CardCollectionViewCell.reuseIdentifier())
+    cardCollectionView.register(cardNibName, forCellWithReuseIdentifier: CardCollectionViewCell.reuseIdentifier())
     
     let bankNibName = UINib(nibName: BankCollectionViewCell.reuseIdentifier(), bundle:nil)
-    bankCollectionView.registerNib(bankNibName, forCellWithReuseIdentifier: BankCollectionViewCell.reuseIdentifier())
+    bankCollectionView.register(bankNibName, forCellWithReuseIdentifier: BankCollectionViewCell.reuseIdentifier())
     
     
     //Looks for single or multiple taps.
@@ -112,23 +112,23 @@ class AddCardViewController: BaseViewController {
     heightConstraint.constant = 0
     
     //Nofitication to up or down text field when keyboard appear/disappear
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleKeyboardWillShowWithNotification), name: UIKeyboardWillShowNotification, object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleKeyboardWillHideWithNotification), name: UIKeyboardWillHideNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillShowWithNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillHideWithNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     
-    SVProgressHUD.setDefaultStyle(.Light)
+    SVProgressHUD.setDefaultStyle(.light)
     getAvailableBanks()
   }
   
   func dismissKeyboard() {
-    if ending1TextField.isFirstResponder() {
+    if ending1TextField.isFirstResponder {
       ending1TextField.resignFirstResponder()
-    }else if ending2TextField.isFirstResponder() {
+    }else if ending2TextField.isFirstResponder {
       ending2TextField.resignFirstResponder()
-    }else if ending3TextField.isFirstResponder() {
+    }else if ending3TextField.isFirstResponder {
       ending3TextField.resignFirstResponder()
-    }else if ending4TextField.isFirstResponder() {
+    }else if ending4TextField.isFirstResponder {
       ending4TextField.resignFirstResponder()
-    } else if rateTextField.isFirstResponder(){
+    } else if rateTextField.isFirstResponder{
       rateTextField.resignFirstResponder()
     }
   }
@@ -143,13 +143,13 @@ class AddCardViewController: BaseViewController {
   
   
   @IBAction func cancelOperation(sender: AnyObject) {
-    dismissViewControllerAnimated(true, completion: nil)
+    dismiss(animated: true, completion: nil)
   }
   
   func confirmSaving() {
     var missingData: [String] = []
 
-    let endingNumber = Int(endingCardNumbers.joinWithSeparator(""))
+    let endingNumber = Int(endingCardNumbers.joined(separator: ""))
     
     if endingNumber == nil {
       missingData.append("ending")
@@ -180,14 +180,14 @@ class AddCardViewController: BaseViewController {
     
     var message = "Are you ready to save?"
     if missingData.count == 2 {
-      message = "\(missingData[0].capitalizedString) and \(missingData[1]) are blank. Do you want to save anyway?"
+      message = "\(missingData[0].capitalized) and \(missingData[1]) are blank. Do you want to save anyway?"
     }else if missingData.count == 1 {
-      message = "\(missingData[0].capitalizedString) is blank. Do you want to save anyway?"
+      message = "\(missingData[0].capitalized) is blank. Do you want to save anyway?"
     }
     
     ActionSheet(message: message)
       .addAction("Cancel")
-      .addAction("Yes", style: .Default, handler: { _  in
+      .addAction("Yes", style: .default, handler: { _  in
         self.dismissKeyboard()
         self.proceedToSave()
       }).show()
@@ -197,11 +197,11 @@ class AddCardViewController: BaseViewController {
     SVProgressHUD.show()
     
     let user = CCUserViewModel.getLoggedUser()
-    cardViewModel.saveCard(selectedProfileCard, user: user!, completion: { (success) in
+    cardViewModel.saveCard(card: selectedProfileCard, user: user!, completion: { (success) in
       
       SVProgressHUD.dismiss()
-      self.delegate?.didSaveProfileCard(self.selectedProfileCard)
-      self.dismissViewControllerAnimated(true, completion: nil)
+      self.delegate?.didSaveProfileCard(card: self.selectedProfileCard)
+      self.dismiss(animated: true, completion: nil)
     }, onError: { (error) in
       SVProgressHUD.dismiss()
       Alert(title: "Error", message: "Couldn't save right now, try again later.").showOkay()
@@ -212,13 +212,13 @@ class AddCardViewController: BaseViewController {
   func getAvailableBanks() {
 
     SVProgressHUD.show()
-    bankViewModel.getAvailableBanks({ (listBanks) in
+    bankViewModel.getAvailableBanks(completion: { (listBanks) in
       self.listBanks = listBanks
       self.listBanks[0].selected = true
       self.bankCollectionView.reloadData()
       
       if listBanks.count > 0{
-        self.getAvailableCardsFromBank(listBanks[0])
+        self.getAvailableCardsFromBank(bank: listBanks[0])
       }
       
       SVProgressHUD.dismiss()
@@ -227,20 +227,20 @@ class AddCardViewController: BaseViewController {
       print(error.localizedDescription)
       SVProgressHUD.dismiss()
       Alert(title: "Oops!", message: "Banks weren't found. Please try again later.").showOkay()
-      self.dismissViewControllerAnimated(true, completion: nil)
+      self.dismiss(animated: true, completion: nil)
     }
   }
   
   func getAvailableCards() {
     
-    self.noCardsLabel.hidden = true
+    self.noCardsLabel.isHidden = true
     cardCollectionView.lock()
-    cardViewModel.getAvailableCards({ (listCards) in
+    cardViewModel.getAvailableCards(completion: { (listCards) in
       self.listCards = listCards
       self.cardCollectionView.reloadData()
       self.cardCollectionView.unlock()
       }) { (error) in
-        self.noCardsLabel.hidden = false
+        self.noCardsLabel.isHidden = false
         print(error.localizedDescription)
         self.cardCollectionView.unlock()
     }
@@ -250,15 +250,15 @@ class AddCardViewController: BaseViewController {
   
   func getAvailableCardsFromBank(bank: CCBank) {
     
-    self.noCardsLabel.hidden = true
+    self.noCardsLabel.isHidden = true
     cardCollectionView.lock()
     
     let user = CCUserViewModel.getLoggedUser()
-    cardViewModel.getAvailableCardsFromBank(bank, user: user! ,
+    cardViewModel.getAvailableCardsFromBank(bank: bank, user: user! ,
       completion: { (listCards) in
         
 
-        self.noCardsLabel.hidden = (listCards.count == 0) ? false : true
+        self.noCardsLabel.isHidden = (listCards.count == 0) ? false : true
         
         self.listCards = listCards
         self.cardCollectionView.reloadData()
@@ -266,7 +266,7 @@ class AddCardViewController: BaseViewController {
         
       },
       onError: { error in
-        self.noCardsLabel.hidden = false
+        self.noCardsLabel.isHidden = false
         print(error.localizedDescription)
         self.cardCollectionView.unlock()
       }
@@ -276,11 +276,11 @@ class AddCardViewController: BaseViewController {
   
   func handleKeyboardWillShowWithNotification(notification: NSNotification) {
     if let userInfo = notification.userInfo {
-      if let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
+      if let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
         let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! Double
         let curve = userInfo[UIKeyboardAnimationCurveUserInfoKey] as! UInt
         
-        animateViewMoving(bottomConstraint,moveValue: keyboardFrame.size.height, curve: curve,duration: duration)
+        animateViewMoving(constraint: bottomConstraint,moveValue: keyboardFrame.size.height, curve: curve,duration: duration)
       }
     }
     
@@ -291,32 +291,32 @@ class AddCardViewController: BaseViewController {
       
       let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! Double
       let curve = userInfo[UIKeyboardAnimationCurveUserInfoKey] as! UInt
-      animateViewMoving(bottomConstraint,moveValue: 0, curve: curve,duration: duration)
+      animateViewMoving(constraint: bottomConstraint,moveValue: 0, curve: curve,duration: duration)
     }
   }
   
   func animateViewMoving (constraint: NSLayoutConstraint,moveValue :CGFloat, curve: UInt, duration: Double){
     constraint.constant = moveValue
     let options = UIViewAnimationOptions(rawValue: curve << 16)
-    UIView.animateWithDuration(duration, delay: 0, options: options,animations: {
+    UIView.animate(withDuration: duration, delay: 0, options: options,animations: {
         self.view.layoutIfNeeded()
       },completion: nil
     )
   }
   
   func showAdditionalInfo() {
-    animateViewMoving(heightConstraint,moveValue: 260, curve: UIViewAnimationOptions.CurveLinear.rawValue, duration: 0.3)
+    animateViewMoving(constraint: heightConstraint,moveValue: 260, curve: UIViewAnimationOptions.curveLinear.rawValue, duration: 0.3)
   }
   
   func hideAdditionalInfo() {
-    animateViewMoving(heightConstraint,moveValue: 0, curve: UIViewAnimationOptions.CurveLinear.rawValue, duration: 0.3)
+    animateViewMoving(constraint: heightConstraint,moveValue: 0, curve: UIViewAnimationOptions.curveLinear.rawValue, duration: 0.3)
     dismissKeyboard()
   }
   
 }
 
 extension AddCardViewController: UITextFieldDelegate{
-  func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     guard textField.text != nil else { return true }
     
     switch textField {
@@ -367,7 +367,7 @@ extension AddCardViewController: UITextFieldDelegate{
     return true
   }
   
-  func textFieldShouldReturn(textField: UITextField) -> Bool {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     textField.resignFirstResponder()
     return true
   }
@@ -377,28 +377,27 @@ extension AddCardViewController: UITextFieldDelegate{
 
 
 extension AddCardViewController: UICollectionViewDataSource{
-  func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+  
+  func numberOfSections(in collectionView: UICollectionView) -> Int {
     return 1
   }
   
-  func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     if collectionView == self.cardCollectionView {
       return listCards.count
     }else {
       return listBanks.count
     }
-    
   }
   
-  func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     if collectionView == self.cardCollectionView {
-      let cell = cardCollectionView.dequeueReusableCellWithReuseIdentifier(CardCollectionViewCell.reuseIdentifier(), forIndexPath: indexPath) as! CardCollectionViewCell
-    
-      cell.configureCellWithCard(listCards[indexPath.row])
+      let cell = cardCollectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCell.reuseIdentifier(), for: indexPath) as! CardCollectionViewCell
+      
+      cell.configureCellWithCard(ccCard: listCards[indexPath.row])
       return cell
     } else{
-      let cell = bankCollectionView.dequeueReusableCellWithReuseIdentifier(BankCollectionViewCell.reuseIdentifier(), forIndexPath: indexPath) as! BankCollectionViewCell
+      let cell = bankCollectionView.dequeueReusableCell(withReuseIdentifier: BankCollectionViewCell.reuseIdentifier(), for: indexPath) as! BankCollectionViewCell
       
       let bank = listBanks[indexPath.row]
       
@@ -406,18 +405,14 @@ extension AddCardViewController: UICollectionViewDataSource{
         selectedBank = bank
       }
       
-      cell.configureCellWithBank(bank)
+      cell.configureCellWithBank(bank: bank)
       return cell
     }
-    
-    
-    
-  
   }
 }
 
 extension AddCardViewController: UICollectionViewDelegate{
-  func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     
     if collectionView == self.cardCollectionView {
       
@@ -451,7 +446,7 @@ extension AddCardViewController: UICollectionViewDelegate{
       selectedBank!.selected = true
       bankCollectionView.reloadData()
       
-      self.getAvailableCardsFromBank(selectedBank!)
+      self.getAvailableCardsFromBank(bank: selectedBank!)
       
       if selectedCard != nil {
         selectedCard?.selected = false
@@ -464,7 +459,7 @@ extension AddCardViewController: UICollectionViewDelegate{
 }
 
 extension AddCardViewController: UICollectionViewDelegateFlowLayout{
-  func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
     
     if collectionView == self.cardCollectionView {
       return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -473,7 +468,7 @@ extension AddCardViewController: UICollectionViewDelegateFlowLayout{
     }
   }
   
-  func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
     
     if collectionView == self.cardCollectionView {
       return 0
@@ -482,7 +477,7 @@ extension AddCardViewController: UICollectionViewDelegateFlowLayout{
     }
   }
   
-  func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
     if collectionView == self.cardCollectionView {
       return 0
     }else{
@@ -490,7 +485,7 @@ extension AddCardViewController: UICollectionViewDelegateFlowLayout{
     }
   }
   
-  func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     if collectionView == self.cardCollectionView {
       return CGSize(width: 310 , height: cardCollectionView.frame.height)
     }else{
@@ -502,17 +497,18 @@ extension AddCardViewController: UICollectionViewDelegateFlowLayout{
 }
 
 extension AddCardViewController: AKPickerViewDataSource{
-  func numberOfItemsInPickerView(pickerView: AKPickerView!) -> UInt {
+  func numberOfItems(in pickerView: AKPickerView!) -> UInt {
     return UInt(cutoffDays.count)
   }
   
-  func pickerView(pickerView: AKPickerView!, titleForItem item: Int) -> String! {
+  
+  func pickerView(_ pickerView: AKPickerView!, titleForItem item: Int) -> String! {
     return cutoffDays[item]
   }
 }
 
 extension AddCardViewController: AKPickerViewDelegate{
-  func pickerView(pickerView: AKPickerView!, didSelectItem item: Int) {
+  func pickerView(_ pickerView: AKPickerView!, didSelectItem item: Int) {
     print(cutoffDays[item])
   }
 }

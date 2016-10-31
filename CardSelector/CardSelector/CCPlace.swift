@@ -10,6 +10,7 @@ import Foundation
 import CoreLocation
 import ObjectMapper
 import GoogleMaps
+import GooglePlaces
 
 
 class CCPlace: Mappable {
@@ -21,7 +22,7 @@ class CCPlace: Mappable {
   var photo = UIImage(named: "generic")
   var id = ""
   
-  required init?(_ map: Map) {
+  required init?(map: Map) {
     
   }
   

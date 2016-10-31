@@ -11,99 +11,103 @@ import Alamofire
 class CCCardService {
   private let apiClient = APIClient()
   
-  func getAvailableCards(completion: (jsonCards: [AnyObject])-> Void, onError: (error: NSError)->Void) {
+  func getAvailableCards(completion: @escaping (_ jsonCards: [[String: AnyObject]])-> Void, onError: @escaping (_ error: NSError)->Void) {
     apiClient.manager.request(CCCardRouter.getAvailableCards())
-      .CCresponseJSON { (response) in
+      .responseJSON { (response) in
         switch response.result{
-        case .Success(let JSON):
-          guard let result = JSON as? [AnyObject] else{
-            onError(error: Error.error(code: -1, failureReason: "Bad json received"))
+        case .success(let JSON):
+          guard let result = JSON as? [[String: AnyObject]] else{
+            onError(NSError(domain: "com.kompi", code: -1, userInfo: ["reason": "Bad json received"]))
             return
           }
-          completion(jsonCards: result)
+          completion(result)
           
-        case .Failure(let error):
-          onError(error: error)
+        case .failure(let error):
+          onError(error as NSError)
         }
     }
   }
   
-  func getAvailableCardsFromBank(bank: CCBank, completion: (jsonCards: [AnyObject])-> Void, onError: (error: NSError)->Void) {
+  func getAvailableCardsFromBank(bank: CCBank, completion: @escaping (_ jsonCards: [[String: AnyObject]])-> Void, onError: @escaping (_ error: NSError)->Void) {
     apiClient.manager.request(CCCardRouter.getAvailableCardsFromBank(bank: bank))
-      .CCresponseJSON { (response) in
+      .responseJSON { (response) in
         switch response.result{
-        case .Success(let JSON):
-          guard let result = JSON as? [AnyObject] else{
-            onError(error: Error.error(code: -1, failureReason: "Bad json received"))
+        case .success(let JSON):
+          guard let result = JSON as? [[String: AnyObject]] else{
+            onError(NSError(domain: "com.kompi", code: -1, userInfo: ["reason": "Bad json received"]))
             return
           }
-          completion(jsonCards: result)
+          completion(result)
           
-        case .Failure(let error):
-          onError(error: error)
+        case .failure(let error):
+          onError(error as NSError)
         }
     }
 
   }
   
-  func saveCard(card: CCProfileCard, user: CCUser, completion: (sucess: String)-> Void, onError: (error: NSError)->Void) {
+  func saveCard(card: CCProfileCard, user: CCUser, completion: @escaping (_ sucess: String)-> Void, onError: @escaping (_ error: NSError)->Void) {
     apiClient.manager.request(CCCardRouter.saveCard(card: card, user: user))
-      .CCresponseJSON { (response) in
+      .responseJSON { (response) in
         guard let actualResponse = response.response else{
-          onError(error: Error.error(code: 404, failureReason: "Server couldn't respond"))
+          onError(NSError(domain: "com.kompi", code: 404, userInfo: ["reason": "Server couldn't respond"]))
+          
           return
         }
         
         switch actualResponse.statusCode{
         case 200:
-          completion(sucess: "ok")
+          completion("ok")
         default:
-          onError(error: Error.error(code: actualResponse.statusCode, failureReason: "Server error"))
+          onError(NSError(domain: "com.kompi", code: actualResponse.statusCode, userInfo: ["reason": "Server error"]))
         }
     }
   }
   
-  func deleteCard(card: CCProfileCard, user: CCUser, completion: (sucess: String)-> Void, onError: (error: NSError)->Void) {
+  func deleteCard(card: CCProfileCard, user: CCUser, completion: @escaping (_ sucess: String)-> Void, onError: @escaping (_ error: NSError)->Void) {
     apiClient.manager.request(CCCardRouter.deleteCard(card: card, user: user))
-      .CCresponseJSON { (response) in
+      .responseJSON { (response) in
         
         guard let actualResponse = response.response else{
-          onError(error: Error.error(code: 404, failureReason: "Server couldn't respond"))
+          onError(NSError(domain: "com.kompi", code: 404, userInfo: ["reason": "Server couldn't respond"]))
           return
         }
         
         switch actualResponse.statusCode{
         case 200:
-          completion(sucess: "ok")
+          completion("ok")
         default:
-          onError(error: Error.error(code: actualResponse.statusCode, failureReason: "Server error"))
+          onError(NSError(domain: "com.kompi", code: actualResponse.statusCode, userInfo: ["reason": "Server error"]))
         }
     }
   }
   
-  func getProfileCardsFromUser(user: CCUser, completion: (jsonCards: [AnyObject])-> Void, onError: (error: NSError)->Void) {
+  func getProfileCardsFromUser(user: CCUser, completion: @escaping (_ jsonCards: [[String: AnyObject]])-> Void, onError: @escaping (_ error: NSError)->Void) {
     apiClient.manager.request(CCCardRouter.getProfileCardsFromUser(user: user))
-      .CCresponseJSON { (response) in
+      .responseJSON { (response) in
         switch response.result{
-        case .Success(let JSON):
+        case .success(let JSON as AnyObject):
           
           if let message = JSON["Message"] as? String{
             
             if message == "No Data" {
-              completion(jsonCards: [])
+              completion([])
               return 
             }
             
           }
           
-          guard let result = JSON["UserProfileCards"] as? [AnyObject] else{
-            onError(error: Error.error(code: -1, failureReason: "Bad json received"))
+          guard let result = JSON["UserProfileCards"] as? [[String: AnyObject]] else{
+            onError(NSError(domain: "com.kompi", code: -1, userInfo: ["reason": "Bad json received"]))
             return
           }
-          completion(jsonCards: result)
+          completion(result)
           
-        case .Failure(let error):
-          onError(error: error)
+        case .failure(let error):
+          onError(error as NSError)
+          
+        default:
+          break
         }
     }
   }

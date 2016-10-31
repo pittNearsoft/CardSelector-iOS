@@ -34,20 +34,20 @@ class NewUserViewController: FormViewController {
       <<< EmailRow("Email"){ row in
         row.title = "Email"
         row.placeholder = "Enter your email"
-      }.onChange({ row in
-        guard row.value != nil else{ return }
-        
-        let email: String = row.value!
-        
-        if !Validator.isEmail(email){
-          row.cell!.backgroundColor = self.errorColor
-        }
-        else{
-          row.cell!.backgroundColor = .whiteColor()
-        }
-        
-        
-      })
+        }.onChange({ row in
+          guard row.value != nil else{ return }
+          
+          let email: String = row.value!
+          
+          if !Validators.isEmail()(email){
+            row.cell!.backgroundColor = self.errorColor
+          }
+          else{
+            row.cell!.backgroundColor = .white
+          }
+          
+          
+        })
       <<< PasswordRow("Password"){ row in
         row.title = "Password"
         row.placeholder = "Enter password"
@@ -56,170 +56,175 @@ class NewUserViewController: FormViewController {
         row.title = "Confirm"
         row.placeholder = "Confirm password"
         
-        row.disabled = Condition.Function(["Password"], { (form) -> Bool in
-          let row: PasswordRow! = form.rowByTag("Password")
+        row.disabled = Condition.function(["Password"], { (form) -> Bool in
+          let row: PasswordRow! = form.rowBy(tag: "Password")
           return row.value == nil
         })
         
         
         
-      }.onChange({ row in
-        guard row.value != nil else{ return }
-        let passRow: PasswordRow! = self.form.rowByTag("Password")
-        
-        if row.value?.compare(passRow.value!) != .OrderedSame {
-          row.cell!.backgroundColor = self.errorColor
-        }
-        else{
-          row.cell!.backgroundColor = .whiteColor()
-        }
-        row.updateCell()
-        
-      })
-      +++ Section("Additional")
-      <<< DateInlineRow("Birth"){ row in
-        row.title = "Date of birth"
-        row.value = NSDate.yesterday()
-        
-        }.onChange { row in
-
-          //That means, the selected birthday is later than today
-          if row.value?.compare(NSDate.yesterday()) == .OrderedDescending {
+        }.onChange({ row in
+          guard row.value != nil else{ return }
+          let passRow: PasswordRow! = self.form.rowBy(tag: "Password")
+          
+          if row.value?.compare(passRow.value!) != .orderedSame {
             row.cell!.backgroundColor = self.errorColor
           }
           else{
-            row.cell!.backgroundColor = .whiteColor()
+            row.cell!.backgroundColor = .white
           }
           row.updateCell()
+          
+        })
+      +++ Section("Additional")
+      <<< DateInlineRow("Birth"){ row in
+        row.title = "Date of birth"
+        row.value = Date.yesterday()
+        
+        }.onChange { row in
+          
+          //That means, the selected birthday is later than today
+          if row.value?.compare(Date.yesterday()) == .orderedDescending {
+            row.cell!.backgroundColor = self.errorColor
+          }
+          else{
+            row.cell!.backgroundColor = .white
+            row.updateCell()
+          }
       }
       <<< SegmentedRow<String>("Gender") { row in
         row.title = "Gender"
         row.options = ["Male", "Female"]
         row.value = row.options[0]
+      }
+    
+    
+      customizeNavigationBar()
     }
     
-    customizeNavigationBar()
-  }
-  
-  private func customizeNavigationBar() {
-    self.navigationController?.navigationBar.tintColor = mainColor
-    self.navigationController?.navigationBar.barTintColor = mainColor
-    self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-    
-  }
-  
-  @IBAction func cancelNewUser(sender: AnyObject) {
-    dismissViewControllerAnimated(true, completion: nil)
-  }
-  
-  
-  @IBAction func saveNewUser(sender: AnyObject) {
-    let values = form.values()
-    
-    if isDataCorrect(values) {
-      SVProgressHUD.show()
+    func customizeNavigationBar() {
+      self.navigationController?.navigationBar.tintColor = mainColor
+      self.navigationController?.navigationBar.barTintColor = mainColor
+      self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
       
-      let firstName = values["FirstName"] as! String
-      let lastName = values["LastName"] as! String
-      let email = values["Email"] as! String
-      var gender = values["Gender"] as! String
-      gender = (gender == "Male") ? "M" : "F"
-      let password = values["Password"] as! String
-      let birth = values["Birth"] as! NSDate
+    }
+    
+    @IBAction func cancelNewUser(_ sender: AnyObject) {
+      dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+    
+    @IBAction func saveNewUser(_ sender: AnyObject) {
+      let values = form.values()
       
-      let user = CCUser(userDictionary: [
+      if isDataCorrect(values: values) {
+        SVProgressHUD.show()
+        
+        let firstName = values["FirstName"] as! String
+        let lastName = values["LastName"] as! String
+        let email = values["Email"] as! String
+        var gender = values["Gender"] as! String
+        gender = (gender == "Male") ? "M" : "F"
+        let password = values["Password"] as! String
+        let birth = values["Birth"] as! Date
+        
+        let user = CCUser(userDictionary: [
           "firstName"   : firstName,
           "lastName"    : lastName,
           "email"       : email,
           "gender"      : gender,
           "birthDate"   : birth.stringFromFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"),
-        
-        //Extra info required
+          
+          //Extra info required
           "providerId" : "",
           "userId": 0,
           "imageUrl": "",
           "provider": 0,
           "profileCards": [CCProfileCard]()
-        ])
+          ])
+        
+        
+        CCUserViewModel.saveUserIntoServer(user: user, password: password, completion: { (profile) in
+          SVProgressHUD.dismiss()
+          Alert(title: "Done!", message: "Data was saved. Now you can sign in with your email: \(profile!.email)")
+            .addAction("OK", style: .default, handler: { _ in
+              self.delegate?.didSaveNewUserWithEmail(email: profile!.email)
+              self.dismiss(animated: true, completion: nil)
+            })
+            .show()
+          }, onError: { (error) in
+            SVProgressHUD.dismiss()
+            Alert(title: "Oops!", message: "Something went wrong saving data. Please try again later.").showOkay()
+        })
+        
+      }
+    }
+    
+    func isDataCorrect(values: [String: Any?]) -> Bool{
+      
+      if values["FirstName"] == nil {
+        Alert(title: "Oops!", message: "First name field is empty.").showOkay()
+        return false
+      }
+      
+      if values["LastName"] == nil {
+        Alert(title: "Oops!", message: "Last name field is empty.").showOkay()
+        return false
+      }
+      
+      if values["Email"] == nil {
+        Alert(title: "Oops!", message: "Email field is empty").showOkay()
+        return false
+      }
+      
+      if values["Email"] == nil || !Validators.isEmail()(values["Email"] as! String) {
+        Alert(title: "Oops!", message: "Email format is not correct").showOkay()
+        return false
+      }
+      
+      if values["Password"] == nil {
+        Alert(title: "Oops!", message: "Password field is empty").showOkay()
+        return false
+      }
+      
+      let password = values["Password"] as! String
+      if password.characters.count < 6 {
+        Alert(title: "Oops!", message: "Password is too short. Must be at least 6 characters").showOkay()
+        return false
+      }
       
       
-      CCUserViewModel.saveUserIntoServer(user, password: password, completion: { (profile) in
-        SVProgressHUD.dismiss()
-        Alert(title: "Done!", message: "Data was saved. Now you can sign in with your email: \(profile!.email)")
-          .addAction("OK", style: .Default, handler: { _ in
-            self.delegate?.didSaveNewUserWithEmail(profile!.email)
-            self.dismissViewControllerAnimated(true, completion: nil)
-          })
-          .show()
-      }, onError: { (error) in
-        SVProgressHUD.dismiss()
-        Alert(title: "Oops!", message: "Something went wrong saving data. Please try again later.").showOkay()
-      })
+      if values["ConfirmPassword"] == nil {
+        Alert(title: "Oops!", message: "Password confirmation field is empty").showOkay()
+        return false
+      }
+      
+      
+      let passwordConfirmation = values["ConfirmPassword"] as! String
+      if passwordConfirmation != password {
+        Alert(title: "Oops!", message: "Password confirmation does not match with actual password").showOkay()
+        return false
+      }
+      
+      
+      let dateOfBirth = values["Birth"] as! Date
+      if dateOfBirth > Date.yesterday() {
+        Alert(title: "Oops!", message: "Date of birth is incorrect.").showOkay()
+        return false
+      }
+      
+      
+      return true
+      
       
     }
+    
   }
   
-  func isDataCorrect(values: [String: Any?]) -> Bool{
-    
-    if values["FirstName"] == nil {
-      Alert(title: "Oops!", message: "First name field is empty.").showOkay()
-      return false
-    }
-    
-    if values["LastName"] == nil {
-      Alert(title: "Oops!", message: "Last name field is empty.").showOkay()
-      return false
-    }
-    
-    if values["Email"] == nil {
-      Alert(title: "Oops!", message: "Email field is empty").showOkay()
-      return false
-    }
-    
-    if values["Email"] == nil || !Validator.isEmail(values["Email"] as! String) {
-      Alert(title: "Oops!", message: "Email format is not correct").showOkay()
-      return false
-    }
-    
-    if values["Password"] == nil {
-      Alert(title: "Oops!", message: "Password field is empty").showOkay()
-      return false
-    }
-    
-    let password = values["Password"] as! String
-    if password.characters.count < 6 {
-      Alert(title: "Oops!", message: "Password is too short. Must be at least 6 characters").showOkay()
-      return false
-    }
-    
-    
-    if values["ConfirmPassword"] == nil {
-      Alert(title: "Oops!", message: "Password confirmation field is empty").showOkay()
-      return false
-    }
-    
-    
-    let passwordConfirmation = values["ConfirmPassword"] as! String
-    if passwordConfirmation != password {
-      Alert(title: "Oops!", message: "Password confirmation does not match with actual password").showOkay()
-      return false
-    }
-    
-    
-    let dateOfBirth = values["Birth"] as! NSDate
-    if dateOfBirth > NSDate.yesterday() {
-      Alert(title: "Oops!", message: "Date of birth is incorrect.").showOkay()
-      return false
-    }
-    
-    
-    return true
-    
-    
-  }
-  
-}
+
 
 protocol NewUserViewControllerDelegate {
-  func didSaveNewUserWithEmail(email: String)
+    func didSaveNewUserWithEmail(email: String)
 }

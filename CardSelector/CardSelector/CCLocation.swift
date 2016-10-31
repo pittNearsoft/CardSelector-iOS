@@ -13,7 +13,7 @@ class CCLocation: Mappable {
   var latitude: Double?
   var longitude: Double?
   
-  required init?(_ map: Map) {
+  required init?(map: Map) {
     
   }
   

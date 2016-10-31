@@ -15,27 +15,27 @@ class NavigationManager {
   
   static func setInitialStoryboard() {
     
-    SVProgressHUD.setBackgroundColor(UIColor.clearColor())
-    SVProgressHUD.setDefaultStyle(.Custom)
+    SVProgressHUD.setBackgroundColor(UIColor.clear)
+    SVProgressHUD.setDefaultStyle(.custom)
     SVProgressHUD.show()
     if CCUserViewModel.existLoggedUser() {
       let user = CCUserViewModel.getLoggedUser()
       
-      CCUserViewModel.getUserProfileWithEmail(user!.email,
+      CCUserViewModel.getUserProfileWithEmail(email: user!.email,
         completion: { (profile) in
           if profile != nil{
             //Retrieve saved cards
             user!.profileCards = profile!.profileCards
             
             //Now save user in cache
-            CCUserViewModel.saveUserIntoUserDefaults(user!)
+            CCUserViewModel.saveUserIntoUserDefaults(user: user!)
 
             SVProgressHUD.dismiss()
             goMain()
           }else{
             SVProgressHUD.dismiss()
             Alert(title: "Oops!", message: "Session couldn't be retrieved. Please login again.")
-              .addAction("OK", style: .Default, handler: { _ in
+              .addAction("OK", style: .default, handler: { _ in
                 goLogin()
               }).show()
           }
@@ -45,7 +45,7 @@ class NavigationManager {
           SVProgressHUD.dismiss()
           print(error.localizedDescription)
           Alert(title: "Oops!", message: "Session couldn't be retrieved. Please login again.")
-            .addAction("OK", style: .Default, handler: { _ in
+            .addAction("OK", style: .default, handler: { _ in
               goLogin()
             }).show()
         }
@@ -58,23 +58,23 @@ class NavigationManager {
   }
   
   private static func goToStoryboard(storyboardName: String, viewControllerId: String) -> Void{
-    let app = UIApplication.sharedApplication().delegate!
+    let app = UIApplication.shared.delegate!
     
     let storyboard: UIStoryboard = UIStoryboard(name: storyboardName, bundle: nil)
-    let vc = storyboard.instantiateViewControllerWithIdentifier(viewControllerId)
+    let vc = storyboard.instantiateViewController(withIdentifier: viewControllerId)
     app.window?!.rootViewController = vc
     
-    UIView.transitionWithView(app.window!!, duration: 0.5, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: { app.window?!.rootViewController = vc
+    UIView.transition(with: app.window!!, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: { app.window?!.rootViewController = vc
       }, completion: nil)
   }
   
   static func goLogin(){
-    goToStoryboard("Login", viewControllerId: "NavLoginViewController")
+    goToStoryboard(storyboardName: "Login", viewControllerId: "NavLoginViewController")
   }
   
   static func goMain(){
-    Answers.logCustomEventWithName("User logged in", customAttributes: ["time": NSDate().stringFromFormat("dd/MMM/yyyy h:mm a")])
-    goToStoryboard("Main", viewControllerId: "NavMainViewController")
+    Answers.logCustomEvent(withName: "User logged in", customAttributes: ["time": Date().stringFromFormat("dd/MMM/yyyy h:mm a")])
+    goToStoryboard(storyboardName: "Main", viewControllerId: "NavMainViewController")
   }
   
 }

@@ -10,8 +10,8 @@ import Foundation
 import ObjectMapper
 
 class CCPlaceTypeTransform: TransformType {
-  
-  func transformFromJSON(value: AnyObject?) -> String? {
+
+  func transformFromJSON(_ value: Any?) -> String? {
     guard let types = value as? [String] else { return nil}
     
     //Just a default value
@@ -28,7 +28,7 @@ class CCPlaceTypeTransform: TransformType {
     return foundType
   }
   
-  func transformToJSON(value: String?) -> [String: String]? {
+  func transformToJSON(_ value: String?) -> [String: String]? {
     
     if let type = value  {
       return ["type": type]

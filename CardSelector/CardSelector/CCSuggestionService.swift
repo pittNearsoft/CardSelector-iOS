@@ -11,30 +11,33 @@ import Alamofire
 class CCSuggestionService {
   private let apiClient = APIClient()
   
-  func getSuggestionsWithUser(user: CCUser, merchant: CCPlace, completion: (jsonSuggestions: [AnyObject])-> Void, onError: (error: NSError)->Void) {
+  func getSuggestionsWithUser(user: CCUser, merchant: CCPlace, completion: @escaping (_ jsonSuggestions: [[String: AnyObject]])-> Void, onError: @escaping (_ error: NSError)->Void) {
     apiClient.manager.request(CCSuggestionRouter.getSuggestionsWithUser(user: user, merchant: merchant))
-      .CCresponseJSON { (response) in
+      .responseJSON { (response) in
         
         switch response.result{
-        case .Success(let JSON):
+        case .success(let JSON as AnyObject):
           
           if let message = JSON["Message"] as? String{
             
             if message == "No Data" {
-              completion(jsonSuggestions: [])
+              completion([])
               return
             }
             
           }
           
-          guard let result = JSON as? [AnyObject] else{
-            onError(error: Error.error(code: -1, failureReason: "Bad json received"))
+          guard let result = JSON as? [[String: AnyObject]] else{
+            onError(NSError(domain: "com.kompi", code: -1, userInfo: ["reason": "Bad json received"]))
             return
           }
-          completion(jsonSuggestions: result)
+          completion(result)
           
-        case .Failure(let error):
-          onError(error: error)
+        case .failure(let error):
+          onError(error as NSError)
+          
+        default:
+          break
         }
         
     }

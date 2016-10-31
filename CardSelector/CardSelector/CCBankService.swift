@@ -11,19 +11,20 @@ import Alamofire
 class CCBankService {
   private let apiClient = APIClient()
   
-  func getAvailableBanks(completion: (jsonBanks: [AnyObject])-> Void, onError: (error: NSError)->Void) {
+  func getAvailableBanks(completion: @escaping (_ jsonBanks: [[String: AnyObject]])-> Void, onError: @escaping (_ error: NSError)->Void) {
     apiClient.manager.request(CCBankRouter.getAvailableBanks())
-      .CCresponseJSON { (response) in
+      .responseJSON { (response) in
         switch response.result{
-        case .Success(let JSON):
-          guard let result = JSON as? [AnyObject] else{
-            onError(error: Error.error(code: -1, failureReason: "Bad json received"))
+        case .success(let JSON):
+          guard let result = JSON as? [[String: AnyObject]] else{
+            onError(NSError(domain: "com.kompi", code: -1, userInfo: ["reason": "Bad json received"]))
+            
             return
           }
-          completion(jsonBanks: result)
+          completion(result)
           
-        case .Failure(let error):
-          onError(error: error)
+        case .failure(let error):
+          onError(error as NSError)
         }
     }
   }

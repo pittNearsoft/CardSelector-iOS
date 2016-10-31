@@ -10,22 +10,42 @@ import Alamofire
 
 enum CCCardRouter: URLRequestConvertible {
   
+  func asURLRequest() throws -> URLRequest {
+    let url = APIClient.getFullUrlWithPath(path: path)
+    var urlRequest = URLRequest(url: url!)
+    
+    urlRequest.httpMethod = method.rawValue
+    
+    urlRequest.setValue("Basic QWRtaW46QzRyZEMwbXA0ZHIzOjVFOTA3ODRSRg==", forHTTPHeaderField: "Authorization")
+    
+    switch self {
+    case .getAvailableCardsFromBank, .saveCard, .getProfileCardsFromUser, .deleteCard:
+      urlRequest = try URLEncoding.default.encode(urlRequest, with: self.parameters)
+    
+    default:
+      break
+    }
+    
+    return urlRequest
+
+  }
+  
   case getAvailableCards()
   case getAvailableCardsFromBank(bank: CCBank)
   case saveCard(card: CCProfileCard, user: CCUser)
   case deleteCard(card: CCProfileCard, user: CCUser)
   case getProfileCardsFromUser(user: CCUser)
   
-  var method: Alamofire.Method{
+  var method: HTTPMethod{
     switch self {
     case .getAvailableCards:
-      return .GET
+      return .get
       
-    case .getAvailableCardsFromBank, saveCard, .getProfileCardsFromUser:
-      return .POST
+    case .getAvailableCardsFromBank, .saveCard, .getProfileCardsFromUser:
+      return .post
       
     case .deleteCard:
-      return .DELETE
+      return .delete
     }
   }
   
@@ -45,7 +65,7 @@ enum CCCardRouter: URLRequestConvertible {
     }
   }
   
-  private var parameters: [String: AnyObject]?{
+  private var parameters: [String: Any]?{
     switch self {
     case .getAvailableCardsFromBank(let bank):
       return [
@@ -54,7 +74,7 @@ enum CCCardRouter: URLRequestConvertible {
       
     case .saveCard(let profileCard, let user):
       
-      var dictionary: [String: AnyObject] = [
+      var dictionary: [String: Any] = [
         "UserProfileId" : user.userId,
         "CardId"        : profileCard.card!.cardId,
       ]
@@ -88,27 +108,6 @@ enum CCCardRouter: URLRequestConvertible {
       return nil
     }
   }
-  
-  private var encoding: ParameterEncoding?{
-    switch self {
-    case .getAvailableCardsFromBank, .saveCard, .getProfileCardsFromUser, .deleteCard:
-      return Alamofire.ParameterEncoding.JSON
-    case .getAvailableCards:
-      return nil
-    }
-  }
 
-  var URLRequest: NSMutableURLRequest{
-    let url = APIClient.getFullUrlWithPath(path)
-    let mutableURLRequest = NSMutableURLRequest(URL: url!)
-    
-    mutableURLRequest.HTTPMethod = method.rawValue
-    
-    if let encoding = self.encoding {
-      return encoding.encode(mutableURLRequest, parameters: self.parameters).0
-    }
-    
-    return mutableURLRequest
 
-  }
 }

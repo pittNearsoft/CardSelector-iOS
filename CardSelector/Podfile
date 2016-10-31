@@ -1,9 +1,9 @@
 # Uncomment this line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '9.0'
+# Comment this line if you're not using Swift and don't want to use dynamic frameworks
+use_frameworks!
 
 target 'Card Compadre' do
-  # Comment this line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
 
   # Pods for CardSelector
 
@@ -18,38 +18,39 @@ target 'Card Compadre' do
 
   #ObjectMapper is a framework written in Swift that makes it easy
    #for you to convert your model objects (classes and structs) to and from JSON.
-   pod 'ObjectMapper', '~> 1.2'
+   pod 'ObjectMapper', '~> 2.1'
 
    #Alamofire is an HTTP networking library written in Swift.
-   pod 'Alamofire', '~> 3.3'
+   pod 'Alamofire', '~> 4.0'
 
    #AlamofireImage is an image component library for Alamofire.
-   pod 'AlamofireImage', '~> 2.0'
+   pod 'AlamofireImage', '~> 3.0'
 
    #An easy to use UIAlertController builder for swift
-   pod 'LKAlertController', '~> 1.7'
+   pod 'LKAlertController'
 
    #Google Maps SDK for iOS.
    pod 'GoogleMaps'
+   pod 'GooglePlaces'
 
    #ObjectMapper is a framework written in Swift that makes it easy
    #for you to convert your model objects (classes and structs) to and from JSON.
-   pod 'ObjectMapper', '~> 1.2'
+   pod 'ObjectMapper', '~> 2.1'
 
    #SVProgressHUD is a clean and easy-to-use HUD meant to display the progress of an ongoing task on iOS and tvOS.
-   pod 'SVProgressHUD', '~> 2.0'
+   pod 'SVProgressHUD'
 
    #This is a highly customizable, sticky modal view that slides up from the bottom of the screen.
    pod 'SeamlessSlideUpScrollView'
 
-   #Elegant iOS Forms in pure Swift 2
-   pod 'Eureka', '~> 1.7'
+   #Elegant iOS Forms in pure Swift 3.0
+   pod 'Eureka', '~> 2.0.0-beta.1'
 
    #Intuitive NSDate extensions in Swift
-   pod 'Timepiece', '~> 0.4'
+   pod 'Timepiece'#, '~> 0.4'
 
    #To Validate forms
-   pod 'SwiftValidators', '~> 3.0'
+   pod 'SwiftValidators'#, '~> 3.0'
 
    #Horizontal picker
    pod 'AKPickerView'
@@ -57,5 +58,14 @@ target 'Card Compadre' do
    #For beta testing and analytics
    pod 'Fabric'
    pod 'Crashlytics'
+
+
+   post_install do |installer|
+     installer.pods_project.targets.each do |target|
+       target.build_configurations.each do |config|
+         config.build_settings['SWIFT_VERSION'] = '3.0'
+       end
+     end
+   end
 
 end

@@ -38,7 +38,7 @@
 		B5772E421D37EBA3003A5210 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5772E401D37EBA3003A5210 /* CardCollectionViewCell.swift */; };
 		B5772E431D37EBA3003A5210 /* CardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5772E411D37EBA3003A5210 /* CardCollectionViewCell.xib */; };
 		B581C2C71D45E47E00441514 /* CenterCellCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B581C2C61D45E47E00441514 /* CenterCellCollectionViewFlowLayout.swift */; };
-		B597B7F31D23326500E62371 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597B7F21D23326500E62371 /* SessionManager.swift */; };
+		B597B7F31D23326500E62371 /* CCSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597B7F21D23326500E62371 /* CCSessionManager.swift */; };
 		B597B7F51D2333CC00E62371 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597B7F41D2333CC00E62371 /* NavigationManager.swift */; };
 		B597B7FE1D233EE100E62371 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B597B7FD1D233EE100E62371 /* Main.storyboard */; };
 		B597B8011D24547B00E62371 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B597B8001D24547B00E62371 /* ProfileViewController.swift */; };
@@ -115,7 +115,7 @@
 		B5772E401D37EBA3003A5210 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		B5772E411D37EBA3003A5210 /* CardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardCollectionViewCell.xib; sourceTree = "<group>"; };
 		B581C2C61D45E47E00441514 /* CenterCellCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterCellCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
-		B597B7F21D23326500E62371 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		B597B7F21D23326500E62371 /* CCSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCSessionManager.swift; sourceTree = "<group>"; };
 		B597B7F41D2333CC00E62371 /* NavigationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		B597B7FD1D233EE100E62371 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B597B8001D24547B00E62371 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -242,6 +242,13 @@
 			name = Transformers;
 			sourceTree = "<group>";
 		};
+		B5616D781DC5374F00EE37DC /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 		B56511071D20797F002CD3AF = {
 			isa = PBXGroup;
 			children = (
@@ -283,6 +290,7 @@
 		B5772E3D1D37E296003A5210 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B5616D781DC5374F00EE37DC /* Protocols */,
 				B56511151D207980002CD3AF /* LoginViewController.swift */,
 				B597B8001D24547B00E62371 /* ProfileViewController.swift */,
 				B52581511D2B3EEA001CB6BC /* PlacesViewController.swift */,
@@ -300,7 +308,7 @@
 		B597B7F11D23325000E62371 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				B597B7F21D23326500E62371 /* SessionManager.swift */,
+				B597B7F21D23326500E62371 /* CCSessionManager.swift */,
 				B597B7F41D2333CC00E62371 /* NavigationManager.swift */,
 			);
 			name = Managers;
@@ -431,12 +439,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = mbt;
 				TargetAttributes = {
 					B565110F1D20797F002CD3AF = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 7PAQVUFGBU;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -589,7 +599,7 @@
 				B5E266771D2F137A0051756C /* CCPlaceRouter.swift in Sources */,
 				B5772E3F1D37E2B6003A5210 /* AddCardViewController.swift in Sources */,
 				B5BF10991D35F78F008BDF33 /* CCCard.swift in Sources */,
-				B597B7F31D23326500E62371 /* SessionManager.swift in Sources */,
+				B597B7F31D23326500E62371 /* CCSessionManager.swift in Sources */,
 				B5BF10A01D3600FC008BDF33 /* CCCardProgram.swift in Sources */,
 				B5BC1AC21D4477BD003E405C /* CCSuggestionService.swift in Sources */,
 				B5EB17421D3E8401002AC817 /* CCBankViewModel.swift in Sources */,
@@ -634,8 +644,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -679,8 +691,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -699,6 +713,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -707,18 +722,22 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1842173CC7D5BFBFDD5E21B0 /* Pods-Card Compadre.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Diego Obeso (7PAQVUFGBU)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = CardSelector/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mbtx.cardcompadre;
 				PRODUCT_NAME = Kompi;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -726,16 +745,20 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CD9BFFCC8EAD9229880ABAAA /* Pods-Card Compadre.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Diego Obeso (7PAQVUFGBU)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = CardSelector/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mbtx.cardcompadre;
 				PRODUCT_NAME = Kompi;
-				PROVISIONING_PROFILE = "984459af-4d29-4b8d-abbb-c48639b0b93e";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

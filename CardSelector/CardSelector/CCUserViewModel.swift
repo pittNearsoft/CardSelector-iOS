@@ -12,29 +12,29 @@ import SVProgressHUD
 import LKAlertController
 
 class CCUserViewModel {
-  private static let defaults = NSUserDefaults.standardUserDefaults()
+  private static let defaults = UserDefaults.standard
   private static let objKey = "ccUser"
   private static let userService = CCUserService()
   
   static func saveUserIntoUserDefaults(user: CCUser) {
-    let data = NSKeyedArchiver.archivedDataWithRootObject(user)
-    defaults.setObject(data, forKey: objKey)
+    let data = NSKeyedArchiver.archivedData(withRootObject: user)
+    defaults.set(data, forKey: objKey)
   }
   
   static func deleteUserFromUserDefaults(user: CCUser) {
-    defaults.removeObjectForKey(objKey)
+    defaults.removeObject(forKey: objKey)
   }
   
   static func deleteLoggedUser() {
     let user = CCUserViewModel.getLoggedUser()
-    deleteUserFromUserDefaults(user!)
+    deleteUserFromUserDefaults(user: user!)
   }
   
   static func getLoggedUser() -> CCUser?{
     
     var user: CCUser? = nil
-    if let data = defaults.objectForKey(objKey) as? NSData {
-      user = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? CCUser
+    if let data = defaults.object(forKey: objKey) as? NSData {
+      user = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as? CCUser
     }
     
     return user
@@ -44,57 +44,57 @@ class CCUserViewModel {
     return getLoggedUser() != nil
   }
   
-  static func getUserProfileWithEmail(email: String, completion: (profile: CCUser?)-> Void, onError: (error: NSError)->Void ) {
-    userService.getUserProfileWithEmail(email, completion: { (jsonProfile) in
+  static func getUserProfileWithEmail(email: String, completion: @escaping (_ profile: CCUser?)-> Void, onError: @escaping (_ error: NSError)->Void ) {
+    userService.getUserProfileWithEmail(email: email, completion: { (jsonProfile) in
       
       if jsonProfile != nil {
-        let user: CCUser = Mapper<CCUser>().map(jsonProfile)!
-        completion(profile: user)
+        let user: CCUser = Mapper().map(JSON: jsonProfile!)!
+        completion(user)
         return
       }
       
-      completion(profile: nil)
+      completion(nil)
       
     }) { (error) in
-      onError(error: error)
+      onError(error)
     }
   }
   
-  static func saveUserIntoServer(user: CCUser, password: String = "" , completion: (profile: CCUser?)-> Void, onError: (error: NSError)->Void) {
-    userService.saveUserIntoServer(user, password: password, completion: { (jsonProfile) in
+  static func saveUserIntoServer(user: CCUser, password: String = "" , completion: @escaping (_ profile: CCUser?)-> Void, onError: @escaping (_ error: NSError)->Void) {
+    userService.saveUserIntoServer(user: user, password: password, completion: { (jsonProfile) in
       
-      let user: CCUser = Mapper<CCUser>().map(jsonProfile)!
-      completion(profile: user)
+      let user: CCUser = Mapper().map(JSON: jsonProfile)!//.map(jsonProfile)!
+      completion(user)
       
     }) { (error) in
-      onError(error: error)
+      onError(error)
     }
   }
   
-  private static func validateUserInServer(newUser: CCUser, completion: (profile: CCUser)-> Void, onError: (error: NSError)->Void){
+  private static func validateUserInServer(newUser: CCUser, completion: @escaping (_ profile: CCUser)-> Void, onError: @escaping (_ error: NSError)->Void){
     
-    CCUserViewModel.getUserProfileWithEmail(newUser.email, completion: { (profile) in
+    CCUserViewModel.getUserProfileWithEmail(email: newUser.email, completion: { (profile) in
       
       if profile == nil {
-        CCUserViewModel.saveUserIntoServer(newUser, completion: { (profile) in
-          completion(profile: profile!)
+        CCUserViewModel.saveUserIntoServer(user: newUser, completion: { (profile) in
+          completion(profile!)
         }, onError: { (error) in
-          onError(error: error)
+          onError(error)
         })
       }else{
-        completion(profile: profile!)
+        completion(profile!)
       }
       
       
     }, onError: { (error) in
-      onError(error: error)
+      onError(error)
     })
   }
   
   
   static func validateUserInServer(user: CCUser) {
     SVProgressHUD.show()
-    CCUserViewModel.validateUserInServer(user, completion: { (profile) in
+    CCUserViewModel.validateUserInServer(newUser: user, completion: { (profile) in
       SVProgressHUD.dismiss()
       
       //Replace google Id with user Id from server
@@ -104,7 +104,7 @@ class CCUserViewModel {
       user.profileCards = profile.profileCards
       
       //Now save new user in cache
-      CCUserViewModel.saveUserIntoUserDefaults(user)
+      CCUserViewModel.saveUserIntoUserDefaults(user: user)
       NavigationManager.goMain()
       
       }, onError: { (error) in
@@ -114,19 +114,19 @@ class CCUserViewModel {
     })
   }
   
-  static func authenticateUserWithEmail(email: String, password: String, completion: (user: CCUser?)-> Void, onError: (error: NSError)->Void){
-    userService.authenticateUserWithEmail(email, password: password, completion: { (jsonProfile) in
+  static func authenticateUserWithEmail(email: String, password: String, completion: @escaping (_ user: CCUser?)-> Void, onError: @escaping (_ error: NSError)->Void){
+    userService.authenticateUserWithEmail(email: email, password: password, completion: { (jsonProfile) in
       
       if jsonProfile != nil{
-        let user: CCUser = Mapper<CCUser>().map(jsonProfile)!
-        completion(user: user)
+        let user: CCUser = Mapper().map(JSON: jsonProfile!)!//.map(jsonProfile)!
+        completion(user)
       }else{
-        completion(user: nil)
+        completion(nil)
       }
       
       
     }) { (error) in
-        onError(error: error)
+        onError(error)
     }
   }
   

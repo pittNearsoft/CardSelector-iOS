@@ -12,41 +12,47 @@ import CoreLocation
 class CCPlaceService {
   private let apiClient = APIClient()
   
-  func fetchNearbyPlacesWithCoordinate(coordinate: CLLocationCoordinate2D, radius: Double, types: [String], completion: (jsonPlaces: [AnyObject]) -> Void, onError: (error: NSError)->Void) {
+  func fetchNearbyPlacesWithCoordinate(coordinate: CLLocationCoordinate2D, radius: Double, types: [String], completion: @escaping (_ jsonPlaces: [[String: AnyObject]]) -> Void, onError: @escaping (_ error: NSError)->Void) {
     
     apiClient.manager.request(CCPlaceRouter.fetchNearbyPlacesWithCoordinate(coodinate: coordinate, radius: radius, types: types))
-      .CCresponseJSON { (response) in
+      .responseJSON { (response) in
         switch response.result{
-          case .Success(let JSON):
-            guard let result = JSON["results"] as? [AnyObject] else{
-              onError(error: Error.error(code: -1, failureReason: "Bad json received"))
+          case .success(let JSON as AnyObject):
+            guard let result = JSON["results"] as? [[String: AnyObject]] else{
+              onError(NSError(domain: "com.kompi", code: -1, userInfo: ["reason": "Bad json received"]))
               return
             }
-            completion(jsonPlaces: result)
+            completion(result)
           
-          case .Failure(let error):
-            onError(error: error)
+          case .failure(let error):
+            onError(error as NSError)
+          
+          default:
+            break
         }
     }
+    
   }
   
-  func getGeocodeByPlaceId(placeId: String, completion: (json: [String: AnyObject]) -> Void, onFailure: (error: NSError)-> Void ) {
+  func getGeocodeByPlaceId(placeId: String, completion: @escaping (_ json: [String: AnyObject]) -> Void, onFailure: @escaping (_ error: NSError)-> Void ) {
     
     apiClient.manager.request(CCPlaceRouter.getGeocodeByPlaceId(placeId: placeId))
-      .CCresponseJSON { response in
+      .responseJSON { response in
         
         switch response.result{
-        case .Success(let JSON):
+        case .success(let JSON as AnyObject):
           
           guard let result = JSON["result"] as? [String: AnyObject]
             else{
-              onFailure(error: Error.error(code: -1, failureReason: "Bad json received"))
+              onFailure(NSError(domain: "com.kompi", code: -1, userInfo: ["reason": "Bad json received"]))
               return
           }
-          completion(json: result)
-        case .Failure(let error):
-          onFailure(error: error)
+          completion(result)
+        case .failure(let error):
+          onFailure(error as NSError)
           
+        default:
+          break
         }
         
     }

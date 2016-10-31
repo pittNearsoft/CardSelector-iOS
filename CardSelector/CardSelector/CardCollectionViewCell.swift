@@ -32,17 +32,17 @@ class CardCollectionViewCell: UICollectionViewCell {
       didUnselect()
     }
     
-    card.configureWithCard(ccCard)
+    card.configureWithCard(card: ccCard)
   }
   
   private func didSelect() {
-    selectImage.hidden = false
-    selectedView.hidden = false
+    selectImage.isHidden = false
+    selectedView.isHidden = false
   }
   
   private func didUnselect() {
-    selectImage.hidden = true
-    selectedView.hidden = true
+    selectImage.isHidden = true
+    selectedView.isHidden = true
   }
   
 }

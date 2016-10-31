@@ -17,7 +17,7 @@ class CCProfileCard: NSObject, Mappable, NSCoding {
   var interestRate: Double = -1
   var cuttOffDay = -1
 
-  required init?(_ map: Map) {
+  required init?(map: Map) {
     
   }
   
@@ -34,7 +34,7 @@ class CCProfileCard: NSObject, Mappable, NSCoding {
   
   
   
-  init(profileCardDictionary: [String: AnyObject]) {
+  init(profileCardDictionary: [String: Any]) {
     self.card         = profileCardDictionary["card"] as? CCCard
     self.endingCard   = profileCardDictionary["endingCard"] as! Int
     self.interestRate = profileCardDictionary["interestRate"] as! Double
@@ -43,13 +43,13 @@ class CCProfileCard: NSObject, Mappable, NSCoding {
   
   
   convenience required init?(coder decoder: NSCoder) {
-    guard let card      = decoder.decodeObjectForKey("card") as? CCCard,
-      let endingCard    = decoder.decodeObjectForKey("endingCard") as? Int,
-      let interestRate  = decoder.decodeObjectForKey("interestRate") as? Double,
-      let cuttOffDay    = decoder.decodeObjectForKey("cuttOffDay") as? Int
+    guard let card      = decoder.decodeObject(forKey: "card") as? CCCard,
+      let endingCard    = decoder.decodeObject(forKey: "endingCard") as? Int,
+      let interestRate  = decoder.decodeObject(forKey: "interestRate") as? Double,
+      let cuttOffDay    = decoder.decodeObject(forKey: "cuttOffDay") as? Int
       else{ return nil }
     
-    let dictionary: [String: AnyObject] = [
+    let dictionary: [String: Any] = [
       "card"          : card,
       "endingCard"    : endingCard,
       "interestRate"  : interestRate,
@@ -59,11 +59,11 @@ class CCProfileCard: NSObject, Mappable, NSCoding {
     self.init(profileCardDictionary: dictionary)
   }
   
-  func encodeWithCoder(coder: NSCoder) {
-    coder.encodeObject(self.card,   forKey: "card")
-    coder.encodeObject(self.endingCard,   forKey: "endingCard")
-    coder.encodeObject(self.interestRate, forKey: "interestRate")
-    coder.encodeObject(self.cuttOffDay, forKey: "cuttOffDay")
+  func encode(with aCoder: NSCoder) {
+    aCoder.encode(self.card,   forKey: "card")
+    aCoder.encode(self.endingCard,   forKey: "endingCard")
+    aCoder.encode(self.interestRate, forKey: "interestRate")
+    aCoder.encode(self.cuttOffDay, forKey: "cuttOffDay")
   }
   
   

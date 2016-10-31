@@ -11,11 +11,11 @@ import UIKit
 extension UITextField {
   func addDoneButtonOnKeyboard()
   {
-    let doneToolbar: UIToolbar = UIToolbar(frame: CGRectMake(0, 0, 320, 50))
-    doneToolbar.barStyle = .Default
+    let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50) )//CGRectMake(0, 0, 320, 50)
+    doneToolbar.barStyle = .default
     
-    let flexSpace = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-    let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .Done, target: self, action: #selector(doneButtonAction))
+    let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonAction))
     
     var items = [UIBarButtonItem]()
     items.append(flexSpace)
@@ -23,7 +23,7 @@ extension UITextField {
     
     doneToolbar.items = items
     doneToolbar.sizeToFit()
-    doneToolbar.backgroundColor = UIColor.whiteColor()
+    doneToolbar.backgroundColor = UIColor.white
     
     self.inputAccessoryView = doneToolbar
     

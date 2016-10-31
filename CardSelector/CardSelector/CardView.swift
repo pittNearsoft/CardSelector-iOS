@@ -29,39 +29,39 @@ class CardView: UIView {
   
   let cardColors = [
     "Wells Fargo": UIColor(red:0.80, green:0.00, blue:0.00, alpha:1.0),
-    "Bank of America": UIColor.whiteColor(),
-    "Chase": UIColor.whiteColor(),
-    "Citibank": UIColor.whiteColor(),
+    "Bank of America": UIColor.white,
+    "Chase": UIColor.white,
+    "Citibank": UIColor.white,
     "PNC": UIColor(red:0.06, green:0.29, blue:0.53, alpha:1.0),
     "Capital One": UIColor(red:0.00, green:0.22, blue:0.44, alpha:1.0),
     "American Express": UIColor(red:0.00, green:0.31, blue:0.77, alpha:1.0),
-    "Discover": UIColor.whiteColor(),
+    "Discover": UIColor.white,
     "Barclays": UIColor(red:0.00, green:0.68, blue:0.94, alpha:1.0)
   ]
   
   let textColors = [
-    "Wells Fargo": UIColor.whiteColor(),
-    "Bank of America": UIColor.blackColor(),
-    "Chase": UIColor.blackColor(),
-    "Citibank": UIColor.blackColor(),
-    "PNC": UIColor.whiteColor(),
-    "Capital One": UIColor.whiteColor(),
-    "American Express": UIColor.whiteColor(),
-    "Discover": UIColor.blackColor(),
-    "Barclays": UIColor.whiteColor()
+    "Wells Fargo": UIColor.white,
+    "Bank of America": UIColor.black,
+    "Chase": UIColor.black,
+    "Citibank": UIColor.black,
+    "PNC": UIColor.white,
+    "Capital One": UIColor.white,
+    "American Express": UIColor.white,
+    "Discover": UIColor.black,
+    "Barclays": UIColor.white
   ]
   
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     
-    NSBundle.mainBundle().loadNibNamed("CardView", owner: self, options: nil)
+    Bundle.main.loadNibNamed("CardView", owner: self, options: nil)
     addSubview(cardView)
     cardView.translatesAutoresizingMaskIntoConstraints = false
 
     
-    addConstraint(NSLayoutConstraint(item: cardView, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1, constant: 0 ))
+    addConstraint(NSLayoutConstraint(item: cardView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0 ))
     
-    addConstraint(NSLayoutConstraint(item: cardView, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1, constant: 0 ))
+    addConstraint(NSLayoutConstraint(item: cardView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0 ))
 
   }
   

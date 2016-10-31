@@ -22,18 +22,18 @@ class CardCell: UITableViewCell {
     return "CardCell"
   }
   
-  override func setSelected(selected: Bool, animated: Bool) {
+  override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
     
     
   }
   
   func configureCellWithCard(ccCard: CCCard) {
-    card.configureWithCard(ccCard)
+    card.configureWithCard(card: ccCard)
   }
   
   func configureCellWithProfileCard(profileCard: CCProfileCard) {
-    card.configureWithCard(profileCard.card!)
+    card.configureWithCard(card: profileCard.card!)
     
 
     card.endingLabel.text = (profileCard.endingCard != -1 ) ? String(profileCard.endingCard) : "••••"

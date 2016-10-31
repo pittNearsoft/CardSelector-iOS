@@ -16,7 +16,7 @@ class CCCardProgram: NSObject, NSCoding, Mappable {
   
   
   
-  required init?(_ map: Map) {
+  required init?(map: Map) {
     
   }
   
@@ -26,7 +26,7 @@ class CCCardProgram: NSObject, NSCoding, Mappable {
     programDescription     <- map["Description"]
   }
   
-  init(programDictionary: [String: AnyObject]) {
+  init(programDictionary: [String: Any]) {
     self.cardProgramId     = programDictionary["cardProgramId"] as! Int
     self.name     = programDictionary["name"] as! String
     self.programDescription = programDictionary["description"] as! String
@@ -34,13 +34,13 @@ class CCCardProgram: NSObject, NSCoding, Mappable {
   
   
   convenience required init?(coder decoder: NSCoder) {
-    guard let cardProgramId      = decoder.decodeObjectForKey("cardProgramId") as? Int,
-      let name      = decoder.decodeObjectForKey("name") as? String,
-      let description  = decoder.decodeObjectForKey("description") as? String
+    guard let cardProgramId      = decoder.decodeObject(forKey: "cardProgramId") as? Int,
+      let name      = decoder.decodeObject(forKey: "name") as? String,
+      let description  = decoder.decodeObject(forKey: "description") as? String
       
       else{ return nil }
     
-    let dictionary: [String : AnyObject]  = [
+    let dictionary: [String : Any]  = [
       "cardProgramId"      : cardProgramId,
       "name"      : name,
       "description"  : description
@@ -49,10 +49,9 @@ class CCCardProgram: NSObject, NSCoding, Mappable {
     self.init(programDictionary: dictionary )
   }
   
-  func encodeWithCoder(coder: NSCoder) {
-    coder.encodeObject(self.cardProgramId,   forKey: "cardProgramId")
-    coder.encodeObject(self.name,   forKey: "name")
-    coder.encodeObject(self.programDescription, forKey: "description")
-    
+  func encode(with aCoder: NSCoder) {
+    aCoder.encode(self.cardProgramId,   forKey: "cardProgramId")
+    aCoder.encode(self.name,   forKey: "name")
+    aCoder.encode(self.programDescription, forKey: "description")
   }
 }

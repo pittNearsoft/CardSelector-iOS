@@ -15,7 +15,7 @@ class CCCardLevel: NSObject, NSCoding, Mappable {
   var levelDescription = ""
   var isEnabled = false
 
-  required init?(_ map: Map) {
+  required init?(map: Map) {
     
   }
   
@@ -26,7 +26,7 @@ class CCCardLevel: NSObject, NSCoding, Mappable {
     isEnabled     <- map["IsEnabled"]
   }
   
-  init(levelDictionary: [String: AnyObject]) {
+  init(levelDictionary: [String: Any]) {
     self.cardLevelId     = levelDictionary["cardLevelId"] as! Int
     self.name     = levelDictionary["name"] as! String
     self.levelDescription = levelDictionary["description"] as! String
@@ -35,14 +35,14 @@ class CCCardLevel: NSObject, NSCoding, Mappable {
   
   
   convenience required init?(coder decoder: NSCoder) {
-    guard let cardLevelId      = decoder.decodeObjectForKey("cardLevelId") as? Int,
-      let name      = decoder.decodeObjectForKey("name") as? String,
-      let description  = decoder.decodeObjectForKey("description") as? String,
-      let isEnabled = decoder.decodeObjectForKey("isEnabled") as? Bool
+    guard let cardLevelId      = decoder.decodeObject(forKey: "cardLevelId") as? Int,
+      let name      = decoder.decodeObject(forKey: "name") as? String,
+      let description  = decoder.decodeObject(forKey: "description") as? String,
+      let isEnabled = decoder.decodeObject(forKey: "isEnabled") as? Bool
       
       else{ return nil }
     
-    let dictionary: [String : AnyObject]  = [
+    let dictionary: [String : Any]  = [
       "cardLevelId"      : cardLevelId,
       "name"      : name,
       "description"  : description,
@@ -51,12 +51,12 @@ class CCCardLevel: NSObject, NSCoding, Mappable {
     
     self.init(levelDictionary: dictionary )
   }
+
   
-  func encodeWithCoder(coder: NSCoder) {
-    coder.encodeObject(self.cardLevelId,   forKey: "cardLevelId")
-    coder.encodeObject(self.name,   forKey: "name")
-    coder.encodeObject(self.levelDescription, forKey: "description")
-    coder.encodeObject(self.isEnabled, forKey: "isEnabled")
-    
+  func encode(with aCoder: NSCoder) {
+    aCoder.encode(self.cardLevelId,   forKey: "cardLevelId")
+    aCoder.encode(self.name,   forKey: "name")
+    aCoder.encode(self.levelDescription, forKey: "description")
+    aCoder.encode(self.isEnabled, forKey: "isEnabled")
   }
 }

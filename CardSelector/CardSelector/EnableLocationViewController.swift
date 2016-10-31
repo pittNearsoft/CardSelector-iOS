@@ -22,16 +22,16 @@ class EnableLocationViewController: UIViewController {
     collectionView.delegate = self
     
     let settingsNibName = UINib(nibName: SettingsCollectionViewCell.reuseIdentifier(), bundle:nil)
-    collectionView.registerNib(settingsNibName, forCellWithReuseIdentifier: SettingsCollectionViewCell.reuseIdentifier())
+    collectionView.register(settingsNibName, forCellWithReuseIdentifier: SettingsCollectionViewCell.reuseIdentifier())
     
     
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(shouldDismiss), name: UIApplicationDidBecomeActiveNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(shouldDismiss), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
   }
   
   
   func shouldDismiss() {
-    if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
-      dismissViewControllerAnimated(true, completion: nil)
+    if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+      dismiss(animated: true, completion: nil)
     }
   }
   
@@ -40,16 +40,17 @@ class EnableLocationViewController: UIViewController {
 }
 
 extension EnableLocationViewController: UICollectionViewDataSource{
-  func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+  
+  func numberOfSections(in collectionView: UICollectionView) -> Int {
     return 1
   }
   
-  func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return 4
   }
   
-  func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCellWithReuseIdentifier(SettingsCollectionViewCell.reuseIdentifier(), forIndexPath: indexPath) as! SettingsCollectionViewCell
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingsCollectionViewCell.reuseIdentifier(), for: indexPath) as! SettingsCollectionViewCell
     
     cell.settingsImageView.image = UIImage(named: "settings\(indexPath.row+1)")
     
@@ -58,21 +59,21 @@ extension EnableLocationViewController: UICollectionViewDataSource{
 }
 
 extension EnableLocationViewController: UICollectionViewDelegateFlowLayout{
-  func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
     
     return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
   }
   
-  func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
     
     return 10
   }
   
-  func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
     return 10
   }
   
-  func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     return CGSize(width: collectionView.frame.width/2, height: collectionView.frame.height)
     
     

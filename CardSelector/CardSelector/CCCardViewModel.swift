@@ -12,19 +12,19 @@ import ObjectMapper
 class CCCardViewModel {
   let cardService = CCCardService()
   
-  func getAvailableCards(completion: (listCards: [CCCard]) -> Void, onError: (error: NSError) -> Void) {
-    cardService.getAvailableCards({ (jsonCards) in
-      let cards: [CCCard] = Mapper<CCCard>().mapArray(jsonCards)!
-      completion(listCards: cards)
+  func getAvailableCards(completion: @escaping (_ listCards: [CCCard]) -> Void, onError: @escaping (_ error: NSError) -> Void) {
+    cardService.getAvailableCards(completion: { (jsonCards) in
+      let cards: [CCCard] = Mapper().mapArray(JSONArray: jsonCards)!//.mapArray(jsonCards)!
+      completion(cards)
     }) { (error) in
-      onError(error: error)
+      onError(error)
     }
   }
   
-  func getAvailableCardsFromBank(bank: CCBank, user: CCUser, completion: (listCards: [CCCard]) -> Void, onError: (error: NSError) -> Void) {
-    cardService.getAvailableCardsFromBank(bank,
+  func getAvailableCardsFromBank(bank: CCBank, user: CCUser, completion: @escaping (_ listCards: [CCCard]) -> Void, onError: @escaping (_ error: NSError) -> Void) {
+    cardService.getAvailableCardsFromBank(bank: bank,
       completion: { (jsonCards) in
-        let cards: [CCCard] = Mapper<CCCard>().mapArray(jsonCards)!
+        let cards: [CCCard] = Mapper().mapArray(JSONArray: jsonCards)!//.mapArray(jsonCards)!
         
         let cardsNoSelectedByUser = cards.filter({ (card) -> Bool in
           for profileCard in user.profileCards{
@@ -36,38 +36,38 @@ class CCCardViewModel {
           return true
         })
         
-        completion(listCards: cardsNoSelectedByUser)
+        completion(cardsNoSelectedByUser)
       },
       onError: { (error) in
-        onError(error: error)
+        onError(error)
       }
     )
   }
   
-  func saveCard(card: CCProfileCard, user: CCUser, completion: ((sucess: String)-> Void)?, onError: (error: NSError)->Void) {
-    cardService.saveCard(card, user: user, completion: { (sucess) in
-        completion?(sucess: sucess)
+  func saveCard(card: CCProfileCard, user: CCUser, completion: ((_ sucess: String)-> Void)?, onError: @escaping (_ error: NSError)->Void) {
+    cardService.saveCard(card: card, user: user, completion: { (sucess) in
+        completion?(sucess)
       }) { (error) in
-        onError(error: error)
+        onError(error)
     }
   }
   
-  func deleteCard(card: CCProfileCard, user: CCUser, completion: ((success: String)-> Void)?, onError: (error: NSError)->Void) {
-    cardService.deleteCard(card, user: user, completion: { (sucess) in
-      completion?(success: sucess)
+  func deleteCard(card: CCProfileCard, user: CCUser, completion: ((_ success: String)-> Void)?, onError: @escaping (_ error: NSError)->Void) {
+    cardService.deleteCard(card: card, user: user, completion: { (sucess) in
+      completion?(sucess)
     }) { (error) in
-      onError(error: error)
+      onError(error)
     }
   }
   
-  func getProfileCardsFromUser(user: CCUser, completion: (listCards: [CCProfileCard]) -> Void, onError: (error: NSError) -> Void) {
-    cardService.getProfileCardsFromUser(user,
+  func getProfileCardsFromUser(user: CCUser, completion: @escaping (_ listCards: [CCProfileCard]) -> Void, onError: @escaping (_ error: NSError) -> Void) {
+    cardService.getProfileCardsFromUser(user: user,
       completion: { (jsonCards) in
-        let cards: [CCProfileCard] = Mapper<CCProfileCard>().mapArray(jsonCards)!
-        completion(listCards: cards)
+        let cards: [CCProfileCard] = Mapper().mapArray(JSONArray: jsonCards)!//.mapArray(jsonCards)!
+        completion(cards)
       },
       onError: { (error) in
-        onError(error: error)
+        onError(error)
       }
     )
   }
