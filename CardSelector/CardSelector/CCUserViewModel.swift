@@ -17,9 +17,7 @@ class CCUserViewModel {
   private static let userService = CCUserService()
   
   static func saveUserIntoUserDefaults(user: CCUser) {
-    let data = NSKeyedArchiver.archivedData(withRootObject: user)
-    //defaults.set(data, forKey: objKey)
-    defaults.setValue(data, forKey: objKey)
+    defaults.set(user.toJSON(), forKey: objKey)
   }
   
   static func deleteUserFromUserDefaults(user: CCUser) {
@@ -33,12 +31,11 @@ class CCUserViewModel {
   
   static func getLoggedUser() -> CCUser?{
     
-    var user: CCUser? = nil
-    if let data = defaults.object(forKey: objKey) as? NSData {
-      user = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as? CCUser
+    if let jsonUser = defaults.object(forKey: objKey) as? [String: Any]{
+      let user: CCUser = Mapper().map(JSON: jsonUser)!
+      return user
     }
-    
-    return user
+    return nil
   }
   
   static func existLoggedUser() -> Bool {

@@ -141,5 +141,6 @@ extension CCUser: Mappable{
     birthDate     <- map["DateOfBirth"]
     gender        <- map["Gender"]
     profileCards  <- map["UserProfileCards"]
+    imageUrl      <- map["ImageUrl"]
   }
 }
