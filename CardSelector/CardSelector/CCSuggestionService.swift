@@ -16,11 +16,11 @@ class CCSuggestionService {
       .responseJSON { (response) in
         
         switch response.result{
-        case .success(let JSON as AnyObject):
+        case .success(let JSON):
           
-          if let message = JSON["Message"] as? String{
+          if let message = JSON as? [String: String]{
             
-            if message == "No Data" {
+            if message["Message"] == "No Data" {
               completion([])
               return
             }
@@ -36,8 +36,6 @@ class CCSuggestionService {
         case .failure(let error):
           onError(error as NSError)
           
-        default:
-          break
         }
         
     }

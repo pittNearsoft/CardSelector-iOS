@@ -16,7 +16,7 @@ class CCUserService {
       .responseJSON { (response) in
         
         switch response.result{
-        case .success(let JSON as AnyObject):
+        case .success(let JSON as [String: Any]):
           
           if let message = JSON["Message"] as? String{
             
@@ -27,11 +27,11 @@ class CCUserService {
             
           }
           
-          guard let result = JSON as? [String: Any] else{
-            onError(NSError(domain: "com.kompi", code: -1, userInfo: ["reason": "Bad json received"]))
-            return
-          }
-          completion(result)
+//          guard let result = JSON as? [String: Any] else{
+//            onError(NSError(domain: "com.kompi", code: -1, userInfo: ["reason": "Bad json received"]))
+//            return
+//          }
+          completion(JSON)
           
         case .failure(let error):
           onError(error as NSError)
@@ -70,7 +70,7 @@ class CCUserService {
     apiClient.manager.request(CCUserRouter.authenticateUserWithEmail(email: email, password: password))
       .responseJSON { (response) in
         switch response.result{
-        case .success(let JSON as AnyObject):
+        case .success(let JSON as [String: Any]):
           if let message = JSON["Message"] as? String{
             
             if message == "No Authenticated" {
@@ -81,11 +81,11 @@ class CCUserService {
           }
           
           
-          guard let result = JSON as? [String: Any] else{
-            onError(NSError(domain: "com.kompi", code: -1, userInfo: ["reason": "Bad json received"]))
-            return
-          }
-          completion(result)
+//          guard let result = JSON as? [String: Any] else{
+//            onError(NSError(domain: "com.kompi", code: -1, userInfo: ["reason": "Bad json received"]))
+//            return
+//          }
+          completion(JSON)
           
         case .failure(let error):
           onError(error as NSError)

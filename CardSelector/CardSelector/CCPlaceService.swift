@@ -17,8 +17,10 @@ class CCPlaceService {
     apiClient.manager.request(CCPlaceRouter.fetchNearbyPlacesWithCoordinate(coodinate: coordinate, radius: radius, types: types))
       .responseJSON { (response) in
         switch response.result{
-          case .success(let JSON as AnyObject):
-            guard let result = JSON["results"] as? [[String: AnyObject]] else{
+          case .success(let JSON):
+            let jsonObject = JSON as AnyObject
+            
+            guard let result = jsonObject["results"] as? [[String: AnyObject]] else{
               onError(NSError(domain: "com.kompi", code: -1, userInfo: ["reason": "Bad json received"]))
               return
             }
@@ -27,8 +29,6 @@ class CCPlaceService {
           case .failure(let error):
             onError(error as NSError)
           
-          default:
-            break
         }
     }
     
@@ -40,9 +40,11 @@ class CCPlaceService {
       .responseJSON { response in
         
         switch response.result{
-        case .success(let JSON as AnyObject):
+        case .success(let JSON):
           
-          guard let result = JSON["result"] as? [String: AnyObject]
+           let jsonObject = JSON as AnyObject
+          
+          guard let result = jsonObject["result"] as? [String: AnyObject]
             else{
               onFailure(NSError(domain: "com.kompi", code: -1, userInfo: ["reason": "Bad json received"]))
               return
@@ -51,8 +53,6 @@ class CCPlaceService {
         case .failure(let error):
           onFailure(error as NSError)
           
-        default:
-          break
         }
         
     }

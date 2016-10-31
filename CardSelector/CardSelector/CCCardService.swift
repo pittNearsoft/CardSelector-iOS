@@ -86,18 +86,20 @@ class CCCardService {
     apiClient.manager.request(CCCardRouter.getProfileCardsFromUser(user: user))
       .responseJSON { (response) in
         switch response.result{
-        case .success(let JSON as AnyObject):
+        case .success(let JSON):
           
-          if let message = JSON["Message"] as? String{
+          let jsonObject = JSON as AnyObject
+          
+          if let message = jsonObject["Message"] as? String{
             
-            if message == "No Data" {
+            if message  == "No Data" {
               completion([])
               return 
             }
             
           }
           
-          guard let result = JSON["UserProfileCards"] as? [[String: AnyObject]] else{
+          guard let result = jsonObject["UserProfileCards"] as? [[String: AnyObject]] else{
             onError(NSError(domain: "com.kompi", code: -1, userInfo: ["reason": "Bad json received"]))
             return
           }
@@ -106,8 +108,6 @@ class CCCardService {
         case .failure(let error):
           onError(error as NSError)
           
-        default:
-          break
         }
     }
   }

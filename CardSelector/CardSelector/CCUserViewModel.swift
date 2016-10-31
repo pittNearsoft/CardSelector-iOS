@@ -18,7 +18,8 @@ class CCUserViewModel {
   
   static func saveUserIntoUserDefaults(user: CCUser) {
     let data = NSKeyedArchiver.archivedData(withRootObject: user)
-    defaults.set(data, forKey: objKey)
+    //defaults.set(data, forKey: objKey)
+    defaults.setValue(data, forKey: objKey)
   }
   
   static func deleteUserFromUserDefaults(user: CCUser) {
