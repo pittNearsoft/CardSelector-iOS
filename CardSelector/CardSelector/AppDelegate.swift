@@ -9,6 +9,7 @@
 import UIKit
 import FBSDKCoreKit
 import GoogleMaps
+import GooglePlaces
 
 import Fabric
 import Crashlytics
@@ -22,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
     //To use google maps
     GMSServices.provideAPIKey("AIzaSyDYrHJV4WhpDjueEZLSPzkrrk8jaDrn7e4")
+    GMSPlacesClient.provideAPIKey("AIzaSyDYrHJV4WhpDjueEZLSPzkrrk8jaDrn7e4")
+    
     
     Fabric.with([Crashlytics.self])
     
