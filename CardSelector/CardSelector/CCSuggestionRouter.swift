@@ -23,7 +23,7 @@ enum CCSuggestionRouter: URLRequestConvertible {
     
     switch self {
     case .getSuggestionsWithUser:
-      urlRequest = try URLEncoding.default.encode(urlRequest, with: self.parameters)
+      urlRequest = try URLEncoding.httpBody.encode(urlRequest, with: self.parameters)
     }
     
     return urlRequest
