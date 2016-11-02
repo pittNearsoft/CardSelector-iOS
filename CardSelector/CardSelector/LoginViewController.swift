@@ -62,14 +62,15 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate, GIDSignInDelega
     SVProgressHUD.show()
     CCUserViewModel.authenticateUserWithEmail(email: emailTextField.text!, password: passwordTextField.text!, completion: { (user) in
       
-      SVProgressHUD.dismiss()
+      
       guard user != nil else{
+        SVProgressHUD.dismiss()
         Alert(title: "Oops!", message: "Invalid email and/or password. Try again.").showOkay()
         return
       }
       
       CCUserViewModel.validateUserInServer(user: user!)
-      
+      SVProgressHUD.dismiss()
     }) { (error) in
       SVProgressHUD.dismiss()
       print(error.localizedDescription)
