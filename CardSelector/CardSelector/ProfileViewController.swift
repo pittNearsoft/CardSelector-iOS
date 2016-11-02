@@ -28,7 +28,9 @@ class ProfileViewController: BaseViewController {
     userNameLabel.text = "\(user!.firstName) \(user!.lastName)"
     emailLabel.text = user!.email
     
-    profileImageView.af_setImage(withURL: URL(string: user!.imageUrl)!)
+    if !user!.email.isEmpty {
+      profileImageView.af_setImage(withURL: URL(string: user!.imageUrl)!)
+    }
     
     profileImageView.layer.cornerRadius = profileImageView.frame.height/2
     profileImageView.layer.masksToBounds = true
