@@ -164,27 +164,28 @@ class NewUserViewController: FormViewController {
     
     func isDataCorrect(values: [String: Any?]) -> Bool{
       
-      if values["FirstName"] == nil {
+      if values["FirstName"]! == nil {
         Alert(title: "Oops!", message: "First name field is empty.").showOkay()
         return false
       }
       
-      if values["LastName"] == nil {
+      if values["LastName"]! == nil {
         Alert(title: "Oops!", message: "Last name field is empty.").showOkay()
         return false
       }
       
-      if values["Email"] == nil {
+      if values["Email"]! == nil {
         Alert(title: "Oops!", message: "Email field is empty").showOkay()
         return false
       }
       
-      if values["Email"] == nil || !Validators.isEmail()(values["Email"] as! String) {
+      
+      if !Validators.isEmail()(values["Email"] as! String) {
         Alert(title: "Oops!", message: "Email format is not correct").showOkay()
         return false
       }
       
-      if values["Password"] == nil {
+      if values["Password"]! == nil {
         Alert(title: "Oops!", message: "Password field is empty").showOkay()
         return false
       }
@@ -196,7 +197,7 @@ class NewUserViewController: FormViewController {
       }
       
       
-      if values["ConfirmPassword"] == nil {
+      if values["ConfirmPassword"]! == nil {
         Alert(title: "Oops!", message: "Password confirmation field is empty").showOkay()
         return false
       }
