@@ -23,7 +23,9 @@ enum CCSuggestionRouter: URLRequestConvertible {
     
     switch self {
     case .getSuggestionsWithUser:
-      urlRequest = try URLEncoding.httpBody.encode(urlRequest, with: self.parameters)
+      let encoding = Alamofire.JSONEncoding.default
+      urlRequest = try encoding.encode(urlRequest, with: self.parameters)
+      //urlRequest = try URLEncoding.httpBody.encode(urlRequest, with: self.parameters)
     }
     
     return urlRequest

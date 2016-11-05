@@ -71,13 +71,15 @@ class CCUserService {
       .responseJSON { (response) in
         switch response.result{
         case .success(let JSON as [String: Any]):
-          if let message = JSON["Message"] as? String{
+          
+          if let _ = JSON["Message"] as? String{
             
-            if message == "No Authenticated" {
-              completion(nil)
-              return
-            }
-            
+//            if message == "No Authenticated" {
+//              completion(nil)
+//              return
+//            }
+            completion(nil)
+            return
           }
           
           

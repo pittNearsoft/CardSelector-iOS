@@ -21,7 +21,9 @@ enum CCCardRouter: URLRequestConvertible {
     switch self {
     case .getAvailableCardsFromBank, .saveCard, .getProfileCardsFromUser, .deleteCard:
       //urlRequest = try URLEncoding.default.encode(urlRequest, with: self.parameters)
-      urlRequest = try URLEncoding.httpBody.encode(urlRequest, with: self.parameters)
+      //urlRequest = try URLEncoding.httpBody.encode(urlRequest, with: self.parameters)
+      let encoding = Alamofire.JSONEncoding.default
+      urlRequest = try encoding.encode(urlRequest, with: self.parameters)
     
     default:
       break

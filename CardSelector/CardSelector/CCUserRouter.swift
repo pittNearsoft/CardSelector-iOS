@@ -16,10 +16,14 @@ enum CCUserRouter: URLRequestConvertible {
     
     urlRequest.httpMethod = method.rawValue
     urlRequest.setValue("Basic QWRtaW46QzRyZEMwbXA0ZHIzOjVFOTA3ODRSRg==", forHTTPHeaderField: "Authorization")
+    //urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    
     
     switch self {
     case .getUserFromServerWithEmail, .authenticateUserWithEmail, .saveUserIntoServer:
-      urlRequest = try URLEncoding.httpBody.encode(urlRequest, with: self.parameters)
+      let encoding = Alamofire.JSONEncoding.default
+      urlRequest = try encoding.encode(urlRequest, with: self.parameters)
+      
     }
     
     return urlRequest
@@ -60,7 +64,7 @@ enum CCUserRouter: URLRequestConvertible {
     case .authenticateUserWithEmail(let email, let password):
       return [
         "Email": email,
-        "UserCredentials": [["LoginProvider": "", "Password": password]]
+        "UserCredentials": [["LoginProvider": "Email", "Password": password ]]
       ]
       
     case .saveUserIntoServer(let user, let password):
@@ -70,14 +74,14 @@ enum CCUserRouter: URLRequestConvertible {
         "LastName"    : user.lastName
       ]
       
-      if user.gender != "" {
-        let newGender = "\(user.gender.uppercased().characters.first!)"
-        userDict["Gender"] = newGender
-      }
-      
-      if user.birthDate != "" {
-        userDict["DateOfBirth"] = user.birthDate
-      }
+//      if user.gender != "" {
+//        let newGender = "\(user.gender.uppercased().characters.first!)"
+//        userDict["Gender"] = newGender
+//      }
+//      
+//      if user.birthDate != "" {
+//        userDict["DateOfBirth"] = user.birthDate
+//      }
       
       
       if password != "" {

@@ -20,9 +20,9 @@ class CCUser: NSObject, NSCoding {
   var firstName           = ""
   var lastName            = ""
   var email               = ""
-  var gender              = ""
-  
-  var birthDate           = ""
+//  var gender              = ""
+//  
+//  var birthDate           = ""
   
   var imageUrl            = ""
   var provider            = 0
@@ -35,8 +35,8 @@ class CCUser: NSObject, NSCoding {
     self.firstName    = userDictionary["firstName"] as! String
     self.lastName     = userDictionary["lastName"] as! String
     self.email        = userDictionary["email"] as! String
-    self.gender       = userDictionary["gender"] as! String
-    self.birthDate    = userDictionary["birthDate"] as! String
+//    self.gender       = userDictionary["gender"] as! String
+//    self.birthDate    = userDictionary["birthDate"] as! String
     
     self.imageUrl     = userDictionary["imageUrl"] as! String
     self.provider     = userDictionary["provider"] as! Int
@@ -60,13 +60,13 @@ class CCUser: NSObject, NSCoding {
     lastName  = facebookUser["last_name"] as! String
     email     = facebookUser["email"] as! String
     
-    if facebookUser["gender"] != nil {
-      gender = facebookUser["gender"] as! String
-    }
-    
-    if facebookUser["birthday"]  != nil {
-      birthDate = facebookUser["birthday"] as! String
-    }
+//    if facebookUser["gender"] != nil {
+//      gender = facebookUser["gender"] as! String
+//    }
+//    
+//    if facebookUser["birthday"]  != nil {
+//      birthDate = facebookUser["birthday"] as! String
+//    }
     
     provider  = SignInType.Facebook.rawValue
   }
@@ -116,8 +116,8 @@ class CCUser: NSObject, NSCoding {
     aCoder.encode(self.firstName,  forKey: "firstName")
     aCoder.encode(self.lastName,   forKey: "lastName")
     aCoder.encode(self.email,      forKey: "email")
-    aCoder.encode(self.gender,     forKey: "gender")
-    aCoder.encode(self.birthDate,  forKey: "birthDate")
+//    aCoder.encode(self.gender,     forKey: "gender")
+//    aCoder.encode(self.birthDate,  forKey: "birthDate")
     
     aCoder.encode(self.imageUrl,   forKey: "imageUrl")
     aCoder.encode(self.provider,   forKey: "provider")
@@ -138,8 +138,8 @@ extension CCUser: Mappable{
     email         <- map["Email"]
     firstName     <- map["FirstName"]
     lastName      <- map["LastName"]
-    birthDate     <- map["DateOfBirth"]
-    gender        <- map["Gender"]
+//    birthDate     <- map["DateOfBirth"]
+//    gender        <- map["Gender"]
     profileCards  <- map["UserProfileCards"]
     imageUrl      <- map["ImageUrl"]
   }

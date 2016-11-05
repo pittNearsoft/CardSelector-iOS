@@ -76,27 +76,27 @@ class NewUserViewController: FormViewController {
           row.updateCell()
           
         })
-      +++ Section("Additional")
-      <<< DateInlineRow("Birth"){ row in
-        row.title = "Date of birth"
-        row.value = Date.yesterday()
-        
-        }.onChange { row in
-          
-          //That means, the selected birthday is later than today
-          if row.value?.compare(Date.yesterday()) == .orderedDescending {
-            row.cell!.backgroundColor = self.errorColor
-          }
-          else{
-            row.cell!.backgroundColor = .white
-            row.updateCell()
-          }
-      }
-      <<< SegmentedRow<String>("Gender") { row in
-        row.title = "Gender"
-        row.options = ["Male", "Female"]
-        row.value = row.options[0]
-      }
+//      +++ Section("Additional")
+//      <<< DateInlineRow("Birth"){ row in
+//        row.title = "Date of birth"
+//        row.value = Date.yesterday()
+//        
+//        }.onChange { row in
+//          
+//          //That means, the selected birthday is later than today
+//          if row.value?.compare(Date.yesterday()) == .orderedDescending {
+//            row.cell!.backgroundColor = self.errorColor
+//          }
+//          else{
+//            row.cell!.backgroundColor = .white
+//            row.updateCell()
+//          }
+//      }
+//      <<< SegmentedRow<String>("Gender") { row in
+//        row.title = "Gender"
+//        row.options = ["Male", "Female"]
+//        row.value = row.options[0]
+//      }
     
     
       customizeNavigationBar()
@@ -120,22 +120,22 @@ class NewUserViewController: FormViewController {
       let values = form.values()
       
       if isDataCorrect(values: values) {
-        SVProgressHUD.show()
+        
         
         let firstName = values["FirstName"] as! String
         let lastName = values["LastName"] as! String
         let email = values["Email"] as! String
-        var gender = values["Gender"] as! String
-        gender = (gender == "Male") ? "M" : "F"
+        //var gender = values["Gender"] as! String
+        //gender = (gender == "Male") ? "M" : "F"
         let password = values["Password"] as! String
-        let birth = values["Birth"] as! Date
+        //let birth = values["Birth"] as! Date
         
         let user = CCUser(userDictionary: [
           "firstName"   : firstName,
           "lastName"    : lastName,
           "email"       : email,
-          "gender"      : gender,
-          "birthDate"   : birth.stringFromFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"),
+          //"gender"      : nil,
+          //"birthDate"   : nil,
           
           //Extra info required
           "providerId" : "",
@@ -145,19 +145,23 @@ class NewUserViewController: FormViewController {
           "profileCards": [CCProfileCard]()
           ])
         
-        
-        CCUserViewModel.saveUserIntoServer(user: user, password: password, completion: { (profile) in
-          SVProgressHUD.dismiss()
-          Alert(title: "Done!", message: "Data was saved. Now you can sign in with your email: \(profile!.email)")
-            .addAction("OK", style: .default, handler: { _ in
-              self.delegate?.didSaveNewUserWithEmail(email: profile!.email)
-              self.dismiss(animated: true, completion: nil)
-            })
-            .show()
-          }, onError: { (error) in
+        Alert(message: "Do you want to create a new user?")
+        .addAction("Cancel")
+        .addAction("Create", style: .default, handler: { _ in
+          SVProgressHUD.show()
+          CCUserViewModel.saveUserIntoServer(user: user, password: password, completion: { (profile) in
             SVProgressHUD.dismiss()
-            Alert(title: "Oops!", message: "Something went wrong saving data. Please try again later.").showOkay()
-        })
+            Alert(title: "Done!", message: "Data was saved. Now you can sign in with your email: \(profile!.email)")
+              .addAction("OK", style: .default, handler: { _ in
+                self.delegate?.didSaveNewUserWithEmail(email: profile!.email)
+                self.dismiss(animated: true, completion: nil)
+              })
+              .show()
+            }, onError: { (error) in
+              SVProgressHUD.dismiss()
+              Alert(title: "Oops!", message: "Something went wrong saving data. Please try again later.").showOkay()
+          })
+        }).show()
         
       }
     }
@@ -210,11 +214,11 @@ class NewUserViewController: FormViewController {
       }
       
       
-      let dateOfBirth = values["Birth"] as! Date
-      if dateOfBirth > Date.yesterday() {
-        Alert(title: "Oops!", message: "Date of birth is incorrect.").showOkay()
-        return false
-      }
+//      let dateOfBirth = values["Birth"] as! Date
+//      if dateOfBirth > Date.yesterday() {
+//        Alert(title: "Oops!", message: "Date of birth is incorrect.").showOkay()
+//        return false
+//      }
       
       
       return true

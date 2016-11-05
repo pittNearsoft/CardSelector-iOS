@@ -59,6 +59,18 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate, GIDSignInDelega
   
   @IBAction func emailSignIn(sender: AnyObject) {
     
+    if emailTextField.text!.isEmpty {
+      Alert(title: "Oops!", message: "Email field is empty").showOkay()
+      return
+    }
+    
+    
+    if passwordTextField.text!.isEmpty {
+      Alert(title: "Oops!", message: "Password field is empty").showOkay()
+      return
+    }
+    
+    
     SVProgressHUD.show()
     CCUserViewModel.authenticateUserWithEmail(email: emailTextField.text!, password: passwordTextField.text!, completion: { (user) in
       

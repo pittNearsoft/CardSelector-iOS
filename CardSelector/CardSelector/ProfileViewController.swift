@@ -28,7 +28,7 @@ class ProfileViewController: BaseViewController {
     userNameLabel.text = "\(user!.firstName) \(user!.lastName)"
     emailLabel.text = user!.email
     
-    if !user!.email.isEmpty {
+    if !user!.imageUrl.isEmpty {
       profileImageView.af_setImage(withURL: URL(string: user!.imageUrl)!)
     }
     

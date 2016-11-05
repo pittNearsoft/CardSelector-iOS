@@ -36,6 +36,7 @@ class NavigationManager {
             SVProgressHUD.dismiss()
             Alert(title: "Oops!", message: "Session couldn't be retrieved. Please login again.")
               .addAction("OK", style: .default, handler: { _ in
+                CCUserViewModel.deleteLoggedUser()
                 goLogin()
               }).show()
           }
@@ -46,6 +47,7 @@ class NavigationManager {
           print(error.localizedDescription)
           Alert(title: "Oops!", message: "Session couldn't be retrieved. Please login again.")
             .addAction("OK", style: .default, handler: { _ in
+              CCUserViewModel.deleteLoggedUser()
               goLogin()
             }).show()
         }
