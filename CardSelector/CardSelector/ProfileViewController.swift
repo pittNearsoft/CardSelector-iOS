@@ -32,8 +32,10 @@ class ProfileViewController: BaseViewController {
       profileImageView.af_setImage(withURL: URL(string: user!.imageUrl)!)
     }
     
+    profileImageView.layoutIfNeeded()
     profileImageView.layer.cornerRadius = profileImageView.frame.height/2
-    profileImageView.layer.masksToBounds = true
+    profileImageView.clipsToBounds = true
+    
     
     profileImageView.layer.borderColor = UIColor.white.cgColor
     profileImageView.layer.borderWidth = 5.0

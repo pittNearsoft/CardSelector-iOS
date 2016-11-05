@@ -82,11 +82,10 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate, GIDSignInDelega
       }
       
       CCUserViewModel.validateUserInServer(user: user!)
-      SVProgressHUD.dismiss()
     }) { (error) in
       SVProgressHUD.dismiss()
       print(error.localizedDescription)
-      Alert(title: "Oops!", message: "Invalid email and/or password. Try again.").showOkay()
+      Alert(title: "Oops!", message: "Something went wrong. Try again later.").showOkay()
     }
 
   }
@@ -101,12 +100,11 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate, GIDSignInDelega
       CCSessionManager.googleSignOut()
     }else{
       print("Error: \(error.localizedDescription)")
-//      if error.code != -5 {
-//        Alert(title: "Oops!", message: "Something went wrong in server. Please try again later.").showOkay()
-//      }
+      if error.localizedDescription != "The user canceled the sign-in flow." && error.localizedDescription != "access_denied" {
+        Alert(title: "Oops!", message: "Something went wrong in server. Please try again later.").showOkay()
+      }
       
-      Alert(title: "Oops!", message: "Something went wrong in server. Please try again later.").showOkay()
-      
+
     }
   }
   
