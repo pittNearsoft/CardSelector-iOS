@@ -1,26 +1,23 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="kredit front.ttf">
+        <array key="kredit front.ttf">
             <string>KreditFront-Regular</string>
-            <string>KreditFront-Regular</string>
-            <string>KreditFront-Regular</string>
-            <string>KreditFront-Regular</string>
-        </mutableArray>
-        <mutableArray key="kredit.ttf">
+        </array>
+        <array key="kredit.ttf">
             <string>Kredit-Regular</string>
-            <string>Kredit-Regular</string>
-            <string>Kredit-Regular</string>
-            <string>Kredit-Regular</string>
-            <string>Kredit-Regular</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardView" customModule="CardSelector" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardView" customModule="Kompi" customModuleProvider="target">
             <connections>
                 <outlet property="background" destination="G5Z-BC-zu0" id="B7r-Ux-Pfh"/>
                 <outlet property="bankImage" destination="Nof-27-2xa" id="d3b-r8-yuK"/>
@@ -51,11 +48,11 @@
                                 <constraint firstAttribute="height" constant="21" id="s2I-Qj-imj"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Kredit-Regular" family="Kredit" pointSize="13"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="ClO-zL-RM1" firstAttribute="leading" secondItem="G5Z-BC-zu0" secondAttribute="leading" id="ATI-vE-UWA"/>
                         <constraint firstAttribute="height" constant="120" id="TSR-0M-sdK"/>
@@ -65,7 +62,7 @@
                 </view>
                 <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chase" translatesAutoresizingMaskIntoConstraints="NO" id="Nof-27-2xa">
                     <rect key="frame" x="16" y="16" width="268" height="88"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Program" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zU-Uf-Jj3">
                     <rect key="frame" x="8" y="8" width="202" height="24"/>
@@ -73,7 +70,7 @@
                         <constraint firstAttribute="height" constant="24" id="6He-Dk-dPg"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Kredit-Regular" family="Kredit" pointSize="15"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="••••" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CiG-oF-ilo">
@@ -83,7 +80,7 @@
                         <constraint firstAttribute="height" constant="25" id="cgQ-gR-G4U"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="KreditFront-Regular" family="Kredit" pointSize="22"/>
-                    <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="••••" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUQ-Pq-VJB">
@@ -93,7 +90,7 @@
                         <constraint firstAttribute="width" constant="75" id="v3V-Wf-l4n"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="KreditFront-Regular" family="Kredit" pointSize="22"/>
-                    <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="••••" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzJ-Qd-xZG">
@@ -103,7 +100,7 @@
                         <constraint firstAttribute="height" constant="25" id="nu2-Pa-Vt2"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="KreditFront-Regular" family="Kredit" pointSize="22"/>
-                    <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="••••" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjg-qd-Mtc">
@@ -113,7 +110,7 @@
                         <constraint firstAttribute="height" constant="25" id="q0l-jJ-Wwb"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="KreditFront-Regular" family="Kredit" pointSize="22"/>
-                    <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1oW-nO-3Vi">
@@ -142,11 +139,11 @@
                         <constraint firstAttribute="height" constant="17" id="vP0-lf-y9R"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Kredit-Regular" family="Kredit" pointSize="13"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Nof-27-2xa" secondAttribute="trailing" constant="16" id="40i-di-Ziw"/>
                 <constraint firstAttribute="trailing" secondItem="1oW-nO-3Vi" secondAttribute="trailing" constant="8" id="5Lr-AK-t2t"/>

@@ -149,15 +149,15 @@ class AddCardViewController: BaseViewController {
   func confirmSaving() {
     var missingData: [String] = []
 
-    let endingNumber = Int(endingCardNumbers.joined(separator: ""))
+    let endingNumber = endingCardNumbers.joined(separator: "")
     
-    if endingNumber == nil {
+    if endingNumber == "" {
       missingData.append("ending")
-    }else if endingNumber! < 1000 {
+    }else if endingNumber.characters.count != 4 {
       Alert(title: "Oops!", message: "Card's ending is incomplete. Please add the rest of numbers").showOkay()
       return
     }else{
-      selectedProfileCard.endingCard = endingNumber!
+      selectedProfileCard.endingCard = Int(endingNumber)!
     }
     
     

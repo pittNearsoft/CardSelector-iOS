@@ -35,8 +35,18 @@ class CardCell: UITableViewCell {
   func configureCellWithProfileCard(profileCard: CCProfileCard) {
     card.configureWithCard(card: profileCard.card!)
     
+    var endingCard = "••••"
+    if profileCard.endingCard >= 0 && profileCard.endingCard < 10 {
+      endingCard = "000\(profileCard.endingCard)"
+    }else if profileCard.endingCard >= 10 && profileCard.endingCard < 100 {
+      endingCard = "00\(profileCard.endingCard)"
+    }else if profileCard.endingCard >= 100 && profileCard.endingCard < 1000 {
+      endingCard = "0\(profileCard.endingCard)"
+    }else if profileCard.endingCard >= 1000 && profileCard.endingCard < 10000{
+      endingCard = "\(profileCard.endingCard)"
+    }
 
-    card.endingLabel.text = (profileCard.endingCard != -1 ) ? String(profileCard.endingCard) : "••••"
+    card.endingLabel.text = endingCard
     card.rateLabel.text = (profileCard.interestRate != -1) ? "APR: \(profileCard.interestRate)%" :  "APR: \(profileCard.card!.defaultRate)%"
     card.cutoffLabel.text = "Cutoff day: \(profileCard.cuttOffDay)"
     
